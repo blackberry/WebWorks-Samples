@@ -1,0 +1,151 @@
+/* Copyright 2010-2011 Research In Motion Limited.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+ 
+body {
+	margin:		0px;
+	padding:	0px;
+}
+
+#vignette {
+	position:			absolute;
+	z-index:			1100;
+	top:				0px;
+	left:				0px;
+	height:				600px;
+	width:				1024px;
+	background-image:	url('../img/vignette.png');
+}
+
+.vignette {
+	opacity:	0;
+}
+
+#dock {
+	width:					1024px;
+	height:					320px;
+	margin-top:				-880px;
+	overflow:				hidden;
+	z-index:				1200;
+	position:				absolute;
+	background-image:		url('../img/drop_down_background.png');
+	background-repeat:		no-repeat;
+	background-position:	bottom;
+	text-align:				center;
+}
+
+.panelcontainer {
+	width:			1006px;
+	height:			100%;
+	margin-left:	auto;
+	margin-right:	auto;
+	text-align:		center;
+	padding-top:	90px;
+}
+
+.vignetteanimateshow {
+	-webkit-animation-name:				fadeinvignette;
+	-webkit-animation-duration:			300ms;
+	-webkit-animation-iteration-count:	1;
+	opacity:							1;
+}
+
+.vignetteanimatehide {
+	-webkit-animation-name:				fadeoutvignette;
+	-webkit-animation-duration:			300ms;
+	-webkit-animation-iteration-count:	1;
+	opacity:							0;
+}
+
+@-webkit-keyframes fadeinvignette {
+	from {
+		opacity:	0;
+	} to {
+		opacity:	1;
+	}
+}
+
+@-webkit-keyframes fadeoutvignette{
+	from {
+		opacity:	1;
+	} to {
+		opacity:	0;
+	}
+}
+
+.panel-item {
+	width:		232px;
+	height:		172px;
+	padding:	0px 0px 0px 0px;
+	margin:		0px 8px 0px 8px;
+	display:	inline-block;
+}
+
+.panel-active {
+	background-image:	url('../img/selected_icon.png');
+	background-repeat:	no-repeat;
+}
+
+.panel-day {
+	color:						#d5dad6;
+	font-family:				'Arial black', Arial;
+	font-size:					24px;
+	font-weight:				900;
+	letter-spacing:				-2px;
+	text-align:					center;
+	-webkit-text-stroke-color:	#57634d;
+	-webkit-text-stroke-width:	1px;
+	display:					block;
+}
+
+.panel-temp {
+	color:						#dbdbdb;
+	font-family:				'Arial black', Arial;
+	font-size:					58px;
+	font-weight:				normal;
+	letter-spacing:				-4px;
+	-webkit-text-stroke-width:	2px;
+	padding:					30px 0px 0px 50px;
+	display:					block;
+}
+
+.panel-bg {
+	margin:						0px 0px;
+	text-align:					left;
+	letter-spacing:				-6px;
+	background-repeat:			no-repeat;
+	background-position:		10px 5px;
+	height:						136px;
+	display:					block;
+	-webkit-text-stroke-width:	2px;
+}
+
+.panel-weather-type-sunny {
+	background-image:			url('../img/sun_in_drop_down_menu.png');
+	-webkit-text-stroke-color:	#4294a9;
+}
+
+.panel-weather-type-rainy {
+	background-image:			url('../img/rain_in_drop_down_menu.png');
+	-webkit-text-stroke-color:	#6e6e6e;
+}
+.panel-weather-type-cloudy {
+	background-image:			url('../img/cloud_in_drop_down_menu.png');
+	-webkit-text-stroke-color:	#9ea8b2;
+}
+
+.panel-weather-type-thunder {
+	background-image:			url('../img/thunder_in_drop_down_menu.png');
+	-webkit-text-stroke-color:	#26180f;
+}
