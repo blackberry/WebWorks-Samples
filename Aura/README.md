@@ -1,4 +1,4 @@
-﻿# Aura Sample application
+﻿## Aura Sample application
 
 This sample demonstrates how to integrate HTML5, Accelerometer data and CSS3 into a BlackBerry WebWorks application for the BlackBerry Tablet OS. [Aura](http://supportforums.blackberry.com/t5/Web-and-WebWorks-Development/Sample-Application-Demonstrating-HTML5-and-Accelerometer/ta-p/1150115) is the name of a proof-of-concept WebWorks application, [initially demonstrates at Mobile World Congress 2011](http://www.youtube.com/watch?v=uH7NKhNyygw), that allows a user to select from a 4-day Weather forcast of Barcelona Spain, and interact with the application elements by physically moving the BlackBerry device.
 
@@ -14,12 +14,12 @@ The sample code for this application is Open Source under the [Apache 2.0 Licens
 
 * [The Astonishing Tribe](http://tat.se/)
 * [Erik Oros](http://supportforums.blackberry.com/t5/user/viewprofilepage/user-id/172321)
-* [Adam Stanley](https://github.com/adamstanley)
+* [Adam Stanley](https://github.com/astanley)
 
 **Dependencies**
-1. [jquery-1.5.js](http://code.jquery.com/jquery-1.5.js)
-2. [jquery-ui-1.8.9.custom.min.js](http://code.jquery.com/ui/1.8.9/jquery-ui.min.js)
-3. [jquery.easing.1.3.js](http://gsgd.co.uk/sandbox/jquery/easing/jquery.easing.1.3.js)
+1. [jquery-1.5.js](http://code.jquery.com/jquery-1.5.js) 
+2. [jquery-ui-1.8.9.custom.min.js](http://code.jquery.com/ui/1.8.9/jquery-ui.min.js) 
+3. [jquery.easing.1.3.js](http://gsgd.co.uk/sandbox/jquery/easing/jquery.easing.1.3.js) 
 
 
 **To contribute code to this repository you must be [signed up as an official contributor](https://github.com/blackberry/WebWorks/wiki/How-to-Contribute).**
