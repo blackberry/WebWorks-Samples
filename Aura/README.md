@@ -1,4 +1,4 @@
-﻿# Aura Sample Application
+# Aura Sample Application
 
 This sample demonstrates how to integrate HTML5, Accelerometer data and CSS3 into a BlackBerry WebWorks application for the BlackBerry Tablet OS. [Aura](http://supportforums.blackberry.com/t5/Web-and-WebWorks-Development/Sample-Application-Demonstrating-HTML5-and-Accelerometer/ta-p/1150115) is the name of a proof-of-concept WebWorks application, [initially demonstrates at Mobile World Congress 2011](http://www.youtube.com/watch?v=uH7NKhNyygw), that allows a user to select from a 4-day Weather forcast of Barcelona Spain, and interact with the application elements by physically moving the BlackBerry device.
 
