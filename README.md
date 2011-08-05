@@ -34,7 +34,7 @@ the pull request and indicate that it is ready to be merged before the pull requ
 If the Author of the pull request is the actual owner of the Sample, then the Author should send a message to a committer via github messages to have their changes merged.
 
 **Ownership Transfer:**
-An Author can transfer ownership to another Author by opening up an Issue where both the original Author requests ownership to be transfered to the new Author, and the new Author agrees to take ownership of the code.  
+An Author can transfer ownership to another Author by opening up an [Issue](https://github.com/blackberry/WebWorks-Samples/issues) where both the original Author requests ownership to be transfered to the new Author, and the new Author agrees to take ownership of the code.  
 The README for the Sample should be updated to indicate the new Author.
 
 **Repository Committers** 
@@ -49,7 +49,7 @@ The README for the Sample should be updated to indicate the new Author.
 
 ## Bug Reporting and Feature Requests
 
-If you find a bug in a Sample, or have an enhancement request, simply file an Issue for the Sample and send a message (via github messages) to the Sample Author(s) to let them know that you have filed an Issue.
+If you find a bug in a Sample, or have an enhancement request, simply file an [Issue](https://github.com/blackberry/WebWorks-Samples/issues) for the Sample and send a message (via github messages) to the Sample Author(s) to let them know that you have filed an [Issue](https://github.com/blackberry/WebWorks-Samples/issues).
 
 ## Disclaimer
 
