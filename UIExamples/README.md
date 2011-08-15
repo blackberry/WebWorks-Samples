@@ -8,7 +8,7 @@ The sample code for this application is Open Source under the [Apache 2.0 Licens
 **Applies To**
 
 * BlackBerry Smartphone Operating System 5.0+
-* These examples have been designed for a Smartphone screen size and not for the BlackBerry&reg; PlayBook&trade;
+* These examples have been designed for a Smartphone screen size and **not** for the BlackBerry&reg; PlayBook&trade;
 
 **Author(s)** 
 
@@ -16,6 +16,10 @@ The sample code for this application is Open Source under the [Apache 2.0 Licens
 
 
 **To contribute code to this repository you must be [signed up as an official contributor](http://blackberry.github.com/howToContribute.html).**
+
+## Dependencies
+
+1. In order to use the spinner on the Input Control Examples [you require the assiciated extension](https://github.com/blackberry/WebWorks-Community-APIs/tree/master/Smartphone/SpinnerControl) 
 
 
 ## How to Build
@@ -27,7 +31,7 @@ To build the UI Examples sample application:
 3. Create a new folder on your local machine named **UIExamples** (e.g. **c:\webworks\UIExamples**).
 4. Open the downloaded ZIP file from step 2 and **extract the contents from inside the top level folder** to your new **UIExamples** folder.  This ensures that the necessary application assets, such as **config.xml**, are correctly located at the top level of the **UIExamples** folder (e.g. **c:\webworks\UIExamples\config.xml**).
 5. Using an achiving utility (e.g. WinZip or 7-zip), package the contents of your **c:\webworks\UIExamples** folder into a ZIP archive named **UIExamples.zip**.  This archive should have the application assets (not a folder containing the application assets) at its top level.
-6. Using the **[BlackBerry WebWorks SDK for Smartphones](http://us.blackberry.com/developers/browserdev/widgetsdk.jsp)**, package the **UIExamples.zip** archive into a BlackBerry Smartphone application using the following command line: **bbwp c:\webworks\UIExamples\UIExampes.zip**
+6. Using the [BlackBerry WebWorks SDK for Smartphones](http://us.blackberry.com/developers/browserdev/widgetsdk.jsp), package the **UIExamples.zip** archive into a BlackBerry Smartphone application using the following command line: **bbwp c:\webworks\UIExamples\UIExampes.zip**
 
 
 ## Contributing Changes
