@@ -410,8 +410,7 @@ ww = {
 }
 
 
-addEventListener('load',ww.doLoad,false);
-
+addEventListener("DOMContentLoaded", ww.doLoad, false)
 
 
 

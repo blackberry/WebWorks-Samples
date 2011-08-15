@@ -6,7 +6,7 @@
   <author href="https://github.com/tneil">Tim Neil</author>
   <icon src="images\icon.png" />
   <icon src="images\icon.png" rim:hover="true" />
-  <rim:loadingScreen backgroundImage="images\background.png" foregroundImage="images\loading1.gif" onFirstLaunch="true">
+  <rim:loadingScreen backgroundImage="images\background.png" foregroundImage="images\loading1.gif" onFirstLaunch="true" onLocalPageLoad="true">
     <rim:transitionEffect type="fadeIn" />
   </rim:loadingScreen>
   <content src="index.htm" />

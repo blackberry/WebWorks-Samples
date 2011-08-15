@@ -12,6 +12,8 @@ The sample code for this application is Open Source under the [Apache 2.0 Licens
 ## Tested On
 
 * BlackBerry Bold 9700 v5.0.0.469
+* BlackBerry Storm 9550 v5.0.0.469
+* BlackBerry Torch 9800 v6.0.0.227
 
 These examples have been designed for a Smartphone screen size and **not** for the BlackBerry&reg; PlayBook&trade;
 
@@ -23,10 +25,12 @@ These examples have been designed for a Smartphone screen size and **not** for t
 1. In order to use the spinner on the Input Control Examples [you require the assiciated SpinnerControl extension](https://github.com/blackberry/WebWorks-Community-APIs/tree/master/Smartphone/SpinnerControl) 
 
 
-## TODO
+## TODOs and Known Issues
 
-* Fix the layout issues with Pill Buttons
-* Fix the layout issues with Tabs
+* There are some focus based navigation mode issues that still need to be resolved
+* Fix the screen height issue where the bottom of the screen shows the app background color
+* Fix the layout issues with Pill Buttons on BB6+
+* Fix the layout issues with Tabs on BB6+
 * Fix the layout issues on input controls for BB6+
 * Add input controls from raw HTML/CSS to webworks.js and webworks.css 
 * Add buttons from raw HTML/CSS to webworks.js and webworks.css
