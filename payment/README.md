@@ -36,7 +36,9 @@ To build the payment sample application:
 5. Using an achiving utility (e.g. WinZip or 7-zip), package the contents of your **c:\webworks\payment** folder into a ZIP archive named **payment.zip**.  This archive should have the application assets (not a folder containing the application assets) at its top level.
 6. Using the **[BlackBerry WebWorks SDK for Tablet OS](http://us.blackberry.com/developers/tablet/webworks.jsp)**, package the **payment.zip** archive into a BlackBerry Tablet OS application using the following command line: **bbwp c:\webworks\payment\payment.zip**
 
+
 ## More Info
+
 * [BlackBerry WebWorks SDK for Tablet OS](http://us.blackberry.com/developers/tablet/webworks.jsp) - Getting Started guides, SDK downloads, code signing keys.
 * [BlackBerry WebWorks Development Guides] (http://docs.blackberry.com/en/developers/deliverables/30182/)
 * [BlackBerry WebWorks Community Forums](http://supportforums.blackberry.com/t5/Web-and-WebWorks-Development/bd-p/browser_dev)
