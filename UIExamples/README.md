@@ -5,22 +5,33 @@ This sample demonstrates how to replicate some different types of common BlackBe
 The sample code for this application is Open Source under the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0.html).
 
 
-**Applies To**
-
-* BlackBerry Smartphone Operating System 5.0+
-* These examples have been designed for a Smartphone screen size and **not** for the BlackBerry&reg; PlayBook&trade;
-
 **Author(s)** 
 
 * [Tim Neil](https://github.com/tneil)
 
+## Tested On
 
-**To contribute code to this repository you must be [signed up as an official contributor](http://blackberry.github.com/howToContribute.html).**
+* BlackBerry Bold 9700 v5.0.0.469
+
+These examples have been designed for a Smartphone screen size and **not** for the BlackBerry&reg; PlayBook&trade;
+
+**Requires BlackBerry WebWorks SDK for Smartphones v2.0 or higher**
+
 
 ## Dependencies
 
 1. In order to use the spinner on the Input Control Examples [you require the assiciated SpinnerControl extension](https://github.com/blackberry/WebWorks-Community-APIs/tree/master/Smartphone/SpinnerControl) 
 
+
+## TODO
+
+* Fix the layout issues with Pill Buttons
+* Fix the layout issues with Tabs
+* Fix the layout issues on input controls for BB6+
+* Add input controls from raw HTML/CSS to webworks.js and webworks.css 
+* Add buttons from raw HTML/CSS to webworks.js and webworks.css
+* Add more JavaScript toolkit functionality to webworks.js
+* Find a way to embed the toolkit image files in webworks.css as base64 encoded images
 
 ## How to Build
 
