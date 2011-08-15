@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<widget xmlns:rim="http://www.blackberry.com/ns/widgets" version="1.7.0" rim:header="RIM-Widget:rim/widget" xmlns="http://www.w3.org/ns/widgets">
+  <rim:navigation mode="focus" />
+  <name>UI Examples</name>
+  <description>An example of how to use different UI layouts and controls</description>
+  <author href="" rim:copyright="" email="tneil@rim.com">Tim Neil</author>
+  <icon src="images\icon.png" />
+  <icon src="images\icon.png" rim:hover="true" />
+  <content src="start.htm" />
+  <feature id="sample.ui" required="true" version="1.0.0.0" />
+  <access uri="http://chart.apis.google.com" subdomains="true" />
+  <rim:loadingScreen backgroundImage="images\background.png" foregroundImage="images\loading1.gif" onFirstLaunch="true">
+    <rim:transitionEffect type="fadeIn" />
+  </rim:loadingScreen>
+  <license href="" />
+  <feature id="blackberry.push" />
+  <feature id="blackberry.message.sms" />
+  <feature id="blackberry.ui.menu" />
+  <feature id="blackberry.identity" />
+</widget>

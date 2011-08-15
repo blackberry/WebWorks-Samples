@@ -1,0 +1,178 @@
+/*
+Copyright (c) 2010 Research In Motion Limited
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
+
+body, html {
+	padding:0;
+	margin:0;
+	font-family: BBAlpha Sans;
+	font-size: 15pt;
+	overflow:visible;
+}
+
+body {
+	background-image: url('../images/stripes.png');
+	overflow:hidden;
+}
+
+
+.listSeparator
+{
+	border-bottom: solid 1px Silver;
+}
+
+.label 
+{
+	display:inline; 
+	float:left;
+	line-height:40px;
+	margin-left: 5px;
+}
+
+.row
+{
+	height: 40px;
+	width:100%;
+	vertical-align: middle;
+}
+
+.tab
+{
+	position:absolute;
+	top:70px;	
+	padding: 10px;
+}
+
+.main-panel 
+{
+	position:relative;
+}
+
+.panel-top-left {
+	margin-right: 4px; 
+	height: 4px; 
+	background-image: url('../images/panel.png');
+}
+.panel-top-right {
+	margin-top: -4px; 
+	margin-left: 4px; 
+	background-position: 100% 0; 
+	height: 4px; 
+	font-size: 2px;
+	background-image: url('../images/panel.png');
+}
+.panel-bottom-left {
+	margin-right: 9px; 
+	background-position: 0 -7px; 
+	height: 9px;
+	font-size: 2px;
+	background-image: url('../images/panel.png');
+}
+.panel-bottom-right {
+	margin-top: -9px; 
+	margin-left: 9px; 
+	background-position: 100% -7px; 
+	height: 9px; 
+	font-size: 2px; 
+	background-image: url('../images/panel.png');
+}
+.panel-inside {
+	border-left: 2px solid #D6D3D6;
+	border-right: 2px solid #D6D3D6;
+	background: White;
+	padding-left: 0px;
+	padding-right: 0px;
+	overflow:auto;
+}
+.panel-nogap {
+	margin-top: -3;
+	margin-bottom: -3;
+}
+
+.panel-nogap input 
+{
+	display:inline; 
+	float:left;
+	font-family: BBAlpha Sans;
+	font-size: 16pt;
+	border: none;
+	padding-top: 0px;
+	width: 10px;
+	margin-top: 7px;
+}
+
+.buttonPanel
+{
+	margin-top: 5px;
+	margin-left: 8px;
+	margin-bottom: 0px;
+	text-align:center;
+	position:relative;
+	
+}
+
+a.tabButton {
+    background: transparent url('../images/tabs/tabRight.png') no-repeat scroll top right;
+    color: White;
+    display: block;
+    float: left;
+    height: 64px;
+    margin-right: 5px;
+    padding-right: 10px;  
+    text-decoration: none;
+    width: 28%;  
+}
+
+a.tabButton div {
+    background: url('../images/tabs/tab.png') no-repeat top left;
+    display: block;
+    height: 64px;
+    padding: 0px 0px 0px 10px;
+    line-height: 0px;
+}
+
+a.tabButton p 
+{
+	font-size: 10pt;
+	margin-top: 0px;	
+	padding: 0px;
+}
+
+a.tabButton img 
+{
+	position:relative;
+	height:35px;
+	width:35px;
+	margin-top: 5px;
+	margin-bottom: 0px;
+	padding: 0px;
+}
+
+
+.tabSeparator
+{
+	position: absolute;
+	top:69px;
+	background-color:#014EBE;
+	height:5px;	
+	width: 100%;
+	z-index: -1;	
+}

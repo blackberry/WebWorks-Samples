@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<!--
+* Copyright 2010-2011 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+<html>
+	<head>
+		<meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
+	    <link  rel="stylesheet" type="text/css" href="css/inboxList.css"><link />
+		<link  rel="stylesheet" type="text/css" href="css/webworks.css"><link />
+		<script type="text/javascript" src="js/webworks.js"></script>
+		<script type="text/javascript">
+		
+			function clickMe() {
+				 alert('Your device pin is:' + blackberry.identity.PIN);
+			  }
+			  blackberry.ui.menu.clearMenuItems();
+			  var item = new blackberry.ui.menu.MenuItem(false, 1, 'Custom Menu', clickMe);
+			  blackberry.ui.menu.addMenuItem(item);
+		
+		
+		</script>
+	</head>
+	<body>
+		<div x-ww-type="screen">
+			<div x-ww-type="inbox-list">
+				<div x-ww-type="header">Thu 27 May 2010</div>		
+				<div x-ww-type="item" x-ww-img="images/inboxList/opened.png" x-ww-title="Fred M." x-ww-time="4:33p" >My car just broke down</div> 
+				<div x-ww-type="item" x-ww-img="images/inboxList/opened.png" x-ww-title="Sue A." x-ww-time="4:15p" >Need to pick up Milk</div> 
+				<div x-ww-type="item" x-ww-img="images/inboxList/new.png" x-ww-title="Tim N." x-ww-time="10:25a" x-ww-accent="true">Where do I find the new Document</div> 
+				<div x-ww-type="item" x-ww-img="images/inboxList/new.png" x-ww-title="Dave B." x-ww-time="9:31a" x-ww-accent="true">Time for some BBQ Ribs</div> 
+				<div x-ww-type="header">Thu 26 May 2010</div>
+				<div x-ww-type="item" x-ww-img="images/inboxList/opened.png" x-ww-title="Chris D." x-ww-time="6:53p" >Yes, I used to be in the Navy</div> 
+				<div x-ww-type="item" x-ww-img="images/inboxList/sent.png" x-ww-title="Adrian W." x-ww-time="6:25p" >Man, Vegas was rough!</div> 
+				<div x-ww-type="item" x-ww-img="images/inboxList/sent.png" x-ww-title="Trish N." x-ww-time="4:30p" >What time are you getting home</div> 
+				<div x-ww-type="item" x-ww-img="images/inboxList/sent.png" x-ww-title="Chris S." x-ww-time="2:31p" >I&quot;ve been re-booked</div> 
+				<div x-ww-type="item" x-ww-img="images/inboxList/opened.png" x-ww-title="Nedim F." x-ww-time="11:58a" >Do you have time for a meeting?</div> 
+				<div x-ww-type="item" x-ww-img="images/inboxList/opened.png" x-ww-title="Shiwei T." x-ww-time="10:30a" >Mac status update</div> 
+				<div x-ww-type="item" x-ww-img="images/inboxList/sent.png" x-ww-title="Eric L." x-ww-time="10:27p" >Navigation mode rocks!</div> 
+				<div x-ww-type="item" x-ww-img="images/inboxList/opened.png" x-ww-title="Dale D." x-ww-time="9:31a" >Theme work underway for 6.0</div>
+				<div x-ww-type="item" x-ww-img="images/inboxList/opened.png" x-ww-title="Christine P." x-ww-time="8:55a" >Year end reviews</div>
+				<div x-ww-type="header">Thu 25 May 2010</div>
+				<div x-ww-type="item" x-ww-img="images/inboxList/opened.png" x-ww-title="Fred M." x-ww-time="4:33p" >My car just broke down</div> 
+				<div x-ww-type="item" x-ww-img="images/inboxList/opened.png" x-ww-title="Sue A." x-ww-time="4:15p" >Need to pick up Milk</div> 
+				<div x-ww-type="item" x-ww-img="images/inboxList/new.png" x-ww-title="Tim N." x-ww-time="10:25a" x-ww-accent="true">Where do I find the new Document</div> 
+				<div x-ww-type="item" x-ww-img="images/inboxList/new.png" x-ww-title="Dave B." x-ww-time="9:31a" x-ww-accent="true">Time for some BBQ Ribs</div> 
+				<div x-ww-type="header">Thu 24 May 2010</div>
+				<div x-ww-type="item" x-ww-img="images/inboxList/opened.png" x-ww-title="Chris D." x-ww-time="6:53p" >Yes, I used to be in the Navy</div> 
+				<div x-ww-type="item" x-ww-img="images/inboxList/sent.png" x-ww-title="Adrian W." x-ww-time="6:25p" >Man, Vegas was rough!</div> 
+				<div x-ww-type="item" x-ww-img="images/inboxList/sent.png" x-ww-title="Trish N." x-ww-time="4:30p" >What time are you getting home</div> 
+				<div x-ww-type="item" x-ww-img="images/inboxList/sent.png" x-ww-title="Chris S." x-ww-time="2:31p" >I&quot;ve been re-booked</div> 
+				<div x-ww-type="item" x-ww-img="images/inboxList/opened.png" x-ww-title="Nedim F." x-ww-time="11:58a" >Do you have time for a meeting?</div> 
+				<div x-ww-type="item" x-ww-img="images/inboxList/opened.png" x-ww-title="Shiwei T." x-ww-time="10:30a" >Mac status update</div> 
+				<div x-ww-type="item" x-ww-img="images/inboxList/sent.png" x-ww-title="Eric L." x-ww-time="10:27p" >Navigation mode rocks!</div> 
+				<div x-ww-type="item" x-ww-img="images/inboxList/opened.png" x-ww-title="Dale D." x-ww-time="9:31a" >Theme work underway for 6.0</div>
+				<div x-ww-type="item" x-ww-img="images/inboxList/opened.png" x-ww-title="Christine P." x-ww-time="8:55a" >Year end reviews</div>
+			</div>
+	    </div>
+	</body>
+</html>
