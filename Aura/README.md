@@ -18,8 +18,8 @@ The sample code for this application is Open Source under the [Apache 2.0 Licens
 
 **Dependencies**
 
-1. [jquery-1.5.js](http://code.jquery.com/jquery-1.5.js)  [Dual licensed](http://jquery.org/license/) under the MIT or GPL Version 2 licenses.
-2. [jquery-ui-1.8.9.custom.min.js](http://code.jquery.com/ui/1.8.9/jquery-ui.min.js)  [Dual licensed](http://jquery.org/license/) under the MIT or GPL Version 2 licenses.
+1. [jquery-1.5.js](http://code.jquery.com/jquery-1.5.js) is [dual licensed](http://jquery.org/license/) under the MIT or GPL Version 2 licenses.
+2. [jquery-ui-1.8.9.custom.min.js](http://code.jquery.com/ui/1.8.9/jquery-ui.min.js) is [dual licensed](http://jquery.org/license/) under the MIT or GPL Version 2 licenses.
 3. [jquery.easing.1.3.js](http://gsgd.co.uk/sandbox/jquery/easing/jquery.easing.1.3.js)  Open source under the BSD License. 
 
 
