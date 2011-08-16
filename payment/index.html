@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<!--
+ * Copyright 2011 Research In Motion Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,height=device-height,user-scalable=no,initial-scale=1.0">
+
+	<link rel="stylesheet" href="css/jquery.mobile-1.0a4.1.min.css" />
+	<script src="js/jquery-1.5.2.min.js"></script>
+	<script src="js/jquery.mobile-1.0a4.1.min.js"></script>
+	
+	<link rel="stylesheet" href="css/payment.css" />
+	<script type="text/javascript" src="js/payment.js"></script>
+	
+	<title>Payment API Test Application</title>
+</head>
+<body onload="onPageLoad()">
+
+	<!-- Home page screen -->
+	<div data-role="page" data-add-back-btn="true" id="home" data-theme="e">
+		<div data-role="header">
+			<a href="#about" data-icon="info" data-transition="slide" class="ui-btn-left">About</a>
+			<h1 id="homename">Payment API Demo</h1>
+		</div>
+
+		<div data-role="content">
+			<p>
+				This sample demonstrates how to leverage the BlackBerry <a href="javascript:invokeBrowser('http://us.blackberry.com/developers/platform/paymentservice.jsp')">Payment Service</a> in an application created using the <a href="javascript:invokeBrowser('http://us.blackberry.com/developers/tablet/webworks.jsp')">WebWorks SDK</a>.  The Payment Service <a href="javascript:invokeBrowser('http://www.blackberry.com/developers/docs/webworks/api/blackberry.payment.html')">JavaScript API</a> provides an end-to-end payment solution for monetizing application content. 
+			</p>
+			
+			<div id="errors" class="red"></div>
+			
+			<div class="ui-grid-a">
+				<div class="ui-block-a">
+					<h3>Digital Goods:</h3>
+					<table id="digitalGoods">
+						<tr>
+							<th></th>
+							<th>ID</th>
+							<th>Name</th>
+							<th>License Type</th>
+						</tr>
+					</table>
+				</div>
+				<div class="ui-block-b">
+					<h3> Inventory: </h3>
+					<div id="inventory"></div>
+				</div>
+			</div><!-- /grid-a -->
+			
+			<p>
+				<span id="lblDevelopmentMode"></span>
+				<input id="btnToggleDevMode" data-inline="true"  type="button" value="Change Mode" onclick="toggleDevelopmentMode();"/>
+			</p>
+			
+			<hr/>
+
+			<h3> Payment History: </h3>
+			<p id="success" class="blue"></p>
+			<div id="paymentHistory"><i>No digital goods have been purchased from this application.</i></div>
+			
+			
+			<fieldset class="ui-grid-a">
+				<div class="ui-block-a"><input id="btnRefreshLive"  type="button" value="Refresh history (Live server)" onclick="refreshPaymentHistory(true);"/></div>
+				<div class="ui-block-b"><input id="btnRefreshCache" type="button" value="Refresh history (From cache)"  onclick="refreshPaymentHistory(false);"/></div>	   
+			</fieldset>
+
+		</div>
+
+		<div data-role="footer" data-id="persistantFooter" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#usecases"        data-transition="slideup" data-icon="star">Use cases</a></li>
+					<li><a href="#howitworks"      data-transition="slideup" data-icon="grid">How it works</a></li>
+					<li><a href="#developmentmode" data-transition="slideup" data-icon="alert">Development Mode</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<!-- About page screen -->
+	<div data-role="page" data-add-back-btn="true" id="about" data-theme="e">
+		<div data-role="header">
+			<h1>About</h1>
+			<a href="#home" data-icon="home" data-transition="slide" class="ui-btn-right">Home</a>
+		</div>
+
+		<div data-role="content">
+			<img src="img/icon.jpg" alt="Application icon"/>
+			<h2 id="appname"></h2>
+			<div id="appversion"></div>
+			<p id="appdescription">Description</p>
+			
+			<div data-role="collapsible"  data-collapsed="true">
+				<h3 id="appcopyright">Copyright</h3>
+				<p id="applicense">License</p>
+			</div>
+			
+			<p>
+			 Icons courtesy of <a href="javascript:invokeBrowser('http://www.freeiconsweb.com/Free-Downloads.asp?id=997')">Free Icons web</a>.
+			</p>
+		</div>
+	</div>
+	
+	<!-- Use Cases page screen -->
+	<div data-role="page" data-add-back-btn="true" id="usecases" data-theme="e">
+		<div data-role="header">
+			<h1>Use Cases</h1>
+			<a href="#home" data-icon="home" data-transition="slide" class="ui-btn-right">Home</a>
+		</div>
+
+		<div data-role="content">	
+			<div>
+				<p>Using the Payment Service API, you can provide an end-to-end payment solution to allow users to purchase in-application digital goods.</p>
+				
+				<p>As explained in the Developer's Blog posting, <a href="javascript:invokeBrowser('http://devblog.blackberry.com/2011/01/blackberry-payment-service')">Introducing the BlackBerry Payment Service and BlackBerry Payment Service SDK</a>, there are certain types of digital goods that can be distributed through BlackBerry App World, and others that cannot.</p>
+				
+				<b>Allowed digital goods:</b>
+				<ul>
+					<li><b>Digital Content</b> – eBooks, magazines, photos, artwork, or digital property (e.g. audio, video content) that you can use on a BlackBerry® device.</li>
+					<li><b>Additional Functionality</b> – new features, levels, characters, or games (e.g. "epic sword", "levels 50-59".  Must be distributed with the application and unlocked for a BlackBerry device user after a purchase.</li>
+					<li><b>Services</b> – any kind of digital service that a BlackBerry device user must pay to use (e.g. subscriptions, video streaming).</li>
+				</ul>
+				
+				<b>Prohibited digital goods:</b>
+				<ul>
+					<li><b>Virtual currencies or in-app credits</b> – digital currencies or in-app credits that can be used to purchase digital goods are prohibited.</li>
+					<li><b>Physical goods or services</b> – In-app purchases must be digital content that is usable on the BlackBerry device, not physical goods or services.</li>
+					<li><b>Digital goods used across multiple applications</b> – You can’t sell digital goods to a user in one application that can be used with other applications.</li>
+				</ul>
+
+			</div>
+			<br/>
+			
+			<div>
+				<h3>Example:</h3>
+				<p>Display a "Subscriptions" menu item if the user has purchased an given digital good "123":</p>
+				<div style="border: dashed 1px grey; padding: 0.5em;">
+				<code>
+					<b>HTML:</b><br/>
+					&lt;ul&gt;<br/>
+					&nbsp;&nbsp;&nbsp;&lt;li&gt;Home&lt;/li&gt;<br/>
+					&nbsp;&nbsp;&nbsp;&lt;li&gt;News&lt;/li&gt;<br/>
+					&nbsp;&nbsp;&nbsp;&lt;li&gt;Channels&lt;/li&gt;<br/>
+					&nbsp;&nbsp;&nbsp;&lt;li id="sub" style="display:none;"&gt;Subscriptions&lt;/li&gt;<br/>
+					&lt;/ul&gt;<br/>
+					<br/>
+					<br/>
+					<b>JavaScript:</b><br/>
+					function checkForSubscription(data)<br/>
+					{<br/>
+					&nbsp;&nbsp;&nbsp;for (var i = 0, len = data.length; i &lt; len; i++)<br/>
+					&nbsp;&nbsp;&nbsp;{<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (data[i].digitalGoodID === "123") {<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById("sub").style.display = "";<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+					&nbsp;&nbsp;&nbsp;}<br/>
+					}<br/>
+					<br/>
+					blackberry.payment.getExistingPurchases(true, checkForSubscription, onFailure);<br/>
+				</code>
+				</div>
+			</div>
+			<br/>
+			
+		</div>
+
+		<div data-role="footer" data-id="persistantFooter" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#usecases" data-transition="slideup" data-icon="star" class="ui-btn-active">Use cases</a></li>
+					<li><a href="#howitworks" data-transition="slideup" data-icon="grid">How it works</a></li>
+					<li><a href="#developmentmode" data-transition="slideup" data-icon="alert">Development Mode</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<!-- How It Works page screen -->
+	<div data-role="page" data-add-back-btn="true" id="howitworks" data-theme="e">
+		<div data-role="header">
+			<h1>How it Works</h1>
+			<a href="#home" data-icon="home" data-transition="slide" class="ui-btn-right">Home</a>
+		</div>
+
+		<div data-role="content">				
+			<h2> Getting Started: Sample app </h2>
+			<p>
+				The "Payment API Test App" demonstrates how to make use of the BlackBerry Payment Service to include features such as a "Buy" button in your application, as well as processing a history of purchases.
+			</p>
+			
+			<ol>
+				<li>Enable or disable payment service <a href="#developmentmode">development mode</a>.</li>
+				<li>Click on a "Buy" button to purchase one of the available digital goods.</li>
+				<li>Observe any success or error messages as well as the purchase history listing.</li>
+			</ol>
+		
+			<h2> Buying Digital Goods </h2>
+			<p>
+				A purchase request is completed by creating a JSON object containing the details of a digital good, and calling the <b>blackberry.payment.purchase()</b> method.  The payment service (live server, or local cache depending on whether development mode is On) will return another JSON object containing the successful details of the transaction.
+			</p>
+			
+			<h2> Creating Digital Goods </h2>
+			<p>
+				As a developer, you <a href="javascript:invokeBrowser('http://docs.blackberry.com/en/developers/deliverables/20374/Registering_your_virtual_goods_1314130_11.jsp')">create the digital goods</a> for your application through the App World vendor portal.
+			</p>
+			<p>
+				For detailed information on how to create digital goods for your application, see the "Submitting digital goods" chapter of the <a href="javascript:invokeBrowser('http://docs.blackberry.com/en/developers/subcategories/?userType=21&amp;category=Payment+Service')">Payment Service SDK Development Guide</a>.
+			</p>
+		</div>
+
+		<div data-role="footer" data-id="persistantFooter" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#usecases" data-transition="slideup" data-icon="star">Use cases</a></li>
+					<li><a href="#howitworks" data-transition="slideup" data-icon="grid" class="ui-btn-active">How it works</a></li>
+					<li><a href="#developmentmode" data-transition="slideup" data-icon="alert">Development Mode</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Development Mode page screen -->
+	<div data-role="page" data-add-back-btn="true" id="developmentmode" data-theme="e">
+		<div data-role="header">
+			<h1>Development Mode</h1>
+			<a href="#home" data-icon="home" data-transition="slide" class="ui-btn-right">Home</a>
+		</div>
+		
+		<div data-role="content">	
+			<p>
+				Development mode is a true/false value that defines how an application behaves when a purchase request is submitted using the BlackBerry payment API.  Development mode is <i>Off</i> by default.
+			</p>
+
+			<p>
+				<b>On</b> - If development mode is On, the application <u>does not</u> contact the (live) Payment Service server for any transactions. This mode is useful for testing how your application handles the possible results without requiring network connections or currency. 
+				
+				For purchases, a simulated purchase screen is displayed, allowing the user to choose the result of the purchase. For retrieving existing purchases, only simulated successful purchases are returned.
+			</p>
+			<br/>
+			<div style="text-align: center">
+				<img src="img/screen_devmode_prompt_dialog1.jpg" alt="Development Mode local dialog prompt"/>
+				&nbsp;&nbsp;
+				<img src="img/screen_devmode_prompt_dialog2.jpg" alt="Development Mode local dialog prompt"/>
+			</div>
+			<br/>
+
+			<p>
+				<b>Off</b> - If development mode is Off, purchases and retrievals of existing purchases proceed normally, contacting the (live) Payment Service server for any transactions. Users are prompted to select one of their preferred payment methods. <i>Off</i> is the default development mode, and <b>applications in production should not modify it</b>.
+			</p>
+			<br/>
+			<div style="text-align: center">
+				<img src="img/screen_devmode_off_prompt.jpg" alt="Preferred payment method prompt"/>
+			</div>
+			
+			
+		</div>
+		
+		
+		<div data-role="footer" data-id="persistantFooter" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#usecases" data-transition="slideup" data-icon="star">Use cases</a></li>
+					<li><a href="#howitworks" data-transition="slideup" data-icon="grid">How it works</a></li>
+					<li><a href="#developmentmode" data-transition="slideup" data-icon="alert" class="ui-btn-active">Development Mode</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+   </body>
+
+</html>
