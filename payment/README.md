@@ -21,6 +21,8 @@ The sample code for this application is Open Source under the [Apache 2.0 Licens
 1. [jquery-1.5.2.min.js](http://code.jquery.com/jquery-1.5.2.min.js) is [dual licensed](http://jquery.org/license/) under the MIT or GPL Version 2 licenses.
 2. [jquery.mobile-1.0a4.1.min.js](http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js) is [dual licensed](http://jquery.org/license/) under the MIT or GPL Version 2 licenses.
 3. [jquery.mobile-1.0a4.1.min.css](http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css) is [dual licensed](http://jquery.org/license/) under the MIT or GPL Version 2 licenses.
+4. [shopping_icons_set2](http://www.iconfinder.com/search/?q=iconset%3Ashopping_icons_set2) by Daily Overview, free for commercial use available from IconFinder.com.
+
 
 **To contribute code to this repository you must be [signed up as an official contributor](http://blackberry.github.com/howToContribute.html).**
 
