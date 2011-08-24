@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<!--
+* Copyright 2010-2011 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+<html>
+	<head>
+		<meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
+	    <link  rel="stylesheet" type="text/css" href="css/webworks.css"><link />
+	    <link  rel="stylesheet" type="text/css" href="css/input.css"><link />
+	    <link  rel="stylesheet" type="text/css" href="css/button.css"><link />
+		<script type="text/javascript" src="js/webworks.js"></script>
+		<script type="text/javascript" src="js/input.js"></script>
+		
+	</head>
+	<body>
+		<div x-ww-type="screen">
+			<div x-ww-type="round-panel" id="mainList"> 
+				<b>Look Mom, no &lt;select&gt;</b><br />
+				An example of using a button with a spin select:<br />
+
+			   <div class="label" style="margin-top:10px;">Choose A City:</div>
+			   <div class="rightAlign">
+					<a id="button" class="dropDownButton" x-blackberry-focusable="true" onclick="openSpinner()" onmousedown="doSelect();" onmouseover="doSelect()"><span>Brasilia</span></a>
+			   </div>   
+			</div>
+
+			<div x-ww-type="round-panel" id="mainList"> 
+				<div class="label" style="margin-top:10px;">Radio Status:</div>  
+				<img class="rightAlign" id="a" x-blackberry-focusable="true" src="images/input/on.png" onmouseover="doYesNoSelect('a')" onclick="doYesNoClick('a')"/>                 
+				<br />
+				<div class="label" style="margin-top:10px;">Sound:</div>
+				<img class="rightAlign"id="b" x-blackberry-focusable="true" src="images/input/off.png" onmouseover="doYesNoSelect('b')" onclick="doYesNoClick('b')"/>                       
+			</div>
+			
+			<div x-ww-type="round-panel" id="mainList"> 
+				<div class="panel-header">My Section Label</div>
+				<div>
+					<div class="label">Allow Email Access:</div>       
+					<img id="c" class="rightAlign" x-blackberry-focusable="true" src="images/input/yes.png" onmouseover="doYesNoSelect('c')"  onclick="doYesNoClick('c')"/>                 
+				</div>
+				<br />
+				<div>
+					<div class="label">Allow Bluetooth:</div>
+					<img id="d" class="rightAlign" x-blackberry-focusable="true" src="images/input/no.png" onmouseover="doYesNoSelect('d')"  onclick="doYesNoClick('d')"/>                       
+				</div>
+			</div>
+			
+			<div style="margin:15px;font-size:13pt;color:Gray;"><p align="center">This is my text that I want to place in the middle of the screen to see what it looks like</p></div>
+			
+			<div x-ww-type="round-panel" id="mainList"> 
+				<div class="panel-header">Text Entry Examples</div>
+				<div>
+					<div class="label">Sample Text:</div>       
+					<input id="edit1" type="text" value="Hello World" onfocus="resetImages()" />
+				</div>
+				<br />
+				<div>
+					<div class="label">Another Label:</div>
+					<input id="edit2" type="text" value="Hello World" onfocus="resetImages()"/>
+				</div>
+			</div>
+			
+			<div style="margin:15px;font-size:13pt;color:Gray;">
+				<p align="center">This is an example of <span class="tooltipRoot" x-blackberry-focusable="true">Tool Tips<span class="tooltip">My ToolTip!</span></span> using the functionality of CSS</p>
+			</div>
+			
+			
+		</div>
+	</body>
+</html>

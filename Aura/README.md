@@ -23,7 +23,7 @@ The sample code for this application is Open Source under the [Apache 2.0 Licens
 3. [jquery.easing.1.3.js](http://gsgd.co.uk/sandbox/jquery/easing/jquery.easing.1.3.js)  Open source under the BSD License. 
 
 
-**To contribute code to this repository you must be [signed up as an official contributor](https://github.com/blackberry/WebWorks/wiki/How-to-Contribute).**
+**To contribute code to this repository you must be [signed up as an official contributor](http://blackberry.github.com/howToContribute.html).**
 
 
 ## How to Build
@@ -46,7 +46,7 @@ To build the Aura sample application:
 
 ## Contributing Changes
 
-Please see the [README](https://github.com/astanley/WebWorks-Samples/blob/master/README.md) of the WebWorks-Samples repository for instructions on how to add new Samples or make modifications to existing Samples.
+Please see the [README](https://github.com/blackberry/WebWorks-Samples) of the WebWorks-Samples repository for instructions on how to add new Samples or make modifications to existing Samples.
 
 
 ## Bug Reporting and Feature Requests

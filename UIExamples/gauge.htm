@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<!--
+* Copyright 2010-2011 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+<html>
+	<head>
+		<meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
+	    <link  rel="stylesheet" type="text/css" href="css/webworks.css"><link />
+		
+	    <link  rel="stylesheet" type="text/css" href="css/gauge.css"><link />
+	    <link  rel="stylesheet" type="text/css" href="css/button.css"><link />
+		
+	    <script type="text/javascript" src="js/webworks.js"></script>
+		<style type="text/css">
+			body {
+				background-image: url('images/stripes.png');
+			}
+		</style>
+		<script type="text/javascript">
+              var percent = 3;
+              
+              function setValuesToPercent(percent) {
+               var gauge = document.getElementById('gauge0');
+                setPercent(gauge, percent);
+                gauge = document.getElementById('gauge1');
+                setPercent(gauge, percent);
+                gauge = document.getElementById('gauge2');
+                setPercent(gauge, percent);
+              }
+              
+              function doTimedEvent() {
+                if (percent > 100) {
+                    percent = 3;
+                    return;
+                }
+                setValuesToPercent(percent);
+                percent = percent + 3;
+                setTimeout('doTimedEvent()', 100);          
+              }
+              
+              function setPercent(gauge, percent) {
+                var percentValue = percent / 100;
+                var gaugeWidth = percentValue * gauge.parentNode.clientWidth;
+                gauge.style.width = gaugeWidth + 'px';
+              }
+              
+		</script>
+	</head>
+	<body >
+		<div x-ww-type="screen">
+			<div style="margin:15px;font-size:13pt;color:Gray;">
+				<p align="center">
+				Below you will find some examples of how you can Create different gauges or progress bars<br />       
+				</p>
+			</div>
+
+			<div x-ww-type="round-panel" id="mainList">   
+				 
+					<div id="button" class="ww-button-full" x-blackberry-focusable="true" onclick="doTimedEvent()" style="background-position:bottom right">
+							<span style="background-position:bottom left">Watch Progress</span>
+					</div>	
+					
+					<br />
+					<br />
+					<div class="ww-gauge" style="height:20px;">
+						<div id="gauge0" style="background-color:Blue;width:0px;height:20px;"></div>
+					</div>  
+					
+					<div class="ww-gauge">
+						<div id="gauge1" class="image" style="background-image: url('images/gauge/gauge1.png');"></div>
+					</div> 
+					
+					<div class="ww-gauge">
+						<div id="gauge2" class="image" style="background-image: url('images/gauge/gauge2.png');"></div>
+					</div> 
+			</div>
+		</div>
+	</body>
+</html>
