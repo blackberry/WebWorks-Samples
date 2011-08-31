@@ -135,7 +135,7 @@ function displayPurchasedInventory()
 		debug("displayInventory", "complete");
 	} 
 	catch (e) {
-		appendContent("errors", "Error in displayDigitalGoods: " + e);
+		appendContent("errors", "Error in displayPurchasedInventory: " + e);
 	}
 }
 
@@ -188,7 +188,7 @@ function toggleDevelopmentMode()
 		debug("toggleDevelopmentMode", "Complete. Development mode set to " + blackberry.payment.developmentMode);
 	}
 	catch (e) {
-		appendContent("errors", "Error in displayDevelopmentMode: " + e);
+		appendContent("errors", "Error in toggleDevelopmentMode: " + e);
 	}
 }
 
@@ -315,7 +315,7 @@ function refreshPaymentHistory(getFromLiveServer)
 		debug("getExistingPurchases", "complete");
 	} 
 	catch (e) {
-		appendContent("errors", "Error in getExistingPurchases: " + e);
+		appendContent("errors", "Error in refreshPaymentHistory: " + e);
 	}
 }
 
@@ -339,7 +339,7 @@ function incrementPurchaseCount(goodId)
 		debug("incrementPurchaseCount", "complete");
 	} 
 	catch (e) {
-		setContent("errors", "Error in onPaymentSuccess : " + e);
+		setContent("errors", "Error in incrementPurchaseCount : " + e);
 	}
 }
 
