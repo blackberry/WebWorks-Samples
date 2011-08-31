@@ -21,6 +21,8 @@ The sample code for this application is Open Source under the [Apache 2.0 Licens
 1. [jquery-1.5.2.min.js](http://code.jquery.com/jquery-1.5.2.min.js) is [dual licensed](http://jquery.org/license/) under the MIT or GPL Version 2 licenses.
 2. [jquery.mobile-1.0a4.1.min.js](http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js) is [dual licensed](http://jquery.org/license/) under the MIT or GPL Version 2 licenses.
 3. [jquery.mobile-1.0a4.1.min.css](http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css) is [dual licensed](http://jquery.org/license/) under the MIT or GPL Version 2 licenses.
+4. [shopping_icons_set2](http://www.iconfinder.com/search/?q=iconset%3Ashopping_icons_set2) by Daily Overview, free for commercial use available from IconFinder.com.
+
 
 **To contribute code to this repository you must be [signed up as an official contributor](http://blackberry.github.com/howToContribute.html).**
 
@@ -36,7 +38,9 @@ To build the payment sample application:
 5. Using an achiving utility (e.g. WinZip or 7-zip), package the contents of your **c:\webworks\payment** folder into a ZIP archive named **payment.zip**.  This archive should have the application assets (not a folder containing the application assets) at its top level.
 6. Using the **[BlackBerry WebWorks SDK for Tablet OS](http://us.blackberry.com/developers/tablet/webworks.jsp)**, package the **payment.zip** archive into a BlackBerry Tablet OS application using the following command line: **bbwp c:\webworks\payment\payment.zip**
 
+
 ## More Info
+
 * [BlackBerry WebWorks SDK for Tablet OS](http://us.blackberry.com/developers/tablet/webworks.jsp) - Getting Started guides, SDK downloads, code signing keys.
 * [BlackBerry WebWorks Development Guides] (http://docs.blackberry.com/en/developers/deliverables/30182/)
 * [BlackBerry WebWorks Community Forums](http://supportforums.blackberry.com/t5/Web-and-WebWorks-Development/bd-p/browser_dev)

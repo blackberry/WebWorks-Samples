@@ -43,9 +43,9 @@ function debug(source, msg)
 
 //The following JSON object will help to organize digital goods used by this application.
 var goods = [ 
-    { "id" : "99999", "name" : "Pepper", "sku" : "10101010101", "license" : "Consumable",     "purchasedIcon" : "pepper.jpg", "unpurchasedIcon" : "pepper_grey.jpg", "quantity" : 0 }, 
-    { "id" : "12345", "name" : "Gems",   "sku" : "Bar",         "license" : "Non-Consumable", "purchasedIcon" : "gems.jpg", "unpurchasedIcon" : "gems_grey.jpg", "quantity" : 0 }, 
-    { "id" : "67890", "name" : "Ring",   "sku" : "FooBar",      "license" : "Non-Consumable", "purchasedIcon" : "ring.jpg", "unpurchasedIcon" : "ring_grey.jpg", "quantity" : 0 } 
+    { "id" : "99999", "name" : "Hanger", "sku" : "10101010101", "license" : "Consumable",     "purchasedIcon" : "inventory_hanger.jpg", "unpurchasedIcon" : "inventory_hanger_grey.jpg", "quantity" : 0 }, 
+    { "id" : "12345", "name" : "Cart",   "sku" : "Bar",         "license" : "Non-Consumable", "purchasedIcon" : "inventory_cart.jpg",   "unpurchasedIcon" : "inventory_cart_grey.jpg",   "quantity" : 0 }, 
+    { "id" : "67890", "name" : "Wallet",   "sku" : "FooBar",      "license" : "Non-Consumable", "purchasedIcon" : "inventory_wallet.jpg", "unpurchasedIcon" : "inventory_wallet_grey.jpg", "quantity" : 0 } 
 ];
 
 
@@ -135,7 +135,7 @@ function displayPurchasedInventory()
 		debug("displayInventory", "complete");
 	} 
 	catch (e) {
-		appendContent("errors", "Error in displayDigitalGoods: " + e);
+		appendContent("errors", "Error in displayPurchasedInventory: " + e);
 	}
 }
 
@@ -188,7 +188,7 @@ function toggleDevelopmentMode()
 		debug("toggleDevelopmentMode", "Complete. Development mode set to " + blackberry.payment.developmentMode);
 	}
 	catch (e) {
-		appendContent("errors", "Error in displayDevelopmentMode: " + e);
+		appendContent("errors", "Error in toggleDevelopmentMode: " + e);
 	}
 }
 
@@ -315,7 +315,7 @@ function refreshPaymentHistory(getFromLiveServer)
 		debug("getExistingPurchases", "complete");
 	} 
 	catch (e) {
-		appendContent("errors", "Error in getExistingPurchases: " + e);
+		appendContent("errors", "Error in refreshPaymentHistory: " + e);
 	}
 }
 
@@ -339,7 +339,7 @@ function incrementPurchaseCount(goodId)
 		debug("incrementPurchaseCount", "complete");
 	} 
 	catch (e) {
-		setContent("errors", "Error in onPaymentSuccess : " + e);
+		setContent("errors", "Error in incrementPurchaseCount : " + e);
 	}
 }
 
