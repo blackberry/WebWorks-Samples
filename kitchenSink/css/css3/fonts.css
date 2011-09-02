@@ -1,0 +1,54 @@
+﻿@font-face {
+	font-family: TudorRose;
+	src: url('../../resources/TudorRose.otf');
+}
+
+.timesnew {
+	font-family: Times New Roman;
+}
+.georgia {
+	font-family: Georgia;
+}
+.times {
+	font-family: Times;
+}
+.times {
+	font-family: Times;
+}
+.serif {
+	font-family: Serif;
+}
+.arial {
+	font-family: Arial;
+}
+.verdana {
+	font-family: Verdana;
+}
+.tahoma {
+	font-family: Tahoma;
+}
+.helvetica {
+	font-family: Helvetica;
+}
+.geneva {
+	font-family: Geneva;
+}
+.sansserif {
+	font-family: sans-serif;
+}
+.couriernew {
+	font-family: Courier New;
+}
+.courier {
+	font-family: Courier;
+}
+.calibri {
+	font-family: Calibri;
+}
+.bbalpha {
+	font-family: BBAlpha Sans;
+}
+
+.webfonts {
+	font-family: TudorRose;
+}

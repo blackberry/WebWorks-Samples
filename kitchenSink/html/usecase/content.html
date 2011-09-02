@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+ * Copyright 2011 Research In Motion Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<html>
+<head>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,target-densitydpi=device-dpi,user-scalable=no,initial-scale=1.0">
+	<link href="../../css/styles.css" rel="stylesheet" type="text/css">
+	<script src="../../js/standard.js" type="text/javascript" ></script>
+
+	<title> Best Practice: Downloading remote content </title>
+
+</head>
+<body>
+	
+	<h1>Content Support</h1>
+	
+
+	<h2>Files</h2>	
+	<ul class="section">
+		<li>
+			<br/>What is the default content handling behavior for files opened within a WebWorks application?<br/>
+		</li>
+		<li> <a href="../../resources/HelloWorld.doc"> HelloWorld.doc </a> </li>
+		<li> <a href="../../resources/HelloWorld.xlsx"> HelloWorld.xlsx </a> </li>
+		<li> <a href="../../resources/HelloWorld.pdf"> HelloWorld.pdf </a> </li>
+		<li> <a href="../../resources/HelloWorld.pptx"> HelloWorld.pptx</a> </li>
+		<li></li>
+	</ul>
+
+	<h2>using window.location </h2>	
+	<ul class="section">
+		<li> <a href="#" onclick="window.location='../../resources/13_ThatsGood.mp3'"> 13_ThatsGood.mp3 </a> </li>
+		<li> <a href="#" onclick="location.href='../../resources/13_ThatsGood.mp3'"> 13_ThatsGood.mp3 </a> </li>
+		<li> <a href="#" onclick="window.open('../../resources/13_ThatsGood.mp3')"> 13_ThatsGood.mp3 </a> </li>		
+		<li></li>
+	</ul>
+
+</body>
+</html>

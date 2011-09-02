@@ -1,0 +1,35 @@
+﻿td
+{
+	width: 5em;
+	height: 5em;
+	padding: 2em;
+	text-align: center;
+	vertical-align: middle;
+}
+#box1 {
+	border: solid 2px red;
+	background-color: #FFFFCC;
+	color: black;
+}
+#box2 {
+	border: solid 2px #00FF00;
+	background-color: #00CC00;
+	color: white;
+}
+#box3 {
+	border: solid 2px #3300FF;
+	background-color: #99FFFF;
+	color: white;
+}
+.scale {
+	-webkit-transition: all 0.75s ease-in-out; 
+	-webkit-transform: scale(1.25);
+}
+.transform {
+	-webkit-transition: all 1.5s ease-in-out;
+	-webkit-transform: translate(3em,2em);
+}
+.rotate {
+	-webkit-transition: all 3s ease-in-out;
+	-webkit-transform: rotate(360deg);
+}

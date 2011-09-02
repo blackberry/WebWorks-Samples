@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd"> 
+<properties> 
+<entry key="enhanced_web_css">css/template.css</entry> 
+<entry key="application_url">../../moblet/build/generic/tmb/en/The_Mobile_Bank.jad</entry> 
+<entry key="enhanced_web_supported">false</entry> 
+<entry key="application_supported">false</entry> 
+<entry key="enhanced_web_enabled">false</entry> 
+<entry key="check_deposit_enabled">false</entry> 
+<entry key="mf_device_identifier">generic</entry> 
+</properties>

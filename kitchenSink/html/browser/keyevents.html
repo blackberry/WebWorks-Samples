@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+ * Copyright 2011 Research In Motion Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<html> 
+<head> 
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,target-densitydpi=device-dpi,user-scalable=no,initial-scale=1.0">
+	<link href="../../css/styles.css" rel="stylesheet" type="text/css">
+	<script src="../../js/standard.js" type="text/javascript" ></script>
+
+	<title> Web Engine features: Key events </title>
+	<script src="../../js/browser/keyevents.js" type="text/javascript"></script>
+	
+</head> 
+<body>
+
+	<h1>Key Events</h1>
+	
+	<h2>Example</h2>
+	<div class="demo" id="details">
+		<p>
+			This page listens for keypress events when any element has focus (global listener).  Open the virtual keyboard and start typing to see how keypress events can be captured at a global level.
+		</p>
+		<p>
+			The following input box and text area have their own keypress event handlers.  Place focus on either of these input fields and start typing to see what happens: <br/>
+			<input type="text" id="txtTextBox"> <br/>
+			<textarea id="txtTextArea" rows="3" cols="30"></textarea>
+		</p>
+		<p>
+			<button onclick="clearLogInfo()">Clear Messages</button>
+			<div id="logger"></div>
+		</p>
+	</div>
+	
+</body> 
+</html>

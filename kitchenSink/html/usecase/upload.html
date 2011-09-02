@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+ * Copyright 2011 Research In Motion Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<html>
+<head>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,target-densitydpi=device-dpi,user-scalable=no,initial-scale=1.0">
+	<link href="../../css/styles.css" rel="stylesheet" type="text/css">
+	<script src="../../js/standard.js" type="text/javascript" ></script>
+	
+	<title> Use Case: File Upload </title>
+	<script src="../../js/usecase/upload.js" type="text/JavaScript"></script>
+	
+</head>
+<body>
+	
+	<h2>File Upload</h2>
+	
+	<div class="demo">
+		<form action="http://hurricane.isv.testnet/test/astanley/web/upload.jsp"
+			   enctype="multipart/form-data"
+			   method="post">
+		   <input type="file" id="txtFile" name="uploadedfile"/>
+		   <input type="submit" value="Upload"/>
+		</form>
+		<p>
+			This page is uploading the selected file to the following URL (change this to your own test page): <br/>
+			http://hurricane.isv.testnet/test/astanley/web/upload.jsp
+		</p>
+		
+		<p>
+			<b>Note</b> The BlackBerry Tablet OS requires that in order to access the shared folder location on the file system, the following permission must be defined in the config.xml file:		
+		</p>
+		<p>
+			<code>
+				&lt;rim:permissions&gt; <br/>
+				&nbsp;&nbsp;&nbsp;	&lt;rim:permit>access_shared&lt;/rim:permit&gt; <br/>
+				&lt;/rim:permissions&gt;
+			</code>
+		</p>
+		
+		<div id="uploadPreview"></div>
+		
+		<!--
+		<br/>
+		
+		<form enctype="multipart/form-data" action="http://www.easyalgo.com/examples/eaupload/SimpleFileUpload.aspx" method="POST">
+			<input type="hidden" name="MAX_FILE_SIZE" value="100000" />
+			<input name="uploadedfile" type="file" />
+			<input type="submit" value="Upload File" />
+		</form>
+		<br/>
+		http://www.easyalgo.com/examples/eaupload/SimpleFileUpload.aspx
+		-->
+	</div>
+
+</body>
+</html>

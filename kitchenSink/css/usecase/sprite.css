@@ -1,0 +1,23 @@
+﻿.purple { 
+	background-image: url('../../img/sprite.png'); 
+	background-repeat: no-repeat; 
+	background-position: 0px 0px; 
+}
+.red { 
+	background: url('../../img/sprite.png') no-repeat 0px -100px; 
+}
+.green { 
+	background-image: url('../../img/sprite.png'); 
+	background-repeat: no-repeat; 
+	background-position: -100px 0px; 
+}
+.blue { 
+	background: url('../../img/sprite.png') no-repeat -100px -100px; 
+	color: white;
+}		
+.sprite {
+	background-color: black; 
+	height: 100px; 
+	width: 100px; 
+	text-align:center;
+}

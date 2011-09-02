@@ -1,0 +1,41 @@
+﻿.square  {
+	width:125px;
+	height:125px;
+	text-align: center;
+}
+
+.red  {
+	background:red;
+}
+.blue  {
+	background:blue;
+	color: white;
+}
+.green  {
+	background:green;
+}
+.orange {
+	background:orange;
+}
+
+
+.static {
+	left:999px;
+	top:999px;
+	position:static;
+}
+.absolute {
+	left:235px;
+	top:0px;
+	position:absolute;
+}
+.fixed {
+	left:200px;
+	top:300px;
+	position:fixed;
+}
+.relative {
+	left:20px;
+	top:0px;
+	position:relative;
+}

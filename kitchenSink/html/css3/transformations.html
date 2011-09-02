@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<!--
+ * Copyright 2011 Research In Motion Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<html>
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,target-densitydpi=device-dpi,user-scalable=no,initial-scale=1.0">
+	<link href="../../css/styles.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="../../js/standard.js"></script>
+	
+	<title> CSS3: 2d and 3d Transformations </title>
+	<link href="../../css/css3/transformations.css" rel="stylesheet" type="text/css">
+	<script src="../../js/css3/transformations.js" type="text/javascript" ></script>
+
+</head>
+<body>
+
+	<h1>2d and 3d transforms</h1>
+	
+	<h2>Demo</h2>
+	<div class="demo">
+		<p>
+			Click or hold touch on on any of the following images to observe a 3D transformation.
+		</p>
+		<p>
+			For more examples of 2D and 3D transformations, see <a href="gallery.html">rotating image gallery</a> or <a href="" onclick="openUrl('http://www.webkit.org/blog-files/3d-transforms/morphing-cubes.html')"> Morphing Cubes, or <a href="" onclick="openUrl('http://www.joelambert.co.uk/flux/transgallery.html')">see Flux Slider</a> or <a href="" onclick="openUrl('http://webdesignerwall.com/trends/47-amazing-css3-animation-demos')">Web Designer Wall</a>.
+		</p>
+	</div>
+	
+	<h2>Translate</h2>
+	<div class="demo">
+		<div class="groupContainer">
+			<h3>2D Translate</h3>
+			
+			<div class="imgContainer">
+				<img src="../../img/paradise_sm.jpg" class="translate2d"/> <br/> Translate
+			</div>
+			
+		</div>
+		
+		<div class="groupContainer">
+			<h3>3D Translate</h3>
+		
+			<div class="imgContainer">
+				<img src="../../img/paradise_sm.jpg" class="translate3d"/> <br/> Translate3d
+			</div>
+
+			<div class="imgContainer">
+				<img src="../../img/paradise_sm.jpg" class="translateX"/> <br/> TranslateX
+			</div>
+			
+			<div class="imgContainer">
+				<img src="../../img/paradise_sm.jpg" class="translateY"/> <br/> TranslateY
+			</div>
+			
+			<div class="imgContainer">
+				<img src="../../img/paradise_sm.jpg" class="translateZ"/> <br/> TranslateZ
+			</div>
+			
+		</div>
+		
+		<br class="break"/>
+	</div>
+	
+	<h2>Rotate</h2>
+	<div class="demo">
+		<div class="groupContainer">
+			<h3>2D Rotate</h3>
+				
+			<div class="imgContainer">
+				<img src="../../img/paradise_sm.jpg" class="rotate2d"/> <br/> Rotate
+			</div>
+			
+		</div>
+		
+		<div class="groupContainer">
+			<h3>3D Rotate</h3>
+		
+			<div class="imgContainer">
+				<img src="../../img/paradise_sm.jpg" class="rotate3d"/> <br/> Rotate3d
+			</div>
+			
+			<div class="imgContainer">
+				<img src="../../img/paradise_sm.jpg" class="rotateX"/> <br/> RotateX
+			</div>
+
+			<div class="imgContainer">
+				<img src="../../img/paradise_sm.jpg" class="rotateY"/> <br/> RotateY
+			</div>
+
+			<div class="imgContainer">
+				<img src="../../img/paradise_sm.jpg" class="rotateZ"/> <br/> RotateZ
+			</div>
+		
+		</div>
+		
+		<br class="break"/>
+	</div>
+	
+	<h2>Scale</h2>
+	<div class="demo">
+	
+		<div class="groupContainer">
+			<h3>2D Scale</h3>
+			
+			<div class="imgContainer">
+				<img src="../../img/paradise_sm.jpg" class="scale2d"/> <br/> Scale
+			</div>
+
+		</div>
+			
+		<div class="groupContainer">
+			<h3>3D Scale</h3>
+			
+			<div class="imgContainer">
+				<img src="../../img/paradise_sm.jpg" class="scale3d"/> <br/> Scale 3D
+			</div>
+
+			<div class="imgContainer">
+				<img src="../../img/paradise_sm.jpg" class="scaleX"/> <br/> ScaleX
+			</div>
+
+			<div class="imgContainer">
+				<img src="../../img/paradise_sm.jpg" class="scaleY"/> <br/> ScaleY
+			</div>
+
+			<div class="imgContainer">
+				<img src="../../img/paradise_sm.jpg" class="scaleZ"/> <br/> ScaleZ
+			</div>
+			
+		</div>
+		
+	<br class="break"/>
+	</div>
+	
+	<h2>Skew</h2>
+	<div class="demo">
+		
+		<div class="groupContainer">
+			<h3>2D Skew</h3>
+			
+			<div class="imgContainer">
+				<img src="../../img/paradise_sm.jpg" class="skew2dX"/> <br/> Skew (-45deg X-axis)
+			</div>
+
+			<div class="imgContainer">
+				<img src="../../img/paradise_sm.jpg" class="skew2dY"/> <br/> Skew (30deg Y-axis)
+			</div>
+
+			<div class="imgContainer">
+				<img src="../../img/paradise_sm.jpg" class="skew2dXY"/> <br/> Skew (-45deg X-axis, 30deg Y-axis)
+			</div>
+
+		</div>
+		
+		<div class="groupContainer">
+			<h3>3D Skew</h3>
+			<div class="imgContainer">
+				N/A
+			</div>
+			
+		</div>
+		
+		<br class="break"/>
+	</div>
+	
+	<h2>Perspective</h2>
+	<div class="demo">
+		
+		<div class="groupContainer">
+			<h3>2D Perspective</h3>
+			
+			<div class="imgContainer">
+				None.  The perspective property only <br/> affects 3D transformed elements.
+			</div>
+
+		</div>
+		
+		<div class="groupContainer">
+			<h3>3D Perspective</h3>
+			<div class="imgContainer perspectiveSmall">
+				<img src="../../img/paradise_sm.jpg"/> <br/> Perspective (150)
+			</div>
+			
+			<div class="imgContainer perspectiveLarge">
+				<img src="../../img/paradise_sm.jpg"/> <br/> Perspective (500)
+			</div>
+		</div>
+		
+		<br class="break"/>
+	</div>
+	
+	<h2>Matrix</h2>
+	<div class="demo">
+		
+		<div class="groupContainer">
+			<h3>2D Matrix</h3>
+			
+			<div class="imgContainer">
+				<img src="../../img/paradise_sm.jpg" class="matrix"/> <br/> Matrix: <br/> rotate 30 degrees<br/> translate 25, 50
+			</div>
+
+		</div>
+		
+		<div class="groupContainer">
+			<h3>3D Matrix</h3>
+			<div class="imgContainer">
+				<img src="../../img/paradise_sm.jpg" class="matrix3d"/> <br/> Matrix 3D <br/> rotate 30 degrees<br/> translate 25, 50
+			</div>
+		</div>
+		
+		<br class="break"/>
+	</div>
+
+</body>
+</html>

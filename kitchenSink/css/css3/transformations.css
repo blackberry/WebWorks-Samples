@@ -1,0 +1,180 @@
+﻿.groupContainer {
+	float:left;
+	border: dotted 1px #333;
+	margin-right: 1em;
+	padding: 0 0.5em;
+}
+.groupContainer h3 {
+	clear: right;
+}
+
+.imgContainer {
+	float:left;
+	margin-left: 0.5em;
+	text-align: center;
+}
+
+img {
+}
+
+/* Translate position of an element in a given direction (x,y) for 2D and (x,y,z) for 3D */
+img.translate2d:hover, img.translate2d:active {
+	-webkit-transform: translate(1em, 1em);
+	-webkit-transition: 1s ease-in-out;
+}
+img.translate3d:hover, img.translate3d:active {
+	-webkit-transform-style: preserve-3d;
+	-webkit-transform: translate3d(1em, 2em, 1em);
+	-webkit-transition: 1s ease-in-out;
+}
+img.translateX:hover, img.translateX:active {
+	-webkit-transform-style: preserve-3d;
+	-webkit-transform: translateX(1em);
+	-webkit-transition: 1s ease-in-out;
+}
+img.translateY:hover, img.translateY:active {
+	-webkit-transform-style: preserve-3d;
+	-webkit-transform: translateY(2em);
+	-webkit-transition: 1s ease-in-out;
+}
+img.translateZ:hover, img.translateZ:active {
+	-webkit-transform-style: preserve-3d;
+	-webkit-transform: translateZ(1em);
+	-webkit-transition: 1s ease-in-out;
+}
+
+/* Rotate angle of an element in a given direction (degrees Z-axis) for 2D and (degrees X, Y or Z-axis) for 3D */
+img.rotate2d:hover, img.rotate2d:active {
+	-webkit-transform: rotate(360deg);
+	-webkit-transition: 1.5s ease-in-out;
+}
+/* rotate3D rotates n degrees around a 3D vector (x, y, z) */
+img.rotate3d:hover, img.rotate3d:active {
+	-webkit-transform-style: preserve-3d;
+	-webkit-transform: rotate3d(1, 1, 1, 360deg);
+	-webkit-transition: 1.5s ease-in-out;
+}
+img.rotateX:hover, img.rotateX:active {
+	-webkit-transform-style: preserve-3d;
+	-webkit-transform: rotateX(360deg);
+	-webkit-transition: 1.5s ease-in-out;
+}
+img.rotateY:hover, img.rotateY:active {
+	-webkit-transform-style: preserve-3d;
+	-webkit-transform: rotateY(360deg);
+	-webkit-transition: 1.5s ease-in-out;
+}
+/*Note : 3D rotateZ transform appears the same as a 2D rotate transformation*/
+img.rotateZ:hover, img.rotateZ:active {
+	-webkit-transform-style: preserve-3d;
+	-webkit-transform: rotateZ(360deg);
+	-webkit-transition: 1.5s ease-in-out;
+}
+
+/* Scale size of an element in a given plane (x,y) for 2D and (x,y,z) for 3D */
+img.scale2d:hover, img.scale2d:active {
+	-webkit-transform: scale(1.5, 2);
+	-webkit-transition: 1s ease-in-out;
+}
+img.scale3d:hover, img.scale3d:active {
+	-webkit-transform-style: preserve-3d;
+	-webkit-transform: scale3d(1.5, 2, 3);
+	-webkit-transition: 1s ease-in-out;
+}
+img.scaleX:hover, img.scaleX:active {
+	-webkit-transform-style: preserve-3d;
+	-webkit-transform: scaleX(1.5);
+	-webkit-transition: 1s ease-in-out;
+}
+img.scaleY:hover, img.scaleY:active {
+	-webkit-transform-style: preserve-3d;
+	-webkit-transform: scaleY(2);
+	-webkit-transition: 1s ease-in-out;
+}
+img.scaleZ:hover, img.scaleZ:active {
+	-webkit-transform-style: preserve-3d;
+	-webkit-transform: scaleZ(3);
+	-webkit-transition: 1s ease-in-out;
+}
+
+
+/* Skew - turn degrees around X-axis, and degrees around Y-axis  */
+img.skew2dX:hover, img.skew2dX:active {
+	-webkit-transform: skew(-45deg, 0);
+	-webkit-transition: 1s ease-in-out;
+}
+img.skew2dY:hover, img.skew2dY:active {
+	-webkit-transform: skew(0, 30deg);
+	-webkit-transition: 1s ease-in-out;
+}
+img.skew2dXY:hover, img.skew2dXY:active {
+	-webkit-transform: skew(-45deg, 30deg);
+	-webkit-transition: 1s ease-in-out;
+}
+
+/*
+Set how many pixels a 3D element is placed from the view.  Perspective set on element applies to its child elements (not the element itself).
+Perspective only supports 3D transformations (ignored for 2d).
+*/
+.perspectiveSmall {
+	-webkit-perspective: 150;
+	perspective: 150;
+}
+.perspectiveLarge {
+	-webkit-perspective: 500;
+	perspective: 500;
+}
+div.perspectiveSmall img:hover, div.perspectiveSmall img:active, div.perspectiveLarge img:hover, div.perspectiveLarge img:active {
+	-webkit-transform: rotateX(45deg);
+	-webkit-transition: 1s ease-in-out;
+}
+
+
+/*
+Matrix - can combine ALL transforms into one statement
+
+http://9elements.com/html5demos/matrix3d/
+
+http://www.w3schools.com/css3/css3_2dtransforms.asp
+
+matrix(a,b,c,d,e,f) is equivalent to matrix3d(a,b,0,0, c,d,0,0, 0,0,1,0, e,f,0,1).
+
+matrix(r11, r12, r21, r22, tX, tY)
+	[r11 r21 0]
+	[r12 r22 0]
+	[tX, tZ, 1]
+	
+	r11 r21 r12 r22 - rotate
+	tX, tY - translation elements
+
+	
+http://www.duopixel.com/stack/webkitmatrix/
+	
+matrix3d(s00, k01, 0, t03, k10, s11, 0, t13, m20, 0, s22, t23, p30, p31, m32, t33)
+	[s00 k10 0   p30]
+	[k01 s11 0   p31]
+	[0   0   s22 m32]
+	[tX  tY  tZ  m33]
+
+k01, k10 = skewX, skewY
+s00 s11 s22 = scale (x y z)
+m33 = scale ALL
+t03 t13 t23 = translation
+
+p30, p31 - perspective Y X
+
+m32 ?
+
+matrix(a,b,c,d,e,f) is equivalent to matrix3d(a,b,0,0, c,d,0,0, 0,0,1,0, e,f,0,1).
+*/
+img.matrix:hover, img.matrix:active {
+	-webkit-transform: matrix(0.866,0.5, -0.5,0.866, 25,50);
+	-webkit-transition: 1s ease-in-out;
+}
+img.matrix3d:hover, img.matrix3d:active {
+	-webkit-transform: matrix3d(0.866,0.5,0,0, -0.5,0.866,0,0, 0,0,1,0, 25,50,0,1);
+	-webkit-transition: 1s ease-in-out;
+}
+
+
+

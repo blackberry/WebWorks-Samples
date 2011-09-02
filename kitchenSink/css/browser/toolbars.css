@@ -1,0 +1,26 @@
+﻿body {
+	margin: 0;
+}
+
+#header {		
+	background-color: red;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+}
+
+#content {
+	overflow: auto;
+	padding: 0 0.5em ;
+}
+
+#content p {
+	margin-top:0; 
+}
+
+#footer {
+	background-color: green;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+}

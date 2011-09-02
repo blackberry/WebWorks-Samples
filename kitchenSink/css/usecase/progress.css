@@ -1,0 +1,19 @@
+﻿.progressBar
+{
+	border: solid 1px black;
+	background-color: white;
+	clear: both;
+}
+.progressLevel
+{
+	background-color: lime;
+	display: block;
+}
+.activity { 
+	border: solid 3px black;
+	padding: 1em;
+	font-size: 2em;
+	background-color: gray;
+	margin: 1em; 
+	border-radius: 1em;
+}

@@ -1,0 +1,17 @@
+﻿.updateMsg {
+	border: solid 1px black;
+	border-radius: 2em;
+	font-size: 3em;
+	font-weight: bold;
+	clear: both;
+	float: left;
+	text-align: center;
+	margin-bottom: 1em;
+	background-image: -webkit-gradient( linear, left top, left bottom, color-stop(0.31, rgb(122,121,121)), color-stop(0.66, rgb(79,77,77)), color-stop(0.83, rgb(56,54,56)) );
+	color: white;
+	width: 80%;
+}
+
+p {
+	clear: both;
+}

@@ -1,0 +1,34 @@
+﻿.container {
+	border : solid 2px black;
+	padding: 0 1em;
+	width  : 400px; 
+	height : 200px;
+}
+.auto {
+	overflow : auto; 
+}
+.hidden {
+	overflow : hidden; 
+}
+.scroll {
+	overflow : scroll; 
+}
+
+.ofya { 
+	overflow-y: auto; 
+}
+.ofxa { 
+	overflow-x: auto; 
+}
+.ofys { 
+	overflow-y: scroll; 
+}
+.ofxs { 
+	overflow-x: scroll; 
+}
+.ofyh { 
+	overflow-y: hidden; 
+}
+.ofxh { 
+	overflow-x: hidden; 
+}

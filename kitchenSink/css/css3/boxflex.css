@@ -1,0 +1,10 @@
+﻿.flexit {
+	-webkit-box-flex: 1;
+	-webkit-box-orient: horizontal;
+	display: -webkit-box;
+}
+p {
+	border: dotted 1px grey;
+	margin: 2px;
+	padding: 2px;
+}

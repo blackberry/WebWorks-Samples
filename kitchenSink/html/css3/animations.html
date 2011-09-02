@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--
+ * Copyright 2011 Research In Motion Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<html>
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,target-densitydpi=device-dpi,user-scalable=no,initial-scale=1.0">
+	<link href="../../css/styles.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="../../js/standard.js"></script>
+	
+	<title> CSS3: Animations </title>
+	<link href="../../css/css3/animations.css" rel="stylesheet" type="text/css">
+	<script src="../../js/css3/animations.js" type="text/javascript"></script>
+	
+</head>
+<body>
+
+	<h1>Animations</h1>
+
+	<h2>1. Animation: Left-Right </h2>
+	<div class="demo sample">
+		<code>
+			@-webkit-keyframes 'leftright' {<br/>
+			&nbsp;&nbsp;0% {margin-left: 0px; animation-timing-function: ease-out;}<br/>
+			&nbsp;&nbsp;40% {margin-left: 100px; animation-timing-function: ease-in;}<br/>
+			&nbsp;&nbsp;100% {margin-left: 0px; animation-timing-function: ease-out;}<br/>
+			}<br/>
+			.doleftright {<br/>
+			&nbsp;&nbsp;-webkit-animation-name: leftright;<br/>
+			&nbsp;&nbsp;-webkit-animation-duration: 2s;<br/>
+			&nbsp;&nbsp;-webkit-animation-iteration-count: infinite;<br/>
+			}
+		</code>
+		<img id="meteor" onclick="applyCSS('meteor','doleftright')" src="../../img/basketball.png">
+	</div>
+	
+	<h2>2. Animation: Box </h2>
+	<div class="demo sample">
+		<code>
+			@-webkit-keyframes 'box' {<br/>
+			&nbsp;&nbsp;0% {margin-top: 0px;}<br/>
+			&nbsp;&nbsp;25% {margin-top: 100px;}<br/>
+			&nbsp;&nbsp;50% {margin-top: 100px; margin-left:100px;}<br/>
+			&nbsp;&nbsp;75% {margin-top: 0px; margin-left:100px;}<br/>
+			&nbsp;&nbsp;100% {margin-top: 0px; }<br/>
+			}<br/>
+			.dobox {<br/>
+			&nbsp;&nbsp;-webkit-animation-name: box;<br/>
+			&nbsp;&nbsp;-webkit-animation-duration: 4s;<br/>
+			&nbsp;&nbsp;-webkit-animation-iteration-count: 1;<br/>
+			&nbsp;&nbsp;-webkit-animation-direction: alternate;<br/>
+			&nbsp;&nbsp;-webkit-animation-delay:1s;<br/>
+			}
+		</code>
+		<img id="ballbox" onclick="applyCSS('ballbox','dobox')" src="../../img/basketball.png">
+	</div>
+
+	<h2>3. Animation: Bounce </h2>	
+	<div class="demo sample bottom">
+		<code>
+			@-webkit-keyframes 'bounce' {<br/>
+			&nbsp;&nbsp;0% {margin-top: 0px;}<br/>
+			&nbsp;&nbsp;20% {margin-top: 200px;}<br/>
+			&nbsp;&nbsp;40% {margin-top: 100px;}<br/>
+			&nbsp;&nbsp;60% {margin-top: 200px;}<br/>
+			&nbsp;&nbsp;80% {margin-top: 160px;}<br/>
+			&nbsp;&nbsp;100% {margin-top: 200px;}<br/>
+			}<br/>
+			.dobounce {<br/>
+			&nbsp;&nbsp;-webkit-animation-name: bounce;<br/>
+			&nbsp;&nbsp;-webkit-animation-duration: 3s;<br/>
+			&nbsp;&nbsp;-webkit-animation-iteration-count: 6;<br/>
+			&nbsp;&nbsp;-webkit-animation-direction: alternate;<br/>
+			&nbsp;&nbsp;-webkit-animation-delay:0;<br/>
+			}
+		</code>
+		<img id="ball" onclick="applyCSS('ball','dobounce')" src="../../img/basketball.png">
+	</div>
+
+</body>
+</html>

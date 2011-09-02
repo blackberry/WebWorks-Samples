@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+ * Copyright 2011 Research In Motion Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<html>
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,target-densitydpi=device-dpi,user-scalable=no,initial-scale=1.0">
+	<link href="../../css/styles.css" rel="stylesheet" type="text/css">
+	<script src="../../js/standard.js" type="text/javascript" ></script>
+
+	<title> Web Engine features: Flash Video </title>
+	
+</head>
+<body>
+
+	<h1>Flash Video</h1>
+
+	<h2> Live Content (Youtube)</h2>
+	<div class="demo">
+		<p>
+			On supported devices (e.g. BlackBerry Tablet OS), you can leverage ANY Flash content that exists on the Intranet/Internet in your WebWorks application:
+		</p>
+		<p>
+			<b>Example:</b> Take your existing Flash game/workflow/video/presentation, wrap it in a WebWorks application, deploy it to BlackBerry App World.
+		</p>
+		<object width="640" height="385" style="border: dotted 1px black">
+			<param name="movie" value="http://www.youtube.com/v/eAaez_4m9mQ?fs=1&amp;hl=en_US"></param>
+			<param name="allowscriptaccess" value="always"></param>
+			<embed src="http://www.youtube.com/v/eAaez_4m9mQ?fs=1&amp;hl=en_US" type="application/x-shockwave-flash" allowscriptaccess="always" width="640" height="385"></embed>
+		</object>
+		<p>
+			BlackBerry PlayBook - Preview<br/>
+			<b>Youtube video by: BlackBerry</b>
+		</p>
+	</div>
+
+	<h2> Embedded (snowflakes.swf)</h2>
+	<div class="demo">
+		<p>
+			WebWorks developers can also embed Flash/Flex content <i>directly</i> inside of their applications, rather than from a remote location.
+		</p>
+		<!--
+			The following SWF file was downloaded from http://www.bezzmedia.com/swfspot/samples/flash8/Falling_Snowflakes
+
+			Terms and conditions of use (http://www.bezzmedia.com/swfspot/):
+			
+			"All articles in the tutorials and samples sections are free to use how ever you wish, granted a link back to swfspot remains in your source code. If you like anything you find on this site, spread the word. Thanks"
+		-->
+		<object data="../../resources/5-snowflakes.swf" type="application/x-shockwave-flash" width="500" height="300">
+			<param name="movie" value="../../5-snowflakes.swf"/>
+		</object>
+		<br/>
+		Snowflakes.swf<br/>
+		<b>Sample courtesy of <a href="http://www.swfspot.com/swfspot/samples/flash8/Falling_Snowflakes">swfSpot.com</a></b>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<!--
+ * Copyright 2011 Research In Motion Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<html>
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,target-densitydpi=device-dpi,user-scalable=no,initial-scale=1.0">
+	<link href="../../css/styles.css" rel="stylesheet" type="text/css">
+	<script src="../../js/standard.js" type="text/javascript" ></script>
+
+	<title> CSS Positioning </title>
+	<link href="../../css/browser/position.css" rel="stylesheet" type="text/css">	
+	
+</head>
+<body>
+
+	<h1>CSS: Position</h1>
+
+	<h2>Definitions</h2>
+	<div class="demo">
+		<p>
+			The CSS <b>position</b> property can be used to define where an element is rendered on the current screen, and whether that element should move when page content is scrolled.
+		</p>
+		<p>
+			Position values: 
+		</p>
+		<p>
+			<b>static</b> - This is default. Elements renders in order, as they appear in the document flow. Regardless of what left/top CSS properties you define, the element will always be layed out.
+		</p>
+		<p>
+			<b> absolute </b> - The element is positioned relative to its first positioned (not static) ancestor element.
+		</p>
+		<p>
+			<b> fixed </b> - The element is positioned relative to the browser window.
+		</p>
+		<p>
+			<b> relative </b> - The element is positioned relative to its normal position, so "left:20" adds 20 pixels to the element's LEFT position.
+		</p>
+	</div>
+	
+	<h2>Demo</h2>
+	<div class="demo">
+		<div class="square red static">
+			<h3>Static</h3>
+			left:999px;<br/>
+			top:999px;<br/>
+			position:static;		
+		</div>
+		<div class="square green absolute">
+			<h3>Absolute</h3>
+			left:235px;<br/>
+			top:0px;<br/>
+			position:absolute;		
+		</div>
+		<div class="square orange fixed">
+			<h3>Fixed</h3>
+			left:200px;<br/>
+			top:300px;<br/>
+			position:fixed;
+		</div>
+		<div class="square blue relative">
+			<h3>Relative</h3>
+			left:20px;<br/>
+			top:0px;<br/>
+			position:relative;		
+		</div>
+	</div>
+	
+</body>
+</html>

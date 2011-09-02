@@ -1,0 +1,43 @@
+﻿ul.bad li a:link,  li a:visited {
+	padding: 0 0 0 2.5em; 
+}
+#container { 
+	padding: 0; 
+	background-color: #FFCC00; 
+	border: solid 1px black;
+}
+#theElement {
+	margin: 2em;
+	padding: 2em;
+	background-color: #green;
+	text-align: center;
+	vertical-align: middle;
+}
+#theContent
+{
+	padding: 0px;
+	background-color: white;
+}
+
+
+.marginCSS
+{
+	background-color: gray; 
+	border: solid 1px black; 
+	padding: 0em 1em 1em 1em;
+}
+.borderCSS {
+	background-color: black; 
+	color: white; 
+	padding: 0em 1em 1em 1em;
+}
+.paddingCSS {
+	background-color: gray; 
+	border: solid 1px black; 
+	padding: 0em 1em 1em 1em;
+}
+.elementCSS {
+	background-color: white; 
+	color: black; 
+	padding: 1em;
+}

@@ -1,0 +1,35 @@
+﻿@media (orientation:portrait)
+{
+	div.content p {
+		margin: 1em;
+		padding: 1em;
+		border-bottom: solid 1px gray;
+	}
+	#landscape { 
+		display: none; 
+	}
+	#portrait  { 
+		display: block; 
+	}
+}
+
+@media (orientation:landscape)
+{
+	div.content p {
+		float: left; 
+		width: 30%;
+		padding: 1%;
+		margin: 0 1% 0 0; 
+		border: dashed 2px black; 
+		text-align: justify; 
+	}
+	div.content p.last {
+		margin: 0 0 0 0;
+	}
+	#landscape {
+		display: block; 
+	}
+	#portrait { 
+		display: none; 
+	}
+}

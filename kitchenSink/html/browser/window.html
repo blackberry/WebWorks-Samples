@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--
+ * Copyright 2011 Research In Motion Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<html>
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,target-densitydpi=device-dpi,user-scalable=no,initial-scale=1.0">
+	<link href="../../css/styles.css" rel="stylesheet" type="text/css">
+	<script src="../../js/standard.js" type="text/javascript" ></script>
+
+	<title> Web Engine features: Window object (JavaScript) </title>
+	<script src="../../js/browser/window.js" type="text/javascript"></script>
+	
+</head>
+<body>
+
+	<h1>Window Object</h1>
+	
+	<h2>Actions:</h2>
+	<div class="demo">
+		<p>
+			The following examples demonstrate some of the properties and methods available for use from the <b>window</b> object.
+		</p>
+		<p>
+			<b>Navigation:</b><br/>
+			URL: <input type="text" id="txtLocation" value="http://www.google.com" size="30"/>
+			<button onclick="goToLocation()">window.location = &lt;url&gt;</button>
+		</p>
+		<p>
+			<b>Open/Close pages:</b><br/>
+			<button onclick="window.open('http://www.google.com')">window.open('http://www.google.com')</button>
+			<button onclick="window.close()">window.close()</button>
+		</p>
+	</div>
+	
+	<h2>Timer events</h2>
+	<div class="demo">
+		<p> Timers are handy when you need an action to occur either after a fixed period of time, or repeatedly on an interval.  Timers are not reliable, as you cannot guarantee that they will occur at exactly the point in time when you expect them to.</p>
+		<p> Timers are also not efficient, you may discover your applications running slower than usual when using a timer.	</p>
+		<p>
+			Interval: <input type="text" id="txtInterval" value="1000"/> ms
+		</p>
+		<p>
+			<button onclick="startInterval()">Start Timer</button>  <button onclick="stopInterval()">Stop Timer</button> <br/>
+		</p>
+		<p>
+			Current time: <span id="txtIntervalDemo">n/a</span>
+		</p>
+	</div>
+		
+	<h2>Page Scrolling</h2>
+	<div class="demo">
+		<p>
+			Programatically move the current scroll position up or down using JavaScript:
+		</p>
+		<p>
+			<button onclick="scrollToBottom()">Scroll To Bottom</button> <button onclick="scrollToTop()">Scroll To Top</button>
+		</p>
+		<p>
+			<button onclick="scrollDownBy(50)">Scroll down by 50</button> <button onclick="scrollUpBy(50)">Scroll up by 50</button> 
+		</p>
+	</div>
+	
+	<h2>Dialogs and prompts</h2>
+	<div class="demo">
+		<p>
+			Message: <input type="text" id="txtMessage" value="Hello World"/> <br/>
+			Delay: <input type="text" id="txtMessageTimeout" value="3000"/>  ms
+		</p>
+		<p>
+			<button onclick="alertMessage()">Alert message</button>
+			<button onclick="promptMessage()">Prompt message</button>
+			<button onclick="showMessageAfterDelay()">Show message after delay</button>
+		</p>
+	</div>
+	
+	<h2>History</h2>
+	<div class="demo">
+		<p>
+			Navigate to the previous or next URL in history: <br/>
+			<button onclick="window.history.forward()">window.history.forward()</button> <button onclick="window.history.back()">window.history.back()</button> <br/><br/>
+		</p>
+		<p>
+			Reload the current page:<br/>
+			<button onclick="window.history.go(0)">window.history.go(0) == Reload</button> <br/><br/>
+		</p>
+		<p>
+			Navigate forward or backward to a specific point in the history: <br/>
+			<button onclick="window.history.go(1)">window.history.go(1) == Forward</button> <button onclick="window.history.go(-1)">window.history.go(-1) == Back</button> <br/><br/>
+			<button onclick="window.history.go(10)">Forward 10 pages</button> <button onclick="window.history.go(-10)">Back 10 pages</button>
+		</p>
+	</div>
+	
+
+</body>
+</html>

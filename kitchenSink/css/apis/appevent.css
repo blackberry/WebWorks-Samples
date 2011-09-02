@@ -1,0 +1,55 @@
+﻿.whiteBG { 
+	background-color: white; 
+	color: black; 
+}
+.blackBG { 
+	background-color: 
+	black; color: white; 
+}
+
+#toolBar {
+	position: fixed; 
+	left:0px; 
+	top:-3em;
+	z-index:1000; 
+	width:100%;
+	clear: both;
+	padding: 0.25em;
+	
+	border-bottom: solid 2px black;
+	font-size: 1.5em;
+	background-image: -webkit-gradient( linear, left top, left bottom, color-stop(0.31, rgb(122,121,121)), color-stop(0.66, rgb(79,77,77)), color-stop(0.83, rgb(56,54,56)) );
+}
+
+/* Use CSS3 animations to transition the toolbar in and out of the top of the bezel */
+.showToolBar {
+	-webkit-transition: all 0.5s ease-in-out;
+	-webkit-transform: translate(0, 3em);		
+}
+.hideToolBar {
+	-webkit-transition: all 0.5s ease-in-out;
+	-webkit-transform: translate(0, -3em);
+}
+
+#toolBar ol { 
+	list-style: none; 
+	margin: 0; 
+	padding:0; 
+}
+#toolBar ol li { 
+	float: left; 
+	margin-right: 0.5em; 
+	padding: 0.25em; 
+	background-color: #96999e;
+	border: solid 1px black;
+	border-radius: 0.5em;
+	cursor: pointer; 
+	text-shadow: rgb(122,121,121) 3px 3px 3px;
+}
+
+#toolBarLinks { 
+	float: left; 
+}
+#toolBarButton { 
+	float: right; 
+}

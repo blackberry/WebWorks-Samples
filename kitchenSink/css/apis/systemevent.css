@@ -1,0 +1,11 @@
+﻿#batteryLevelBar
+{
+	border: solid 1px black;
+	background-color: white;
+	clear: both;
+}
+.batteryLevel
+{
+	background-color: lime;
+	display: block;
+}

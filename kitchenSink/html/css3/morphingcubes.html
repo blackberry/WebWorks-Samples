@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+ * Copyright 2011 Research In Motion Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<html>
+<head> 
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,target-densitydpi=device-dpi,user-scalable=no,initial-scale=1.0">
+	<link href="../../css/styles.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="../../js/standard.js"></script>
+	
+	<title> CSS3: Morphing Power Cubes</title>
+	<link href="../../css/css3/morphingcubes.css" rel="stylesheet" type="text/css">
+	<script src="../../js/css3/morphingcubes.js" type="text/javascript"></script> 
+
+</head> 
+<body> 
+
+	<h1>CSS 3 - Morphing Cubes</h1>
+
+	<div class="controls"> 
+		<h1>Animations, Transitions and 3D Transforms</h1> 
+		<p>This demo shows some more interesting content using 3D transforms, animations and transitions.
+		Note that you can still select the text on the the elements, even while they are rotating. Transforms elements remain
+		fully interactive.</p> 
+		<p>Click Toggle Shape to switch between nested cubes and one big ring. Note how the planes move smoothly to their new locations,
+		even while the whole shape is rotating. You can even interrupt this transition by clicking again, and they move back smoothly.</p> 
+		<p>Toggle the Backfaces Visible checkbox to turn backfaces on and off using <code>-webkit-backface-visibility</code>.</p> 
+		<div><button onclick="toggleShape()">Toggle Shape</button></div> 
+		<div><input type="checkbox" id="backfaces" onclick="toggleBackfaces()" checked><label for="backfaces">Backfaces visible</label></div> 
+	</div> 
+ 
+	<div id="container"> 
+		<div id="stage"> 
+			<div id="shape" class="cube backfaces"> 
+			<div class="plane one">1</div> 
+			<div class="plane two">2</div> 
+			<div class="plane three">3</div> 
+			<div class="plane four">4</div> 
+			<div class="plane five">5</div> 
+			<div class="plane six">6</div> 
+			<div class="plane seven">7</div> 
+			<div class="plane eight">8</div> 
+			<div class="plane nine">9</div> 
+			<div class="plane ten">10</div> 
+			<div class="plane eleven">11</div> 
+			<div class="plane twelve">12</div> 
+			</div> 
+		</div> 
+	</div> 
+  
+</body> 
+</html> 

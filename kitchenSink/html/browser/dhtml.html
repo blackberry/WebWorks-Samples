@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+ * Copyright 2011 Research In Motion Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<html>
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,target-densitydpi=device-dpi,user-scalable=no,initial-scale=1.0">
+	<link href="../../css/styles.css" rel="stylesheet" type="text/css">
+	<script src="../../js/standard.js" type="text/javascript" ></script>
+
+	<title> Web Engine features: Dynamic HTML (DHTML) </title>
+	<script src="../../js/browser/dhtml.js" type="text/javascript"></script>
+	
+</head>
+<body>
+
+	<h2> DHTML </h2>
+	
+	<div class="demo">
+		<p>
+			Dynamic HTML (DHTML) refers to a Web client's ability to update its local document object model (DOM) <i>after</i> an HTTP request is completed.  Rather than requiring a browser to make a new HTTP request whenever it needs to update its rendered content, DHTML can be used to significantly improve page response time.
+		</p>
+		
+		<div id="page1" class="show">
+			<h3>Page 1</h3>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at nunc orci. Nam ipsum felis, commodo id suscipit ut, semper eu elit. 
+				Nam sed sem vitae orci rutrum congue. Aliquam tincidunt mi sed sapien rhoncus a lacinia erat vestibulum. Maecenas adipiscing purus eu orci ultrices 
+				gravida. Sed eleifend leo et tortor pharetra scelerisque facilisis ligula euismod. Etiam urna nisl, gravida sed ullamcorper quis, dapibus eget risus. 
+			</p>
+			<p>
+				<a href="#" onclick="showPage('page2')">Page 2</a> - <a href="#" onclick="showPage('page3')">Page 3</a>
+			</p>
+		</div>
+		
+		<div id="page2" class="hide">
+			<h3>Page 2</h3>
+			<p>
+				Sed sapien felis, pharetra eu placerat vel, volutpat sed enim. Integer aliquet imperdiet gravida. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+				Mauris cursus lacus ut lectus faucibus vel ullamcorper nunc consequat. Nullam pulvinar dui et ipsum fermentum scelerisque. Nam in lectus erat. Phasellus 
+				mi enim, dictum at elementum a, molestie at nulla. Maecenas dignissim, libero vitae congue faucibus, purus lorem gravida leo, vitae porttitor enim nibh 
+				vitae purus. Quisque sagittis dui tincidunt nunc bibendum luctus. Nam ac velit dui, et luctus dolor. Cras molestie sem ut risus rhoncus in pretium lorem 
+				egestas. Aliquam feugiat orci ut nisi gravida gravida.
+			</p>
+			<p>
+				<a href="#" onclick="showPage('page1')">Page 1</a> - <a href="#" onclick="showPage('page3')">Page 3</a>
+			</p>
+		</div>
+		
+		<div id="page3" class="hide">
+			<h3>Page 3</h3>
+			<p>
+				Nulla aliquam, enim eget mollis placerat, ipsum lectus tempus massa, vel volutpat ante lorem vel risus. Proin felis arcu, facilisis nec malesuada nec, cursus 
+				a lacus. Sed vel facilisis est. Morbi bibendum facilisis massa, ut congue augue condimentum dignissim. Curabitur vel sem sit amet ante consectetur consequat. 
+				Praesent ac nunc eros, ornare aliquam risus. Quisque venenatis vulputate velit. Nulla luctus, augue et ultricies auctor, ante sem mollis est, in blandit orci 
+				quam ac nisi. Integer malesuada adipiscing orci eget volutpat. Cras nec pharetra ipsum. In pellentesque neque at orci tristique id ullamcorper orci hendrerit. 
+				Sed ultrices nisi vitae augue molestie porta. Vestibulum pellentesque molestie ligula, a consequat sem egestas sit amet.
+			</p>
+			<p>
+				<a href="#" onclick="showPage('page1')">Page 1</a> - <a href="#" onclick="showPage('page2')">Page 2</a>
+			</p>
+		</div>
+
+	</div>
+
+</body>
+</html>
