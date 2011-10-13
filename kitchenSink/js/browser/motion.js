@@ -97,8 +97,12 @@ function doLoad()
 	}
 	
 	
-	//if (typeof window.ondevicemotion !== "function")
-	if (window.DeviceMotionEvent)
+	
+	//NOTE: DeviceMotion support is not ready yet in Ripple for Tablet OS platform (Oct 5, 2011).
+	
+	
+
+	if (window.DeviceMotionEvent || window.ondevicemotion)
 	{
 		//Check to see if the current application supports the devicemotion
 		window.addEventListener("devicemotion", handleDeviceMotion, false);
@@ -107,6 +111,7 @@ function doLoad()
 		setContent("motionInfo", "<i><b>Device Motion API</b> is not supported by this application.</i>");
 		return false;
 	}
+
 }
 
 /**

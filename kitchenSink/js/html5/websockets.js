@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-var socket;
+var theSocket;
 
 /**
  * Callback method invoked when the socket connection is opened.
@@ -61,9 +61,9 @@ function sendMessage()
 			alert("Enter a message");
 		}
 		else {
-			if (socket.readyState === 1) 
+			if (theSocket.readyState === 1) 
 			{
-				socket.send(message);
+				theSocket.send(message);
 				appendContent("messages", "Sent: " + message + "<br/>");
 			}
 		}
@@ -79,8 +79,6 @@ function doPageLoad()
 	try
 	{
 		hide("btnSend");
-		
-//		openSocket();
 	} 
 	catch (e) {
 		debug.log("doPageLoad", e, debug.exception);
@@ -99,10 +97,10 @@ function openSocket()
 	{
 		if (window.WebSocket)
 		{
-			socket = new WebSocket("ws://node.remysharp.com:8001");
-			socket.onopen    = onSocketOpen;
-			socket.onmessage = onSocketMessage;
-			socket.onclose   = onSocketClose;
+			theSocket = new WebSocket("ws://node.remysharp.com:8001");
+			theSocket.onopen    = onSocketOpen;
+			theSocket.onmessage = onSocketMessage;
+			theSocket.onclose   = onSocketClose;
 		}
 		else {
 			appendContent("messages", "HTML5 Web Sockets are not supported by this application.");
@@ -117,11 +115,14 @@ function closeSocket()
 {
 	try
 	{
-		if (socket)
+		if (theSocket)
 		{
-			if (socket.readyState !== WebSocket.CLOSED)
+			if (theSocket.readyState !== WebSocket.CLOSED)
 			{
-				socket.close();
+				theSocket.close();
+			}
+			else {
+				debug.log("closeSocket", "Socket is already closed", debug.info);
 			}
 		}
 	} 
@@ -130,5 +131,5 @@ function closeSocket()
 	}
 }
 
-window.addEventListener("load", doPageLoad, false);
+window.addEventListener("load",   doPageLoad,   false);
 window.addEventListener("unload", doPageUnload, false);
