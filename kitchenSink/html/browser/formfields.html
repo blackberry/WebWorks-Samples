@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!--
+ * Copyright 2011 Research In Motion Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<html>
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,target-densitydpi=device-dpi,user-scalable=no,initial-scale=1.0">
+	<link href="../../css/styles.css" rel="stylesheet" type="text/css">
+	<script src="../../js/standard.js" type="text/javascript" ></script>
+
+	<title> Web Engine features: Form input fields </title>
+	<script src="../../js/browser/forminputs.js" type="text/javascript"></script>
+
+</head>
+<body>
+		
+	<h2>Input Fields </h2>
+	<div class="demo">
+		<p>
+			This page demonstrates the variety of HTML form input fields that can be used in a WebWorks application to collect information from its users.  Note different browser engines may provide a different look and feel for these form elements.
+			Some new form elements were introduced as part of <a href="http://dev.w3.org/html5/html-author/#forms">HTML5</a> standard (e.g. meter, progress).  
+		</p>
+	
+		<table cellspacing="5" cellpadding="5">
+			<tr>
+				<td>Text:</td>
+				<td> <input id="txtText" type="text" size="20" value="Hello World"/> </td>
+				<td>Meter:</td>
+				<td> <meter id="mtMeter" min="0" max="100" value="100"></meter> </td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td><input id="txtPassword"type="password" size="20" value="Hello World"/> </td>
+				<td>Progress:</td>
+				<td> <progress id="prgProgress" max="100"><span>0</span>%</progress> </td>
+				
+			</tr>
+			<tr>
+				<td>Radio:</td>
+				<td><input id="rbYes" name="rbGroup" type="radio" value="Y"/> Yes <input id="rbNo" name="rbGroup" type="radio" value="N"/> No </td>
+				<td>Range:</td>
+				<td><input type="range" id="txtRange" min="-100" max="100" value="0" step="10" value=""/></td>
+			</tr>
+			<tr>
+				<td>Checkbox:</td>
+				<td><input id="cbCheckBox" type="checkbox" checked/> Left <input id="cbCheckBox" type="checkbox"/> Right </td>
+				<td>Button:</td>
+				<td><button id="btnSubmit" onclick="validate()">Submit</button></td>
+			</tr>
+			<tr>
+				<td>Text Area:</td>
+				<td><textarea id="txtArea" rows="4" cols="15">Hello World</textarea></td>
+				<td>Select:</td>
+				<td><select id="ddlSelect"><option value="">-select-</option><option value="1">One</option><option value="2">Two</option><option value="3">Three</option></select></td>
+			</tr>
+			<tr>
+				<td>Hidden:</td>
+				<td><input id="txtHidden"type="hidden" value="Useful for storing temporary values"/> </td>
+				<td>File:</td>
+				<td><input id="txtFile"type="file"/> </td>
+			</tr>
+			<tr>
+				<td>Output:</td>
+				<td> <input name="txtValue1" type="number" size="4" maxlength="4" step="1" value="5"> + <input name="txtValue2" type="number" size="4" maxlength="4" step="1" value="4"> <br/>
+						= <output onforminput="value = txtValue1.valueAsNumber + txtValue2.valueAsNumber"></output> </td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+		<br/>
+		<div id="output"></div>		
+	</div>
+
+	<h2>textarea </h2>
+	<div class="demo">
+		<p>
+			The line-wrap behavior of textarea input fields can be controlled via CSS. 
+		</p>
+		<p>
+			<b>wrap=hard</b><br/>
+			<textarea id="txtWrapHard" cols="20" rows="5" wrap="hard">As you can see many times word wrapping is often the desired look for your textareas. Since it makes everything nice and easy to read.</textarea>
+		</p>
+		<p>
+			<b>wrap=off</b><br/>
+			<textarea id="txtWrapOff" cols="20" rows="5" wrap="off">As you can see many times word wrapping is often the desired look for your textareas. Since it makes everything nice and easy to read.</textarea>
+		</p>
+		<p>
+			<b>wrap=off (rows before cols)</b><br/>
+			<textarea id="txtWrapOff2" rows="5" cols="20" wrap="off">As you can see many times word wrapping is often the desired look for your textareas. Since it makes everything nice and easy to read.</textarea>
+		</p>
+	</div>
+
+		
+</body>
+</html>

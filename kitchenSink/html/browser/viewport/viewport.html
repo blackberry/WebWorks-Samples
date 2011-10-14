@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+ * Copyright 2011 Research In Motion Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<html>
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="user-scalable=no,initial-scale=1.0">
+	<link href="../../../css/styles.css" rel="stylesheet" type="text/css">
+	<script src="../../../js/standard.js" type="text/javascript" ></script>
+	
+	<title>HTML: viewport demo</title>
+	<script src="../../../js/browser/viewport.js" type="text/javascript"></script>
+
+</head>
+<body>
+	
+	<h2>Viewport Meta tag</h2>
+	
+	<div class="demo">
+		
+		<p>
+			The viewport is a virtual area used by the browser rendering engine to determine how content is scaled and sized when it is initially rendered on the current screen.  A viewport is defined as a META tag in the page HEAD element.
+		</p>
+		<p>
+			This page links to samples that demonstrate how the viewport meta tag affects browser rendering behaviour.
+		</p>
+		<div style="float:right">
+			<h3> Known screen orientations </h3>
+			<p> BlackBerry Bold 9810 640x480 </p>
+			<p> BlackBerry Curve 8300 320x240 </p>
+			<p> BlackBerry Bold 9000 480x320 </p>
+			<p> BlackBerry Bold 9700 480x360 </p>
+			<p> BlackBerry PlayBook 1024x600 </p>
+		</div>
+		<p id="screenInfo"></p>
+		<div>
+			<h3>Recommended viewport for WebWorks apps:</h3>
+			<p>
+				This viewport instructs the Web engine to disallow pinch-zoom (provides a more 'native app' feeling) and fits content to the given screen width, regardless of orientation:
+			</p>
+			<code>
+				&lt;meta name="viewport" content="user-scalable=no,initial-scale=1.0"&gt;
+			</code>
+		</div>
+	</div>
+
+	<h2>Width/Height property</h2>
+	<ul class="section">
+		<li> <br/> The following examples demonstrate how the viewport width property causes content to be initially rendered on the screen : <br/><br/> </li>
+		<li><a href="width100.html">Width = 100</a>Page content displayed inside a viewport 100px wide (zoomed in)</li>
+		<li><a href="width800.html">Width = 800</a>Page content displayed inside a viewport 800px wide (zoomed out)</li>
+		<li><a href="width360.html">Width = 360</a>Page content displayed inside a viewport 360px wide (approx mobile width)</li>
+		<li><a href="devicewidth.html">Width = device-width</a>Page content displayed inside a viewport as wide as the current screen</li>
+		<li><a href="width360height480.html">Width = 360, Height = 480</a></li>
+		<li></li>
+	</ul>
+	
+	<h2>Scaling</h2>
+	<ul class="section">
+		<li> <br/> The following examples demonstrate the scaling features of the viewport META tag : <br/><br/> </li>
+		<li><a href="noscale.html">user-scalable = no</a>Prevent the user from scaling page using pinch-to-zoom</li>
+		<li><a href="scale2.html">initial-scale = 2.0</a>Page content displayed zoomed in on initial load.</li>
+		<li><a href="scalemin.html">minimum-scale = 2.0</a>User can only zoom content IN to 2x magnification.</li>
+		<li><a href="scalemax.html">maximum-scale = 2.0</a>User can only zoom content OUT to 2x magnification.</li>
+		<li><a href="densitydpi.html">target-densitydpi=device-dpi</a>Adjust zoom level to best fit current page DPI.</li>
+		<li></li>
+	</ul>
+
+</body>
+</html>

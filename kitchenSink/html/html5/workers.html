@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--
+ * Copyright 2011 Research In Motion Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<html>
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,target-densitydpi=device-dpi,user-scalable=no,initial-scale=1.0">
+	<link href="../../css/styles.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="../../js/standard.js"></script>
+	
+	<title> HTML5 Web Workers </title>
+	<script src="../../js/html5/workers.js" type="text/JavaScript"></script>
+	
+</head>
+<body>
+
+	<h1>HTML5 Workers</h1>	
+
+	<h2>Demo</h2>
+	<div class="demo bottom">
+		<p> 
+			This sample demonstrates how using WebWorkers can improve the performance of highly intensive processing by executing logic on thread(s) separate from the main event thread. 
+		</p>
+		
+		<p>
+			<div>Calculate # of prime numbers between 2 and <input type="text" id="txtUpper" value="1000000" size="7" maxlength="7"/> (5 times):</div>
+			<button id="btnRegular" onclick="calculate(false)">Begin (Main Thread)</button> 
+			<button id="btnWorker" onclick="calculate(true)">Begin (Worker Threads)</button>
+		</p>
+		
+		<div id="comments"></div>
+		<table cellspacing="5" cellpadding="5">
+			<tr>
+				<td id="outputNormal" valign="top"></td>
+				<td id="outputWorker" valign="top"></td>
+			</tr>
+		</table>
+		
+	</div>
+	
+	<br/>
+	
+	<h2>Web Workers</h2>
+	
+	<div class="demo bottom">
+		<h3>Summary</h3>
+		<p>Web Workers are designed to process logic asyncronous.  As shown in the above example, performing large volumes of processing using the main event thread "freezes" the page
+		and prevents the user from interacting.  However</p>
+		
+		<h3>UI</h3>
+		<p>You cannot modify the UI from within a worker pool, because only the main event thread has access to the DOM.
+		
+		<h3>Communication</h3>
+		<p>Worker threads and the main thread communicate to each other by using a method named "postMessage" to send each other data, and by defining a callback method that is invoked when each receive data during their 'onmessage' event. </p>
+		<p>Since workers process data asyncronously, there is no way to predict or determine the order in which they will complete their processing.</p>
+
+		<h3>Flow of events:</h3>
+		<p>
+			<table cellpadding="5">
+				<tr>
+					<td rowspan="2" valign="middle"><b>[Main Thread]</b></td>
+					<td>1. postMessage</td>
+					<td>--&gt;</td>
+					<td>2. onmessage(function)</td>
+					<td rowspan="2" valign="middle"><b>[Worker Thread]</b></td>
+				</tr>
+				<tr>
+					<td>4. onmessage(function)</td>
+					<td>&lt;--</td>
+					<td>3. postMessage</td>
+				</tr>
+			</table>
+		</p>
+		
+		<h3>Max Workers</h3>
+		<p>Is there a limit to how many workers can be created? I think Chrome caps it at 16.  It is advised to use the .terminate() method to destroy unused Worker objects.</p>
+	</div>
+
+</body>
+</html>

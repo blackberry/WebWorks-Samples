@@ -1,0 +1,23 @@
+CACHE MANIFEST
+#Last Updated: 08/14/2011 2:32 EDT
+
+#(explicit section) specific files listed under CACHE will be cached after they are loaded; 
+CACHE:
+cache.html
+offline.css
+offline.png
+/styles.css
+/standard.js
+/modernizr-1.6.min.js
+
+#Files listed under NETWORK *require* a live connection to the server. They never to be cached and never available offline.
+NETWORK:
+online.css
+online.png
+
+#contains entries that provide a backup strategy. If the browser is unable to retrieve the original content, the fallback resource will be used. 
+# In the example below, any page loaded offline that is not stored in cache will display the page /fallback.html instead.
+FALLBACK:
+online.css offline.css
+online.png offline.png
+* fallback.html

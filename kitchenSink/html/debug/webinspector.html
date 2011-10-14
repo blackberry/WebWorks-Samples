@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+ * Copyright 2011 Research In Motion Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<html>
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,target-densitydpi=device-dpi,user-scalable=no,initial-scale=1.0">
+	<link href="../../css/styles.css" rel="stylesheet" type="text/css">
+	<script src="../../js/standard.js" type="text/javascript" ></script>
+	
+	<title>Debugging: Web Inspector </title>
+	
+</head>
+<body>
+
+	<h1>Web Inspector</h1>
+	
+	<h2>Demo</h2>
+	<div class="demo">
+		<p> Web Inspector is a debugging and profiling developer tool that is included as part of the WebKit browser rendering engine.  It is available for BlackBerry developers to use either in the BlackBerry PlayBook browser, or applications created using the BlackBerry WebWorks SDK for Tablet OS.</p>
+		
+		<p>
+			Here is how you enable Web Inspector for use in a BlackBerry WebWorks application for Tablet OS:
+		</p>
+		<ol>
+			<li>Use the "-d" command line argument when building your application using the BlackBerry WebWorks SDK for Tablet OS. <br/>Eg. "bbwp c:\sandbox\helloWorld.zip <b>-d</b>"<br/> </li>
+			<li>Deploy your application to a PlayBook simulator or Tablet.</li>
+			<li>Start your application.</li>
+			<li>Ensure that developer mode is enabled from the Tablet OS, and make note of the Tablet OS IP address.</li>
+			<li>Open a desktop browser and navigate to the URL "http://&lt;IP address&gt;:1337"</li>
+		</ol>
+		<p>
+			Blog article: <a href="" onclick="openUrl('http://devblog.blackberry.com/2011/06/debugging-blackberry-web-apps/')"> Debugging BlackBerry web applications using Web Inspector <a/>.
+		</p>
+		
+	</div>
+
+	<h2>Screenshots</h2>
+	<div class="demo">
+		<p>
+			<b>Web Inspector Enabled:</b><br/><br/>
+			When you first connect to Web Inspector from a desktop browser, you will see a title screen showing the current page loaded in the WebWorks application.<br/><br/>
+			<img src="../../img/screenshots/webinspector_enabled.png"/>
+		</p>
+		<p>
+			<b>Using Web Inspector:</b><br/><br/>
+			You can then click on the title, and begin debugging and profiling that page using the variety of developer utilities provided by Web Inspector:<br/><br/>
+			<img src="../../img/screenshots/webinspector_using.png"/>
+		</p>
+	</div>
+	
+</body>
+</html>

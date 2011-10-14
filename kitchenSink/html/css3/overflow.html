@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<!--
+ * Copyright 2011 Research In Motion Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<html>
+<head>	 
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,target-densitydpi=device-dpi,user-scalable=no,initial-scale=1.0">
+	<link href="../../css/styles.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="../../js/standard.js"></script>
+	
+	<title>CSS Overflow</title>	
+	<link href="../../css/usecase/overflow.css" rel="stylesheet" type="text/css">
+	
+</head>
+<body>
+
+	<h1>CSS Overflow - Scrollable DIVs</h1>
+
+	<h2>demo</h2>
+	<div class="demo">
+		<p>
+			The CSS overflow property can be used to define the behavior of text that exceeds the size of its container element.  Using this property, you can provide "scrollable regions" of content within your page, that maximizes page real-estate, while keeping the UI simple.
+		</p>
+		<p>
+			This technique is ideal for touch screen devices.  For trackpad or trackwheel devices this technique should <b>not</b> be used exclusively as the cursor does not cause scrolling to occur.
+		</p>
+	</div>
+
+	<h2>overflow : auto</h2>
+	<div class="demo">
+		<p>
+			If overflow is clipped, a scroll-bar should be added to see the rest of the content.
+		</p>
+		<div class="container auto"> 
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vulputate feugiat commodo. Suspendisse eget erat sapien. Nullam a orci tortor, eget auctor lorem. Nunc dictum rutrum nulla nec bibendum. Maecenas ut eros sem. Quisque lobortis magna vitae ante dapibus convallis. Nam posuere tortor mi, ac gravida mauris. Sed ac orci velit. Curabitur eget arcu eget metus eleifend dignissim. Aenean ullamcorper vulputate tortor, non volutpat neque ullamcorper vel.
+			</p>
+			<p>
+				Vivamus sed ipsum ipsum, a consectetur massa. Sed rutrum risus quis quam euismod quis rhoncus dolor commodo. Sed nec massa eget orci accumsan accumsan vitae id est. Integer vehicula, erat et semper adipiscing, ante tortor gravida orci, egestas iaculis metus dolor nec turpis. Praesent cursus augue lacus, eget eleifend est. Donec tempus neque vitae mauris semper in faucibus nisl dictum. Donec auctor odio non tellus vestibulum vestibulum eu a dui. Nullam rutrum, orci non laoreet scelerisque, orci lacus lobortis dui, ac adipiscing elit lacus vel purus. Nullam vulputate convallis viverra. Vivamus in eros et odio semper malesuada. Sed placerat, est non pharetra gravida, felis augue molestie diam, vel venenatis mauris odio et velit. Etiam id augue elit, volutpat semper arcu. Cras sed nisl purus. Phasellus vitae mattis nulla.
+			</p>
+			<p>
+				Sed aliquet purus purus, sit amet rutrum urna. Quisque id enim felis. Sed volutpat dignissim lacinia. Phasellus nec augue a leo aliquet congue commodo at odio. Vivamus ac velit massa, eu vulputate ante. Fusce non orci eu metus lobortis vulputate vel quis elit. In pellentesque vulputate lacus, id euismod nisi mollis facilisis. Vivamus felis erat, rhoncus non auctor ac, ultrices eu lectus. Pellentesque non dui lacus. Aliquam a enim nulla. Vivamus bibendum auctor leo, non malesuada elit sollicitudin vitae. Integer et enim justo, sit amet semper augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc semper volutpat erat ut sodales.
+			</p>
+		</div>
+	</div>
+
+	<h2>overflow : hidden</h2>
+	<div class="demo">
+		<p>
+			The overflow is clipped, and the rest of the content will be invisible
+		</p>
+		<div class="container hidden"> 
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vulputate feugiat commodo. Suspendisse eget erat sapien. Nullam a orci tortor, eget auctor lorem. Nunc dictum rutrum nulla nec bibendum. Maecenas ut eros sem. Quisque lobortis magna vitae ante dapibus convallis. Nam posuere tortor mi, ac gravida mauris. Sed ac orci velit. Curabitur eget arcu eget metus eleifend dignissim. Aenean ullamcorper vulputate tortor, non volutpat neque ullamcorper vel.
+			</p>
+			<p>
+				Vivamus sed ipsum ipsum, a consectetur massa. Sed rutrum risus quis quam euismod quis rhoncus dolor commodo. Sed nec massa eget orci accumsan accumsan vitae id est. Integer vehicula, erat et semper adipiscing, ante tortor gravida orci, egestas iaculis metus dolor nec turpis. Praesent cursus augue lacus, eget eleifend est. Donec tempus neque vitae mauris semper in faucibus nisl dictum. Donec auctor odio non tellus vestibulum vestibulum eu a dui. Nullam rutrum, orci non laoreet scelerisque, orci lacus lobortis dui, ac adipiscing elit lacus vel purus. Nullam vulputate convallis viverra. Vivamus in eros et odio semper malesuada. Sed placerat, est non pharetra gravida, felis augue molestie diam, vel venenatis mauris odio et velit. Etiam id augue elit, volutpat semper arcu. Cras sed nisl purus. Phasellus vitae mattis nulla.
+			</p>
+			<p>
+				Sed aliquet purus purus, sit amet rutrum urna. Quisque id enim felis. Sed volutpat dignissim lacinia. Phasellus nec augue a leo aliquet congue commodo at odio. Vivamus ac velit massa, eu vulputate ante. Fusce non orci eu metus lobortis vulputate vel quis elit. In pellentesque vulputate lacus, id euismod nisi mollis facilisis. Vivamus felis erat, rhoncus non auctor ac, ultrices eu lectus. Pellentesque non dui lacus. Aliquam a enim nulla. Vivamus bibendum auctor leo, non malesuada elit sollicitudin vitae. Integer et enim justo, sit amet semper augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc semper volutpat erat ut sodales.
+			</p>
+		</div>
+	</div>
+	
+	<h2>overflow : scroll</h2>
+	<div class="demo">
+		<p>
+			The overflow is clipped, but a scroll-bar is added to see the rest of the content.
+		</p>
+		<div class="container scroll"> 
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vulputate feugiat commodo. Suspendisse eget erat sapien. Nullam a orci tortor, eget auctor lorem. Nunc dictum rutrum nulla nec bibendum. Maecenas ut eros sem. Quisque lobortis magna vitae ante dapibus convallis. Nam posuere tortor mi, ac gravida mauris. Sed ac orci velit. Curabitur eget arcu eget metus eleifend dignissim. Aenean ullamcorper vulputate tortor, non volutpat neque ullamcorper vel.
+			</p>
+			<p>
+				Vivamus sed ipsum ipsum, a consectetur massa. Sed rutrum risus quis quam euismod quis rhoncus dolor commodo. Sed nec massa eget orci accumsan accumsan vitae id est. Integer vehicula, erat et semper adipiscing, ante tortor gravida orci, egestas iaculis metus dolor nec turpis. Praesent cursus augue lacus, eget eleifend est. Donec tempus neque vitae mauris semper in faucibus nisl dictum. Donec auctor odio non tellus vestibulum vestibulum eu a dui. Nullam rutrum, orci non laoreet scelerisque, orci lacus lobortis dui, ac adipiscing elit lacus vel purus. Nullam vulputate convallis viverra. Vivamus in eros et odio semper malesuada. Sed placerat, est non pharetra gravida, felis augue molestie diam, vel venenatis mauris odio et velit. Etiam id augue elit, volutpat semper arcu. Cras sed nisl purus. Phasellus vitae mattis nulla.
+			</p>
+			<p>
+				Sed aliquet purus purus, sit amet rutrum urna. Quisque id enim felis. Sed volutpat dignissim lacinia. Phasellus nec augue a leo aliquet congue commodo at odio. Vivamus ac velit massa, eu vulputate ante. Fusce non orci eu metus lobortis vulputate vel quis elit. In pellentesque vulputate lacus, id euismod nisi mollis facilisis. Vivamus felis erat, rhoncus non auctor ac, ultrices eu lectus. Pellentesque non dui lacus. Aliquam a enim nulla. Vivamus bibendum auctor leo, non malesuada elit sollicitudin vitae. Integer et enim justo, sit amet semper augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc semper volutpat erat ut sodales.
+			</p>
+		</div>
+	</div>
+	
+	<h2>overflow-y : auto</h2>
+	<div class="demo">
+		<div class="container ofya">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vulputate feugiat commodo. Suspendisse eget erat sapien. Nullam a orci tortor, eget auctor lorem. Nunc dictum rutrum nulla nec bibendum. Maecenas ut eros sem. Quisque lobortis magna vitae ante dapibus convallis. Nam posuere tortor mi, ac gravida mauris. Sed ac orci velit. Curabitur eget arcu eget metus eleifend dignissim. Aenean ullamcorper vulputate tortor, non volutpat neque ullamcorper vel.
+			</p>
+			<p>
+				Vivamus sed ipsum ipsum, a consectetur massa. Sed rutrum risus quis quam euismod quis rhoncus dolor commodo. Sed nec massa eget orci accumsan accumsan vitae id est. Integer vehicula, erat et semper adipiscing, ante tortor gravida orci, egestas iaculis metus dolor nec turpis. Praesent cursus augue lacus, eget eleifend est. Donec tempus neque vitae mauris semper in faucibus nisl dictum. Donec auctor odio non tellus vestibulum vestibulum eu a dui. Nullam rutrum, orci non laoreet scelerisque, orci lacus lobortis dui, ac adipiscing elit lacus vel purus. Nullam vulputate convallis viverra. Vivamus in eros et odio semper malesuada. Sed placerat, est non pharetra gravida, felis augue molestie diam, vel venenatis mauris odio et velit. Etiam id augue elit, volutpat semper arcu. Cras sed nisl purus. Phasellus vitae mattis nulla.
+			</p>
+			<p>
+				Sed aliquet purus purus, sit amet rutrum urna. Quisque id enim felis. Sed volutpat dignissim lacinia. Phasellus nec augue a leo aliquet congue commodo at odio. Vivamus ac velit massa, eu vulputate ante. Fusce non orci eu metus lobortis vulputate vel quis elit. In pellentesque vulputate lacus, id euismod nisi mollis facilisis. Vivamus felis erat, rhoncus non auctor ac, ultrices eu lectus. Pellentesque non dui lacus. Aliquam a enim nulla. Vivamus bibendum auctor leo, non malesuada elit sollicitudin vitae. Integer et enim justo, sit amet semper augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc semper volutpat erat ut sodales.
+			</p>
+		</div>
+	</div>
+	
+	<h2>overflow-x : auto</h2>
+	<div class="demo">
+		<div class="container ofxa">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vulputate feugiat commodo. Suspendisse eget erat sapien. Nullam a orci tortor, eget auctor lorem. Nunc dictum rutrum nulla nec bibendum. Maecenas ut eros sem. Quisque lobortis magna vitae ante dapibus convallis. Nam posuere tortor mi, ac gravida mauris. Sed ac orci velit. Curabitur eget arcu eget metus eleifend dignissim. Aenean ullamcorper vulputate tortor, non volutpat neque ullamcorper vel.
+			</p>
+			<p>
+				Vivamus sed ipsum ipsum, a consectetur massa. Sed rutrum risus quis quam euismod quis rhoncus dolor commodo. Sed nec massa eget orci accumsan accumsan vitae id est. Integer vehicula, erat et semper adipiscing, ante tortor gravida orci, egestas iaculis metus dolor nec turpis. Praesent cursus augue lacus, eget eleifend est. Donec tempus neque vitae mauris semper in faucibus nisl dictum. Donec auctor odio non tellus vestibulum vestibulum eu a dui. Nullam rutrum, orci non laoreet scelerisque, orci lacus lobortis dui, ac adipiscing elit lacus vel purus. Nullam vulputate convallis viverra. Vivamus in eros et odio semper malesuada. Sed placerat, est non pharetra gravida, felis augue molestie diam, vel venenatis mauris odio et velit. Etiam id augue elit, volutpat semper arcu. Cras sed nisl purus. Phasellus vitae mattis nulla.
+			</p>
+			<p>
+				Sed aliquet purus purus, sit amet rutrum urna. Quisque id enim felis. Sed volutpat dignissim lacinia. Phasellus nec augue a leo aliquet congue commodo at odio. Vivamus ac velit massa, eu vulputate ante. Fusce non orci eu metus lobortis vulputate vel quis elit. In pellentesque vulputate lacus, id euismod nisi mollis facilisis. Vivamus felis erat, rhoncus non auctor ac, ultrices eu lectus. Pellentesque non dui lacus. Aliquam a enim nulla. Vivamus bibendum auctor leo, non malesuada elit sollicitudin vitae. Integer et enim justo, sit amet semper augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc semper volutpat erat ut sodales.
+			</p>
+		</div>
+	</div>
+	
+	<h2>overflow-y : scroll</h2>
+	<div class="demo">
+		<p>
+			http://www.css3.com/css-overflow-x/ <br/>
+			"Content is clipped as necessary, but a vertical scrollbar is made available where necessary to view the additional, non-visible content. If the Visual media in use is static (such as Print) the content should be treated as if the value was ҶisibleҮ"
+		</p>
+		<div class="container ofys">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vulputate feugiat commodo. Suspendisse eget erat sapien. Nullam a orci tortor, eget auctor lorem. Nunc dictum rutrum nulla nec bibendum. Maecenas ut eros sem. Quisque lobortis magna vitae ante dapibus convallis. Nam posuere tortor mi, ac gravida mauris. Sed ac orci velit. Curabitur eget arcu eget metus eleifend dignissim. Aenean ullamcorper vulputate tortor, non volutpat neque ullamcorper vel.
+			</p>
+			<p>
+				Vivamus sed ipsum ipsum, a consectetur massa. Sed rutrum risus quis quam euismod quis rhoncus dolor commodo. Sed nec massa eget orci accumsan accumsan vitae id est. Integer vehicula, erat et semper adipiscing, ante tortor gravida orci, egestas iaculis metus dolor nec turpis. Praesent cursus augue lacus, eget eleifend est. Donec tempus neque vitae mauris semper in faucibus nisl dictum. Donec auctor odio non tellus vestibulum vestibulum eu a dui. Nullam rutrum, orci non laoreet scelerisque, orci lacus lobortis dui, ac adipiscing elit lacus vel purus. Nullam vulputate convallis viverra. Vivamus in eros et odio semper malesuada. Sed placerat, est non pharetra gravida, felis augue molestie diam, vel venenatis mauris odio et velit. Etiam id augue elit, volutpat semper arcu. Cras sed nisl purus. Phasellus vitae mattis nulla.
+			</p>
+			<p>
+				Sed aliquet purus purus, sit amet rutrum urna. Quisque id enim felis. Sed volutpat dignissim lacinia. Phasellus nec augue a leo aliquet congue commodo at odio. Vivamus ac velit massa, eu vulputate ante. Fusce non orci eu metus lobortis vulputate vel quis elit. In pellentesque vulputate lacus, id euismod nisi mollis facilisis. Vivamus felis erat, rhoncus non auctor ac, ultrices eu lectus. Pellentesque non dui lacus. Aliquam a enim nulla. Vivamus bibendum auctor leo, non malesuada elit sollicitudin vitae. Integer et enim justo, sit amet semper augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc semper volutpat erat ut sodales.
+			</p>
+		</div>
+	</div>
+	
+	<h2>overflow-x : scroll</h2>
+	<div class="demo">
+		<p>
+			http://www.css3.com/css-overflow-x/ <br/>
+			"Content is clipped as necessary, but a vertical scrollbar is made available where necessary to view the additional, non-visible content. If the Visual media in use is static (such as Print) the content should be treated as if the value was ҶisibleҮ"
+		</p>
+		<div class="container ofxs">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vulputate feugiat commodo. Suspendisse eget erat sapien. Nullam a orci tortor, eget auctor lorem. Nunc dictum rutrum nulla nec bibendum. Maecenas ut eros sem. Quisque lobortis magna vitae ante dapibus convallis. Nam posuere tortor mi, ac gravida mauris. Sed ac orci velit. Curabitur eget arcu eget metus eleifend dignissim. Aenean ullamcorper vulputate tortor, non volutpat neque ullamcorper vel.
+			</p>
+			<p>
+				Vivamus sed ipsum ipsum, a consectetur massa. Sed rutrum risus quis quam euismod quis rhoncus dolor commodo. Sed nec massa eget orci accumsan accumsan vitae id est. Integer vehicula, erat et semper adipiscing, ante tortor gravida orci, egestas iaculis metus dolor nec turpis. Praesent cursus augue lacus, eget eleifend est. Donec tempus neque vitae mauris semper in faucibus nisl dictum. Donec auctor odio non tellus vestibulum vestibulum eu a dui. Nullam rutrum, orci non laoreet scelerisque, orci lacus lobortis dui, ac adipiscing elit lacus vel purus. Nullam vulputate convallis viverra. Vivamus in eros et odio semper malesuada. Sed placerat, est non pharetra gravida, felis augue molestie diam, vel venenatis mauris odio et velit. Etiam id augue elit, volutpat semper arcu. Cras sed nisl purus. Phasellus vitae mattis nulla.
+			</p>
+			<p>
+				Sed aliquet purus purus, sit amet rutrum urna. Quisque id enim felis. Sed volutpat dignissim lacinia. Phasellus nec augue a leo aliquet congue commodo at odio. Vivamus ac velit massa, eu vulputate ante. Fusce non orci eu metus lobortis vulputate vel quis elit. In pellentesque vulputate lacus, id euismod nisi mollis facilisis. Vivamus felis erat, rhoncus non auctor ac, ultrices eu lectus. Pellentesque non dui lacus. Aliquam a enim nulla. Vivamus bibendum auctor leo, non malesuada elit sollicitudin vitae. Integer et enim justo, sit amet semper augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc semper volutpat erat ut sodales.
+			</p>
+		</div>
+	</div>
+
+	<h2>overflow-y : hidden</h2>
+	<div class="demo">
+		<p>
+			http://www.css3.com/css-overflow-x/ <br/>
+			"Content is clipped and content outside of the elementӳ box is not visible. The size of the clipping region is defined by the ңlipҠpropert"
+		</p>
+		<div class="container ofyh">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vulputate feugiat commodo. Suspendisse eget erat sapien. Nullam a orci tortor, eget auctor lorem. Nunc dictum rutrum nulla nec bibendum. Maecenas ut eros sem. Quisque lobortis magna vitae ante dapibus convallis. Nam posuere tortor mi, ac gravida mauris. Sed ac orci velit. Curabitur eget arcu eget metus eleifend dignissim. Aenean ullamcorper vulputate tortor, non volutpat neque ullamcorper vel.
+			</p>
+			<p>
+				Vivamus sed ipsum ipsum, a consectetur massa. Sed rutrum risus quis quam euismod quis rhoncus dolor commodo. Sed nec massa eget orci accumsan accumsan vitae id est. Integer vehicula, erat et semper adipiscing, ante tortor gravida orci, egestas iaculis metus dolor nec turpis. Praesent cursus augue lacus, eget eleifend est. Donec tempus neque vitae mauris semper in faucibus nisl dictum. Donec auctor odio non tellus vestibulum vestibulum eu a dui. Nullam rutrum, orci non laoreet scelerisque, orci lacus lobortis dui, ac adipiscing elit lacus vel purus. Nullam vulputate convallis viverra. Vivamus in eros et odio semper malesuada. Sed placerat, est non pharetra gravida, felis augue molestie diam, vel venenatis mauris odio et velit. Etiam id augue elit, volutpat semper arcu. Cras sed nisl purus. Phasellus vitae mattis nulla.
+			</p>
+			<p>
+				Sed aliquet purus purus, sit amet rutrum urna. Quisque id enim felis. Sed volutpat dignissim lacinia. Phasellus nec augue a leo aliquet congue commodo at odio. Vivamus ac velit massa, eu vulputate ante. Fusce non orci eu metus lobortis vulputate vel quis elit. In pellentesque vulputate lacus, id euismod nisi mollis facilisis. Vivamus felis erat, rhoncus non auctor ac, ultrices eu lectus. Pellentesque non dui lacus. Aliquam a enim nulla. Vivamus bibendum auctor leo, non malesuada elit sollicitudin vitae. Integer et enim justo, sit amet semper augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc semper volutpat erat ut sodales.
+			</p>
+		</div>
+	</div>
+
+	<h2>overflow-x : hidden</h2>
+	<div class="demo">
+		<p>
+			http://www.css3.com/css-overflow-x/ <br/>
+			"Content is clipped and content outside of the elementӳ box is not visible. The size of the clipping region is defined by the ңlipҠpropert"
+		</p>
+		<div class="container ofxh">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vulputate feugiat commodo. Suspendisse eget erat sapien. Nullam a orci tortor, eget auctor lorem. Nunc dictum rutrum nulla nec bibendum. Maecenas ut eros sem. Quisque lobortis magna vitae ante dapibus convallis. Nam posuere tortor mi, ac gravida mauris. Sed ac orci velit. Curabitur eget arcu eget metus eleifend dignissim. Aenean ullamcorper vulputate tortor, non volutpat neque ullamcorper vel.
+			</p>
+			<p>
+				Vivamus sed ipsum ipsum, a consectetur massa. Sed rutrum risus quis quam euismod quis rhoncus dolor commodo. Sed nec massa eget orci accumsan accumsan vitae id est. Integer vehicula, erat et semper adipiscing, ante tortor gravida orci, egestas iaculis metus dolor nec turpis. Praesent cursus augue lacus, eget eleifend est. Donec tempus neque vitae mauris semper in faucibus nisl dictum. Donec auctor odio non tellus vestibulum vestibulum eu a dui. Nullam rutrum, orci non laoreet scelerisque, orci lacus lobortis dui, ac adipiscing elit lacus vel purus. Nullam vulputate convallis viverra. Vivamus in eros et odio semper malesuada. Sed placerat, est non pharetra gravida, felis augue molestie diam, vel venenatis mauris odio et velit. Etiam id augue elit, volutpat semper arcu. Cras sed nisl purus. Phasellus vitae mattis nulla.
+			</p>
+			<p>
+				Sed aliquet purus purus, sit amet rutrum urna. Quisque id enim felis. Sed volutpat dignissim lacinia. Phasellus nec augue a leo aliquet congue commodo at odio. Vivamus ac velit massa, eu vulputate ante. Fusce non orci eu metus lobortis vulputate vel quis elit. In pellentesque vulputate lacus, id euismod nisi mollis facilisis. Vivamus felis erat, rhoncus non auctor ac, ultrices eu lectus. Pellentesque non dui lacus. Aliquam a enim nulla. Vivamus bibendum auctor leo, non malesuada elit sollicitudin vitae. Integer et enim justo, sit amet semper augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc semper volutpat erat ut sodales.
+			</p>
+		</div>
+	</div>
+
+</body>
+</html>
