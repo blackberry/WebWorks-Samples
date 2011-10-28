@@ -305,3 +305,10 @@ background: linear-gradient(top, #cfe7fa 0%,#6393c1 100%); /* W3C */
 {
 list-style: none;
 }
+
+.tdmid {
+	vertical-align: middle;
+}
+.tdtop {
+	vertical-align: top;
+}
