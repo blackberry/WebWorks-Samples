@@ -23,6 +23,14 @@
 	<script src="../../js/standard.js" type="text/javascript" ></script>
 	
 	<title> HTML5 Input types </title>
+	<style type="text/css">
+		td {
+			padding: 5px;
+		}
+		th {
+			width: 50px;
+		}
+	</style>
 	
 </head>
 <body>
@@ -43,15 +51,26 @@
 		<p>
 			Using a BlackBerry Smartphone or PlayBook, apply focus to the following fields to observe which variant of the virtual keyboard is invoked.
 		</p>
-		<table  cellspacing="0" cellpadding="5" border="0">
+		<table>
+			<tr>
+				<th>text:</th>
+				<td><input type="text" id="txtText" name="txtText" title="Any characters allowed" value="Hello World"/></td>
+				<td>&lt;input type="text"/&gt; </td>
+			</tr>
+			<tr>
+				<th>password:</th>
+				<td><input type="password" id="txtPassword" name="txtPassword" title="Only numeric characters allowed" value=""/></td>
+				<td>&lt;input type="password"/&gt; </td>
+			</tr>
+			
 			<tr>
 				<th>tel:</th>
-				<td><input type="tel" id="txtTel" name="txtTel" title="Only numeric characters allowed" value=""/></td>
+				<td><input type="tel" id="txtTel" name="txtTel" title="Only numeric characters allowed" value="555 1234"/></td>
 				<td>&lt;input type="tel"/&gt; </td>
 			</tr>
 			<tr>
 				<th>url:</th>
-				<td><input type="url" id="txtUrl" value=""/></td>
+				<td><input type="url" id="txtUrl" value="http://devblog.blackberry.com"/></td>
 				<td>&lt;input type="url"/&gt; </td>
 			</tr>
 			<tr>
@@ -61,41 +80,41 @@
 			</tr>
 			<tr>
 				<th>number:</th> 
-				<td><input type="number" id="txtNumber" min="0" max="50" step="1" value=""/></td>
+				<td><input type="number" id="txtNumber" min="0" max="50" step="1" value="5"/></td>
 				<td>&lt;input type="number"/&gt; </td>
 			</tr>
 			<tr>
 				<th>range:</th>
-				<td><input type="range" id="txtRange" min="-100" max="100" value="0" step="10" value=""/></td>
+				<td><input type="range" id="txtRange" min="-100" max="100" value="0" step="10"/></td>
 				<td>&lt;input type="range"/&gt; </td>
 			</tr>
 			<tr>
 				<th>date:</th>
-				<td><input type="date" id="txtDate"  min="1900-01-01" max="1999-12-31" value=""/> </td>
+				<td><input type="date" id="txtDate"  min="1900-01-01" max="1999-12-31" value="1979-01-23"/> </td>
 				<td>&lt;input type="date"/&gt; </td>
 			</tr>
 			<tr>
 				<th>time:</th>
-				<td><input type="time" id="txtTime" value=""/></td>
+				<td><input type="time" id="txtTime" value="13:31"/></td>
 				<td>&lt;input type="time"/&gt; </td>
 			</tr>
 			<tr>
 				<th>datetime:</th>
-				<td><input type="datetime" id="txtDateTime" value="" min="2010-11-02" /></td>
+				<td><input type="datetime" id="txtDateTime" value="1979-01-23T04:30:00Z" min="1969-08-15T12:00:00Z" /></td>
 				<td>&lt;input type="datetime"/&gt; </td>
 			</tr>
 			<tr>
 				<th>month:</th>
-				<td><input type="month" id="txtMonth" value=""/></td>
+				<td><input type="month" id="txtMonth" value="1976-06"/></td>
 				<td>&lt;input type="month"/&gt; </td>
 			</tr>
 			<tr>
 				<th>datetime-local:</th>
-				<td><input type="datetime-local" id="txtDateTimeLocal" min="2010-01-01" max="2015-12-31" step="86400" value=""/></td>
+				<td><input type="datetime-local" id="txtDateTimeLocal" min="2010-01-01T12:00:00" max="2015-12-31T12:00:00" step="86400" value="2011-10-28T13:33:00"/></td>
 				<td>&lt;input type="datetime-local"/&gt; </td>
 			</tr>
 			<tr>
-				<th width="50">search:</th>
+				<th>search:</th>
 				<td><input type="search" id="txtSearch" value=""/></td>
 				<td>&lt;input type="search"/&gt; </td>
 			</tr>
