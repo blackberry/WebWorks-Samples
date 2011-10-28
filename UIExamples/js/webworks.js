@@ -413,7 +413,7 @@ ww = {
 if (navigator.appVersion.indexOf('Ripple') >= 0) {
 	setTimeout("ww.doLoad()", 200);	
 	
-} else {}
+} else {
 	addEventListener("DOMContentLoaded", ww.doLoad, false);
 }
 
