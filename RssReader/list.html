@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
+		<meta name="x-blackberry-defaultHoverEffect" content="false" />
+		<title>RSS Reader</title>
+		<link type="text/css" rel="stylesheet" href="css/common.css" />
+		<link type="text/css" rel="stylesheet" href="css/list.css" />
+		<script type="text/javascript" src="javascript/html5_init.js" id="html5_init"></script>
+		<script type="text/javascript" src="javascript/common.js"></script>
+		<script type="text/javascript" src="javascript/list.js"></script>
+	</head>
+	<body onload="openDB(initListScreen);">
+		<div class="header"><div class="title">RSS Reader</div></div>
+		<div class='templates'>
+			<div class='channel' id='channelTemplate'>
+				<div class='channelHeader' x-blackberry-focusable='true' onclick='handleChannelClick(this);' onmouseover='handleChannelSelect(this);'>
+					<img class='indicator' id='channelTemplate_img' src='images/closed_arrow.png' alt='' />
+					<div class='channelTitle'></div>
+				</div>
+			</div>
+			<div class='channelBody' style='display:none' id='channelTemplate_body'>
+		        <div class="date" id="dateTemplate"><p></p></div>
+		        <div class="listItem" id="articleTemplate" x-blackberry-focusable="true" onclick="handleClick(this.value)" onmouseover="clearSelected();">
+		            <img src="images/RSS_Icon_EPR_UF.jpg" alt="" />
+		            <div class="description"><span></span></div>
+		        </div>
+			</div>
+		</div>
+		<div class="body" id="feeds"></div>
+	</body>
+</html>

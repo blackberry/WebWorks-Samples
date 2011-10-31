@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
+		<title>RSS Details</title>
+		<link type="text/css" rel="stylesheet" href="css/common.css" />
+		<link type="text/css" rel="stylesheet" href="css/details.css" />
+		<script type="text/javascript" src="javascript/html5_init.js" id="html5_init"></script>
+		<script type="text/javascript" src="javascript/common.js"></script>
+		<script type="text/javascript" src="javascript/details.js"></script>
+	</head>
+	<body onload="openDB(initDetailsPage);">
+		<div class="header" id="header"><span id="title" class="title"></span></div>
+		<div class="body">
+			<div id="feed">Loading ...</div>
+			<br/>
+			<table cellspacing=5 class="navFooter" width="100%">
+				<tr>
+					<td id="prevButton" x-blackberry-focusable="true" onclick="goToPrev();" width="49%">PREV</td>
+					<td id="nextButton" x-blackberry-focusable="true" onclick="goToNext();" width="49%">NEXT</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

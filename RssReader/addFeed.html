@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
+		<title>Add an RSS feed</title>
+		<link type="text/css" rel="stylesheet" href="css/common.css" />
+		<link type="text/css" rel="stylesheet" href="css/addFeed.css" />
+		<script type="text/javascript" src="javascript/html5_init.js" id="html5_init"></script>
+		<script type="text/javascript" src="javascript/common.js"></script>
+		<script type="text/javascript" src="javascript/addFeed.js"></script>
+	</head>
+	<body>
+		<div class="header"><div class="title">Manage Feeds - Add Feed</div></div>
+		<div class="wrapper">
+			<br/>
+			<div id="progressBar"><div id="progress"></div></div>
+			<div class="instruction"><p>Enter a URL to an RSS feed to add:</p></div>
+			<span>http:// </span><input id="url" type="text" name="url" autocomplete="off" />
+			<div class="buttonDiv">
+				<a id="addButton" class="button" style="float:left;" x-blackberry-focusable="true" onclick="addFeed(this);"><span>Add</span></a>
+			</div>
+		</div>
+		<br/>
+		<br/>
+		<br/>
+		<div class = "wrapper">
+			<div class="instruction"><p>Enter keywords to search for feeds:</p></div>
+			<input id="keywords" type="text" name="keywords" autocomplete="on" />
+			<div class="buttonDiv">
+				<a id="searchButton" class="button" style="float:left;" x-blackberry-focusable="true" onclick="searchFeed(this);"><span>Search</span></a>
+			</div>
+		</div>
+	</body>
+</html>

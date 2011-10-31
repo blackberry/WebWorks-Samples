@@ -1,0 +1,105 @@
+@CHARSET "ISO-8859-1";
+
+body, html {
+	padding:0;
+	margin:0;
+	font-family: BBAlpha Sans;
+	font-size: 14pt;
+	overflow:visible;
+}
+
+body.manageSettings {
+	color: black;
+	background-image: url('../images/settings/stripes.png');
+	overflow:hidden;
+}
+
+.main-panel 
+{
+	margin: 8px;
+	position:relative;
+}
+
+.label 
+{
+	position:relative;
+	float:left;
+}
+
+.rightAlign 
+{
+	display:inline; 
+	float:right;
+}
+
+a.dropDownButton {
+    background: transparent url('../images/settings/dropDownRight.png') no-repeat scroll top right;
+    color: White;
+    display: block;
+    float: left;
+    height: 39px;
+    margin-right: 0px;
+    padding-right: 23px;  
+    text-decoration: none;
+    
+}
+
+a.dropDownButton span {
+    background: transparent url('../images/settings/button.png') no-repeat;
+    display: block;
+    line-height: 39px;
+    padding: 0px 0px 0px 10px;
+}
+
+.buttonPanel
+{
+	margin: 8px;
+	margin-bottom: 0px;
+	text-align:center;
+	position:relative;	
+}
+
+a.buttonLeft {
+    background: transparent url('../images/settings/pillButtonRight.png') no-repeat scroll top right;
+    color: White;
+    display: block;
+    float: left;
+    height: 39px;
+    margin-right: 0px;
+    padding-right: 10px;  
+    text-decoration: none;
+    width: 45%;
+}
+
+a.buttonLeft span {
+    background: transparent url('../images/settings/button.png') no-repeat;
+    display: block;
+    line-height: 39px;
+    padding: 0px 0px 0px 10px;
+    text-align:center;
+}
+
+a.buttonRight {
+    background: transparent url('../images/settings/btnRight.png') no-repeat scroll top right;
+    color: White;
+    display: block;
+    float: left;
+    height: 39px;
+    margin-right: 0px;
+    padding-right: 10px;  
+    text-decoration: none;
+    width: 45%;
+}
+
+a.buttonRight span {
+    background: transparent url('../images/settings/button.png') no-repeat;
+    background-position: -10px 0px; 
+    display: block;
+    line-height: 39px;
+    padding: 0px 0px 0px 10px;
+    text-align:center;
+}
+
+
+
+

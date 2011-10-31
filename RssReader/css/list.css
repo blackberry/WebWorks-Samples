@@ -1,0 +1,114 @@
+@CHARSET "ISO-8859-1";
+
+div.channelHeader {
+	background-image: url('./../images/RSS_BW_Gradient.jpg');
+	background-repeat: repeat-x;
+	width: 100%
+}
+
+.channelHeader img {
+	width: 36px;
+	height: 36px;
+	float: left;
+}
+
+div.channelTitle {
+	white-space: nowrap;
+	text-align: center;
+	font-size: 14pt;
+	line-height: 36px;
+	height: 36px;
+	width: 100%;
+}
+
+div.channelBody {
+	background-color: white;
+	color: black;
+}
+
+div.body {
+	overflow: hidden;
+}
+
+.unread {
+	font-weight: bold;
+}
+
+body, html {
+	padding:0;
+	margin:0;
+	font-family: BBAlpha Sans;
+	font-size: 13pt;
+	overflow:visible;
+}
+
+.channelBody
+{
+	margin:0px;
+	padding:0px;
+}
+
+.date
+{
+	background-image: url('../images/dateBackground.png');
+	height:27px;
+	vertical-align:middle;
+}
+
+.date:hover
+{
+	background-color:#2175F7;
+	padding-left: 1px;
+	margin-left: -1px;
+	background-image:none;
+}
+
+.date:hover p
+{
+	color:White;
+}
+
+.date p
+{
+	color: Black;
+	line-height:27px;
+	text-align:center;
+	margin:0px;
+	padding:0px;
+}
+
+.listItem
+{
+	border-bottom: solid 1px Silver;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+}
+
+.listItem:hover
+{
+	background-color:#2175F7;
+}
+
+.listItem img
+{
+	float:left;
+	left: 2px;
+}
+
+.description
+{
+	margin-left: 8px;
+	color:#7B7D7B;
+	font-size: 12pt;
+	overflow:hidden;
+	height: 53px;
+}
+
+.listItem:hover .description
+{
+	color:White;
+}
+
+
+

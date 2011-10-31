@@ -1,0 +1,33 @@
+@CHARSET "ISO-8859-1";
+
+.errorMsg {
+	color: red;
+	font-weight: bold;
+}
+
+#prevButton, #nextButton {
+	background-image: url('./../images/RSS_BW_Gradient.jpg');
+	background-repeat: repeat-x;
+	vertical-align: middle;
+	text-align: center;
+	color: white;
+	height: 36px;
+	width: 50%;
+}
+
+div.body {
+	color: black;
+	background-color: white;
+}
+
+span.title {
+	background-image: url('../images/RSS_BW_Gradient.jpg');
+	background-repeat: repeat-x;
+	vertical-align: middle;
+	text-align: center;
+	white-space: nowrap;
+	font-size: 14pt;
+	color: white;
+	line-height: 36px;
+	height: 36px;
+}
