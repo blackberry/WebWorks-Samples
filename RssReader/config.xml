@@ -27,7 +27,7 @@
   <feature id="blackberry.invoke.MessageArguments" required="true" version="1.0.0.0"/>
   <feature id="blackberry.app.event" required="true" version="1.0.0.0"/>
   <feature id="blackberry.system.event" required="true" version="1.0.0.0"/>
-  <feature id="sample.ui" required="false" version="1.0.0"/>
+  <feature id="blackberry.ui.Spinner" required="false" version="1.0.0"/>
   <feature id="keyInvoker" required="false" version="1.0.0"/>
   <access subdomains="true" uri="*"/>
   <icon rim:hover="false" src="images/RSS_Icon_EPR_UF.jpg"/>

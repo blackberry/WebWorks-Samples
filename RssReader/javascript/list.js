@@ -265,26 +265,39 @@ function filter() {
  * feedList: Feed[] - The current set of feeds.
  */
 function processFilter(/*Feed[] feedList*/) {
-	var feedNames = new Array();
+	var feedNames = [],
+        rowHeight,
+        visibleRows,
+        options;
+        
 	for (var j=0; j<feedList.length; j++) {
 		feedNames[j] = feedList[j].name;
 	}
 
 	// Configure our spinner
-	sample.ui.spinner.title = "Which feed would you like to view?";
-	if (screen.height < 480) {
-		sample.ui.spinner.rowHeight = 60;
-		sample.ui.spinner.visibleRows = 3;
+    if (screen.height < 480) {
+		rowHeight = 60;
+		visibleRows = 3;
 	} else {
-		sample.ui.spinner.rowHeight = 75;
-		sample.ui.spinner.visibleRows = 4;
+		rowHeight = 75;
+		visibleRows = 4;
 	}
-
-	// Open the spin dialog
-	var choice = sample.ui.spinner.open(feedNames, 0);
-	if (choice != undefined) {
-		useFilter(feedList[choice].id);
-	}
+    options = {
+        'title' : "Which feed would you like to view?",
+        'rowHeight': rowHeight,
+        'visibleRows': visibleRows,
+        'selectedIndex': defaultChoice,
+        'items' : feedNames
+    };
+    
+    // Open the spin dialog
+    blackberry.ui.Spinner.open(options, 
+        function (choice) {
+            if (choice != undefined) {
+                useFilter(feedList[choice].id);
+            }
+        }
+    );
 }
 
 /*

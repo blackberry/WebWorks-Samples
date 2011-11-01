@@ -62,16 +62,24 @@ function fillElementVariables() {
  * a spinner for the user to select a feed
  */
 function verifyRss() {
+{
+	var rowHeight,
+        visibleRows,
+        options,
+        checkNumber,
+        channelElements,
+        feedNames = [];
+
 	if (this.readyState != 4)	
 		return; // No data ready to be processed.
 	try {	
-		var checkNumber = ++checkedAmount;	// One less feed to check				
+		checkNumber = ++checkedAmount;	// One less feed to check				
 		// Check for errors.
 		if (this.status == 200) {			
 			// Make sure we got an XML response.
 			if (this.responseXML) {				
 				// Check that the XML is a feed
-				var channelElements = this.responseXML.getElementsByTagName("channel");				
+				channelElements = this.responseXML.getElementsByTagName("channel");				
 				if (channelElements.length > 0) {					
 					// Add to feed list
 					listOfFeeds[listOfFeeds.length] = {title: this.title, link: this.url};
@@ -85,27 +93,36 @@ function verifyRss() {
 				alert("Unable to find any Rss feeds for '" + keywordField.value +"'");
 				clearForm();
 			} else {
-				clearForm();
-				var feedNames = new Array();
+				clearForm();				
 				for (var j=0; j<listOfFeeds.length; j++) {
 					feedNames[j] = listOfFeeds[j].title;
 				}
 
-				// Configure our spinner
-				sample.ui.spinner.title = "Which feed would you like to add?";
-				if (screen.height < 480) {
-					sample.ui.spinner.rowHeight = 60;
-					sample.ui.spinner.visibleRows = 3;
-				} else {
-					sample.ui.spinner.rowHeight = 75;
-					sample.ui.spinner.visibleRows = 4;
-				}
+				// Configure our spinner                
+                if (screen.height < 480) {
+                    rowHeight = 60;
+                    visibleRows = 3;
+                } else {
+                    rowHeight = 75;
+                    visibleRows = 4;
+                }
+                options = {
+                    'title' : "Which feed would you like to add?",
+                    'rowHeight': rowHeight,
+                    'visibleRows': visibleRows,
+                    'selectedIndex': 0,
+                    'items' : feedNames
+                };
 
 				// Open the spin dialog
-				var choice = sample.ui.spinner.open(feedNames, 0);
-				if (choice != undefined) {
-					addNewFeed(listOfFeeds[choice].link);
-				}
+				blackberry.ui.Spinner.open(options,
+                    function (choice) {
+                        if (choice != undefined) {
+                            addNewFeed(listOfFeeds[choice].link);
+                        }
+                    }
+                );
+				
 			}
 		}
 	} catch(e) {

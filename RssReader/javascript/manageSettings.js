@@ -338,12 +338,19 @@ function setProfile(/*Object*/ args) {
  * (Menu->Settings->Refresh Rate)
  */
 function openRefreshRateDialog() {
-	try {
-		doSelect('btnRefresh');
-		var selectedValue = 0;
-		dirty = true;
+	var selectedValue = 0,
+        elementText,
+        arrRefreshRates = [],
+        rowHeight,
+        visibleRows,
+        options;
+    
+    try {
+		doSelect('btnRefresh');		
+		
+        dirty = true;
 
-		var elementText = document.getElementById("lblRefresh").innerHTML;
+		elementText = document.getElementById("lblRefresh").innerHTML;
 		if (elementText == "2 hours")
 			selectedValue = 0;
 		else if (elementText == "6 hours")
@@ -356,28 +363,38 @@ function openRefreshRateDialog() {
 			selectedValue = 0;
 
 		// Configure our spinner
-		sample.ui.spinner.title = "Select a refresh interval :";
-		if (screen.height < 480) {
-			sample.ui.spinner.rowHeight = 60;
-			sample.ui.spinner.visibleRows = 3;
-		} else {
-			sample.ui.spinner.rowHeight = 75;
-			sample.ui.spinner.visibleRows = 4;
-		}
-
-		var arrRefreshRates = new Array();
 		arrRefreshRates[0] = "2 hours";
 		arrRefreshRates[1] = "6 hours";
 		arrRefreshRates[2] = "12 hours";
 		arrRefreshRates[3] = "24 hours";
 
-		// Open the spin dialog
-		var refreshRateChoice = sample.ui.spinner.open(arrRefreshRates, selectedValue);
-		if (refreshRateChoice != undefined) {
-			document.getElementById("lblRefresh").innerHTML = arrRefreshRates[refreshRateChoice];
-		} else {
-			document.getElementById("lblRefresh").innerHTML = arrRefreshRates[selectedValue];
-		}
+        if (screen.height < 480) {
+            rowHeight = 60;
+            visibleRows = 3;
+        } else {
+            rowHeight = 75;
+            visibleRows = 4;
+        }
+        
+        options = {
+            'title' : "Select a refresh interval :",
+            'rowHeight': rowHeight,
+            'visibleRows': visibleRows,
+            'selectedIndex': selectedValue,
+            'items' : arrRefreshRates
+        };
+    
+        // Open the spin dialog
+        blackberry.ui.Spinner.open(options,
+            function (refreshRateChoice) {
+                if (refreshRateChoice != undefined) {
+                    document.getElementById("lblRefresh").innerHTML = arrRefreshRates[refreshRateChoice];
+                } else {
+                    document.getElementById("lblRefresh").innerHTML = arrRefreshRates[selectedValue];
+                }
+            }
+        );
+		
 	} catch (ex) {
 		errMessage = errMessage + "\n openRefreshRateDialog() : " + ex;
 	}
