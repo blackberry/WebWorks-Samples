@@ -10,17 +10,14 @@ The sample code for this application is Open Source under the [Apache 2.0 Licens
 * [BlackBerry WebWorks SDK for Tablet OS](http://us.blackberry.com/developers/tablet/webworks.jsp)
 * [BlackBerry WebWorks SDK for Smartphones](http://us.blackberry.com/developers/browserdev/widgetsdk.jsp)
 
-
 **Author(s)** 
 
 * [Adam Stanley](https://github.com/astanley)
-
 
 **Dependencies**
 
 1. See the **Resource_Copyright_Info.txt** file for a complete listing of copyright info, and references for images and resources used in this application.
 2. [json2.js](http://www.JSON.org/js.html) JSON parser is available under Public Domain.
-
 
 **Known Issues**
 
@@ -41,23 +38,19 @@ The sample code for this application is Open Source under the [Apache 2.0 Licens
 
 To build the kitchenSink sample application:
 
-1. Click on the **Downloads** button at the top right of this screen.
-2. Select **Download.zip** and save the downloaded file to your local machine.
-3. Create a new folder on your local machine named **kitchenSink** (e.g. **c:\webworks\kitchenSink**).
-4. Open the downloaded ZIP file from step 2 and **extract the contents from inside the top level folder** to your new **kitchenSink** folder.  This ensures that the necessary application assets, such as **config.xml**, are correctly located at the top level of the **kitchenSink** folder (e.g. **c:\webworks\kitchenSink\config.xml**).
-5. Using an achiving utility (e.g. WinZip or 7-zip), package the contents of your **c:\webworks\kitchenSink** folder into a ZIP archive named **kitchenSink.zip**.  This archive should have the application assets (not a folder containing the application assets) at its top level.
-6. Using the **[BlackBerry WebWorks SDK for Tablet OS](http://us.blackberry.com/developers/tablet/webworks.jsp)**, package the **kitchenSink.zip** archive into a BlackBerry Tablet OS application using the following command line: **bbwp c:\webworks\kitchenSink\kitchenSink.zip**
+1. Click on the **Downloads** tab above.
+2. Select **Download as zip** (Windows) or **Download as tar.gz** (Mac) and save the downloaded file to your local machine.
+3. Create a new folder on your local machine named **kitchenSink** e.g. **C:\Documents and Settings\<user>\WebWorks\kitchenSink** (Windows) or **~/WebWorks/kitchenSink** (Mac).
+4. Open the downloaded ZIP file from step 2 and extract the contents **from inside the zipped kitchenSink folder** to your local **kitchenSink** folder from step 3.  This ensures that the necessary application assets, such as **config.xml**, are correctly located at the top level of the **kitchenSink** folder (e.g. **~/WebWorks/kitchenSink/config.xml**).
+5. Using the [Ripple Mobile Emulator](http://developer.blackberry.com/html5/download) and either the **[BlackBerry WebWorks SDK for Smartphone](http://developer.blackberry.com/html5/download)** or the **[BlackBerry WebWorks SDK for Tablet OS](http://developer.blackberry.com/html5/download)**, package the contents of your local **kitchenSink** folder into a BlackBerry application.  Enter the project root settings field as the local folder created in step 3, and the archive name settings field as **kitchenSink**.
 
 
 ## More Info
 
-* [BlackBerry WebWorks SDK for Tablet OS](http://us.blackberry.com/developers/tablet/webworks.jsp) - Getting Started guides, SDK downloads, code signing keys.
-* [BlackBerry WebWorks SDK for Smartphones](http://us.blackberry.com/developers/browserdev/widgetsdk.jsp) - Getting Started guides, SDK downloads, code signing keys.
-* [BlackBerry WebWorks SDK for Tablets - Development Guides] (http://docs.blackberry.com/en/developers/deliverables/30182/)
-* [BlackBerry WebWorks SDK for Smartphones - Development Guides] (http://docs.blackberry.com/en/developers/subcategories/?userType=21&category=BlackBerry+WebWorks+for+Smartphones)
+* [BlackBerry HTML5 WebWorks](https://bdsc.webapps.blackberry.com/html5/) - Downloads, Getting Started guides, samples, code signing keys.
+* [BlackBerry WebWorks Development Guides] (https://bdsc.webapps.blackberry.com/html5/documentation)
 * [BlackBerry WebWorks Community Forums](http://supportforums.blackberry.com/t5/Web-and-WebWorks-Development/bd-p/browser_dev)
 * [BlackBerry Open Source WebWorks Contributions Forums](http://supportforums.blackberry.com/t5/BlackBerry-WebWorks/bd-p/ww_con)
-
 
 ## Contributing Changes
 

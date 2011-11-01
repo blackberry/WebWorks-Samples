@@ -30,16 +30,17 @@ The sample code for this application is Open Source under the [Apache 2.0 Licens
 
 To build the Aura sample application:
 
-1. Click on the **Downloads** button at the top right of this screen.
-2. Select **Download.zip** and save the downloaded file to your local machine.
-3. Create a new folder on your local machine named **Aura** (e.g. **c:\webworks\Aura**).
-4. Open the downloaded ZIP file from step 2 and **extract the contents from inside the top level folder** to your new **Aura** folder.  This ensures that the necessary application assets, such as **config.xml**, are correctly located at the top level of the **Aura** folder (e.g. **c:\webworks\Aura\config.xml**).
-5. Using an achiving utility (e.g. WinZip or 7-zip), package the contents of your **c:\webworks\Aura** folder into a ZIP archive named **Aura.zip**.  This archive should have the application assets (not a folder containing the application assets) at its top level.
-6. Using the **[BlackBerry WebWorks SDK for Tablet OS](http://us.blackberry.com/developers/tablet/webworks.jsp)**, package the **Aura.zip** archive into a BlackBerry Tablet OS application using the following command line: **bbwp c:\webworks\Aura\Aura.zip**
+1. Click on the **Downloads** tab above.
+2. Select **Download as zip** (Windows) or **Download as tar.gz** (Mac) and save the downloaded file to your local machine.
+3. Create a new folder on your local machine named **Aura** e.g. **C:\Documents and Settings\<user>\WebWorks\Aura** (Windows) or **~/WebWorks/Aura** (Mac).
+4. Open the downloaded ZIP file from step 2 and extract the contents **from inside the zipped Aura folder** to your local **Aura** folder from step 3.  This ensures that the necessary application assets, such as **config.xml**, are correctly located at the top level of the **Aura** folder (e.g. **~/WebWorks/Aura/config.xml**).
+5. Using the [Ripple Mobile Emulator](http://developer.blackberry.com/html5/download) and the **[BlackBerry WebWorks SDK for Tablet OS](http://developer.blackberry.com/html5/download)**, package the contents of your local **Aura** folder into a BlackBerry application.  Enter the project root settings field as the local folder created in step 3, and the archive name settings field as **Aura**.
+
 
 ## More Info
-* [BlackBerry WebWorks SDK for Tablet OS](http://us.blackberry.com/developers/tablet/webworks.jsp) - Getting Started guides, SDK downloads, code signing keys.
-* [BlackBerry WebWorks Development Guides] (http://docs.blackberry.com/en/developers/deliverables/30182/)
+
+* [BlackBerry HTML5 WebWorks](https://bdsc.webapps.blackberry.com/html5/) - Downloads, Getting Started guides, samples, code signing keys.
+* [BlackBerry WebWorks Development Guides] (https://bdsc.webapps.blackberry.com/html5/documentation)
 * [BlackBerry WebWorks Community Forums](http://supportforums.blackberry.com/t5/Web-and-WebWorks-Development/bd-p/browser_dev)
 * [BlackBerry Open Source WebWorks Contributions Forums](http://supportforums.blackberry.com/t5/BlackBerry-WebWorks/bd-p/ww_con)
 
