@@ -31,7 +31,7 @@
   <feature id="blackberry.invoke" required="true" version="1.0.0.0"/>
   <feature id="blackberry.message" required="true" version="1.0.0.0"/>
   <feature id="blackberry.invoke.BrowserArguments" required="true" version="1.0.0.0"/>
-  <feature id="sample.ui" required="false" version="1.0.0"/>
+  <feature id="blackberry.ui.Spinner" required="false" version="1.0.0"/>
   <access subdomains="true" uri="*"/>
   <access subdomains="true" uri="http://code.google.com"/>
   <icon rim:hover="false" src="images/LBAI53_Sunny.png"/>

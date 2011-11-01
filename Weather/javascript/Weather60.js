@@ -1744,12 +1744,16 @@ function openRefreshRateDialog() {
 		arrRefreshRates[3] = "24 hours";
 
 		// Open the spin dialog
-		var refreshRateChoice = showSpinnerDialog("Select a refresh interval :", arrRefreshRates, selectedValue);
-		if (refreshRateChoice != undefined) {
-			document.getElementById("selectedRefreshRate").innerHTML = arrRefreshRates[refreshRateChoice];
-		} else {
-			document.getElementById("selectedRefreshRate").innerHTML = arrRefreshRates[selectedValue];
-		}
+        showSpinnerDialog("Select a refresh interval :", arrRefreshRates, selectedValue, 
+            function (refreshRateChoice) {
+                if (refreshRateChoice != undefined) {
+                    document.getElementById("selectedRefreshRate").innerHTML = arrRefreshRates[refreshRateChoice];
+                } else {
+                    document.getElementById("selectedRefreshRate").innerHTML = arrRefreshRates[selectedValue];
+                }
+            }
+        );
+		
 	} catch (ex) {
 		errMessage = errMessage + "\n openRefreshRateDialog() : " + ex;
 	}
@@ -2354,7 +2358,7 @@ function requestCityInfo() {
 /*
  * Create and Display a spinner for selecting a city
  */
-function selectACityFromGoogle(cities) {
+function selectACityFromGoogle(cities, callback) {
 	var cityResults = new Array();
 	var cityTmpResults = new Array();
 	for (var i = 0; i < cities.length; i++) {
@@ -2366,25 +2370,28 @@ function selectACityFromGoogle(cities) {
 		cityResults[i][2] = cities[i].getElementsByTagName("location")[0].childNodes[3].childNodes[0].nodeValue;
 	}
 
-	// Open the spin dialog
-	var cityIndex = showSpinnerDialog("Select A City :", cityTmpResults, 0);
+	// Open the spin dialog	
+    showSpinnerDialog("Select A City :", cityTmpResults, 0, 
+        function (cityIndex) {
+            var cityData = { latitude:0, longitude:0, name:'' };
 
-	var cityData = { latitude:0, longitude:0, name:'' };
-
-	if (cityIndex != undefined) {
-		cityData.name = cityResults[cityIndex][0];
-		cityData.latitude = cityResults[cityIndex][1];
-		cityData.longitude = cityResults[cityIndex][2];
-	} else {
-		cityData = null;
-	}
-	return cityData;
+            if (cityIndex != undefined) {
+                cityData.name = cityResults[cityIndex][0];
+                cityData.latitude = cityResults[cityIndex][1];
+                cityData.longitude = cityResults[cityIndex][2];
+            } else {
+                cityData = null;
+            }
+            
+            callback(cityData);
+        }
+    );	
 }
 
 /*
  * Create and Display a spinner for selecting a city
  */
-function selectACityFromYahoo(cities) {
+function selectACityFromYahoo(cities, callback) {
 	var cityResults = new Array();
 	var cityTmpResults = new Array();
 	for (var i = 0; i < cities.length; i++) {
@@ -2404,18 +2411,23 @@ function selectACityFromYahoo(cities) {
 	}
 
 	// Open the spin dialog
-	var cityIndex = showSpinnerDialog("Select A City :", cityTmpResults, 0);
+	showSpinnerDialog("Select A City :", cityTmpResults, 0,
+        function (cityIndex) {
+            var cityData = { latitude:0, longitude:0, name:'' };
 
-	var cityData = { latitude:0, longitude:0, name:'' };
+            if (cityIndex != undefined) {
+                cityData.name = cityResults[cityIndex][0];
+                cityData.latitude = cityResults[cityIndex][1];
+                cityData.longitude = cityResults[cityIndex][2];
+            } else {
+                cityData = null;
+            }
+            
+            callback(cityData);
+        }
+    );
 
-	if (cityIndex != undefined) {
-		cityData.name = cityResults[cityIndex][0];
-		cityData.latitude = cityResults[cityIndex][1];
-		cityData.longitude = cityResults[cityIndex][2];
-	} else {
-		cityData = null;
-	}
-	return cityData;
+	
 }
 
 /*
@@ -2550,13 +2562,7 @@ function ProcessDataFromYahoo(locationXML)
 
 		var results = locationXML.getElementsByTagName("Result");
 		if (results.length > 1) {
-			cityData = selectACityFromYahoo(results);
-			// If user didn't want one of the cities from the list then end the request
-			if(!cityData) {
-				handleMultipleRequest = true;
-				clearProgressBar();
-				return;
-			}
+			selectACityFromYahoo(results, preAddCityYahoo);			
 		} else {
 			cityData.latitude = locationXML.getElementsByTagName("latitude")[0].childNodes[0].nodeValue;
 			cityData.longitude = locationXML.getElementsByTagName("longitude")[0].childNodes[0].nodeValue;
@@ -2568,18 +2574,9 @@ function ProcessDataFromYahoo(locationXML)
 				cityData.name = locationXML.getElementsByTagName("line4")[0].childNodes[0].nodeValue + ', ' + locationXML.getElementsByTagName("countrycode")[0].childNodes[0].nodeValue;
 			else if(locationXML.getElementsByTagName("line1")[0].childNodes.length > 0)
 				cityData.name = locationXML.getElementsByTagName("line1")[0].childNodes[0].nodeValue + ', ' + locationXML.getElementsByTagName("countrycode")[0].childNodes[0].nodeValue;
+            preAddCityYahoo(cityData);
 		}
-		if (cityData.name.substring(cityData.name.length - 4) != ", US") {
-			var msg = "Currently this widget supports U.S. cities only.";
-			alert(msg);
-			errMessage = errMessage + "\n miAddLocation() : " + msg ;
-			document.getElementById("txtcityzip").focus();
-			setFocusToElement('dummyDivAddLocation', 'txtcityzip');
-			showErrorsToDev();
-			handleMultipleRequest = true;
-			throw msg;
-		}
-		addSelectedCity(cityData);
+		
 	} else {
 		if (++currentTries < MAXTRIES) {
 			handleGoogleRequest = !handleGoogleRequest;
@@ -2592,6 +2589,28 @@ function ProcessDataFromYahoo(locationXML)
 			throw locationXML.getElementsByTagName("status")[0].childNodes[0].nodeValue;
 		}
 	}	
+}
+
+function preAddCityYahoo(cityData){
+    // If user didn't want one of the cities from the list then end the request
+    if(!cityData) {
+        handleMultipleRequest = true;
+        clearProgressBar();
+        return;
+    }
+    
+    if (cityData.name.substring(cityData.name.length - 4) != ", US") {
+        var msg = "Currently this widget supports U.S. cities only.";
+        alert(msg);
+        errMessage = errMessage + "\n miAddLocation() : " + msg ;
+        document.getElementById("txtcityzip").focus();
+        setFocusToElement('dummyDivAddLocation', 'txtcityzip');
+        showErrorsToDev();
+        handleMultipleRequest = true;
+        throw msg;
+    }
+    
+    addSelectedCity(cityData);
 }
 
 function ProcessDataFromGoogle(locationXML)
@@ -2605,30 +2624,15 @@ function ProcessDataFromGoogle(locationXML)
 
 		var results = locationXML.getElementsByTagName("result");
 		if (results.length > 1) {
-			cityData = selectACityFromGoogle(results);
-			// If user didn't want one of the cities from the list then end the request
-			if(!cityData) {
-				handleMultipleRequest = true;
-				clearProgressBar();
-				return;
-			}
+			selectACityFromGoogle(results, preAddCityGoogle);
 		} else {
 			var location = locationXML.getElementsByTagName("location")[0];
 			cityData.latitude = location.childNodes[1].childNodes[0].nodeValue;
 			cityData.longitude = location.childNodes[3].childNodes[0].nodeValue;
 			cityData.name = locationXML.getElementsByTagName("formatted_address")[0].childNodes[0].nodeValue;
+            preAddCityGoogle(cityData);
 		}
-		if (cityData.name.substring(cityData.name.length - 5) != ", USA") {
-			var msg = "Currently this widget supports U.S. cities only.";
-			alert(msg);
-			errMessage = errMessage + "\n miAddLocation() : " + msg ;
-			document.getElementById("txtcityzip").focus();
-			setFocusToElement('dummyDivAddLocation', 'txtcityzip');
-			showErrorsToDev();
-			handleMultipleRequest = true;
-			throw msg;
-		}
-		addSelectedCity(cityData);
+		
 	} else {
 		if (++currentTries < MAXTRIES) {
 			handleGoogleRequest = !handleGoogleRequest;
@@ -2643,18 +2647,51 @@ function ProcessDataFromGoogle(locationXML)
 	}	
 }
 
-function showSpinnerDialog(title, arrChoices, defaultChoice)
+function preAddCityGoogle(cityData){
+    // If user didn't want one of the cities from the list then end the request
+    if(!cityData) {
+        handleMultipleRequest = true;
+        clearProgressBar();
+        return;
+    }
+    
+    if (cityData.name.substring(cityData.name.length - 5) != ", USA") {
+        var msg = "Currently this widget supports U.S. cities only.";
+        alert(msg);
+        errMessage = errMessage + "\n miAddLocation() : " + msg ;
+        document.getElementById("txtcityzip").focus();
+        setFocusToElement('dummyDivAddLocation', 'txtcityzip');
+        showErrorsToDev();
+        handleMultipleRequest = true;
+        throw msg;
+    }
+    
+    addSelectedCity(cityData);
+}
+
+function showSpinnerDialog(title, arrChoices, defaultChoice, callback)
 {
-	sample.ui.spinner.title = title;
+	var rowHeight,
+        visibleRows,
+        options;
+
 	if (screen.height < 480) {
-		sample.ui.spinner.rowHeight = 60;
-		sample.ui.spinner.visibleRows = 3;
+		rowHeight = 60;
+		visibleRows = 3;
 	} else {
-		sample.ui.spinner.rowHeight = 75;
-		sample.ui.spinner.visibleRows = 4;
+		rowHeight = 75;
+		visibleRows = 4;
 	}
-	// Open the spin dialog
-	return (sample.ui.spinner.open(arrChoices, defaultChoice));
+    options = {
+        'title' : title,
+        'rowHeight': rowHeight,
+        'visibleRows': visibleRows,
+        'selectedIndex': defaultChoice,
+        'items' : arrChoices
+    };
+    
+    // Open the spin dialog
+    blackberry.ui.Spinner.open(options, callback);	
 }
 
 //******************************************************************************************************************

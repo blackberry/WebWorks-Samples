@@ -17,7 +17,7 @@ The sample code for this application is Open Source under the [Apache 2.0 Licens
 
 **Dependencies**
 
-* None
+1. In order to use the spinner on the Input Control Examples [you require the assiciated SpinnerControl extension](https://github.com/blackberry/WebWorks-Community-APIs/tree/master/Smartphone/SpinnerControl) 
 
 **Known Issues**
 
