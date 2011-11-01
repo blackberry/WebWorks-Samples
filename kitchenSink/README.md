@@ -40,9 +40,9 @@ To build the kitchenSink sample application:
 
 1. Click on the **Downloads** tab above.
 2. Select **Download as zip** (Windows) or **Download as tar.gz** (Mac) and save the downloaded file to your local machine.
-3. Create a new folder on your local machine named **kitchenSink** e.g. **C:\Documents and Settings\<user>\WebWorks\kitchenSink** (Windows) or **~/WebWorks/kitchenSink** (Mac).
-4. Open the downloaded ZIP file from step 2 and extract the contents **from inside the zipped kitchenSink folder** to your local **kitchenSink** folder from step 3.  This ensures that the necessary application assets, such as **config.xml**, are correctly located at the top level of the **kitchenSink** folder (e.g. **~/WebWorks/kitchenSink/config.xml**).
-5. Using the [Ripple Mobile Emulator](http://developer.blackberry.com/html5/download) and either the **[BlackBerry WebWorks SDK for Smartphone](http://developer.blackberry.com/html5/download)** or the **[BlackBerry WebWorks SDK for Tablet OS](http://developer.blackberry.com/html5/download)**, package the contents of your local **kitchenSink** folder into a BlackBerry application.  Enter the project root settings field as the local folder created in step 3, and the archive name settings field as **kitchenSink**.
+3. Create a new folder on your local machine named **kitchenSink** e.g. **C:\Documents and Settings\User\WebWorks\kitchenSink** (Windows) or **~/WebWorks/kitchenSink** (Mac).
+4. Open the downloaded ZIP file from step 2 and extract the contents **from inside the zipped kitchenSink folder** to your local **kitchenSink** folder from step 3.  This ensures that the necessary application assets, such as **config.xml**, are correctly located at the top level of the local **kitchenSink** folder (e.g. **~/WebWorks/kitchenSink/config.xml**).
+5. Using the **[Ripple Mobile Emulator](http://developer.blackberry.com/html5/download)** and either the **[BlackBerry WebWorks SDK for Smartphone](http://developer.blackberry.com/html5/download)** or the **[BlackBerry WebWorks SDK for Tablet OS](http://developer.blackberry.com/html5/download)**, package the contents of your local **kitchenSink** folder into a BlackBerry application.  Enter the project root settings field as the local folder created in step 3, and the archive name settings field as **kitchenSink**.
 
 
 ## More Info

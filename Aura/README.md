@@ -32,9 +32,9 @@ To build the Aura sample application:
 
 1. Click on the **Downloads** tab above.
 2. Select **Download as zip** (Windows) or **Download as tar.gz** (Mac) and save the downloaded file to your local machine.
-3. Create a new folder on your local machine named **Aura** e.g. **C:\Documents and Settings\<user>\WebWorks\Aura** (Windows) or **~/WebWorks/Aura** (Mac).
-4. Open the downloaded ZIP file from step 2 and extract the contents **from inside the zipped Aura folder** to your local **Aura** folder from step 3.  This ensures that the necessary application assets, such as **config.xml**, are correctly located at the top level of the **Aura** folder (e.g. **~/WebWorks/Aura/config.xml**).
-5. Using the [Ripple Mobile Emulator](http://developer.blackberry.com/html5/download) and the **[BlackBerry WebWorks SDK for Tablet OS](http://developer.blackberry.com/html5/download)**, package the contents of your local **Aura** folder into a BlackBerry application.  Enter the project root settings field as the local folder created in step 3, and the archive name settings field as **Aura**.
+3. Create a new folder on your local machine named **Aura** e.g. **C:\Documents and Settings\User\WebWorks\Aura** (Windows) or **~/WebWorks/Aura** (Mac).
+4. Open the downloaded ZIP file from step 2 and extract the contents **from inside the zipped Aura folder** to your local **Aura** folder from step 3.  This ensures that the necessary application assets, such as **config.xml**, are correctly located at the top level of the local **Aura** folder (e.g. **~/WebWorks/Aura/config.xml**).
+5. Using the **[Ripple Mobile Emulator](http://developer.blackberry.com/html5/download)** and the **[BlackBerry WebWorks SDK for Tablet OS](http://developer.blackberry.com/html5/download)**, package the contents of your local **Aura** folder into a BlackBerry application.  Enter the project root settings field as the local folder created in step 3, and the archive name settings field as **Aura**.
 
 
 ## More Info
