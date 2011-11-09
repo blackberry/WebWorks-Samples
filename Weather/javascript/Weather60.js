@@ -1113,9 +1113,11 @@ function resetShortTermBtn() {
 }
 
 function doHover(id) {
-	if (blackberry.focus.getFocus() != id)
+	if (blackberry.focus) {
+    	if (blackberry.focus.getFocus() != id)
 		return;
-
+    }
+    
 	var button = document.getElementById(id);
 	if (id == 'btnToday') {
 		button.style.backgroundPosition = 'bottom right';
@@ -1772,6 +1774,9 @@ function setSelectedIndex(/* HTML Element */selection) {
 			return;
 		setSelectedCity(selection);
 		selectedLocation = selection;
+		 
+		//Removed because causing an issue with focus moving by itself between items.
+		/*
 		if (blackberry.focus) {
 			if(selection){
 				setFocusToElement('dummyDivManageLocation', selection.id);
@@ -1780,6 +1785,7 @@ function setSelectedIndex(/* HTML Element */selection) {
 				setFocusToElement('dummyDivManageLocation', 'addLocationTR');
 			}
 		}
+		*/
 	} catch (ex) {
 		errMessage = errMessage + "\n setSelectedIndex() : " + ex;
 	}
@@ -2281,27 +2287,29 @@ function NDFDgen(/* float */latitude, /* float */longitude) {
 		// Assign callback function
 		httpReq.onreadystatechange = handleStateChange;
 		// URL for Web Method
-		httpReq.open("POST", "http://www.weather.gov/forecasts/xml/SOAP_server/ndfdXMLserver.php", false);
+		httpReq.open("POST", "http://graphical.weather.gov/xml/SOAP_server/ndfdXMLserver.php", false);
 		httpReq.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
 		// Determine which method we need to call
-		httpReq.setRequestHeader("SOAPAction", "http://www.weather.gov/forecasts/xml/DWMLgen/wsdl/ndfdXML.wsdl#NDFDgen");
+		httpReq.setRequestHeader("SoapAction", "http://graphical.weather.gov/xml/DWMLgen/wsdl/ndfdXML.wsdl#NDFDgen");
 		httpReq.setRequestHeader("Pragma", "cache");
 		httpReq.setRequestHeader("Cache-Control", "no-transform");
 		// List of parameters going to pass with the request
-		var weatherparam = "<maxt xsi:type='xsd:boolean'>1</maxt>";
-		weatherparam = weatherparam + "<mint xsi:type='xsd:boolean'>1</mint>";
-		weatherparam = weatherparam + "<pop12 xsi:type='xsd:boolean'>1</pop12>";
-		weatherparam = weatherparam + "<wspd xsi:type='xsd:boolean'>1</wspd>";
-		weatherparam = weatherparam + "<wdir xsi:type='xsd:boolean'>1</wdir>";
-		weatherparam = weatherparam + "<wx xsi:type='xsd:boolean'>1</wx>";
-		weatherparam = weatherparam + "<icons xsi:type='xsd:boolean'>1</icons>";
-		weatherparam = weatherparam + "<snow xsi:type='xsd:boolean'>1</snow>";
-		weatherparam = weatherparam + "<qpf xsi:type='xsd:boolean'>1</qpf>";
-		weatherparam = weatherparam + "<rh xsi:type='xsd:boolean'>1</rh>";
-		weatherparam = weatherparam + "<wwa xsi:type='xsd:boolean'>1</wwa>";
+		var weatherparam = "<maxt xsi:type='xsd:boolean'>true</maxt>";
+		weatherparam = weatherparam + "<mint xsi:type='xsd:boolean'>true</mint>";
+		weatherparam = weatherparam + "<pop12 xsi:type='xsd:boolean'>true</pop12>";
+		weatherparam = weatherparam + "<wspd xsi:type='xsd:boolean'>true</wspd>";
+		weatherparam = weatherparam + "<wdir xsi:type='xsd:boolean'>true</wdir>";
+		weatherparam = weatherparam + "<wx xsi:type='xsd:boolean'>true</wx>";
+		weatherparam = weatherparam + "<icons xsi:type='xsd:boolean'>true</icons>";
+		weatherparam = weatherparam + "<snow xsi:type='xsd:boolean'>true</snow>";
+		weatherparam = weatherparam + "<qpf xsi:type='xsd:boolean'>true</qpf>";
+		weatherparam = weatherparam + "<rh xsi:type='xsd:boolean'>true</rh>";
+		weatherparam = weatherparam + "<wwa xsi:type='xsd:boolean'>true</wwa>";
 
+		var unitType = "e";
+		
 		// List of parameters going to pass with the request
-		var param = "<?xml version='1.0' encoding='UTF-8' standalone='no'?><SOAP-ENV:Envelope><SOAP-ENV:Body><mns:NDFDgen><latitude xsi:type='xsd:decimal'>" + latitude + "</latitude><longitude xsi:type='xsd:decimal'>" + longitude + "</longitude><product xsi:type='typens:productType'>time-series</product><startTime xsi:type='xsd:dateTime'></startTime><endTime xsi:type='xsd:dateTime'></endTime><weatherParameters xsi:type='typens:weatherParametersType'>" + weatherparam + "</weatherParameters></mns:NDFDgen></SOAP-ENV:Body></SOAP-ENV:Envelope>";
+		var param = "<?xml version='1.0' encoding='UTF-8' standalone='no'?><SOAP-ENV:Envelope SOAP-ENV:encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/' xmlns:SOAP-ENC='http://schemas.xmlsoap.org/soap/encoding/' xmlns:tns='http://graphical.weather.gov/xml/DWMLgen/wsdl/ndfdXML.wsdl' xmlns:typens='http://graphical.weather.gov/xml/DWMLgen/schema/DWML.xsd'> <soapenv:Header/><SOAP-ENV:Body><mns:NDFDgen><latitude xsi:type='xsd:decimal'>" + latitude + "</latitude><longitude xsi:type='xsd:decimal'>" + longitude + "</longitude><product xsi:type='typens:productType'>time-series</product><startTime xsi:type='xsd:dateTime'></startTime><endTime xsi:type='xsd:dateTime'></endTime><Unit xsi:type='typens:unitType'>" + unitType + "</Unit><weatherParameters xsi:type='typens:weatherParametersType'>" + weatherparam + "</weatherParameters></mns:NDFDgen></SOAP-ENV:Body></SOAP-ENV:Envelope>";		
 		httpReq.send(param);
 		if (httpReq.readyState == 4 && httpReq.status == 200) {
 			var ret = (new DOMParser()).parseFromString(httpReq.responseText, "text/xml");
@@ -3713,8 +3721,10 @@ function doYesNoClick(id) {
 
 function doYesNoSelect(id) {
 	try {
-		if (blackberry.focus.getFocus() != id)
+		if (blackberry.focus) {
+		    if (blackberry.focus.getFocus() != id)
 			return;
+	}
 		resetImages();
 
 		element = document.getElementById(id);

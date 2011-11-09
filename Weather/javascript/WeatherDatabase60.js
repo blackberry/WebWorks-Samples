@@ -26,7 +26,11 @@ function openDB() {
 		return;
 	}
 
-	db = openDatabase("Weather", "1.0", "Weather", 200000);
+	try {
+		db = openDatabase("weather", "1.0", "weather", 200000);
+	}
+	catch(e) {		
+	}
 }
 
 var lives = 2;
