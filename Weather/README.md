@@ -25,7 +25,9 @@ The sample code for this application is Open Source under the [Apache 2.0 Licens
 
 **Tested On**
 
-* None
+* BlackBerry Torch 9810 v7.0.0.353
+* BlackBerry Curve 9330 v6.0.0.436
+* BlackBerry Bold  9650 v5.0.0.601
 
 **To contribute code to this repository you must be [signed up as an official contributor](http://blackberry.github.com/howToContribute.html).**
 
