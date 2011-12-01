@@ -10,6 +10,7 @@ The sample code for this application is Open Source under the [Apache 2.0 Licens
 
 * [BlackBerry Tablet OS](http://us.blackberry.com/developers/tablet/)
 * [BlackBerry WebWorks SDK for Tablet OS](http://us.blackberry.com/developers/tablet/webworks.jsp)
+* [BlackBerry WebWorks SDK for Smartphones](http://us.blackberry.com/developers/browserdev/widgetsdk.jsp)
 * [BlackBerry Payment Service](http://us.blackberry.com/developers/platform/paymentservice.jsp)
 
 **Author(s)** 
@@ -31,18 +32,17 @@ The sample code for this application is Open Source under the [Apache 2.0 Licens
 
 To build the payment sample application:
 
-1. Click on the **Downloads** button at the top right of this screen.
-2. Select **Download.zip** and save the downloaded file to your local machine.
-3. Create a new folder on your local machine named **payment** (e.g. **c:\webworks\payment**).
-4. Open the downloaded ZIP file from step 2 and **extract the contents from inside the top level folder** to your new **payment** folder.  This ensures that the necessary application assets, such as **config.xml**, are correctly located at the top level of the **payment** folder (e.g. **c:\webworks\payment\config.xml**).
-5. Using an achiving utility (e.g. WinZip or 7-zip), package the contents of your **c:\webworks\payment** folder into a ZIP archive named **payment.zip**.  This archive should have the application assets (not a folder containing the application assets) at its top level.
-6. Using the **[BlackBerry WebWorks SDK for Tablet OS](http://us.blackberry.com/developers/tablet/webworks.jsp)**, package the **payment.zip** archive into a BlackBerry Tablet OS application using the following command line: **bbwp c:\webworks\payment\payment.zip**
+1. Click on the **Downloads** tab above.
+2. Select **Download as zip** (Windows) or **Download as tar.gz** (Mac) and save the downloaded file to your local machine.
+3. Create a new folder on your local machine named **payment** e.g. **C:\Documents and Settings\User\WebWorks\payment** (Windows) or **~/WebWorks/payment** (Mac).
+4. Open the downloaded ZIP file from step 2 and extract the contents **from inside the zipped payment folder** to your local **payment** folder from step 3.  This ensures that the necessary application assets, such as **config.xml**, are correctly located at the top level of the local **payment** folder (e.g. **~/WebWorks/payment/config.xml**).
+5. Using the **[Ripple Mobile Emulator](http://developer.blackberry.com/html5/download)** and either the **[BlackBerry WebWorks SDK for Smartphone](http://developer.blackberry.com/html5/download)** or the **[BlackBerry WebWorks SDK for Tablet OS](http://developer.blackberry.com/html5/download)**, package the contents of your local **payment** folder into a BlackBerry application.  Enter the project root settings field as the local folder created in step 3, and the archive name settings field as **payment**.
 
 
 ## More Info
 
-* [BlackBerry WebWorks SDK for Tablet OS](http://us.blackberry.com/developers/tablet/webworks.jsp) - Getting Started guides, SDK downloads, code signing keys.
-* [BlackBerry WebWorks Development Guides] (http://docs.blackberry.com/en/developers/deliverables/30182/)
+* [BlackBerry HTML5 WebWorks](https://bdsc.webapps.blackberry.com/html5/) - Downloads, Getting Started guides, samples, code signing keys.
+* [BlackBerry WebWorks Development Guides] (https://bdsc.webapps.blackberry.com/html5/documentation)
 * [BlackBerry WebWorks Community Forums](http://supportforums.blackberry.com/t5/Web-and-WebWorks-Development/bd-p/browser_dev)
 * [BlackBerry Open Source WebWorks Contributions Forums](http://supportforums.blackberry.com/t5/BlackBerry-WebWorks/bd-p/ww_con)
 

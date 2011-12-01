@@ -24,7 +24,12 @@
 	
 	<title> CSS: Sprites </title>
 	<link href="../../css/usecase/sprite.css" rel="stylesheet" type="text/css">
-
+	<style type="text/css">
+		td {
+			padding: 5px;
+		}
+	</style>
+	
 </head>
 <body>
 
@@ -41,10 +46,10 @@
 			Say you have an application that displays 4 separate images.  Each of the following images requires the Web rendering engine to perform a separate HTTP request to download them:
 		</p>
 		<p>
-			<img src="../../img/sprite_purple.jpg"/>
-			<img src="../../img/sprite_green.jpg"/>
-			<img src="../../img/sprite_red.jpg"/>
-			<img src="../../img/sprite_blue.jpg"/>
+			<img src="../../img/sprite_purple.jpg" alt="purple image"/>
+			<img src="../../img/sprite_green.jpg" alt="green image"/>
+			<img src="../../img/sprite_red.jpg" alt="red image"/>
+			<img src="../../img/sprite_blue.jpg" alt="blue image"/>
 		</p>
 	</div>
 
@@ -54,11 +59,11 @@
 		<p>
 			All of the image assets for your application can be combined into a single image.  The following is a single image that contains 4 separate colors:
 		</p>
-		<img src="../../img/sprite.png" width="200" height="200"/>
+		<img src="../../img/sprite.png" width="200" height="200" alt="sprite image"/>
 		<p>
 			Using CSS the above image can be divided into pieces and each piece can be used as its own image.  The result is one HTTP request for all visual assets instead of four:
 		</p>
-		<table cellspacing="5" cellpadding="0" border="0">
+		<table>
 			<tr>
 				<td class="sprite blue">
 					blue

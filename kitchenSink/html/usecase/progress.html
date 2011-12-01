@@ -40,21 +40,25 @@
 		<h3>Examples:</h3>
 		<ol>
 			<li> 
-				Click on the 'show activity indicator' button to dynamically display a visual indicator for a fixed period of time.
 				<p>
-					Duration: <input type="number" id="txtDuration" value="2"/> (seconds)
-					<div id="activityIndicator" class="hide">
-						Loading ...
-					</div>
+					Click on the 'show activity indicator' button to dynamically display a visual indicator for a fixed period of time.
+				</p>
+				Duration: <input type="number" id="txtDuration" value="2"/> (seconds)
+				<div id="activityIndicator" class="hide">
+					Loading ...
+				</div>
+				<p>
 					<button onclick="beginActivityIndicator()">Show Activity Indicator</button>
-				</p>			
+				</p>
 			</li>
 			<li>
-				Click on the 'show progress' button to display a meter, that updates over an interval of time.
 				<p>
-					<div class="progressBar">
-						<div id="level" class="progressLevel">&nbsp;</div>
-					</div>
+					Click on the 'show progress' button to display a meter, that updates over an interval of time.
+				</p>
+				<div class="progressBar">
+					<div id="level" class="progressLevel">&nbsp;</div>
+				</div>
+				<p>
 					<button onclick="showProgress()">Show Progress</button>
 				</p>
 			</li>
