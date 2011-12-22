@@ -13,11 +13,10 @@ The sample code for this application is Open Source under the [Apache 2.0 Licens
 **Author(s)** 
 
 * [Adam Stanley](https://github.com/astanley)
-* Maria
 
 **Dependencies**
 
-N/A
+* Edit pencil icon (commercial use, no link required) courtesy of [La Glanz Studio](http://www.iconfinder.com/icondetails/50835/128/edit_pencil_write_icon)
 
 **To contribute code to this repository you must be [signed up as an official contributor](http://blackberry.github.com/howToContribute.html).**
 
