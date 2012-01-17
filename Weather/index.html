@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<!--
+ * Copyright 2011 Research In Motion Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<html>
+<head>
+<meta name="viewport" content="width=device-width; height=device-height; user-scalable=0; initial-scale=1.0; maximum-scale=1.0"/> 
+<meta name="HandheldFriendly" content="True" />
+<meta name="x-blackberry-defaultHoverEffect" content="true" /> 
+<title>Blackberry Weather Widget</title>
+<link type="text/css" rel="stylesheet" href="stylesheet/Weather.css" /> 
+<script type="text/javascript" src="javascript/stationsList.js"></script>
+<script type="text/javascript" src="javascript/Weather60.js"></script>
+<script type="text/javascript" src="javascript/WeatherDatabase60.js"></script>
+<script type="text/javascript" src="javascript/common.js"></script>
+</head>
+<body id="mainbody" onload="loadConfig();"  marginwidth="3" >
+<div id="divMain">
+<div id="progressBar">
+	<br/>
+	<div id="progressBarBackground"><div id="progress"></div></div>
+	<br/>
+</div>
+<div id="divMenu" style="display:none;" class="buttonPanel" align="center">
+<div id="dummyDivMenu"></div>
+    <div id="buttons" class="buttonPanel">
+	    <a id="btnToday" class="buttonLeft" onmouseover="doHover('btnToday')" onclick="activateTodayTab();" x-blackberry-focusable="true" ><span>&nbsp;Current&nbsp;</span></a>
+	    <a id="btnShortTerm" class="buttonMiddle" onmouseover="doHover('btnShortTerm')" onclick="activateShortTermTab();" x-blackberry-focusable="true" ><span>48 Hours</span></a>
+	    <a id="btn7Days" class="buttonRight" onmouseover="doHover('btn7Days')" onclick="activate7DaysTab();" x-blackberry-focusable="true" ><span>&nbsp;7 Days&nbsp;</span></a>
+     </div>
+	<table cellpadding="0" cellspacing="3" border="0" width="100%" align="center" style="clear:both;">
+	    <tr>
+	       	<td valign='top'>
+				<table width='100%' cellpadding='0' cellspacing='0' border='0' class='csslocationbg'>
+					<tr>
+						<td>
+								<input type=hidden id='currentCityRowId' name='currentCityRowId'></input>
+								<img id='imgPreviousCity' onmouseover="doHover('imgPreviousCity')" src='./images/RIM_WW_Arrow_Left.png' onclick='swipeLeft();' style="display:none;" x-blackberry-focusable="true">
+							</td>
+						<td align='center'><span id = 'lblLocation' class='csslocationtext'></span></td>
+						<td align='right'><img id = 'imgNextCity' onmouseover="doHover('imgNextCity')" src='./images/RIM_WW_Arrow_Right.png' onclick='swipeRight();' style="display:none;" x-blackberry-focusable="true"></td>
+					</tr>
+				</table>
+	    	</td>
+	    </tr>
+	    <tr>
+	    	<td align='center'><span id = 'lblLastUpdated' class='smalltext'></span></td>
+	    </tr>
+	    <tr>
+	    	<td class='smallrowspace' width='100%'><hr noshade size='1px' width='100%' style='color: white;' ></hr></td>
+	    </tr>
+	</table>
+	
+</div>
+<div id="divToday"  style="display:none;">
+<div id="dummyDivToday"></div>
+</div>
+<div id="divSevenDays" style="display:none;">
+</div>
+<div id="divShortTerm" style="display:none;">
+</div>
+<div id="divSettings" style="display:none;">
+<div id="dummyDivSettings"></div>
+<table id='tblSettings' cellpadding="2" cellspacing="5" border="0" width="100%">
+	<tr>
+       	<td valign='top'>
+			<table width='100%' cellpadding='0' cellspacing='0' border='0' class='csslocationbg'>
+				<tr>
+					<td align='center'><span class='csslocationtext'>Settings</span></td>
+				</tr>
+			</table>
+   		</td>
+	</tr>
+	<tr>
+		<td class='settingsunitsrowbg'>
+			<table id='tblmeasureUnit' cellpadding="2" cellspacing="3" border="0" width="100%">
+				<tr>
+					<td class="settinglabels">&nbsp;Unit of Measure</td>
+					<td align="right">
+						<span style="text-align:left; float:right;">
+							<div style="padding:8px 0; text-align:left;" onclick="selectButton(this);" onmouseover="resetImages();"><input id="Fahrenheit" type=radio name=units value="Fahrenheit"/>Fahrenheit</div>
+							<div style="padding:8px 0; text-align:left;" onclick="selectButton(this);" onmouseover="resetImages();"><input id="Celsius" type=radio name=units value="Celsius"/>Celsius</div>
+						</span>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td class='rowbg7days'>
+			<table cellpadding="2" cellspacing="3" border="0" width="100%">
+				<tr>
+				
+					<td class="settinglabels">&nbsp;Refresh Every</td>
+					<td align="right"><a id="refreshRate" class="dropDownButton" onclick="openRefreshRateDialog()" onmousedown="ddlDoSelect('refreshRate');" onmouseover="ddlDoSelect('refreshRate')"  x-blackberry-focusable="true" ><span id='selectedRefreshRate'></span></a></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td class='rowbg7days'>
+			<table cellpadding="2" cellspacing="3" border="0" width="100%">
+				<tr>
+					<td class="settinglabels">&nbsp;Alert on Severe Weather</td>
+					<td align="right"><img id="severeweather" onmouseover="doYesNoSelect('severeweather')" onclick="doYesNoClick('severeweather')" x-blackberry-focusable="true"/></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td class='rowbg7days'>
+			<table cellpadding="2" cellspacing="3" border="0" width="100%">
+				<tr>
+					<td width="80%" class="settinglabels">&nbsp;Use My Location</td>
+					<td width="20%" align="right"><img id="UseMyLocation" onmouseover="doYesNoSelect('UseMyLocation')" onclick="doYesNoClick('UseMyLocation')" x-blackberry-focusable="true"/></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td align='center'>
+			<table cellpadding="2" cellspacing="3" border="0" width="100%" align='center'>
+				<tr>
+					<td align="center"><a id="btnSave" class="buttonFull" onmouseover="doSelect('btnSave')" onclick="miSaveSettings()" x-blackberry-focusable="true" ><span>&nbsp;Save&nbsp;</span></a></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+</div>
+<div id="divManageLocation" style="display:none;">
+<div id="dummyDivManageLocation"></div>
+<table id='tblManageLocation' cellpadding="2" cellspacing="5" border="0" width="100%">
+	<tr>
+       	<td valign='top'>
+			<table width='100%' cellpadding='0' cellspacing='0' border='0' class='csslocationbg'>
+				<tr>
+					<td align='center'><span class='csslocationtext'>Manage Locations</span></td>
+				</tr>
+			</table>
+   		</td>
+	</tr>
+	<tr>
+		<td width='100%'>
+			<table id="locationlist" cellpadding="0" cellspacing="4" border="0" width="100%">
+				<tr class='SelectedCityListRow' id='addLocationTR' onclick="miActivateAddLocationTab();" onmouseover="setSelectedIndex(null);" x-blackberry-focusable="true">
+					<td>
+						<table cellpadding="0" cellspacing="0" border="0" width="100%">
+							<tr>
+								<td width='10%' class='WICityListRow'><img src = './images/WW_Cityscape_add_EPR.png'></img></td>
+								<td width='90%'>
+									<table class="CityListRowCityName">
+										<tr><td align='center'><span>&nbsp;Add Location&nbsp;</span></td></tr>
+										<tr><td  class="CityListRowTemp">&nbsp;</td></tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr class='CityListRow' id='cityTemplate' rowId='Template' cityName='Template' onclick="navigateToCity(this);" onmouseover="setSelectedIndex(this);" x-blackberry-focusable="true">
+					<td>
+						<table border="0" width="100%">
+							<tr>
+								<td width='2%' class='WICityListRow' align="center" valign="middle"><img class='WICityListRow' src='images/WW_Cityscape_add_EPR.png'></img></td>
+								<td width='98%'>
+									<table class="CityListRowCityName">
+										<tr><td><span class='CityListRowCityName'>Template, USA</span></td></tr>
+										<tr><td class="CityListRowTemp"><span class='CityListRowTemp'>&nbsp;</span></td></tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+</div>
+<div id="divAddLocation" style="display:none;">
+<div id="dummyDivAddLocation"></div>
+<table cellpadding="2" cellspacing="5" border="0" width="100%">
+	<tr>
+       	<td valign='top'>
+			<table width='100%' cellpadding='0' cellspacing='0' border='0' class='csslocationbg'>
+				<tr>
+					<td align='center'><span class='csslocationtext'>Add Location</span></td>
+				</tr>
+			</table>
+   		</td>
+	</tr>
+	<tr>
+		<td>
+			<table id = 'tblGauge' cellpadding='2' cellspacing='3' border='0' width='100%' style="display:none;">
+				<tr class='rowbg7days'>
+					<td width='100%'>Please wait while setting up the application...</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="gauge" style="height:20px;">
+							<div id="gauge0" style="background-color:Blue;width:0px;height:20px;"></div>
+						</div>  
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td width='100%'>
+			<table id = 'tblAddLocation' cellpadding='2' cellspacing='3' border='0' width='100%'>
+				<tr class='rowbg7days'>
+					<td colspan='2' width='100%'>Enter ZIP, City or Place</td>
+				</tr>
+				<tr>
+					<td colspan='2' width='100%'><input type="text" id="txtcityzip" onmouseover="unSelectButtons()" width='90%' x-blackberry-focusable="true"></input></td>
+				</tr>
+				<tr><td align="center" width='50%'><a id="btnAdd" class="buttonFull" onmouseover="doSelect('btnAdd')" onclick="miAddLocation();" x-blackberry-focusable="true"><span>&nbsp;Add&nbsp;</span></a></td>
+					<td align="center" width='50%'><a id="btnCancel" class="buttonFull" onmouseover="doSelect('btnCancel')" onclick="miCancelLocation();" x-blackberry-focusable="true"><span>&nbsp;Back&nbsp;</span></a></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+</div>
+</div>
+</body>
+</html>

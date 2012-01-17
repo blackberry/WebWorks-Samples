@@ -1,0 +1,348 @@
+/*
+ * Copyright 2011 Research In Motion Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+body,html {
+	padding: 0;
+	margin: 0;
+	font-family: BBAlpha Sans;
+	font-size: 12pt;
+	overflow: visible;
+}
+
+body {
+	background-image: url('../images/WW_Interface_DarkGradient.png');
+	background-repeat: repeat;
+}
+
+.buttonPanel {
+	margin: 4px;
+	margin-bottom: 0px;
+	text-align: center;
+	position: relative;
+}
+
+#buttons {
+	padding-left:6px;	
+}
+
+a.buttonLeft {
+	background: transparent url('../images/pillButtonRight.png') no-repeat
+		scroll top right;
+	color: White;
+	display: block;
+	float: left;
+	height: 39px;
+	margin-right: 0px;
+	padding-right: 10px;
+	text-decoration: none;
+	width: 30%;
+}
+
+a.buttonLeft span {
+	background: transparent url('../images/button.png') no-repeat;
+	display: block;
+	line-height: 39px;
+	padding: 0px 0px 0px 10px;
+	text-align: center;
+}
+
+a.buttonRight {
+	background: transparent url('../images/btnRight.png') no-repeat scroll
+		top right;
+	color: White;
+	display: block;
+	float: left;
+	height: 39px;
+	margin-right: 0px;
+	padding-right: 10px;
+	text-decoration: none;
+	width: 30%;
+}
+
+a.buttonRight span {
+	background: transparent url('../images/button.png') no-repeat;
+	background-position: -10px 0px;
+	display: block;
+	line-height: 39px;
+	padding: 0px 0px 0px 10px;
+	text-align: center;
+}
+
+a.buttonMiddle {
+	background: transparent url('../images/pillButtonRight.png') no-repeat
+		scroll top right;
+	color: White;
+	display: block;
+	float: left;
+	height: 39px;
+	margin-right: 0px;
+	padding-right: 10px;
+	text-decoration: none;
+	width: 30%;
+}
+
+a.buttonMiddle span {
+	background: transparent url('../images/button.png') no-repeat;
+	display: block;
+	line-height: 39px;
+	padding: 0px 0px 0px 10px;
+	text-align: center;
+	background-position: -10px 0px;
+}
+
+a.buttonFull {
+	background: transparent url('../images/btnRight.png') no-repeat scroll
+		top right;
+	color: White;
+	display: block;
+	float: left;
+	height: 39px;
+	margin-right: 0px;
+	padding-right: 10px;
+	text-decoration: none;
+	width: 95%
+}
+
+a.buttonFull span {
+	background: transparent url('../images/button.png') no-repeat;
+	display: block;
+	line-height: 39px;
+	padding: 0px 0px 0px 10px;
+	text-align: center;
+}
+
+.lbltext {
+	font: BBAlpha Sans;
+	font-size: 10pt;
+	font-style: oblique;
+	color: yellow;
+	font-weight: bold;
+}
+
+.lblShortTermDateHeader {
+	font: BBAlpha Sans;
+	font-size: 11pt;
+	font-style: oblique;
+	color: yellow;
+	font-weight: bold;
+}
+
+.lblWarning {
+	font: BBAlpha Sans;
+	font-size: 10pt;
+	font-style: oblique;
+	color: #ff8080;
+}
+
+.WWAUrl {
+	font: BBAlpha Sans;
+	font-size: 10pt;
+	font-style: oblique;
+	color: yellow;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.WIShortTerm {
+	height: 50px;
+	width: 50px;
+}
+
+.WI7Days {
+	height: 40px;
+	width: 40px;
+}
+
+.WICityListRow {
+	height: 30px;
+	width: 30px;
+}
+
+.lblvaluetext {
+	font: BBAlpha Sans;
+	color: white;
+	font-size: 10pt;
+	font-weight: bold;
+	font-style: oblique;
+}
+
+.supvaluetext {
+	vertical-align: text-top;
+	font-size: 9pt;
+	position: relative;
+}
+
+.ShortTermSupText {
+	vertical-align: text-top;
+	font-size: 12pt;
+	position: relative;
+}
+
+.ShortTermHiLowText {
+	font: BBAlpha Sans;
+	font-size: 24pt;
+	font-weight: bold;
+	color: white;
+}
+
+.windvaluetext {
+	font: BBAlpha Sans;
+	color: white;
+	font-size: 10pt;
+	font-weight: bold;
+	font-style: oblique;
+}
+
+.smalltext {
+	font: BBAlpha Sans;
+	font-size: 10pt;
+	color: white;
+	font-weight: bold;
+}
+
+.smalltext7 {
+	text-align: center;
+	font: BBAlpha Sans;
+	font-size: 7pt;
+	color: white;
+}
+
+.smallrowspace {
+	font: BBAlpha Sans;
+	font-size: 4pt;
+}
+
+.hilowtext {
+	font: BBAlpha Sans;
+	font-size: 40pt;
+	font-weight: bold;
+	color: white;
+	vertical-align: text-top;
+}
+
+.suphilowtext {
+	vertical-align: text-top;
+	font-size: 18pt;
+	position: relative;
+}
+
+.settinglabels {
+	font: BBAlpha Sans;
+	font-size: 12pt;
+}
+
+.weatherstatus {
+	font: BBAlpha Sans;
+	font-size: 14pt;
+	font-weight: bold;
+}
+
+.rowbg7days {
+	background: url(../images/RIM_WW_LightButton_Middle_60px.png) repeat;
+}
+
+.settingsunitsrowbg {
+	background: url(../images/RIM_WW_LightButton_Middle_120px.png) repeat;
+}
+
+.csslocationbg {
+	background: url(../images/NextPreviousBar.png) repeat;
+	height: 32px;
+}
+
+.csslocationtext {
+	font: BBAlpha Sans;
+	font-size: 13pt;
+	font-weight: bold;
+	font-style: oblique;
+	color: blue;
+}
+
+.CityListRow {
+	background-color: #87CEFF;
+}
+
+.SelectedCityListRow,
+.SelectedCityListRow:hover {
+	background-color: #3333cc;	
+}
+
+.SelectedCityListRow .CityListRowCityName td,.SelectedCityListRow .CityListRowTemp {
+	color: white;
+}
+
+.sevendaysheadertr {
+	background: url(../images/RIM_WW_7day_LightButton_Middle.png) repeat;
+}
+
+.CityListRowCityName {
+	font: BBAlpha Sans;
+	font-size: 12pt;
+	font-weight: bold;
+	font-style: oblique;
+}
+
+.CityListRowTemp {
+	font: BBAlpha Sans;
+	font-size: 8pt;
+	font-weight: bold;
+	font-style: oblique;
+	color: gray;
+}
+
+a.dropDownButton {
+	background: transparent url('../images/dropDownRight.png') no-repeat
+		scroll top right;
+	color: White;
+	display: block;
+	float: right;
+	height: 39px;
+	margin-right: 0px;
+	padding-right: 23px;
+	text-decoration: none;
+}
+
+a.dropDownButton span {
+	background: transparent url('../images/button.png') no-repeat;
+	display: block;
+	line-height: 39px;
+	padding: 0px 0px 0px 10px;
+}
+
+.gauge {
+	border: 1px solid Gray;
+	overflow: hidden;
+	margin: 10px;
+	background-color: White;
+}
+
+#progressBar {
+	display: none;	
+	padding: 0px 5px;
+}
+
+#progressBarBackground {
+	border: 1px solid Gray; 
+	overflow:hidden;
+	padding: 1px;
+	background-color: White;
+	height: 20px;
+}
+
+#progress {
+	background-color:Blue;
+	height:20px;
+	width:0px;
+}
