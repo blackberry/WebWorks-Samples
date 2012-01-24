@@ -41,7 +41,7 @@ To build this sample application:
 3. Create a new folder on your local machine named **weather** (e.g. **c:\webworks\weather**).
 4. Open the downloaded ZIP file from step 2 and **extract the contents from inside the top level folder** to your new **weather** folder.  This ensures that the necessary application assets, such as **config.xml**, are correctly located at the top level of the **weather** folder (e.g. **c:\webworks\weather\config.xml**).
 5. Using an achiving utility (e.g. WinZip or 7-zip), package the contents of your **c:\webworks\weather** folder into a ZIP archive named **weather.zip**.  This archive should have the application assets (not a folder containing the application assets) at its top level.
-6. Using the **[BlackBerry WebWorks SDK for Tablet OS](http://us.blackberry.com/developers/tablet/webworks.jsp)**, package the **weather.zip** archive into a BlackBerry Tablet OS application using the following command line: **bbwp c:\webworks\weather\weather.zip**
+6. Using the **[BlackBerry WebWorks SDK for Smartphones](https://bdsc.webapps.blackberry.com/html5/download/sdk)**, package the **weather.zip** archive into a BlackBerry Tablet OS application using the following command line: **bbwp c:\webworks\weather\weather.zip**
 
 
 ## More Info
