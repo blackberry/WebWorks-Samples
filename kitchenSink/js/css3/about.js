@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,10 +14,8 @@
  * limitations under the License.
  */
 
-function doPageLoad() 
-{
-	try
-	{
+function doPageLoad() {
+	try {
 		document.getElementById("shadowbox").innerHTML = "<br/>v" + blackberry.app.version;
 		document.getElementById("rotatebox").innerHTML = "<br/>&copy;" + blackberry.app.copyright;
 		document.getElementById("bordersbox").innerHTML = "<br/>By: " + blackberry.app.author;

@@ -14,17 +14,31 @@
  * limitations under the License.
  */
 
+var startTime;
+
+/**
+ * The following are helper methods used for displaying text on the screen:
+ */
+function clearOutput() {
+	setContent("geolocationInfo", "");
+}
+function displayOutput(output) {
+	setContent("geolocationInfo", "<div>" + output + "</div>");
+}
+function errorMessage(msg)
+{
+	displayOutput("<span class='color:red'><b>Error</b>:" + msg + "</span>");
+}
+ 
 /**
  * Calculates the difference in time (milliseconds) between Now and a previously saved (global) variable
  * 
  * @returns {Number}
  */
-function getDuration(start)
-{
-	var duration = -1;
-	try 
-	{
-		var end = new Date();
+function getDuration(start) {
+	var duration = -1, end;
+	try {
+		end = new Date();
 		duration = (end - start);
 	} 
 	catch (e) {
@@ -42,22 +56,20 @@ function getDuration(start)
  * @param target_lat  - horizontal position (negative = South) of destination location
  * @param target_lat  - vertical position (negative = West) of destination location
  */
-function distanceBetweenPoints(current_lat, current_lon, target_lat, target_lon)
-{
-	var distance = 0;
-	try
-	{
+function distanceBetweenPoints(current_lat, current_lon, target_lat, target_lon) {
+	var distance = 0, earth_radius, distance_lat, distance_lon, a, b;
+	try {
 		//Radius of the earth in meters:
-		var earth_radius = 6378137;
+		earth_radius = 6378137;
 		
 		//Calculate the distance, in radians, between each of the points of latitude/longitude:
-		var distance_lat = (target_lat - current_lat) * Math.PI / 180;
-		var distance_lon = (target_lon - current_lon) * Math.PI / 180;
+		distance_lat = (target_lat - current_lat) * Math.PI / 180;
+		distance_lon = (target_lon - current_lon) * Math.PI / 180;
 
 		//Using the haversine formula, calculate the distance between two points (current & target GPS coordinates) on a sphere (earth):
 		//More info: http://www.movable-type.co.uk/scripts/latlong.html
-		var a = Math.pow(Math.sin(distance_lat / 2), 2) + (Math.cos(current_lat * Math.PI / 180) * Math.cos(target_lat * Math.PI / 180) * Math.pow(Math.sin(distance_lon / 2), 2));
-		var b = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+		a = Math.pow(Math.sin(distance_lat / 2), 2) + (Math.cos(current_lat * Math.PI / 180) * Math.cos(target_lat * Math.PI / 180) * Math.pow(Math.sin(distance_lon / 2), 2));
+		b = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 		distance = Math.floor(earth_radius * b);
 	} 
 	catch (e) {
@@ -72,14 +84,8 @@ function distanceBetweenPoints(current_lat, current_lon, target_lat, target_lon)
  * @param latitudeOrigin -  starting point to compare the destination to
  * @param latitudeDestination - target destination
  */
-function northOrSouth(latitudeOrigin, latitudeDestination)
-{
-	if (latitudeOrigin < latitudeDestination)
-	{
-		return "N";
-	} else {
-		return "S";
-	}
+function northOrSouth(latitudeOrigin, latitudeDestination) {
+	return (latitudeOrigin < latitudeDestination) ? "N" : "S";
 }
 
 /**
@@ -88,14 +94,8 @@ function northOrSouth(latitudeOrigin, latitudeDestination)
  * @param longitudeOrigin - starting point to compare the destination to
  * @param longitudeDestination - target destination
  */
-function eastOrWest(longitudeOrigin, longitudeDestination)
-{
-	if (longitudeOrigin < longitudeDestination)
-	{
-		return "E";
-	} else {
-		return "W";
-	}
+function eastOrWest(longitudeOrigin, longitudeDestination) {
+	return (longitudeOrigin < longitudeDestination) ? "E" : "W";
 }
 
 
@@ -107,28 +107,29 @@ function eastOrWest(longitudeOrigin, longitudeDestination)
  * @param coords (Coordinates) - geographic information returned from geolocation service
  *      http://dev.w3.org/geo/api/spec-source.html#coordinates
  */
-function displayLocationInfo(time, coordinates)
-{
-	try
-	{
-		var lat = coordinates.latitude;
-		var lon = coordinates.longitude;
-		var alt = coordinates.altitude;
-		var acc = coordinates.accuracy;
-		var altAcc = coordinates.altitudeAccuracy;
-		var head = coordinates.heading;
-		var speed = coordinates.speed;
+function displayLocationInfo(time, coordinates) {
+	try {
+		var lat, lon, alt, acc, altAcc, head, speed, sb;
+		
+		lat = coordinates.latitude;
+		lon = coordinates.longitude;
+		alt = coordinates.altitude;
+		acc = coordinates.accuracy;
+		altAcc = coordinates.altitudeAccuracy;
+		head = coordinates.heading;
+		speed = coordinates.speed;
 
-		var locationInfo = "<h3>Current Location:</h3>";
-		locationInfo += "<b>Time:</b> " + new Date(time) + "<br/>";
-		locationInfo += "<b>Latitude:</b> " + coordinates.latitude + "<br/>";
-		locationInfo += "<b>Longitude:</b> " + coordinates.longitude + "<br/>";
-		locationInfo += "<b>Altitude:</b> " + coordinates.altitude + "<br/>";
-		locationInfo += "<b>Accuracy:</b> " + coordinates.accuracy + "<br/>";
-		locationInfo += "<b>Altitude Accuracy:</b> " + coordinates.altitudeAccuracy + "<br/>";
-		locationInfo += "<b>Heading:</b> " + coordinates.heading + "<br/>";
-		locationInfo += "<b>Speed:</b> " + coordinates.speed + "<br/>";
-		displayOutput("<p>" + locationInfo + "</p>");
+		sb = new StringBuilder();
+		sb.append("<h3>Current Location:</h3>");
+		sb.append("<b>Time:</b> " + new Date(time) + "<br/>");
+		sb.append("<b>Latitude:</b> " + coordinates.latitude + "<br/>");
+		sb.append("<b>Longitude:</b> " + coordinates.longitude + "<br/>");
+		sb.append("<b>Altitude:</b> " + coordinates.altitude + "<br/>");
+		sb.append("<b>Accuracy:</b> " + coordinates.accuracy + "<br/>");
+		sb.append("<b>Altitude Accuracy:</b> " + coordinates.altitudeAccuracy + "<br/>");
+		sb.append("<b>Heading:</b> " + coordinates.heading + "<br/>");
+		sb.append("<b>Speed:</b> " + coordinates.speed + "<br/>");
+		displayOutput("<p>" + sb.toString() + "</p>");
 	} 
 	catch (e) {
 		errorMessage("exception (displayLocationInfo): " + e);
@@ -141,50 +142,49 @@ function displayLocationInfo(time, coordinates)
  * @param coords (Coordinates) - geographic information returned from geolocation service
  *      http://dev.w3.org/geo/api/spec-source.html#coordinates
  */
-function displayContentForLocation(coordinates)
-{
-	try
-	{
-		var locationSpecificContent = "<h3>Location Specific Content:</h3>";
+function displayContentForLocation(coordinates) {
+	try {
+		var latitude, longitude, accuracy, sb, trafalgar, hongKong, toronto;
 		
-		var latitude = coordinates.latitude;
-		var longitude = coordinates.longitude;
-		var accuracy = coordinates.accuracy;
+		sb = new StringBuilder();
+		
+		latitude = coordinates.latitude;
+		longitude = coordinates.longitude;
+		accuracy = coordinates.accuracy;
+
+		sb.append("<h3>Location Specific Content:</h3>");
 
 		//If a user is within 25km of Trafalgar Square, they are assumed to be in London, England:
 		//Trafalgar Square is located at (51.508315, -0.127974)
-		var trafalgar = distanceBetweenPoints(latitude, longitude, 51.508315, -0.127974);
-		if (trafalgar <= (accuracy + 25000))
-		{
-			locationSpecificContent += "<div>You are in London, England.  Be sure to visit Trafalgar Square!</div>";
+		trafalgar = distanceBetweenPoints(latitude, longitude, 51.508315, -0.127974);
+		if (trafalgar <= (accuracy + 25000)) {
+			sb.append("<div>You are in London, England.  Be sure to visit Trafalgar Square!</div>");
 		} 
 		else {
-			locationSpecificContent += "<div>You are " + trafalgar + " m from London, England</div>";
+			sb.append("<div>You are " + trafalgar + " m from London, England</div>");
 		}
 		
 		//If a user is within 4km of Deep Water Bay, they are assumed to be in Hong Kong:
 		//Hong Kong is located at (22.240643, 114.184341)
-		var hongKong = distanceBetweenPoints(latitude, longitude, 22.240643,114.184341);
-		if (hongKong <= (accuracy + 4000))
-		{
-			locationSpecificContent += "<div>You are in Hong Kong.  Be sure to visit Deep Water Bay!</div>";
+		hongKong = distanceBetweenPoints(latitude, longitude, 22.240643,114.184341);
+		if (hongKong <= (accuracy + 4000)) {
+			sb.append("<div>You are in Hong Kong.  Be sure to visit Deep Water Bay!</div>");
 		}
 		else {
-			locationSpecificContent += "<div>You are " + hongKong + " m from Hong Kong</div>";
+			sb.append("<div>You are " + hongKong + " m from Hong Kong</div>");
 		}
 
 		//If a user is within 10km of the CN Tower, they are assumed to be in Toronto:
 		//CN Tower is located at (43.642722, -79.387207)
-		var toronto = distanceBetweenPoints(latitude, longitude, 43.642722, -79.387207);
-		if (toronto <= (accuracy + 10000))
-		{
-			locationSpecificContent += "<div>You are in Toronto, Canada.  Be sure to visit the CN Tower!</div>";
+		toronto = distanceBetweenPoints(latitude, longitude, 43.642722, -79.387207);
+		if (toronto <= (accuracy + 10000)) {
+			sb.append("<div>You are in Toronto, Canada.  Be sure to visit the CN Tower!</div>");
 		}
 		else {
-			locationSpecificContent += "<div>You are " + toronto + " m from Toronto, Canada</div>";
+			sb.append("<div>You are " + toronto + " m from Toronto, Canada</div>");
 		}
 		
-		displayOutput("<p>" + locationSpecificContent + "</p>");
+		displayOutput("<p>" + sb.toString() + "</p>");
 	} 
 	catch (e) {
 		errorMessage("exception (displayContentForLocation): " + e);
@@ -198,31 +198,33 @@ function displayContentForLocation(coordinates)
  * @param coords (Coordinates) - geographic information returned from geolocation service
  *      http://dev.w3.org/geo/api/spec-source.html#coordinates
  */
-function displayDirections(coordinates)
-{
-	try
-	{
-		var directions = "<h3>Directions:</h3>";
+function displayDirections(coordinates) {
+	try {
+		var user_lat, user_lon, sb;
 		
-		var user_lat = coordinates.latitude;
-		var user_lon = coordinates.longitude;
+		sb = new StringBuilder();
+		
+		user_lat = coordinates.latitude;
+		user_lon = coordinates.longitude;
+		
+		sb.append("<h3>Directions:</h3>");
 		
 		//Niagara Falls is located at (43.08337, -79.073925)
-		directions += "<div>Niagara Falls is " + northOrSouth(user_lat, 43.08337) + eastOrWest(user_lon, -79.073925) + " of your location.</div>";
+		sb.append("<div>Niagara Falls is " + northOrSouth(user_lat, 43.08337) + eastOrWest(user_lon, -79.073925) + " of your location.</div>");
 		
 		//The Great Pyramid is located at (29.979212, 31.134224)
-		directions += "<div>The Great Pyramid is " + northOrSouth(user_lat, 29.979212) + eastOrWest(user_lon, 31.134224) + " of your location</div>";
+		sb.append("<div>The Great Pyramid is " + northOrSouth(user_lat, 29.979212) + eastOrWest(user_lon, 31.134224) + " of your location</div>");
 
 		//The Taj Majal is located at (27.175057, 78.042068) 
-		directions += "<div>The Taj Mahal is " + northOrSouth(user_lat, 27.175057) + eastOrWest(user_lon, 78.042068) + " of your location</div>";
+		sb.append("<div>The Taj Mahal is " + northOrSouth(user_lat, 27.175057) + eastOrWest(user_lon, 78.042068) + " of your location</div>");
 		
 		//The Golden Gate Bridge is located at (37.818463, -122.477989) 
-		directions += "<div>The Golden Gate Bridge is " + northOrSouth(user_lat, 37.818463) + eastOrWest(user_lon, -122.477989) + " of your location</div>";
+		sb.append("<div>The Golden Gate Bridge is " + northOrSouth(user_lat, 37.818463) + eastOrWest(user_lon, -122.477989) + " of your location</div>");
 
 		//Stonehenge is located at (51.17859, -1.826134) 
-		directions += "<div>Stonehenge is " + northOrSouth(user_lat, 51.17859) + eastOrWest(user_lon, -1.826134) + " of your location</div>";
+		sb.append("<div>Stonehenge is " + northOrSouth(user_lat, 51.17859) + eastOrWest(user_lon, -1.826134) + " of your location</div>");
 		
-		displayOutput("<p>" + directions + "</p>");
+		displayOutput("<p>" + sb.toString() + "</p>");
 	} 
 	catch (e) {
 		errorMessage("exception (displayDirections): " + e);
@@ -237,17 +239,17 @@ function displayDirections(coordinates)
  * @params position (Position) - contains geographic information acquired by the geolocation service.
  *     http://dev.w3.org/geo/api/spec-source.html#position_interface
  */
-function geolocationSuccess(position) 
-{
-	try
-	{
+function geolocationSuccess(position) {
+	try {
+		var coordinates, gpsTime;
+		
 		displayOutput("Geolocation request took " + (getDuration(startTime) / 1000) + " seconds to respond.");
 		
 		// The Position object contains the following parameters:
 		//	coords - geographic information such as GPS coordinates, accuracy, and optional attributes (altitude and speed).
 		//  timestamp - 
-		var coordinates = position.coords;
-		var gpsTime = position.timestamp;
+		coordinates = position.coords;
+		gpsTime = position.timestamp;
 		
 		//Now that we have the geographic information, what are some useful things that can be done with this info?
 		
@@ -255,8 +257,8 @@ function geolocationSuccess(position)
 		displayLocationInfo(gpsTime, coordinates);
 		
 		//2) Display content relevant to the users current location:
-		//	 Identify whether a user is within range of a given location. This can be done by calculating their 
-		//      distance from a known location (within an allowable threshold of accuracy).
+		//   Identify whether a user is within range of a given location. This can be done by calculating their 
+		//   distance from a known location (within an allowable threshold of accuracy).
 		displayContentForLocation(coordinates);
 		
 		//3) Calculate relative direction to a point of interest
@@ -274,16 +276,12 @@ function geolocationSuccess(position)
  * @param posError (PositionError) - contains the code and message of the error that occurred while retrieving geolocation info.
  *     http://dev.w3.org/geo/api/spec-source.html#position-error
  */
-function geolocationError(posError)
-{
-	try
-	{
+function geolocationError(posError) {
+	try {
 		displayOutput("Geolocation request took " + (getDuration(startTime) / 1000) + " seconds to respond.");
 		
-		if (posError)
-		{
-			switch(posError.code)
-			{
+		if (posError) {
+			switch(posError.code) {
 				case posError.TIMEOUT:
 					errorMessage("TIMEOUT: " + posError.message);
 					break;
@@ -317,30 +315,24 @@ function geolocationError(posError)
  *      - maximumAge (default = 0) - indicates that the application is willing to accept a cached position 
  *           whose age is no greater than the specified time in milliseconds.
  */
-function getPosition(params)
-{
-	try
-	{
+function getPosition(fixType) {
+	try {
+		var options;
+		
 		clearOutput();
 		
 		//Save timestamp to measure how long it takes to get geolocation info
 		startTime = new Date();		
 
 		//First test to see that the browser supports the Geolocation API
-		if (navigator.geolocation !== null)
-		{
+		if (navigator.geolocation !== null) {
 			//Configure optional parameters:
-			var options;
-			if (params)
-			{
-				displayOutput("Retrieving Geographic information using parameters: " + params + " ..." );
-				options = eval("options = " + params + ";");
+			if (fixType === "highAccuracy") {
+				displayOutput("Retrieving Geographic information using high accuracy ..." );
+				// the following line retrieves the most accurate coordinates available
+				options = { enableHighAccuracy : true, timeout : 60000, maximumAge : 0 };
 			} 
 			else {
-				// Uncomment the following line to retrieve the most accurate coordinates available
-				//
-				//   options = { enableHighAccuracy : true, timeout : 60000, maximumAge : 0 };
-				//
 				displayOutput("Retrieving Geographic information using default parameters");
 			}
 			navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError, options);
@@ -352,32 +344,4 @@ function getPosition(params)
 	catch (e) {
 		errorMessage("exception (getPosition): " + e);
 	}
-}
-
-
-
-var startTime;
-
-/**
- * The following are helper methods used for displaying text on the screen:
- */
-function clearOutput()
-{
-	var ele = document.getElementById("geolocationInfo");
-	if (ele)
-	{
-		ele.innerHTML = "";
-	}
-}
-function displayOutput(output)
-{
-	var ele = document.getElementById("geolocationInfo");
-	if (ele)
-	{
-		ele.innerHTML += "<div>" + output + "</div>";
-	}
-}
-function errorMessage(msg)
-{
-	displayOutput("<span class='color:red'><b>Error</b>:" + msg + "</span>");
 }

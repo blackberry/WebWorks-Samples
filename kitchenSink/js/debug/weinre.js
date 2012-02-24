@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,23 +16,20 @@
 
 var bar = "bar";
 
-function foo()
-{
+function foo() {
 	return bar;
 }
 
-function doButton(event)
-{
-	debug.log("doButton", "Clicked : foo " + foo(), debug.info);
+function doButton(event) {
+	debug.log("doButton", "Clicked : foo " + foo() + "; " + event.target, debug.info);
 }
 
-function doPageLoad(event)
-{
-		var button = document.getElementById("btnButton");
-		if (button)
-		{
-			button.addEventListener("click", doButton, false);
-		}
+function doPageLoad(event) {
+	var button = document.getElementById("btnButton");
+	if (button) {
+		button.addEventListener("click", doButton, false);
+	}
+	debug.log("doPageLoad", "Complete : " + event.target, debug.info);
 }
 
 window.addEventListener("load", doPageLoad, false);

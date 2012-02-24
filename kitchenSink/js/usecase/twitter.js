@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,25 +16,22 @@
 
 var req;
 
-function handleResponse() 
-{
+function handleResponse() {
 	try
 	{
-		if (req.readyState == 4) 
-		{
-			if (req.status == 200 || req.status == 0) 
-			{
+		var data, num, sb, i, errMsg;
+	
+		if (req.readyState === 4) {
+			if (req.status === 200 || req.status === 0) {
 				//Parse JSON text into a JavaScript object
-				var data = JSON.parse(req.responseText);
-				var num = data.length;
+				data = JSON.parse(req.responseText);
+				num = data.length;
 
-				var sb = new StringBuilder();
+				sb = new StringBuilder();
 				
-				if (data.length > 0)
-				{
+				if (data.length > 0) {
 					sb.append("<ul>");
-					for (i = 0; i < num; i++) 
-					{
+					for (i = 0; i < num; i = i + 1) {
 						sb.append("<li><b>" + data[i].user.screen_name + "</b>: " + data[i].text + "</li>");
 					}
 					sb.append("</ul>");
@@ -42,7 +39,7 @@ function handleResponse()
 				}
 			}
 			else {
-				var errMsg = "Error (" + req.status + "): " + req.statusText;
+				errMsg = "Error (" + req.status + "): " + req.statusText;
 				setContent("twitterFeed", errMsg);
 				debug.log("handleResponse", errMsg, debug.error);
 			}
@@ -53,8 +50,7 @@ function handleResponse()
 	}
 }
 
-function displayFeed() 
-{
+function displayFeed() {
 	try 
 	{
 		/*
@@ -66,11 +62,11 @@ function displayFeed()
 			Full Twitter API documentation page:
 			http://apiwiki.twitter.com/w/page/22554679/Twitter-API-Documentation
 		*/
-		
-		var txtScreenName = "BlackBerryDev";					//use as a default
-		var ele = document.getElementById("txtScreenName");
-		if (ele)
-		{
+		var txtScreenName, ele;
+	
+		txtScreenName = "BlackBerryDev";					//use as a default
+		ele = document.getElementById("txtScreenName");
+		if (ele) {
 			txtScreenName = (ele.value !== "") ? ele.value : "BlackBerryDev";
 		}
 		
