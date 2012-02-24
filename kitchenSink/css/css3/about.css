@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,36 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#shadowbox 
-{
+#shadowbox {
 	float: left;
 	width: 100px; height: 60px; padding: 5px;
 	background-color: white; border: 1px solid black;
 	text-shadow: 1px 1px 3px #000; 
-	box-shadow: 5px 5px 15px #000; -webkit-box-shadow: 5px 5px 15px #000; -moz-box-shadow: 5px 5px 15px #000;
-	-moz-transform: translate(1em, 1em); -webkit-transform: translate(1em, 1em);
+	box-shadow: 5px 5px 15px #000; -webkit-box-shadow: 5px 5px 15px #000;
+	-webkit-transform: translate(1em, 1em);
 }
-#rotatebox
-{
+#rotatebox {
 	float: left; text-align: center;
 	width: 100px; height: 60px; margin: 2em 0.5em; 
 	background-color: #FBF5EF; border: 2px solid red;
-	-moz-transform: rotate(30deg); -webkit-transform: rotate(30deg);
+	-webkit-transform: rotate(30deg);
 }
-#bordersbox 
-{
+#bordersbox {
 	float: left; text-align: center;
 	width: 100px; height: 60px;
 	background-color: #D0F5A9; border: 2px solid green;
-	border-radius: 30px 45px; -moz-border-radius: 30px 45px; -webkit-border-radius: 30px 45px;
-	-moz-transform: translate(-1em, 1em); -webkit-transform: translate(-1em, 1em);
+	border-radius: 30px 45px; -webkit-border-radius: 30px 45px;
+	-webkit-transform: translate(-1em, 1em);
 }
-#gradientbox
-{
+#gradientbox {
 	clear: both; text-align: center;
 	width: 100px; height: 60px; margin: 4em 7em;
 	background-color: #1a82f7; color: white;
 	background-image: -moz-linear-gradient(100% 100% 180deg, #2F2727, #1a82f7) !important;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#1a82f7), to(#2F2727)) !important;
-	-moz-transform: scale(2); -webkit-transform: scale(2);
+	-webkit-transform: scale(2);
 }

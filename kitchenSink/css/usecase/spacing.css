@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ ul.bad li a:link,  li a:visited {
 #theElement {
 	margin: 2em;
 	padding: 2em;
-	background-color: #green;
+	background-color: #00FF00;
 	text-align: center;
 	vertical-align: middle;
 }
