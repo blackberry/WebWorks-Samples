@@ -14,12 +14,68 @@
  * limitations under the License.
  */
 
+ var output;
+ 
+ function doOnload(theFile) {
+	debug.log("doOnload", "start", debug.info);
+	return function(e) {
+		//e = ProgressEvent object
+		//e.target = FileReader object
+	
+		debug.log("handleFileSelect", "start function(e)", debug.info);
+	
+		output = "";
+		output += "<td>" + theFile.name + "</td>";
+		output += "  <td>" + theFile.size + "</td>";
+		output += " <td>" + (theFile.type || "n/a") + "</td>";
+		
+		debug.log("handleFileSelect", "reading file " + theFile.name + " (" + theFile.size + ") " + theFile.type, debug.info);
+
+		if (theFile.type.match('image.*')) {
+			// Render thumbnail.
+			output += " <td><img src='" + e.target.result + "' class='thumbnail'/></td>";
+		}
+		else if (theFile.type.match('text.*')) {
+			output += " <td><textarea disabled cols='50' rows='3'>" + e.target.result + "</textarea></td>";
+		}
+		else if (theFile.type.match('audio.*')) {
+			output += "<td>";
+			output += " <audio controls='controls'><source src='" + e.target.result + "'/>Your browser does not support the <code>Audio</code> element</audio>";
+			output += " <audio controls='controls'><source src='file://" + e.target.result + "'/>Your browser does not support the <code>Audio</code> element</audio>";
+			output += "</td>";
+		}
+		else if (theFile.type.match('video.*')) {
+			//output += " <td> <video controls class='thumb'><source src='" + e.target.result + "'/>Your browser does not support the <code>Video</code> element</video></td>";								
+			output += "<td>";
+			output += "<video controls class='thumbnail'><source src='" + e.target.result + "'/>Your browser does not support the <code>Video</code> element</video>";
+			output += "<video controls class='thumbnail'><source src='file://" + e.target.result + "'/>Your browser does not support the <code>Video</code> element</video>";
+			output += "</td>";
+		}
+		else {
+			output += " <td></td>";
+		}
+		
+		//Include the date if it is supported?
+		if (theFile.lastModifiedDate) {
+			output += "  <td>" + theFile.lastModifiedDate.toLocaleDateString() + "</td>";
+		} 
+		else {
+			debug.log("handleFileSelect", "theFile.lastModifiedDate is not supported on this platform", debug.info);
+		}
+
+		tr = document.createElement('tr');
+		tr.innerHTML = output;
+		document.getElementById('output').appendChild(tr);
+
+	};
+ }
+ 
 /**
  *	Work in progress: Currently getting "failed to load resource" when loading Video and Audio files from the shared Tablet OS folder (I think there is a max file size allowed).
  */
 function handleFileSelect(evt) {
 
-	var blnFileReaderSupported = false, reader, files, size, i, f, output, tr;
+	var blnFileReaderSupported = false, reader, files, size, i, f, tr;
 
 	try {
 		//
@@ -36,59 +92,7 @@ function handleFileSelect(evt) {
 		for (i = 0; i < size; i = i + 1) {
 			debug.log("handleFileSelect", "in handleFileSelect parsing file index " + i, debug.info);
 			f = files[i];
-			reader.onload = (function(theFile) {
-				debug.log("handleFileSelect", "start reader.onload", debug.info);
-				return function(e) {
-					//e = ProgressEvent object
-					//e.target = FileReader object
-				
-					debug.log("handleFileSelect", "start function(e)", debug.info);
-				
-					output = "";
-					output += "<td>" + theFile.name + "</td>";
-					output += "  <td>" + theFile.size + "</td>";
-					output += " <td>" + (theFile.type || "n/a") + "</td>";
-					
-					debug.log("handleFileSelect", "reading file " + theFile.name + " (" + theFile.size + ") " + theFile.type, debug.info);
-
-					if (theFile.type.match('image.*')) {
-						// Render thumbnail.
-						output += " <td><img src='" + e.target.result + "' class='thumbnail'/></td>";
-					}
-					else if (theFile.type.match('text.*')) {
-						output += " <td><textarea disabled cols='50' rows='3'>" + e.target.result + "</textarea></td>";
-					}
-					else if (theFile.type.match('audio.*')) {
-						output += "<td>";
-						output += " <audio controls='controls'><source src='" + e.target.result + "'/>Your browser does not support the <code>Audio</code> element</audio>";
-						output += " <audio controls='controls'><source src='file://" + e.target.result + "'/>Your browser does not support the <code>Audio</code> element</audio>";
-						output += "</td>";
-					}
-					else if (theFile.type.match('video.*')) {
-						//output += " <td> <video controls class='thumb'><source src='" + e.target.result + "'/>Your browser does not support the <code>Video</code> element</video></td>";								
-						output += "<td>";
-						output += "<video controls class='thumbnail'><source src='" + e.target.result + "'/>Your browser does not support the <code>Video</code> element</video>";
-						output += "<video controls class='thumbnail'><source src='file://" + e.target.result + "'/>Your browser does not support the <code>Video</code> element</video>";
-						output += "</td>";
-					}
-					else {
-						output += " <td></td>";
-					}
-					
-					//Include the date if it is supported?
-					if (theFile.lastModifiedDate) {
-						output += "  <td>" + theFile.lastModifiedDate.toLocaleDateString() + "</td>";
-					} 
-					else {
-						debug.log("handleFileSelect", "theFile.lastModifiedDate is not supported on this platform", debug.info);
-					}
-
-					tr = document.createElement('tr');
-					tr.innerHTML = output;
-					document.getElementById('output').appendChild(tr);
-			
-				};
-			})(f);
+			reader.onload = doOnload;
 
 			if ((f.type.match('image.*')) || (f.type.match('audio.*')) || (f.type.match('video.*'))) {
 				debug.log("handleFileSelect", "in handleFileSelect calling reader.readAsDataURL for type " + f.type, debug.info);

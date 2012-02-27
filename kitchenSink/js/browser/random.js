@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-function generate()
-{
-	try
-	{
-		var dt = new Date();
-		var s = "<p>" + dt.toString() + "<br/><br/>";
-		for (var i=0;i<10;i++) {
+function generate() {
+	try {
+		var td, s, i;
+		
+		dt = new Date();
+		s = "<p>" + dt.toString() + "<br/><br/>";
+		for (i = 0; i < 10; i = i + 1) {
 			s += Math.random() + "<br/>";
 		}
 		s += "</p><hr/>";

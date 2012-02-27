@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-function doPageLoad()
-{
-	var ele = document.getElementById("screenInfo");
-	if (ele)
-	{
-		var screenInfo = "<h3>Current Screen:</h3>";
+function doPageLoad() {
+	var ele, screenInfo;
+	
+	ele = document.getElementById("screenInfo");
+	if (ele) {
+		screenInfo = "<h3>Current Screen:</h3>";
 		screenInfo += "<table cellspacing='5' width='25%'>";
 		screenInfo += "<tr><th>screen.availHeight</th><td>" + screen.availHeight  + "</td></tr>";
 		screenInfo += "<tr><th>screen.availWidth</th><td>"  + screen.availWidth + "</td></tr>";

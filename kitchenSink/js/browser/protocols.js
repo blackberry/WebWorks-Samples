@@ -1,30 +1,27 @@
-﻿function displayFileImage()
-{
-	try
-	{
-		var input = document.getElementById("txtFile");
-		var theImg = document.getElementById("theImage");
+function displayFileImage() {
+	try {
+		var input, theImg, img, path;
 		
 		
-		if (input && theImg)
-		{
-			var img = new Image();
-			var path = "";
+		input = document.getElementById("txtFile");
+		theImg = document.getElementById("theImage");
+		
+		
+		if (input && theImg) {
+			img = new Image();
+			path = "";
 				
-			if (isBlackBerryPlayBook())
-			{
+			if (isBlackBerryPlayBook()) {
 				path = "file:///accounts/1000/shared/camera";
 			}
-			else if (isBlackBerrySmartphone())
-			{
+			else if (isBlackBerrySmartphone()) {
 				path = "file:///store/home/user/pictures";
 			}
 			
 			img.src = path + "/" + input.value;
 			img.width = Math.round(screen.width / 3);
 			
-			if (theImg.hasChildNodes())
-			{
+			if (theImg.hasChildNodes()) {
 				theImg.removeChild(theImg.firstChild);
 			}
 			theImg.appendChild(img);
@@ -35,19 +32,14 @@
 	}
 }
 
-function doPageLoad()
-{
-	try
-	{
+function doPageLoad() {
+	try {
 		var filePath = document.getElementById("filePath");
-		if (filePath)
-		{
-			if (isBlackBerrySmartphone())
-			{
+		if (filePath) {
+			if (isBlackBerrySmartphone()) {
 				filePath.innerHTML = "file:///store/home/user/videos/";
 			}
-			else if (isBlackBerryPlayBook())
-			{
+			else if (isBlackBerryPlayBook()) {
 				filePath.innerHTML = "file:///accounts/1000/shared/camera/";
 			}
 		}

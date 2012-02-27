@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,23 +19,19 @@
  *	user selects their corresponding menu item
  * @return
  */
-function appWorld()
-{
+function appWorld() {
 	alert("Open App World menu item selected");
 	debug.log("contextualMenuItem", "Open App World menu item selected", debug.info);
 }
-function showAbout()
-{
+function showAbout() {
 	alert("About menu item selected");
 	debug.log("contextualMenuItem", "About menu item selected", debug.info);
 }
-function reloadPage()
-{
+function reloadPage() {
 	alert("Refresh menu item selected");
 	debug.log("contextualMenuItem", "Refresh menu item selected", debug.info);
 }
-function shareApp()
-{
+function shareApp() {
 	alert("Share menu item selected");
 	debug.log("contextualMenuItem", "Share menu item selected", debug.info);
 }
@@ -43,34 +39,30 @@ function shareApp()
 
 /**
  * The following functions are used to demonstrate how you can contextualise the menu,
- * 		by adding or removing items while the user has your application open.
- * 		This allows you to modify the menu, based on the current state of the
- * 		This allows you to modify the menu, based on the current state of the
- * 		application, creating a contextual user experience.
+ *   by adding or removing items while the user has your application open.
+ *   This allows you to modify the menu, based on the current state of the
+ *   This allows you to modify the menu, based on the current state of the
+ *   application, creating a contextual user experience.
  * @return nothing
  */
-function contextualMenuItem()
-{
+function contextualMenuItem() {
 	alert("Custom menu item selected");
 	debug.log("contextualMenuItem", "menu item selected", debug.info);
 }
-function addCustomMenuItem()
-{
-	try
-	{
+function addCustomMenuItem() {
+	try {
+		var ele, caption, mi_custom;
 	
-		if ((window.blackberry === undefined) || (blackberry.ui.menu === undefined))
-		{
+		if ((window.blackberry === undefined) || (blackberry.ui.menu === undefined)) {
 			alert("blackberry.ui.menu object is undefined.  Unable to complete action.");
 			debug.log("record", "blackberry.ui.menu object is undefined.", debug.error);
 			return false;
 		}
 
-		var ele = document.getElementById("txtMyMenu");
-		if (ele)
-		{
-			var caption = ele.value;
-			var mi_custom = new blackberry.ui.menu.MenuItem(false, 99, caption, contextualMenuItem);
+		ele = document.getElementById("txtMyMenu");
+		if (ele) {
+			caption = ele.value;
+			mi_custom = new blackberry.ui.menu.MenuItem(false, 99, caption, contextualMenuItem);
 			blackberry.ui.menu.addMenuItem(mi_custom);
 			debug.log("addCustomMenu", "'" + caption + "' item added to menu", debug.info);
 		}
@@ -86,13 +78,11 @@ function addCustomMenuItem()
  * @see http://www.blackberry.com/developers/docs/widgetapi/ 
  * @return nothing
  */
-function doPageLoad() 
-{
-	try 
-	{
+function doPageLoad() {
+	try {
+		var mi_top, mi_appWorld, mi_about, mi_reload, mi_middle, mi_share, mi_bottom;
 	
-		if ((window.blackberry === undefined) || (blackberry.ui.menu === undefined))
-		{
+		if ((window.blackberry === undefined) || (blackberry.ui.menu === undefined)) {
 			debug.log("doPageLoad", "blackberry.ui.menu object is undefined.", debug.error);
 			prependContent("details", "<p><i><b>blackberry.ui.menu</b> object not found (likely cause is WebWorks APIs are not supported by this user agent).</i></p>");
 			return false;
@@ -105,13 +95,13 @@ function doPageLoad()
 		//   @param caption (String) - text to be displayed in menu for this menu item.
 		//   @param iscallback (OnClick) - JavaScript function name to be called when user selects this menu item. 
 		// 
-		var mi_top       = new blackberry.ui.menu.MenuItem(true,  0);
-		var mi_appWorld  = new blackberry.ui.menu.MenuItem(false, 1, "Open App World", appWorld);
-		var mi_about     = new blackberry.ui.menu.MenuItem(false, 2, "About", showAbout);
-		var mi_reload    = new blackberry.ui.menu.MenuItem(false, 3, "Refresh", reloadPage);
-		var mi_middle    = new blackberry.ui.menu.MenuItem(true,  4);
-		var mi_share     = new blackberry.ui.menu.MenuItem(false, 5, "Share ...", shareApp);
-		var mi_bottom    = new blackberry.ui.menu.MenuItem(true,  6);
+		mi_top       = new blackberry.ui.menu.MenuItem(true,  0);
+		mi_appWorld  = new blackberry.ui.menu.MenuItem(false, 1, "Open App World", appWorld);
+		mi_about     = new blackberry.ui.menu.MenuItem(false, 2, "About", showAbout);
+		mi_reload    = new blackberry.ui.menu.MenuItem(false, 3, "Refresh", reloadPage);
+		mi_middle    = new blackberry.ui.menu.MenuItem(true,  4);
+		mi_share     = new blackberry.ui.menu.MenuItem(false, 5, "Share ...", shareApp);
+		mi_bottom    = new blackberry.ui.menu.MenuItem(true,  6);
 
 		
 		//Optionally remove any default menu items:
@@ -131,8 +121,7 @@ function doPageLoad()
 		
 		//Optionally check to see if a menu item already exists:
 		//
-		if (blackberry.ui.menu.hasMenuItem(mi_bottom))
-		{
+		if (blackberry.ui.menu.hasMenuItem(mi_bottom)) {
 			blackberry.ui.menu.removeMenuItem(mi_bottom);
 		}
 		blackberry.ui.menu.addMenuItem(mi_bottom);

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,30 +14,25 @@
  * limitations under the License.
  */
 
-function doPageLoad()
-{
-	try
-	{	
+function doPageLoad() {
+	try {
 		var sb = new StringBuilder();
 
-		if ((window.navigator === undefined) || (window.navigator.device === undefined) || (window.navigator.device.network === undefined))
-		{
+		if ((window.navigator === undefined) || (window.navigator.device === undefined) || (window.navigator.device.network === undefined)) {
 			sb.append("<i>The <b>navigator.device.network</b> object is undefined (Likely cause is not supported by this Web engine).</i>");
 			setContent("carrierInfo", sb.toString());
 			return false;
 		}
 		
 		
-		if (navigator.device.network.HomeCarrier)
-		{
+		if (navigator.device.network.HomeCarrier) {
 			sb.append("<p><b>Home Carrier</b>: " +  navigator.device.network.HomeCarrier + "</p>");
 		} 
 		else {
 			sb.append("<p><i>The <b>navigator.device.network.HomeCarrier</b> object is undefined (Likely cause is not supported by this Web engine).</i></p>");
 		}
 		
-		if (navigator.device.network.CurrentCarrier)
-		{
+		if (navigator.device.network.CurrentCarrier) {
 			sb.append("<p><b>Current Carrier</b>: " +  navigator.device.network.CurrentCarrier + "</p>");
 		} 
 		else {

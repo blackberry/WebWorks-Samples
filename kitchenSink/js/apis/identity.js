@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,14 +14,11 @@
  * limitations under the License.
  */
 
-function setDetails()
-{
-	try
-	{
+function setDetails() {
+	try {
 		debug.log("setDetails", "in setDetails", debug.info);
 		
-		if ((window.blackberry === undefined) || (blackberry.identity === undefined))
-		{
+		if ((window.blackberry === undefined) || (blackberry.identity === undefined)) {
 			debug.log("setDetails", "blackberry.identity object is undefined.", debug.error);
 			appendContent("details", "<p><i><b>blackberry.identity</b> object not found (likely cause is WebWorks APIs are not supported by this user agent).</i></p>");
 		}
@@ -41,32 +38,30 @@ function setDetails()
 	}
 }
 
-function setServiceList()
-{
-	try
-	{
+function setServiceList() {
+
+	try {
+		var list, sb, i;
+		
 		debug.log("setServiceList", "in setServiceList", debug.info);
 		
-		if ((window.blackberry === undefined) || (blackberry.identity === undefined))
-		{
+		if ((window.blackberry === undefined) || (blackberry.identity === undefined)) {
 			debug.log("setServiceList", "blackberry.identity object is undefined.", debug.error);
 			appendContent("serviceList", "<p><i><b>blackberry.identity</b> object not found (likely cause is WebWorks APIs are not supported by this user agent).</i></p>");
 			return false;
 		}
 
-		if (typeof blackberry.identity.getServiceList !== "function")
-		{
+		if (typeof blackberry.identity.getServiceList !== "function") {
 			debug.log("setServiceList", "blackberry.identity.getServiceList() method is not supported.", debug.error);
 			appendContent("serviceList", "<p><i><b>blackberry.identity.getServiceList()</b> method not supported by this application.</i></p>");
 			return false;
 		} 
 		else {
-			var list = blackberry.identity.getServiceList();
-			if (list)
-			{
-				var sb = new StringBuilder();
+			list = blackberry.identity.getServiceList();
+			if (list) {
+				sb = new StringBuilder();
 				sb.append("<table>");
-				for (var i = 0; i < list.length; i++) {
+				for (i = 0; i < list.length; i = i +1) {
 					sb.append("<tr><th>Name</th><td>" + list[i].name + "</td><th>Type</th><td>" + list[i].type + "</td><tr>");
 				}
 				sb.append("</table>");
@@ -81,36 +76,33 @@ function setServiceList()
 	}
 }
 
-function setTransportList()
-{
-	try
-	{
+function setTransportList() {
+
+	try {
+		var list, sb, i;
 		debug.log("setTransportList", "in setTransportList", debug.info);
 		
-		if ((window.blackberry === undefined) || (blackberry.identity === undefined))
-		{
+		if ((window.blackberry === undefined) || (blackberry.identity === undefined)) {
 			debug.log("setTransportList", "blackberry.identity object is undefined.", debug.error);
 			appendContent("transportList", "<p><i><b>blackberry.identity</b> object not found (likely cause is WebWorks APIs are not supported by this user agent).</i></p>");
 			return false;
 		}
 
-		if (typeof blackberry.identity.getTransportList !== "function")
-		{
+		if (typeof blackberry.identity.getTransportList !== "function") {
 			debug.log("setServiceList", "blackberry.identity.getTransportList() method is not supported.", debug.error);
 			appendContent("transportList", "<p><i><b>blackberry.identity.getTransportList()</b> method not supported by this application.</i></p>");
 			return false;
 		} 
 		else {
-			var list = blackberry.identity.getTransportList();
-			if (list)
-			{
-				var sb = new StringBuilder();
+			list = blackberry.identity.getTransportList();
+			if (list) {
+				sb = new StringBuilder();
 				sb.append("<table>");
-				for (var i = 0; i < list.length; i++) {
+				for (i = 0; i < list.length; i = i + 1) {
 					sb.append("<tr><th>Name</th><td>" + list[i].name + "</td><th>Type</th><td>" + list[i].type + "</td><tr>");
 				}
 				sb.append("</table>");
-				appendContent("transportList", sb.toString())
+				appendContent("transportList", sb.toString());
 			}
 		}
 		
@@ -120,8 +112,7 @@ function setTransportList()
 	}
 }
 
-function doPageLoad()
-{
+function doPageLoad() {
 	setDetails();
 	setServiceList();
 	setTransportList();

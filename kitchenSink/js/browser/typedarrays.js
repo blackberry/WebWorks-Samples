@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,25 +14,22 @@
  * limitations under the License.
  */
  
- function isNotSupported(id)
-{
+function isNotSupported(id) {
 	document.getElementById(id.toLowerCase()).innerHTML = id + " is not supported by this application.";
 }
-function runArrayTest(id)
-{
+function runArrayTest(id) {
 	var arr;
 	var arrCopy;
 	var size = 10000000;	//100M
 
-	try
-	{
+	var sb, i, l, start, val = 0;
+
+	try {
 
 		//First - create the desired array type:
-		switch(id.toLowerCase())
-		{
+		switch(id.toLowerCase()) {
 			case "float32array":
-				if ((typeof Float32Array) === "undefined")
-				{
+				if ((typeof Float32Array) === "undefined") {
 					isNotSupported(id);
 					return false;
 				}
@@ -40,8 +37,7 @@ function runArrayTest(id)
 				arrCopy = new Float32Array(arr.length);
 				break;
 			case "int8array":
-				if ((typeof Int8Array) == "undefined")
-				{
+				if ((typeof Int8Array) === "undefined") {
 					isNotSupported(id);
 					return false;
 				}
@@ -49,8 +45,7 @@ function runArrayTest(id)
 				arrCopy = new Int8Array(arr.length);
 				break;
 			case "uint8array":
-				if ((typeof Uint8Array) == "undefined")
-				{
+				if ((typeof Uint8Array) === "undefined") {
 					isNotSupported(id);
 					return false;
 				}
@@ -58,8 +53,7 @@ function runArrayTest(id)
 				arrCopy = new Uint8Array(arr.length);
 				break;
 			case "array":
-				if ((typeof Array) == "undefined")
-				{
+				if ((typeof Array) === "undefined") {
 					isNotSupported(id);
 					return false;
 				}
@@ -69,24 +63,21 @@ function runArrayTest(id)
 			default:
 				alert("Unknown array type: " + id);
 		}
-
-		//Run the performance tests:
-		var sb = new StringBuilder("Results (ms) for " + id + " size " + size + " :");
-		sb.append("<ul>");
-		var i, l;
 		
-		var start = new Date();
-		for(i = 0, l = arr.length; i < l; i++)
+		//Run the performance tests:
+		sb = new StringBuilder("Results (ms) for " + id + " size " + size + " :");
+		sb.append("<ul>");
+		
+		start = new Date();
+		for(i = 0, l = arr.length; i < l; i = i + 1)
 		{
 			arr[i] = 0.1234567890123456;	//update ever index in the array
 		}
 		sb.append("<li>Write: " + ( + new Date() - start ) + "</li>");
-
 		
 		
-		var val = 0;
 		start = new Date();
-		for(i = 0, l = arr.length; i < l; i++)
+		for(i = 0, l = arr.length; i < l; i = i + 1)
 		{
 			val = arr[i];		//read from every index in the array
 		}
@@ -95,38 +86,12 @@ function runArrayTest(id)
 		
 		
 		start = new Date();
-		for(i = 0, l = arr.length; i < l; i++)
+		for(i = 0, l = arr.length; i < l; i = i + 1)
 		{
 			arrCopy[i] = arr[i];
 		}
 		sb.append("<li>Loop Copy: " + ( + new Date() - start ) + "</li>");
 
-/*		
-		start = new Date();
-		var arrSliceCopy;
-		switch(id.toLowerCase())
-		{
-			case "float32array":
-				arrSliceCopy = new Float32Array(arr.slice(0, arr.length));
-				break;
-				
-			case "int8array":
-				arrSliceCopy = new Int8Array(arr.slice(0, arr.length));
-				break;
-				
-			case "uint8array":
-				arrSliceCopy = new Uint8Array(arr.slice(0, arr.length));
-				break;
-				
-			case "normalarray":
-				arrSliceCopy = new Array(arr.slice(0, arr.length));
-				break;
-				
-			default:
-				alert("Unknown array type: " + id);
-		}
-		sb.append( "Slice Copy: " + ( + new Date() - start ) );
-*/
 		sb.append("</ul>");
 		document.getElementById(id.toLowerCase()).innerHTML = sb.toString();
 	
@@ -137,8 +102,7 @@ function runArrayTest(id)
 	}
 }
 
-function doPageLoad(event)
-{
+function doPageLoad(event) {
 	runArrayTest("Float32Array");
 	runArrayTest("Int8Array");
 	runArrayTest("Uint8Array");

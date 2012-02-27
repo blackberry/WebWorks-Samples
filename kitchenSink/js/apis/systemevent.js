@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,10 +14,8 @@
  * limitations under the License.
  */
 
-function handleBatteryLevel(level)
-{
-	try 
-	{
+function handleBatteryLevel(level) {
+	try {
 		debug.log("handleBatteryLevel", "Start. level=" + level, debug.info);
 		
 		setContent("batteryLevel", "Battery Level: " + level);
@@ -29,15 +27,12 @@ function handleBatteryLevel(level)
 	}
 }
 
-function handleBatteryState(state)
-{
-	try 
-	{
+function handleBatteryState(state) {
+	try {
 		debug.log("handleBatteryState", "Start. state=" + state, debug.info);
 		
 		var stateTxt = "";
-		switch(state)
-		{
+		switch(state) {
 			case 0:
 				stateTxt = "UNKNOWN";
 				break;
@@ -62,36 +57,28 @@ function handleBatteryState(state)
 }
 
 
-function handleOnCoverageChange()
-{
+function handleOnCoverageChange() {
 	appendContent("coveragedetails", "<p>Coverage changed to </p>");			
 }
 
-function handleBackHardwareKey()
-{
+function handleBackHardwareKey() {
 	appendContent("hardwaredetails", "<p><b>Back</b> key pressed.</p>");			
 }
-function handleMenuHardwareKey()
-{
+function handleMenuHardwareKey() {
 	appendContent("hardwaredetails", "<p><b>Menu</b> key pressed.</p>");			
 }
-function handleVolumeUpHardwareKey()
-{
+function handleVolumeUpHardwareKey() {
 	appendContent("hardwaredetails", "<p><b>Volume Up</b> key pressed.</p>");			
 }
-function handleVolumeDownHardwareKey()
-{
+function handleVolumeDownHardwareKey() {
 	appendContent("hardwaredetails", "<p><b>Volume Down</b> key pressed.</p>");			
 }
 
-function doPageLoad()
-{
-	try 
-	{
+function doPageLoad() {
+	try {
 		debug.log("doPageLoad", "in setHandlers", debug.info);
 		
-		if ((window.blackberry === undefined) || (blackberry.system === undefined) || (blackberry.system.event === undefined))
-		{
+		if ((window.blackberry === undefined) || (blackberry.system === undefined) || (blackberry.system.event === undefined)) {
 			debug.log("doPageLoad", "blackberry.system.event object is undefined.", debug.error);
 			appendContent("details", "<p><i><b>blackberry.system.event</b> object not found (likely cause is WebWorks APIs are not supported by this user agent).</i></p>");
 			appendContent("coveragedetails", "<p><i><b>blackberry.system.event</b> object not found (likely cause is WebWorks APIs are not supported by this user agent).</i></p>");
@@ -100,8 +87,7 @@ function doPageLoad()
 			return false;
 		}
 
-		if (blackberry.system.event.deviceBatteryLevelChange === undefined)
-		{
+		if (blackberry.system.event.deviceBatteryLevelChange === undefined) {
 			prependContent("details", "<p><i><b>blackberry.system.event.deviceBatteryLevelChange</b> method is not supported by this application.</i></p>");			
 			hide("batteryLevelBar");
 		}
@@ -110,8 +96,7 @@ function doPageLoad()
 		}
 
 		
-		if (blackberry.system.event.deviceBatteryStateChange === undefined)
-		{
+		if (blackberry.system.event.deviceBatteryStateChange === undefined) {
 			prependContent("details", "<p><i><b>blackberry.system.event.deviceBatteryStateChange</b> method is not supported by this application.</i></p>");			
 			hide("batteryLevelBar");
 		}
@@ -120,8 +105,7 @@ function doPageLoad()
 		}
 
 		
-		if (blackberry.system.event.onCoverageChange === undefined)
-		{
+		if (blackberry.system.event.onCoverageChange === undefined) {
 			appendContent("coveragedetails", "<p><i><b>blackberry.system.event.onCoverageChange</b> method is not supported by this application.</i></p>");			
 		}
 		else {
@@ -129,8 +113,7 @@ function doPageLoad()
 		}
 
 		
-		if (blackberry.system.event.onHardwareKey === undefined)
-		{
+		if (blackberry.system.event.onHardwareKey === undefined) {
 			appedContent("hardwaredetails", "<p><i><b>blackberry.system.event.onHardwareKey</b> method is not supported by this application.</i></p>");			
 		}
 		else {

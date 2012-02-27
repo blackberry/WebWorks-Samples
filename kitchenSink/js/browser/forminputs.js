@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,27 +14,25 @@
  * limitations under the License.
  */
 
-function validate()
-{
+function validate() {
+	var txt, mtr, pas, prg, msg, ele;
+	
 	//User has clicked on the 'Submit' button
-	var txt = document.getElementById("txtText");
-	var mtr = document.getElementById("mtMeter");
-	var pas = document.getElementById("txtPassword");
-	var prg = document.getElementById("prgProgress");
+	txt = document.getElementById("txtText");
+	mtr = document.getElementById("mtMeter");
+	pas = document.getElementById("txtPassword");
+	prg = document.getElementById("prgProgress");
 	//...
-	var msg = "";
-	if (txt.value == "")
-	{
+	msg = "";
+	if (txt.value === "") {
 		msg += "The text field is blank";
 	}
-	if (pas.value == "")
-	{
+	if (pas.value === "") {
 		msg += "The password field is blank";
 	}
 	// ...
-	var ele = document.getElementById("output");
-	if (msg == "")
-	{
+	ele = document.getElementById("output");
+	if (msg === "") {
 		ele.innerHTML = "No validation errors";
 		ele.className = "okay";
 	}

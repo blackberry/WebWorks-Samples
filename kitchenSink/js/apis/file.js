@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,9 @@
 
  function formatAsHTML(path, items)
  {
-	var sb = new StringBuilder();
+	var sb, i;
+	
+	sb = new StringBuilder();
 
 	sb.append("<p>The following resources are found within the following shared directory:</p>");
 	sb.append("<p><b>" + path + "</b></p>");
@@ -27,7 +29,7 @@
 	}
 	else {
 		sb.append("<ul>");
-		for (var i = 0; i < items.length; i++)
+		for (i = 0; i < items.length; i = i + 1)
 		{
 			sb.append("<li><a href='" + path + "/" + items[i] + "'>" + items[i] + "</a></li>");
 		}
@@ -37,30 +39,27 @@
 	return sb.toString();
  }
  
-function displayPhotos(id)
-{
-	try
-	{
-		if ((window.blackberry === undefined) || (blackberry.io === undefined) || (blackberry.io.file === undefined))
-		{
+function displayPhotos(id) {
+	try {
+		var Dir, path, items;
+		
+		if ((window.blackberry === undefined) || (blackberry.io === undefined) || (blackberry.io.file === undefined)) {
 			appendContent("photoDetails", "<p><i><b>blackberry.io.file</b> object not found (likely cause is WebWorks APIs are not supported by this user agent).</i></p>");
 			debug.log("displayPhotos", "blackberry.io.file object is undefined.", debug.error);
 			return false;
 		}
 
-		var Dir = blackberry.io.dir;
+		Dir = blackberry.io.dir;
 		
-		var path = "";		
-		if (isBlackBerryPlayBook())
-		{
+		path = "";		
+		if (isBlackBerryPlayBook()) {
 			path = Dir.appDirs.shared.camera.path;
 		}
-		else if (isBlackBerrySmartphone())
-		{
+		else if (isBlackBerrySmartphone()) {
 			path = "file:///store/home/user/pictures";
 		}
 		
-		var items = Dir.listFiles(path);
+		items = Dir.listFiles(path);
 		
 		setContent(id, formatAsHTML(path, items));
 
@@ -71,30 +70,27 @@ function displayPhotos(id)
 }
 
 
-function displayMusic(id)
-{
-	try
-	{
-		if ((window.blackberry === undefined) || (blackberry.io === undefined) || (blackberry.io.file === undefined))
-		{
+function displayMusic(id) {
+	try {
+		var Dir, path, items;
+		
+		if ((window.blackberry === undefined) || (blackberry.io === undefined) || (blackberry.io.file === undefined)) {
 			appendContent("musicDetails", "<p><i><b>blackberry.io.file</b> object not found (likely cause is WebWorks APIs are not supported by this user agent).</i></p>");
 			debug.log("displayMusic", "blackberry.io.file object is undefined.", debug.error);
 			return false;
 		}
 		
-		var Dir = blackberry.io.dir;
+		Dir = blackberry.io.dir;
 		
-		var path = "";		
-		if (isBlackBerryPlayBook())
-		{
+		path = "";		
+		if (isBlackBerryPlayBook()) {
 			path = Dir.appDirs.shared.music.path;
 		}
-		else if (isBlackBerrySmartphone())
-		{
+		else if (isBlackBerrySmartphone()) {
 			path = "file:///store/home/user/music";
 		}
 				
-		var items = Dir.listFiles(path);
+		items = Dir.listFiles(path);
 		
 		setContent(id, formatAsHTML(path, items));
 
@@ -105,29 +101,26 @@ function displayMusic(id)
 }
 
 
-function displayVideos(id)
-{
-	try
-	{
-		if ((window.blackberry === undefined) || (blackberry.io === undefined) || (blackberry.io.file === undefined))
-		{
+function displayVideos(id) {
+	try {
+		var Dir, path, items;
+		
+		if ((window.blackberry === undefined) || (blackberry.io === undefined) || (blackberry.io.file === undefined)) {
 			appendContent("videoDetails", "<p><i><b>blackberry.io.file</b> object not found (likely cause is WebWorks APIs are not supported by this user agent).</i></p>");
 			debug.log("displayVideos", "blackberry.io.file object is undefined.", debug.error);
 			return false;
 		}
 
-		var Dir = blackberry.io.dir;
+		Dir = blackberry.io.dir;
 		
-		var path = "";		
-		if (isBlackBerryPlayBook())
-		{
+		path = "";		
+		if (isBlackBerryPlayBook()) {
 			path = Dir.appDirs.shared.videos.path;
 		}
-		else if (isBlackBerrySmartphone())
-		{
+		else if (isBlackBerrySmartphone()) {
 			path = "file:///store/home/user/videos";
 		}
-		var items = Dir.listFiles(path);
+		items = Dir.listFiles(path);
 		
 		setContent(id, formatAsHTML(path, items));
 		
@@ -138,10 +131,8 @@ function displayVideos(id)
 }
 
 
-function displayFiles()
-{
-	try
-	{
+function displayFiles() {
+	try {
 		debug.log("displayFiles", "in displayFiles", debug.info);
 		
 		displayPhotos("photoDetails");
@@ -155,14 +146,11 @@ function displayFiles()
 }
 
 
-function doPageLoad()
-{
-	try 
-	{
+function doPageLoad() {
+	try {
 		debug.log("doPageLoad", "Start", debug.info);
 		
-		if ((window.blackberry === undefined) || (blackberry.io === undefined) || (blackberry.io.dir === undefined))
-		{
+		if ((window.blackberry === undefined) || (blackberry.io === undefined) || (blackberry.io.dir === undefined)) {
 			debug.log("doPageLoad", "blackberry.io.file object is undefined.", debug.error);
 			prependContent("photoDetails", "<p><i><b>blackberry.io.file</b> object not found (likely cause is WebWorks APIs are not supported by this user agent).</i></p>");
 			prependContent("musicDetails", "<p><i><b>blackberry.io.file</b> object not found (likely cause is WebWorks APIs are not supported by this user agent).</i></p>");

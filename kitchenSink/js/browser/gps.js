@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,19 +19,16 @@ var LOCATION_ASSISTED = 1;
 var LOCATION_AUTONOMOUS = 2;
 var curLocation = "";
 
-function updateLocation(loc) 
-{
+function updateLocation(loc) {
 	var ele = document.getElementById("currentLocation");
 	ele.innerHTML = loc;
-	if (ele.innerHTML != loc) {
+	if (ele.innerHTML !== loc) {
 		//pre 4.6 browser - no support for DOM L2
 		alert(loc);
 	}
 }
-function getCoords() 
-{
-	try
-	{
+function getCoords() {
+	try {
 		var lat = blackberry.location.latitude;			//Latitude: Positive values indicate northern latitude; negative values indicate southern latitude
 		var lon = blackberry.location.longitude;		//Longitude: Positive values indicate eastern longitude; negative values indicate western longitude.
 		updateLocation('Current ' + curLocation + ' location: ' + lat + ", " + lon);
@@ -40,19 +37,15 @@ function getCoords()
 		debug.log("getCoords", e, debug.exception);
 	}
 }
-function getLocation(aidmode) 
-{
-	try 
-	{
-		if ((window.blackberry === undefined) || (blackberry.location === undefined))
-		{
+function getLocation(aidmode) {
+	try {
+		if ((window.blackberry === undefined) || (blackberry.location === undefined)) {
 			updateLocation('<i>The <b>blackberry.location</b> object is not supported.</i>');
 			return false;
 		}
 	
 	
-		if (blackberry.location.GPSSupported) 
-		{
+		if (blackberry.location.GPSSupported) {
 			updateLocation('Retrieving ' + curLocation + ' GPS Coordinates ...');
 			blackberry.location.setAidMode(aidmode);		//Mechanism used to obtain the GPS location.
 			blackberry.location.onLocationUpdate("getCoords()");
@@ -67,43 +60,36 @@ function getLocation(aidmode)
 		debug.log("getLocation", e, debug.exception);
 	}
 }
-function getCellSite() 
-{
+function getCellSite() {
 	curLocation = "CellSite";
 	getLocation(LOCATION_CELLSITE);
 }
-function getAssisted() 
-{
+function getAssisted() {
 	curLocation = "Assisted";
 	getLocation(LOCATION_ASSISTED);
 }
-function getAutonomous() 
-{
+function getAutonomous() {
 	curLocation = "Autonomous";
 	getLocation(LOCATION_AUTONOMOUS);
 }
 
 //display the new location
-function locationUpdated() 
-{
-	try 
-	{
-	
-		if ((window.blackberry === undefined) || (blackberry.location === undefined))
-		{
+function locationUpdated() {
+	try {
+		var latitude, longitude, pf, support;
+		
+		if ((window.blackberry === undefined) || (blackberry.location === undefined)) {
 			updateLocation('<i>The <b>blackberry.location</b> object is not supported.</i>');
 			return false;
 		}
 		
-		var latitude = "unknown";
-		var longitude = "unknown";
+		latitude = "unknown";
+		longitude = "unknown";
 		curLocation = "Default";
-		var pf = navigator.platform;
-		if (pf == "BlackBerry") 
-		{
-			var support = blackberry.location.GPSSupported;
-			if (support) 
-			{
+		pf = navigator.platform;
+		if (pf === "BlackBerry") {
+			support = blackberry.location.GPSSupported;
+			if (support) {
 				//refresh the location
 				blackberry.location.refreshLocation();
 				latitude = blackberry.location.latitude;
