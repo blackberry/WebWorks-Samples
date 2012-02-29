@@ -23,7 +23,7 @@ function clearOutput() {
 	setContent("geolocationInfo", "");
 }
 function displayOutput(output) {
-	setContent("geolocationInfo", "<div>" + output + "</div>");
+	appendContent("geolocationInfo", "<div>" + output + "</div>");
 }
 function errorMessage(msg)
 {
