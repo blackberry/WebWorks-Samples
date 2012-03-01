@@ -10,11 +10,11 @@ Sample application that demonstrates swipemenu.js: A swipe-down menu framework f
 **Author(s)** 
 
 * [Adam Stanley](https://github.com/astanley)
-* [Rory Barnes](https://github.com/astanley)
+* [Rory Craig-Barnes](https://github.com/astanley)
 
 **Dependencies**
 
-1. [icon_options.png, icon_reset.png and icon_rules.png](https://github.com/glasspear/WebWorks-CodeSamples) courtesy of Rory Barnes, available under public domain.
+1. [icon_options.png, icon_reset.png and icon_rules.png](https://github.com/glasspear/WebWorks-CodeSamples) courtesy of Rory Craig-Barnes, available under public domain.
 2. [monkey-icon.png](http://www.iconarchive.com/show/animal-icons-by-martin-berube/monkey-icon.html) courtesy of Martin Berube, available as freeware, allowed commercial usage.
 3. [icon.png](http://www.clker.com/clipart-green-menu-icon-set-down.html) courtesy of OCAL, available under public domain.
 				
