@@ -28,14 +28,17 @@ var swipemenu = (function() {
 		//Show menu only if its already closed:
 		if (menu && !state.menuOpen) {
 			
+			//Reassign onSwipDown event - if menuBar is open, and swipe down occurs, close the menu.
+			blackberry.app.event.onSwipeDown(hideMenuBar);
+		
 			//If you are already using jQuery in your project, us it to perform menu transition:
-			if (typeof $ === "function") {
-				$('#menuBar').animate({top : 0}, {queue : false});
-				console.log("showMenuBar - using jQuery to perform menu transition");
-			} else {
+			if (typeof jQuery === "undefined") {
 				menu.style['-webkit-transition'] = 'all 0.5s ease-in-out';
 				menu.style['-webkit-transform'] = 'translate(0, ' + (height + 3) + 'px)';
 				console.log("showMenuBar - using CSS3 to perform menu transition");
+			} else {
+				$('#menuBar').animate({top : 0}, {queue : false});
+				console.log("showMenuBar - using jQuery to perform menu transition");
 			}
 			
 			state.menuOpen = true; 
@@ -46,15 +49,18 @@ var swipemenu = (function() {
 		var menu = document.getElementById("menuBar");
 		//Hide menu only if its open:
 		if (menu && state.menuOpen) {
+			
+			//Reassign onSwipDown event - if menuBar is closed, and swipe down occurs, open the menu.
+			blackberry.app.event.onSwipeDown(showMenuBar);
 
 			//If you are already using jQuery in your project, us it to perform menu transition:
-			if (typeof $ === "function") {
-				$('#menuBar').animate({top : -100}, {queue : false});
-				console.log("hideMenuBar - using jQuery to perform menu transition");
-			} else {
+			if (typeof jQuery === "undefined") {
 				menu.style['-webkit-transition'] = 'all 0.5s ease-in-out';
 				menu.style['-webkit-transform'] = 'translate(0, -' + (height + 3) + 'px)';
 				console.log("hideMenuBar - using CSS3 to perform menu transition");
+			} else {
+				$('#menuBar').animate({top : -100}, {queue : false});
+				console.log("hideMenuBar - using jQuery to perform menu transition");
 			}
 		
 			state.menuOpen = false; 
