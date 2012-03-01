@@ -28,10 +28,10 @@ var swipemenu = (function() {
 		//Show menu only if its already closed:
 		if (menu && !state.menuOpen) {
 			
-			//Reassign onSwipDown event - if menuBar is open, and swipe down occurs, close the menu.
+			//Reassign onSwipeDown event - if menuBar is open, and swipe down occurs, close the menu.
 			blackberry.app.event.onSwipeDown(hideMenuBar);
 		
-			//If you are already using jQuery in your project, us it to perform menu transition:
+			//If you are already using jQuery in your project, use it to perform menu transition:
 			if (typeof jQuery === "undefined") {
 				menu.style['-webkit-transition'] = 'all 0.5s ease-in-out';
 				menu.style['-webkit-transform'] = 'translate(0, ' + (height + 3) + 'px)';
@@ -50,10 +50,10 @@ var swipemenu = (function() {
 		//Hide menu only if its open:
 		if (menu && state.menuOpen) {
 			
-			//Reassign onSwipDown event - if menuBar is closed, and swipe down occurs, open the menu.
+			//Reassign onSwipeDown event - if menuBar is closed, and swipe down occurs, open the menu.
 			blackberry.app.event.onSwipeDown(showMenuBar);
 
-			//If you are already using jQuery in your project, us it to perform menu transition:
+			//If you are already using jQuery in your project, use it to perform menu transition:
 			if (typeof jQuery === "undefined") {
 				menu.style['-webkit-transition'] = 'all 0.5s ease-in-out';
 				menu.style['-webkit-transform'] = 'translate(0, -' + (height + 3) + 'px)';
