@@ -7,6 +7,11 @@ Sample application that demonstrates swipemenu.js: A swipe-down menu framework f
 
 * [BlackBerry WebWorks SDK for Tablet OS](http://us.blackberry.com/developers/tablet/webworks.jsp)
 
+**Tested On**
+
+* BlackBerry Tablet OS 2.0.0.7971
+* BlackBerry Tablet OS 1.0.8.6067
+
 **Author(s)** 
 
 * [Adam Stanley](https://github.com/astanley)
