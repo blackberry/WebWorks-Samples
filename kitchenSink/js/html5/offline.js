@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,27 +14,24 @@
  * limitations under the License.
  */
 
-function checkStatus()
-{
-	try
-	{
-		var status = "UNKNOWN";
-		if (navigator.onLine === null)
-		{
+function checkStatus() {
+	try {
+		var status, d;
+		
+		status = "UNKNOWN";
+		if (navigator.onLine === null) {
 			debug.log("checkStatus", "HTML5 offline not supported", debug.error);
 			return false;
 		} 
-		
-		if (navigator.onLine)
-		{
+
+		if (navigator.onLine) {
 			setContent("browserStatus", "<b style='color: green;'>ONLINE</b>");
-			
 		}
 		else {
 			setContent("browserStatus", "<b style='color:red;'>OFFLINE</b>");
 		}
-		
-		var d = new Date();
+
+		d = new Date();
 		document.getElementById("currentDate").innerHTML = d.toString();
 		
 		window.setTimeout(checkStatus, 1000);

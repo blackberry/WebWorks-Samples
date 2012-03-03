@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,8 +14,7 @@
  * limitations under the License.
  */
 
-function showPage(id)
-{
+function showPage(id) {
 	document.getElementById("page1").className = "hide";
 	document.getElementById("page2").className = "hide";
 	document.getElementById("page3").className = "hide";

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,20 +14,16 @@
  * limitations under the License.
  */
 
-function exitApp()
-{
-	try
-	{
+function exitApp() {
+	try {
 		debug.log("exitApp", "in exitApp", debug.info);
 
-		if ((window.blackberry === undefined) || (blackberry.app === undefined))
-		{
+		if ((window.blackberry === undefined) || (blackberry.app === undefined)) {
 			debug.log("exitApp", "blackberry.app object is undefined.", debug.error);
 			return false;
 		}
 
-		if (confirm("Would you like to exit?"))
-		{
+		if (confirm("Would you like to exit?")) {
 			debug.log("exitApp", "exiting application", debug.info);
 			blackberry.app.exit();
 		}
@@ -39,21 +35,17 @@ function exitApp()
 }
 
 //Note: Currently the setHomeScreenName method is only supported on BlackBerry Smartphone device software:
-function setName()
-{
-	try
-	{
+function setName() {
+	try {
 		debug.log("setName", "in setName", debug.info);
 		
-		if ((window.blackberry === undefined) || (blackberry.app === undefined))
-		{
+		if ((window.blackberry === undefined) || (blackberry.app === undefined)) {
 			debug.log("setName", "blackberry.app object is undefined.", debug.error);
 			return false;
 		}
 
 		var ele = document.getElementById("txtSetName");
-		if (ele)
-		{
+		if (ele) {
 			debug.log("setName", "setting home screen name to '" + ele.value + "'", debug.info);
 			blackberry.app.setHomeScreenName(ele.value);
 		}
@@ -64,21 +56,17 @@ function setName()
 }
 
 //Note: Currently the setHomeScreenIcon method is only supported on BlackBerry Smartphone device software:
-function setIcon()
-{
-	try
-	{
+function setIcon() {
+	try {
 		debug.log("setIcon", "in setIcon", debug.info);
 		
-		if ((window.blackberry === undefined) || (blackberry.app === undefined))
-		{
+		if ((window.blackberry === undefined) || (blackberry.app === undefined)) {
 			debug.log("setIcon", "blackberry.app object is undefined.", debug.error);
 			return false;
 		}
 
 		var ele = document.getElementById("txtSetIcon");
-		if (ele)
-		{
+		if (ele) {
 			debug.log("setIcon", "setting home screen icon to '" + ele.value + "'", debug.info);
 			var result = blackberry.app.setHomeScreenIcon(ele.value);
 			debug.log("setIcon", "Home screen icon " + (result === true ? "" : "NOT") + " set to '" + ele.value + "'", debug.info);
@@ -90,21 +78,17 @@ function setIcon()
 	}
 }
 
-function requestForeground()
-{
+function requestForeground() {
 	debug.log("requestForeground", "moving application to foreground", debug.info);
 	var result = blackberry.app.requestForeground();
 }
 
 //Note: Currently the requestBackground and requestForeground methods are only supported on BlackBerry Smartphone device software:
-function requestBackground()
-{
-	try
-	{
+function requestBackground() {
+	try {
 		debug.log("requestBackground", "in setIcon", debug.info);
 		
-		if ((window.blackberry === undefined) || (blackberry.app === undefined))
-		{
+		if ((window.blackberry === undefined) || (blackberry.app === undefined)) {
 			debug.log("requestBackground", "blackberry.app object is undefined.", debug.error);
 			return false;
 		}
@@ -119,14 +103,11 @@ function requestBackground()
 	}
 }
 
-function doPageLoad()
-{
-	try
-	{
+function doPageLoad() {
+	try {
 		debug.log("doPageLoad", "in displayDetails", debug.info);
 		
-		if ((window.blackberry === undefined) || (blackberry.app === undefined))
-		{
+		if ((window.blackberry === undefined) || (blackberry.app === undefined)) {
 			debug.log("doPageLoad", "blackberry.app object is undefined.", debug.error);
 			prependContent("actions", "<p><i><b>blackberry.app</b> object not found (likely cause is WebWorks APIs are not supported by this user agent).</i></p>");
 			appendContent("details", "<p><i><b>blackberry.app</b> object not found (likely cause is WebWorks APIs are not supported by this user agent).</i></p>");

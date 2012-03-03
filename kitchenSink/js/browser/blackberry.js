@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,48 +14,46 @@
  * limitations under the License.
  */
 
-function recurseObject(obj) 
-{
-	var msg = "<ol>";
-	try 
-	{
-	   // Go through all the properties of the passed-in object
-	   for (var i in obj) 
-	   {
-			var objType = (typeof obj[i]);
-			var objValue = " = " + obj[i];
-			if ((objType == "object") || (objType == "function")) 
-			{
-				objValue = "";
-			}
+function recurseObject(obj)  {
+	var msg = "<ol>", i, objType, objValue;
+	
+	try  {
+		// Go through all the properties of the passed-in object
+		
+			for (i in obj) {
+				if (i) {
+					objType = (typeof obj[i]);
+					objValue = " = " + obj[i];
+					if ((objType === "object") || (objType === "function")) {
+						objValue = "";
+					}
 
-			msg += "<li>";
-			msg += i + objValue + " [" + objType + "]";
-			if (typeof obj[i] == "object") 
-			{
-				msg += recurseObject(obj[i]);
-			} else 
-			msg += "</li>";
-	   }
+					msg += "<li>";
+					msg += i + objValue + " [" + objType + "]";
+					if (typeof obj[i] === "object") {
+						msg += recurseObject(obj[i]);
+					} else {
+						msg += "</li>";
+					}
+				}
+			}
 	} 
-	catch (e) 
-	{
+	catch (e) {
 		debug.log("recurseObject", e, debug.exception);
 	}
    msg += "</ol>";
    return msg;
 }
 
-function displayObjects()
-{
-	try 
-	{
-		var ele = document.getElementById("txtObject");
-		if (ele)
-		{
-			var objName = ele.value;
-			var obj = eval(objName);
-			document.getElementById("dynProp").innerHTML = "<ol><li>" + objName + " [object]" + recurseObject(obj) + "</li></ol>";
+function displayObjects() {
+	try {
+		var ele, objName, obj;
+		
+		ele = document.getElementById("txtObject");
+		if (ele) {
+			objName = ele.value;
+			obj = eval(objName);
+			document.getElementById("dynProp").innerHTML = "<ol><li>" + obj + " [object]" + recurseObject(obj) + "</li></ol>";
 		}
 	} 
 	catch (e) {

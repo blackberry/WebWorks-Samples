@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,10 +14,8 @@
  * limitations under the License.
  */
 
-function displayScreenDimensions()
-{
-	try
-	{
+function displayScreenDimensions() {
+	try {
 		var sb = new StringBuilder();
 		sb.append("<table cellspacing='5' width='20%'>");
 		sb.append("<tr><th>screen.availHeight</th><td>" + screen.availHeight  + "</td></tr>");
@@ -32,10 +30,8 @@ function displayScreenDimensions()
 		debug.log("displayScreenDimensions", e, debug.exception);
 	}
 }
-function displayWindowDimensions()
-{
-	try
-	{
+function displayWindowDimensions() {
+	try {
 		var sb = new StringBuilder();
 		sb.append("<table cellspacing='5' width='20%'>");
 		sb.append("<tr><th>window.innerWidth</th><td>" + window.innerWidth  + "</td></tr>");
@@ -49,8 +45,7 @@ function displayWindowDimensions()
 	}
 }
 
-function doPageLoad()
-{
+function doPageLoad() {
 	displayScreenDimensions();
 	displayWindowDimensions();
 }

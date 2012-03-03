@@ -17,8 +17,7 @@
 /**
  * object sent to the main thread from this worker via the postMessage method.
  */
-function WorkerMessage(workerid, found) 
-{
+function WorkerMessage(workerid, found) {
 	this.workerid = workerid;
 	this.found = found;
 }
@@ -26,15 +25,14 @@ function WorkerMessage(workerid, found)
 /**
  * Calculates whether a give number is prime:
  */
-function isPrime(num)
-{
-	var root = Math.floor(Math.sqrt(num));
-	var primeFound = true;
+function isPrime(num) {
+	var root, i, primeFound;
 
-	for (var i = 2; i <= root; i++)
-	{
-		if ((num % i) === 0)
-		{
+	root = Math.floor(Math.sqrt(num));
+	primeFound = true;
+
+	for (i = 2; i <= root; i = i + 1) {
+		if ((num % i) === 0) {
 			primeFound = false;
 			break;
 		}
@@ -46,30 +44,28 @@ function isPrime(num)
  * This method is called when this worker receives a message from the main thread.
  * @param message - object send to this worker via a postMessage method called from the main thread.
  */
-function handleOnMessage(message)
-{
-	var lower_range    = message.data.lower_range;
-	var upper_range    = message.data.upper_range;
-	var workerid = message.data.workerid;
+function handleOnMessage(message) {
+	var lower_range, upper_range, workerid, found, j, return_msg;
 	
-	var found = 0;
-	for (var j = lower_range; j <= upper_range; j++)
-	{
-		if (j <= 3) 
-		{
+	lower_range    = message.data.lower_range;
+	upper_range    = message.data.upper_range;
+	workerid = message.data.workerid;
+	
+	found = 0;
+	for (j = lower_range; j <= upper_range; j = j + 1) {
+		if (j <= 3) {
 			found += 1;
 		}
 		else {		
-			if (isPrime(j))
-			{
+			if (isPrime(j)) {
 				found += 1;
 			}
 		}
 	}
 	//Once this worker has finished its processing, send a message back to the main thread:
 	//Note: this message is a different type than was received during the onmessage event
-	var message = new WorkerMessage(workerid, found);
-	postMessage(message);
+	return_msg = new WorkerMessage(workerid, found);
+	postMessage(return_msg);
 }
 
 /**

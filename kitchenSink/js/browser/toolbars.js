@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,28 +14,24 @@
  * limitations under the License.
  */
 
-function setOrientation()
-{
+function setOrientation() {
 	//TODO: Calculate the 'right' header and footer heights for the current orientation/perspective.
 	//	use hardcoded values for now.
-	var headerHeight = 50, footerHeight = 50;
+	var headerHeight = 50, footerHeight = 50, header, content, footer;
 
 	//set the height of the header:
-	var header = document.getElementById("header");
-	if (header)
-	{
+	header = document.getElementById("header");
+	if (header) {
 		header.style.height = headerHeight + "px";
 	}		
 	//set the height of the content panel
-	var content = document.getElementById("content");
-	if (content)
-	{
+	content = document.getElementById("content");
+	if (content) {
 		content.style.height = (window.innerHeight - headerHeight - footerHeight) + "px";
 	}
 	//set the height of the footer:
-	var footer = document.getElementById("footer");
-	if (footer)
-	{
+	footer = document.getElementById("footer");
+	if (footer) {
 		footer.style.height = footerHeight + "px";
 	}			
 }

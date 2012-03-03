@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,22 +14,19 @@
  * limitations under the License.
  */
 
-function displayStorage()
-{
-	try
-	{
-		var size = 0;
-		if (window.localStorage)
-		{
-			var num = window.localStorage.length;
+function displayStorage() {
+	try {
+		var size = 0, num, out, i, key, value;
+		
+		if (window.localStorage) {
+			num = window.localStorage.length;
 			if (num > 0)
 			{
-				var out = "<table width='50%' cellspacing='0' cellpadding='0' border='0'>";
+				out = "<table width='50%' cellspacing='0' cellpadding='0' border='0'>";
 				out += "<tr><th>Key</th><th>Chars </th></tr>";
-				for (var i = 0; i < num; i++) 
-				{
-					var key = window.localStorage.key(i);
-					var value = window.localStorage.getItem(key);
+				for (i = 0; i < num; i = i + 1) {
+					key = window.localStorage.key(i);
+					value = window.localStorage.getItem(key);
 					out += "<tr><td>" + key + "</td><td>" + value.length + "</td></tr>";
 					size += value.length;
 				}
@@ -45,20 +42,18 @@ function displayStorage()
 		}
 		else {
 			//Local storage is not supported - read the values from cookies instead?
+			console.log("Local storage is not supported");
 		}
 		
-		if (window.sessionStorage)
-		{
-			var num = window.sessionStorage.length;
-			if (num > 0)
-			{
-				var out = "<table width='50%' cellspacing='0' cellpadding='0' border='0'>";
+		if (window.sessionStorage) {
+			num = window.sessionStorage.length;
+			if (num > 0) {
+				out = "<table width='50%' cellspacing='0' cellpadding='0' border='0'>";
 				out += "<tr><th>Key</th><th>Value</th></tr>";
 				out += "<tr><th>Key</th><th>Chars </th></tr>";
-				for (var i = 0; i < num; i++) 
-				{
-					var key = window.sessionStorage.key(i);
-					var value = window.sessionStorage.getItem(key);
+				for (i = 0; i < num; i = i + 1) {
+					key = window.sessionStorage.key(i);
+					value = window.sessionStorage.getItem(key);
 					out += "<tr><td>" + key + "</td><td>" + value.length + "</td></tr>";
 					size += value.length;
 				}
@@ -78,13 +73,10 @@ function displayStorage()
 	}
 }
 
-function removeAllLocal()
-{
-	try
-	{
+function removeAllLocal() {
+	try {
 		prependContent("output", "Clearing local storage<br/>");
-		if (window.localStorage)
-		{
+		if (window.localStorage) {
 			localStorage.clear();
 		}
 		displayStorage();
@@ -93,13 +85,10 @@ function removeAllLocal()
 		debug.log("removeAllLocal", e.message, debug.exception);
 	}
 }
-function removeAllSession()
-{
-	try
-	{
+function removeAllSession() {
+	try {
 		prependContent("output", "Clearing session storage<br/>");
-		if (window.sessionStorage)
-		{
+		if (window.sessionStorage) {
 			sessionStorage.clear();
 		}
 		displayStorage();				
@@ -109,24 +98,20 @@ function removeAllSession()
 	}
 }
 
-function addItem(key, value, isLocal)
-{
+function addItem(key, value, isLocal) {
 	
-	if ((key !== "") && (value !== ""))
-	{
-		if (isLocal)
-		{
-			if (window.localStorage)
-			{
+	if ((key !== "") && (value !== "")) {
+		if (isLocal) {
+			if (window.localStorage) {
 				window.localStorage.setItem(key, value);
 				prependContent("output", "adding [" + key + "] to local storage.<br/>");
 			} else {
 				//Local storage is not supported - save the key/value in a cookie instead?
+				console.log("Local storage is not supported");
 			}
 		} 
 		else {
-			if (window.sessionStorage)
-			{
+			if (window.sessionStorage) {
 				window.sessionStorage.setItem(key, value);
 				prependContent("output", "adding [" + key + "] to session storage.<br/>");
 			}
@@ -138,50 +123,46 @@ function addItem(key, value, isLocal)
 	}
 }
 
-function getUniqueKey()
-{
+function getUniqueKey() {
 	var dt = new Date();
 	var key = dt.toDateString().replace(/ /g, "") + dt.getFullYear() + dt.getMonth() + dt.getDate() + dt.getHours() + dt.getMinutes() + dt.getSeconds();
 	return key;
 }
-function runLocalLoadTest()
-{
+function runLocalLoadTest() {
+	var len, sb, i, value;
+
 	key = getUniqueKey();
-	var len = document.getElementById("txtNumBytesLocal").value;
+	len = document.getElementById("txtNumBytesLocal").value;
 	
-	var sb = new StringBuilder();
+	sb = new StringBuilder();
 	
-	for (var i = 0; i < len; i++) 
-	{
+	for (i = 0; i < len; i = i + 1) {
 		sb.append("a");
 	}
 	
-	var value = sb.toString();
+	value = sb.toString();
 	addItem(key, value, true);
 }
-function runSessionLoadTest()
-{
-	var dt = new Date();
-	var key = dt.toString.replace(" ", "");
+function runSessionLoadTest() {
+	var dt, key, value;
+	
+	dt = new Date();
+	key = dt.toString.replace(" ", "");
 	key = key.replace(":","");
 	key = key.replace("-","");
-	var value = document.getElementById("txtNumBytesSession").value;
+	value = document.getElementById("txtNumBytesSession").value;
 	addItem(key, value, false);
 }
 
-function doPageLoad()
-{
-	try 
-	{
-		if (!window.localStorage)
-		{
+function doPageLoad() {
+	try {
+		if (!window.localStorage) {
 			prependContent("output", "localStorage API not supported<br/>");
 			document.getElementById("btnClearLocal").setAttribute("disabled", "true");
 		}
 		hide("btnClearLocal");
 
-		if (!window.sessionStorage)
-		{
+		if (!window.sessionStorage) {
 			prependContent("output", "sessionStorage API not supported<br/>");
 			document.getElementById("btnClearSession").setAttribute("disabled", "true");
 		}

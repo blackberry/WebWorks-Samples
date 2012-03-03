@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,35 +14,32 @@
  * limitations under the License.
  */
 
-function doPageLoad() 
-{
+var world;
+
+function showTop() {
+	world.className = "normal";
+}
+
+function showLeft() {
+	world.className = "left_to_top";
+}
+
+function showBottom() {
+	world.className = "bottom_to_top";
+}
+
+function showRight() {
+	world.className = "right_to_top";
+}
+
+function doPageLoad() {
+
 	world = document.getElementById("world");
-	image = document.getElementById("image");
 
-	one = document.getElementById("one");
-	one.addEventListener('click', showTop, false);
-	two = document.getElementById("two");
-	two.addEventListener('click', showLeft, false);
-	three = document.getElementById("three");
-	three.addEventListener('click', showBottom, false);
-	four = document.getElementById("four");
-	four.addEventListener('click', showRight, false);
-
-	function showTop() {
-		world.className = "normal";
-	}
-
-	function showLeft() {
-		world.className = "left_to_top";
-	}
-
-	function showBottom() {
-		world.className = "bottom_to_top";
-	}
-
-	function showRight() {
-		world.className = "right_to_top";
-	}
+	document.getElementById("one").addEventListener('click', showTop, false);
+	document.getElementById("two").addEventListener('click', showLeft, false);
+	document.getElementById("three").addEventListener('click', showBottom, false);
+	document.getElementById("four").addEventListener('click', showRight, false);
 }
 
 window.addEventListener("load", doPageLoad, false);

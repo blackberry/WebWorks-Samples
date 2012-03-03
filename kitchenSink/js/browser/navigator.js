@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,20 +14,17 @@
  * limitations under the License.
  */
 
-function showMimeTypes()
-{
-	var strReturn = "";
-	for (var myIndex = 0; myIndex < window.navigator.mimeTypes.length; myIndex++)
-	{
-		strReturn += window.navigator.mimeTypes[myIndex]["type"] + "<br/>";
+function showMimeTypes() {
+	var strReturn = "", myIndex;
+	
+	for (myIndex = 0; myIndex < window.navigator.mimeTypes.length; myIndex = myIndex + 1) {
+		strReturn += window.navigator.mimeTypes[myIndex].type + "<br/>";
 	}
 	return strReturn;
 }
 
-function doPageLoad()
-{
-	try
-	{
+function doPageLoad() {
+	try {
 		var sb = new StringBuilder();
 		sb.append("<table>");
 		sb.append("<tr><th>App Code Name</th><td>" + window.navigator.appCodeName + "</td></tr>");

@@ -22,111 +22,98 @@
 /**
  * Basic StringBuilder object:
  */
-function StringBuilder(value)
-{
-    this.strings = new Array();
+function StringBuilder(value) {
+    this.strings = [];
     this.append(value);
 }
-StringBuilder.prototype.append = function (value)
-{
+StringBuilder.prototype.append = function (value) {
     if (value) {
         this.strings.push(value);
     }
-}
-StringBuilder.prototype.clear = function ()
-{
-    this.strings.length = 1;
-}
-StringBuilder.prototype.toString = function ()
-{
+};
+StringBuilder.prototype.clear = function () {
+    this.strings.length = 0;
+};
+StringBuilder.prototype.toString = function () {
     return this.strings.join("");
-}
+};
 
 
 /**
  * Debugger object - used to output messages to console window.
  */
-var debug = { logLevel  : 0,
-
-			  info      : 1, 
-			  warning   : 2, 
-			  error     : 3, 
-			  exception : 4, 
-
-			  log : function(source, message, debugLevel) 
-			  {
-				 if (debugLevel >= debug.logLevel)
-				 {
+	var debug = { logLevel  : 0,
+			info : 1,
+			warning : 2,
+			error : 3,
+			exception : 4,
+			numMsgs : 0,
+			log : function (source, message, debugLevel) {
+				if (debugLevel >= this.logLevel) {
 					console.log("DEBUG [" + source + "] " + message);
-				 }
-			  }
-			};
-
+					debug.numMsgs = debug.numMsgs + 1;
+				}
+			},
+			size : function() {
+				return debug.numMsgs;
+			},
+			clear : function() {
+				debug.numMsgs = 0;
+			}
+	};
 
 
 
 /**
  * Methods to add content to page elements.
  */
-function setContent(id, content)
-{
+function setContent(id, content) {
 	var ele = document.getElementById(id);
-	if (ele)
-	{
+	if (ele) {
 		ele.innerHTML = content;
 	}
 }
-function appendContent(id, content)
-{
+function appendContent(id, content) {
 	var ele = document.getElementById(id);
-	if (ele)
-	{
-		ele.innerHTML = ele.innerHTML + content;
+	if (ele) {
+//		ele.innerHTML = ele.innerHTML + content;
+		ele.insertAdjacentHTML("beforeend", content);		//try a faster construct instead of insertHTML
 	}
 }
-function prependContent(id, content)
-{
+function prependContent(id, content) {
 	var ele = document.getElementById(id);
-	if (ele)
-	{
-		ele.innerHTML = content + ele.innerHTML;
+	if (ele) {
+//		ele.innerHTML = content + ele.innerHTML;
+		ele.insertAdjacentHTML("afterbegin", content);		//try a faster construct instead of insertHTML
 	}
 }
 
 
-function show(id)
-{
-	var ele = document.getElementById(id);
-	if (id)
-	{
+function show(id) {
+	var ele = document.getElementById(id); 
+	if (id) {
 		ele.style.display = '';
 	}
 }
-function hide(id)
-{
+function hide(id) {
 	var ele = document.getElementById(id);
-	if (id)
-	{
+	if (id) {
 		ele.style.display = 'none';
 	}
 }
-function setClassName(id, className)
-{
+function setClassName(id, className) {
 	var ele = document.getElementById(id);
-	if (ele)
-	{
+	if (ele) {
 		ele.className = className;
 	}
 }
 
 
-function openUrl(url)
-{
+function openUrl(url) {
 	try
 	{
 		//Attempt to use the WebWorks Invoke API to open the URL in the native broser application:
-		if ((window.blackberry !== undefined) && (blackberry.invoke !== undefined) && (blackberry.invoke.BrowserArguments !== undefined))
-		{
+		if ((window.blackberry !== undefined) && (blackberry.invoke !== undefined) && (blackberry.invoke.BrowserArguments !== undefined)) {
 			var args = new blackberry.invoke.BrowserArguments(url);
 			blackberry.invoke.invoke(blackberry.invoke.APP_BROWSER, args);
 			return true;
@@ -141,19 +128,19 @@ function openUrl(url)
 }
 
 
-function isBlackBerrySmartphone()
-{
-	var ua = navigator.userAgent.toLowerCase();		
-	var isMIDP       = (ua.indexOf("midp") >= 0);
-	var isWebKit     = (ua.indexOf("webkit") >= 0);
-	var isBlackBerry = (ua.indexOf("blackberry") >= 0);
+function isBlackBerrySmartphone() {
+	var ua, isMIDP, isWebKit, isBlackBerry;
+	ua = navigator.userAgent.toLowerCase();		
+	isMIDP = (ua.indexOf("midp") >= 0);
+	isWebKit = (ua.indexOf("webkit") >= 0);
+	isBlackBerry = (ua.indexOf("blackberry") >= 0);
 	return ((isMIDP || isWebKit) && isBlackBerry);
 }
-function isBlackBerryPlayBook()
-{
-	var ua = navigator.userAgent.toLowerCase();		
-	var isWebKit     = (ua.indexOf("webkit") >= 0);
-	var isTablet     = (ua.indexOf("playbook") >= 0);
+function isBlackBerryPlayBook() {
+	var ua, isWebKit, isTablet;
+	ua = navigator.userAgent.toLowerCase();		
+	isWebKit = (ua.indexOf("webkit") >= 0);
+	isTablet = (ua.indexOf("playbook") >= 0);
 	return (isWebKit && isTablet);
 }
 
@@ -162,25 +149,22 @@ function isBlackBerryPlayBook()
 /**
  * 
  */
-function setGlobalVariables(event)
-{
+function setGlobalVariables(event) {
 	debug.logLevel = debug.info;
+	debug.log("setGlobalVariables", "Complete: " + event.type, debug.info);
 }
 
-function goBack()
-{
+function goBack() {
 	history.back();
 }
-function goHome()
-{
+function goHome() {
 	window.location = "/index.html";
 }
 
 /**
  * Adds a page header (breadcrumbs) and page footer (links) to a page.
  */
-function createPageHeader(event)
-{
+function createPageHeader(event) {
 	try
 	{
 		var header, backAnchor, homeAnchor;
@@ -202,24 +186,23 @@ function createPageHeader(event)
 				
 		document.body.insertBefore(header, document.body.firstChild);
 				
-		debug.log("createPageHeader", "Complete", debug.debug);
+		debug.log("createPageHeader", "Complete: " + event.type, debug.info);
 	}
 	catch (e) {
 		debug.log("createPageHeader", e, debug.exception);
 	}
 }
-function createPageFooter(event)
-{
+function createPageFooter(event) {
 	try
 	{
 		var footer;
 
 		footer = document.createElement("div");
 		footer.id = "pageFooter";
-		footer.innerHTML = "<a href='#'>Top</a>";
+		footer.innerHTML = "<a href='#'>Top</a> <div style='float:right'>by <a href='https://twitter.com/#!/n_adam_stanley' target='#new'>@n_adam_stanley</a></div>";
 		document.body.appendChild(footer);	//add footer as the last element in the body
 		
-		debug.log("createPageFooter", "Complete", debug.debug);
+		debug.log("createPageFooter", "Complete: " + event.type, debug.info);
 	}
 	catch (e) {
 		debug.log("createPageFooter", e, debug.exception);
@@ -229,9 +212,9 @@ function createPageFooter(event)
 /**
  * Cleans up any unmanaged resources.
  */
-function cleanupPageResources(event)
-{
+function cleanupPageResources(event) {
 	// Not implemented
+	debug.log("cleanupPageResources", "Event: " + event.target + "," + event.type, debug.info);
 }
 
 

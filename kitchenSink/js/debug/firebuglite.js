@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var app_name = "kitchenSink";
 
-function doButton()
-{
+function doButton() {
 	debug.log("doButton", "button clicked", debug.info);
 }
 
-function doPageLoad()
-{
-	var x = 5;
-	var y = 10;
+function doPageLoad() {
+	var x, y;
+
+	x = 5;
+	y = 10;
+	
 	debug.log("doPageLoad", app_name, debug.info);
 }
 

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,30 +14,24 @@
  * limitations under the License.
  */
 
-function standardDialogCallBack(index)
-{
+function standardDialogCallBack(index) {
 	appendContent("standardDetails",   "<p>Button index selected: " + index + "</p>");
 }
-function customDialogCallBack(index)
-{
+function customDialogCallBack(index) {
 	appendContent("customDetails", "<p>Button index selected: " + index + "</p>");
 }
 
-function standardDialog() 
-{
-	try 
-	{
+function standardDialog()  {
+	try  {
 		debug.log("standardDialog", "in standardDialog", debug.info);
 		
-		if ((window.blackberry === undefined) || (blackberry.ui === undefined) || (blackberry.ui.dialog === undefined))
-		{
+		if ((window.blackberry === undefined) || (blackberry.ui === undefined) || (blackberry.ui.dialog === undefined)) {
 			alert("blackberry.ui.dialog object is undefined.  Unable to complete action.");
 			debug.log("standardDialog", "blackberry.ui.dialog object is undefined.", debug.error);
 			return false;
 		}
 			
-		if (blackberry.ui.dialog.standardAskAsync !== undefined)
-		{
+		if (blackberry.ui.dialog.standardAskAsync !== undefined) {
 			var ops = {title : "Save Dialog", size : blackberry.ui.dialog.SIZE_MEDIUM, position : blackberry.ui.dialog.LOC_BOTTOM};
 			blackberry.ui.dialog.standardAskAsync("Save?", blackberry.ui.dialog.D_SAVE, standardDialogCallBack, ops);
 		} 
@@ -50,14 +44,11 @@ function standardDialog()
 	}
 }
 
-function customDialog() 
-{
-	try 
-	{
+function customDialog() {
+	try {
 		debug.log("customDialog", "in customDialog", debug.info);
 		
-		if ((window.blackberry === undefined) || (blackberry.ui === undefined) || (blackberry.ui.dialog === undefined))
-		{
+		if ((window.blackberry === undefined) || (blackberry.ui === undefined) || (blackberry.ui.dialog === undefined)) {
 			alert("blackberry.ui.dialog object is undefined.  Unable to complete action.");
 			debug.log("customDialog", "blackberry.ui.dialog object is undefined.", debug.error);
 			return false;
@@ -65,8 +56,7 @@ function customDialog()
 			
 		var buttons = new Array("Yes", "No", "Soon");
 		var question = "Have you created your own BlackBerry PlayBook application yet?";
-		if (blackberry.ui.dialog.customAskAsync !== undefined)
-		{
+		if (blackberry.ui.dialog.customAskAsync !== undefined) {
 			var ops = { title : "Answer:",	size : blackberry.ui.dialog.SIZE_MEDIUM, position : blackberry.ui.dialog.LOC_CENTER };
 			blackberry.ui.dialog.customAskAsync(question, buttons, customDialogCallBack, ops);
 		} 
@@ -79,10 +69,8 @@ function customDialog()
 	}
 }
 
-function doPageLoad()
-{
-	if ((window.blackberry === undefined) || (blackberry.ui === undefined))
-	{
+function doPageLoad() {
+	if ((window.blackberry === undefined) || (blackberry.ui === undefined)) {
 		debug.log("doPageLoad", "blackberry.ui.dialog object is undefined.", debug.error);
 		prependContent("customDetails", "<p><i><b>blackberry.ui</b> object not found (likely cause is WebWorks APIs are not supported by this user agent).</i></p>");
 		prependContent("standardDetails", "<p><i><b>blackberry.ui</b> object not found (likely cause is WebWorks APIs are not supported by this user agent).</i></p>");

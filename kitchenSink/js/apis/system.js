@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,14 +14,11 @@
  * limitations under the License.
  */
 
-function setSystemDetails()
-{
-	try
-	{
+function setSystemDetails() {
+	try {
 		debug.log("setSystemDetails", "Start", debug.info);
 		
-		if ((window.blackberry === undefined) || (blackberry.system === undefined))
-		{
+		if ((window.blackberry === undefined) || (blackberry.system === undefined)) {
 			debug.log("setSystemDetails", "blackberry.system object is undefined.", debug.error);
 			appendContent("systemDetails", "<p><i><b>blackberry.system</b> object not found (likely cause is WebWorks APIs are not supported by this user agent).</i></p>");
 			return false;
@@ -44,14 +41,11 @@ function setSystemDetails()
 	}
 }
 
-function setPermissionDetails()
-{
-	try
-	{
+function setPermissionDetails() {
+	try {
 		debug.log("setPermissionDetails", "Start", debug.info);
 		
-		if ((window.blackberry === undefined) || (blackberry.system === undefined))
-		{
+		if ((window.blackberry === undefined) || (blackberry.system === undefined)) {
 			debug.log("setPermissionDetails", "blackberry.system object is undefined.", debug.error);
 			appendContent("permissionDetails", "<p><i><b>blackberry.system</b> object not found (likely cause is WebWorks APIs are not supported by this user agent).</i></p>");
 			return false;
@@ -106,14 +100,11 @@ function setPermissionDetails()
 	}
 }
 
-function setCapabilityDetails()
-{
-	try
-	{
+function setCapabilityDetails() {
+	try {
 		debug.log("setCapabilityDetails", "in capabilityDetails", debug.info);
 		
-		if ((window.blackberry === undefined) || (blackberry.system === undefined))
-		{
+		if ((window.blackberry === undefined) || (blackberry.system === undefined)) {
 			debug.log("setCapabilityDetails", "blackberry.system object is undefined.", debug.error);
 			appendContent("capabilityDetails", "<p><i><b>blackberry.system</b> object not found (likely cause is WebWorks APIs are not supported by this user agent).</i></p>");
 			return false;
@@ -143,8 +134,7 @@ function setCapabilityDetails()
 		debug.log("setCapabilityDetails", e, debug.exception);
 	}
 }
-function doPageLoad()
-{
+function doPageLoad() {
 	setSystemDetails();
 	setPermissionDetails();
 	setCapabilityDetails();

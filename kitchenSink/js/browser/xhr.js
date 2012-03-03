@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,8 +15,30 @@
  */
 
 var req;
-function updateContent(url) 
-{
+
+function displayOutput(val) {
+	var sOut = val.replace(/</g,"&lt;").replace(/>/g,"&gt;");
+	sOut = '<b>HTTP Status: </b>' + req.status + 
+			'<br/><br/><b>Response Text:</b><br/>' + sOut;
+	var ele = document.getElementById('contentContainer');
+	if (ele) {
+		ele.innerHTML = sOut;
+	}
+}
+function handleResponse() {
+	if (req.readyState === 4) {
+		//FOR PLAYBOOK, NEED TO CHECK FOR STATUS=0 WHEN XHR REQUESTS ARE MADE TO LOCAL RESOURCES
+		//	(NOT NECESSARY FOR SMARTPHONE, WHERE STATUS=200 WILL SUFFICE.
+		if (req.status === 200 || req.status === 0)  {
+			displayOutput(req.responseText);
+		}
+		else {
+			displayOutput("Error (" + req.status + "): " + req.statusText);
+		}
+	}
+}
+
+function updateContent(url) {
 	try {
 		req = new XMLHttpRequest();
 		req.open('GET', url, true);
@@ -27,10 +49,9 @@ function updateContent(url)
 		debug.log("updateContent", e, debug.exception);
 	}
 }
-function updateContentPost(url) 
-{
+function updateContentPost(url) {
 	try {
-		var params = "parm1=123"
+		var params = "parm1=123";
 		req = new XMLHttpRequest();
 		req.open('POST', url, false);
 		
@@ -44,31 +65,5 @@ function updateContentPost(url)
 	} 
 	catch(e) {
 		debug.log("updateContentPost", e, debug.exception);
-	}
-}
-function handleResponse() 
-{
-	if (req.readyState == 4) 
-	{
-		//FOR PLAYBOOK, NEED TO CHECK FOR STATUS=0 WHEN XHR REQUESTS ARE MADE TO LOCAL RESOURCES
-		//	(NOT NECESSARY FOR SMARTPHONE, WHERE STATUS=200 WILL SUFFICE.
-		if (req.status == 200 || req.status == 0) 
-		{
-			displayOutput(req.responseText);
-		}
-		else {
-			displayOutput("Error (" + req.status + "): " + req.statusText);
-		}
-	}
-}
-function displayOutput(val) 
-{
-	var sOut = val.replace(/</g,"&lt;").replace(/>/g,"&gt;");
-	sOut = '<b>HTTP Status: </b>' + req.status + 
-			'<br/><br/><b>Response Text:</b><br/>' + sOut;
-	var ele = document.getElementById('contentContainer');
-	if (ele)
-	{
-		ele.innerHTML = sOut;
 	}
 }

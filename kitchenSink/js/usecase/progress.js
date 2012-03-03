@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,32 +21,26 @@ var activityInterval = null;
 var activityDuration = 0;
 
 /* Display a dialog with a count-down timer.  Gives user an estimated time to complete an action. */
-function hideActivityIndicator()
-{
+function hideActivityIndicator() {
 	document.getElementById("activityIndicator").className = "hide";
 }
-function displayCurrentActivity()
-{
+function displayCurrentActivity() {
 	var ele = document.getElementById("activityIndicator");
-	if (ele)
-	{
+	if (ele) {
 		ele.className = "activity";
 		ele.innerHTML = "Loading: " + Math.round(activityDuration,0) + " seconds remaining ...";
 	}
 }
-function updateActivityIndicator()
-{
+function updateActivityIndicator() {
 	activityDuration = activityDuration - 1;
 	displayCurrentActivity();
-	if (activityDuration <= 0)
-	{
+	if (activityDuration <= 0) {
 		window.clearInterval(activityInterval);
 		hideActivityIndicator();
 	}
 }
-function beginActivityIndicator()
-{
-	activityDuration = parseInt(document.getElementById("txtDuration").value);
+function beginActivityIndicator() {
+	activityDuration = parseInt(document.getElementById("txtDuration").value, 10);
 	displayCurrentActivity();
 	activityInterval = window.setInterval(updateActivityIndicator, 1000);
 }
@@ -55,23 +49,19 @@ function beginActivityIndicator()
 
 
 /* Display a meter bar that increments by 1/10 every 100ms */
-function updateProgress()
-{
+function updateProgress() {
 	currentProgress += 10;
 	document.getElementById("level").style.width = currentProgress + "%";
-	if (currentProgress >= 100)
-	{
+	if (currentProgress >= 100) {
 		window.clearInterval(progressInterval);
 		currentProgress = 0;
 	}
 }
-function showProgress()
-{
+function showProgress() {
 	progressInterval = window.setInterval(updateProgress, 100);
 }
 
-function doPageLoad()
-{
+function doPageLoad() {
 	document.getElementById("level").style.width = currentProgress + "%";
 }
 window.addEventListener("load", doPageLoad, false);

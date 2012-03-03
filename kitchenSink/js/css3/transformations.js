@@ -15,11 +15,7 @@
  */
 
 
-function doTouch(e)
-{
+function doTouch(e) {
 	/* block page scrolling so as not to interfere with the swipe gestures */
 	e.preventDefault();
 }
-
-//document.addEventListener("touchstart", doTouch, false);
-//document.addEventListener("touchmove",  doTouch,  false);

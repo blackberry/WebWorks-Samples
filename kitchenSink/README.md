@@ -4,6 +4,8 @@ The purpose of this application is to demonstrate the multitude of capabilities 
 
 The sample code for this application is Open Source under the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0.html).
 
+![Screenshot](https://github.com/astanley/WebWorks-Samples/raw/master/kitchenSink/img/screenshots/kitchenSink.png "Kitchen Sink Screenshot")
+
 
 **Applies To**
 

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,20 +16,16 @@
 
 var startTimes = [];
 
-function showImg(id, src)
-{
+function showImg(id, src) {
 	startTimes[id] = (new Date()).getTime();
 	document.getElementById(id).src = src;
 }
-function append(id, html)
-{
+function append(id, html) {
 	var ele = document.getElementById(id);
-	if (ele)
-	{
+	if (ele) {
 		ele.innerHTML = ele.innerHTML + html;
 	}
 }
-function onLoaded(id)
-{
+function onLoaded(id) {
 	append("debug", id + " loaded in " + ((new Date()).getTime() - startTimes[id]) + " (ms)<br/>");
 }
