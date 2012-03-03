@@ -2,6 +2,7 @@
 
 Sample application that demonstrates swipemenu.js: A swipe-down menu framework for BlackBerry WebWorks SDK for Tablet OS.
 
+![Screenshot](https://github.com/astanley/WebWorks-Samples/raw/master/swipemenu/screenshots/swipemenu.png "Swipe Menu Screenshot")
 
 **Applies To**
 
@@ -35,7 +36,8 @@ To build the swipemenu sample application:
 2. Select **Download as zip** (Windows) or **Download as tar.gz** (Mac) and save the downloaded file to your local machine.
 3. Create a new folder on your local machine named **swipemenu** e.g. **C:\Documents and Settings\User\WebWorks\swipemenu** (Windows) or **~/WebWorks/swipemenu** (Mac).
 4. Open the downloaded ZIP file from step 2 and extract the contents **from inside the zipped swipemenu folder** to your local **swipemenu** folder from step 3.  This ensures that the necessary application assets, such as **config.xml**, are correctly located at the top level of the local **swipemenu** folder (e.g. **~/WebWorks/swipemenu/config.xml**).
-5. Using the **[Ripple Mobile Emulator](http://developer.blackberry.com/html5/download)** and either the **[BlackBerry WebWorks SDK for Smartphone](http://developer.blackberry.com/html5/download)** or the **[BlackBerry WebWorks SDK for Tablet OS](http://developer.blackberry.com/html5/download)**, package the contents of your local **swipemenu** folder into a BlackBerry application.  Enter the project root settings field as the local folder created in step 3, and the archive name settings field as **swipemenu**.
+5. (Optional) : Delete the **WebWorks/swipemenu/screenshots** folder. This will optimize the package size of your application.
+6. Using the **[Ripple Mobile Emulator](http://developer.blackberry.com/html5/download)** and either the **[BlackBerry WebWorks SDK for Smartphone](http://developer.blackberry.com/html5/download)** or the **[BlackBerry WebWorks SDK for Tablet OS](http://developer.blackberry.com/html5/download)**, package the contents of your local **swipemenu** folder into a BlackBerry application.  Enter the project root settings field as the local folder created in step 3, and the archive name settings field as **swipemenu**.
 
 
 ## More Info
