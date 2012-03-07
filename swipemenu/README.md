@@ -41,9 +41,9 @@ To build the swipemenu sample application:
 ## Troubleshooting
 
 1. Menu doesn't appear when I swipe down - check to make sure you have added the "blackberry.app.event" feature to config.xml.
-2. Outer frame of the menu bar appears, but nothing else - make sure you have defined callback function defined used by the addButton step (without it, runtime error interrupts menu creation).
+2. Outer frame of the menu bar appears, but nothing else - make sure you have defined a callback function for the addButton step (without it, runtime error interrupts menu creation).
 3. Images appear broken - ensure the path to your image files is correct and they are accesible by your application.
-4. The font style is wrong - swipemenu.js inherits the font-style from your application. Add a local CSS definition that sets the font-family property.
+4. The font style is wrong - swipemenu.js inherits the font-style from your application. Add a body-tag CSS definition that sets the font-family property.
 4. I don't like the background, colors, sizes - These can be customized.  Open and edit swipemenu.js. Modify the createSwipeMenu() and addButton() sections to set the styles you prefer.
 
 ## More Info
