@@ -45,7 +45,7 @@ The README for the Sample should be updated to indicate the new Author.
 * [Ken Wallis](https://github.com/kwallis)
 * [Chris DelCol](https://github.com/cdelcol)
 * [Tim Neil](https://github.com/tneil)
-
+* [Tim Windsor](https://github.com/timwindsor)
 
 ## Bug Reporting and Feature Requests
 
