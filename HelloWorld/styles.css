@@ -1,0 +1,36 @@
+@CHARSET "ISO-8859-1";
+
+
+.error { 
+			color: red 
+		}
+body {
+			font: 100%/1.4 Calibri,Verdana, Arial, Helvetica, sans-serif;
+		}
+
+h2 {
+	color: #154D5B;
+}
+
+#container {	
+			margin:0 auto; 
+			width: 1024px;
+			height: 600px; }
+			
+#world {		
+			float:left;
+			margin-left: 50;
+			margin-top: 50px;
+			width: 500px; }
+			
+#button {	
+			float:left;
+			margin-top: 100px;
+			margin-left: 25px;
+			width: 40%; }
+			
+#geolocationInfo {	
+			float:left;
+			margin-top: 10px;
+			margin-left: 25px;
+			width: 40%; }
