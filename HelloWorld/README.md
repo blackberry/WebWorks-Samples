@@ -2,7 +2,7 @@
 
 This is a Hello World-like sample application for the BlackBerry PlayBook tablet that uses HTML5, JavaScript, and CSS. This application displays an image and a button. When users click the button, their GPS coordinates are returned and displayed on the screen along with some location-related information. 
 
-This application was created for the [Creating your First application tutorial]*https://bdsc.webapps.blackberry.com/html5/documentation/ww_tutorials/tutorial_create_first_app_intro_1969476_11.html).
+This application was created for the [Creating your First application tutorial](https://bdsc.webapps.blackberry.com/html5/documentation/ww_tutorials/tutorial_create_first_app_intro_1969476_11.html).
 
 **Applies To**
 
