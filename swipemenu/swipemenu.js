@@ -133,7 +133,7 @@ var swipemenu = (function() {
 		style.background = "rgb(56,54,56)";
 		style.borderBottom = "solid 1px #DDD";
 		style.boxShadow = "0px 2px 2px #888";
-		style.ontFamily = "Arial";
+		style.fontFamily = "Arial";
 		style.color = "#CCCCCC";
 		
 		menuBar.style = style;
