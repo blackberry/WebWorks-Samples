@@ -133,7 +133,7 @@ var swipemenu = (function() {
 		style.background = "rgb(56,54,56)";
 		style.borderBottom = "solid 1px #DDD";
 		style.boxShadow = "0px 2px 2px #888";
-		style.ontFamily = "Arial";
+		style.fontFamily = "Arial";
 		style.color = "#CCCCCC";
 		
 		menuBar.style = style;
@@ -178,12 +178,25 @@ var swipemenu = (function() {
 			hideMenuBar();
 			console.log("close complete");
 		},
-		addButton : function(title, onSelect, alignRight, iconPath) {
-			var link, fontHeight, img, br, spn, style;
+		addButton : function(title, onSelect, alignRight, iconPath, id) {
+			var link, fontHeight, img, br, spn, style, i, buttonContainer, existingButtons;
+
+			existingButtons = document.getElementById("menuBar").getElementsByTagName("li");
+			for (i = 0; i < existingButtons.length; i= i + 1) {
+				if (existingButtons[i].innerText === title) {
+					//button already exists - don't add it
+					return false;
+				}
+			}
 			
 			fontHeight = parseInt(height / 2.5, 10);
 
 			link = document.createElement("li");
+			
+			//Set any ID property that may have been provided
+			if (id) {
+				link.setAttribute('id', id);
+			}
 			
 			style = link.style;	//minimize page repaints.
 			//button structure/position - don't change this:
@@ -245,12 +258,12 @@ var swipemenu = (function() {
 			
 			//Add button to right or left side of menu:
 			if (alignRight) {
-				var rightButtons = document.getElementById("menuBarRightButtons");
-				rightButtons.appendChild(link);
+				buttonContainer = document.getElementById("menuBarRightButtons");
 			} else {
-				var leftButtons = document.getElementById("menuBarLeftButtons");
-				leftButtons.appendChild(link);
+				buttonContainer = document.getElementById("menuBarLeftButtons");
 			}
+			buttonContainer.appendChild(link);
+			
 
 			//Tell the menu to set its height (necessary after each button add):
 			adjustMenuHeight();
@@ -259,6 +272,10 @@ var swipemenu = (function() {
 		},
 		doPageLoad : function() {
 
+		//TODO: Modify this so that the menu is only loaded if the onSwipeDown function exits
+		//	prevents it from being added when used in Smartphone apps (where there is no
+		//	swipe down event)
+		
 			createSwipeMenu();
 
 			//closes the menu after user clicks anywhere on the page
