@@ -20,14 +20,14 @@ var theSocket;
  * Callback method invoked when the socket connection is opened.
  */
 function onSocketOpen() {
-	appendContent("messages", "Web socket opened<br/>");
+	appendContent("theMessages", "Web socket opened<br/>");
 	show("btnSend");
 }
 /**
  * Callback method invoked when an incoming message is received
  */
 function onSocketMessage(event) {
-	appendContent("messages", "Received: " + event.data + "<br/>");
+	appendContent("theMessages", "Received: " + event.data + "<br/>");
 }
 
 /**
@@ -35,7 +35,7 @@ function onSocketMessage(event) {
  */
 function onSocketClose(event) {
 	try {
-		appendContent("messages", "Web socket closed<br/>");
+		appendContent("theMessages", "Web socket closed<br/>");
 		hide("btnSend");
 		debug.log("onSocketClose", "Complete: " + event.target, debug.info);
 	} 
@@ -57,7 +57,7 @@ function sendMessage() {
 		else {
 			if (theSocket.readyState === 1)  {
 				theSocket.send(message);
-				appendContent("messages", "Sent: " + message + "<br/>");
+				appendContent("theMessages", "Sent: " + message + "<br/>");
 			}
 		}
 	} 
