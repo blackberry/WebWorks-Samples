@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,23 +14,22 @@
  * limitations under the License.
  */
 
-function onPhotoCaptured(filePath)
-{
-	try
-	{
+function onPhotoCaptured(filePath) {
+	try {
+		var img, div;
+		
 		debug.log("onPhotoCaptured", "Start: " + filePath, debug.info);
 
 		//For Smartphone, add "file://" prefix before path
-		if (isBlackBerrySmartphone())
-		{
+		if (isBlackBerrySmartphone()) {
 			filePath = "file://" + filePath;
 		}
 		
-		var img = new Image();
-		img.src = filePath
+		img = new Image();
+		img.src = filePath;
 		img.width = Math.round(screen.width / 2);
 		
-		var div = document.createElement("div");
+		div = document.createElement("div");
 		div.innerHTML = filePath;
 
 		document.getElementById("photoDetails").appendChild(div);
@@ -41,21 +40,21 @@ function onPhotoCaptured(filePath)
 	}
 }
 
-function onVideoCaptured(filePath)
-{
-	try
-	{
+function onVideoCaptured(filePath) {
+	try {
+		var video, div;
+		
 		debug.log("onVideoCaptured", "Start: " + filePath, debug.info);
 		
 		//Close the camera control?
 		//	blackberry.media.camera.close();
 		
-		var video = document.createElement('video');
-		video.src = filePath
+		video = document.createElement('video');
+		video.src = filePath;
 		video.controls = "controls";
 		video.width = Math.round(screen.width / 2);
 		
-		var div = document.createElement("div");
+		div = document.createElement("div");
 		div.innerHTML = filePath;
 
 		document.getElementById("videoDetails").appendChild(div);
@@ -66,29 +65,23 @@ function onVideoCaptured(filePath)
 	}
 }
 
-function onVideoClosed(closedEvent)
-{
+function onVideoClosed(closedEvent) {
 	debug.log("onVideoClosed", "Start: " + closedEvent, debug.info);
 }
-function onCameraClosed(closedEvent)
-{
+function onCameraClosed(closedEvent) {
 	debug.log("onCameraClosed", "Start: " + closedEvent, debug.info);
 }
 
-function onError(errorEvent)
-{
+function onError(errorEvent) {
 	debug.log("onError", "onError: " + errorEvent, debug.info);
 }
 
 
-function takeVideo()
-{
-	try
-	{
+function takeVideo() {
+	try {
 		debug.log("takeVideo", "Start", debug.info);
 		
-		if ((window.blackberry === undefined) || (blackberry.media === undefined))
-		{
+		if ((window.blackberry === undefined) || (blackberry.media === undefined)) {
 			debug.log("takeVideo", "blackberry.media.camera object is undefined.", debug.error);
 			return false;
 		}
@@ -102,14 +95,11 @@ function takeVideo()
 }
 
 
-function takePicture()
-{
-	try
-	{
+function takePicture() {
+	try {
 		debug.log("takePicture", "Start", debug.info);
 		
-		if ((window.blackberry === undefined) || (blackberry.media === undefined))
-		{
+		if ((window.blackberry === undefined) || (blackberry.media === undefined)) {
 			debug.log("takePicture", "blackberry.media.camera object is undefined.", debug.error);
 			return false;
 		}
@@ -122,14 +112,11 @@ function takePicture()
 	}
 }
 
-function doPageLoad()
-{
-	try 
-	{
+function doPageLoad() {
+	try  {
 		debug.log("doPageLoad", "Start", debug.info);
 		
-		if ((window.blackberry === undefined) || (blackberry.media === undefined))
-		{
+		if ((window.blackberry === undefined) || (blackberry.media === undefined)) {
 			debug.log("doPageLoad", "blackberry.media.camera object is undefined.", debug.error);
 			prependContent("photoDetails", "<p><i><b>blackberry.media.camera</b> object not found (likely cause is WebWorks APIs are not supported by this user agent).</i></p>");
 			prependContent("videoDetails", "<p><i><b>blackberry.media.camera</b> object not found (likely cause is WebWorks APIs are not supported by this user agent).</i></p>");

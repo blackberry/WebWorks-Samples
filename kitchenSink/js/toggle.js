@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,44 +13,49 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-function expandSection(parentId, targetId)
-{
-	var targetEle = document.getElementById(targetId);
-	var parentEle = document.getElementById(parentId);
-	if (targetEle && parentEle)
-	{
+ var ROOT = (window.blackberry === undefined) ? (window.location.origin + "/kitchenSink/") : "/";
+ 
+ 
+ function expandSection(parentId, targetId) {
+	var targetEle, parentEle, minusIcon, icon;
+
+	targetEle = document.getElementById(targetId);
+	parentEle = document.getElementById(parentId);
+
+	if (targetEle && parentEle) {
 		//Collapse the section:
 		targetEle.style.display = '';
-		
+
 		//Remove the old 'expand' icon:
-		var minusIcon = parentEle.getElementsByTagName("img")[0];
+		minusIcon = parentEle.getElementsByTagName("img")[0];
 		parentEle.removeChild(minusIcon);
 
 		//Add the new 'collapse' icon:
-		var icon = new Image();
-		icon.src = "img/minimize.png";
-		icon.addEventListener("click", function(e) { collapseSection(parentId, targetId); }, false);
+		icon = new Image();
+		icon.src = ROOT + "img/minimize.png";
+		icon.addEventListener("click", function (e) { collapseSection(parentId, targetId); }, false);
 		parentEle.appendChild(icon);
 	}
 }
 
-function collapseSection(parentId, targetId)
-{
-	var targetEle = document.getElementById(targetId);
-	var parentEle = document.getElementById(parentId);
-	if (targetEle && parentEle)
-	{
+function collapseSection(parentId, targetId) {
+	var targetEle, parentEle, minusIcon, icon;
+
+	targetEle = document.getElementById(targetId);
+	parentEle = document.getElementById(parentId);
+
+	if (targetEle && parentEle) {
 		//Collapse the section:
 		targetEle.style.display = 'none';
-		
+
 		//Remove the old 'collapse' icon:
-		var minusIcon = parentEle.getElementsByTagName("img")[0];
+		minusIcon = parentEle.getElementsByTagName("img")[0];
 		parentEle.removeChild(minusIcon);
 
 		//Add the new 'expand' icon:
-		var icon = new Image();
-		icon.src = "img/maximize.png";
-		icon.addEventListener("click", function(e) { expandSection(parentId, targetId); }, false);
+		icon = new Image();
+		icon.src = ROOT + "img/maximize.png";
+		icon.addEventListener("click", function (e) { expandSection(parentId, targetId); }, false);
 		parentEle.appendChild(icon);
 	}
 }

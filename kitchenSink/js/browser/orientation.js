@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,17 +17,15 @@
 //http://dev.w3.org/geo/api/spec-source-orientation.html
 
 
-function displayCurrentOrientation()
-{
-	if (window.orientation === undefined)
-	{
+function displayCurrentOrientation() {
+	var msg = "";
+	
+	if (window.orientation === undefined) {
 		setContent("currentOrientation", "<i><b>window.orientation</b> object is undefined.  This feature is not supported by the current application.</i>");
 		return false;
 	}
 
-	var msg = "";
-	switch(window.orientation)
-	{
+	switch(window.orientation) {
 		case 0:
 			msg = "Top side up";
 			break;
@@ -46,11 +44,9 @@ function displayCurrentOrientation()
 }
 
 
-function handleLoad(event)
-{
+function handleLoad(event) {
 	displayCurrentOrientation();
 	window.addEventListener("orientationchange", displayCurrentOrientation, true);
 }
 
 window.addEventListener("load", handleLoad, true);
-

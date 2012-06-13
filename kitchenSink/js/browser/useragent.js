@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,21 +15,20 @@
  */
 
 
-function doPageLoad()
-{
-	try
-	{
-		appendContent("userAgent", "<code><i>" + navigator.userAgent + "</i></code>")
-		var ua = navigator.userAgent.toLowerCase();
+function doPageLoad() {
+	try {
+		var ua, isBlackBerry, isWebKit, isMIDP, isTablet, msg;
+
+		appendContent("userAgent", "<code><i>" + navigator.userAgent + "</i></code>");
+		ua = navigator.userAgent.toLowerCase();
 		
-		var isBlackBerry = (ua.indexOf("blackberry") >= 0);
-		var isWebKit     = (ua.indexOf("webkit") >= 0);
-		var isMIDP       = (ua.indexOf("midp") >= 0);
-		var isTablet     = (ua.indexOf("tablet") >= 0);
+		isBlackBerry = (ua.indexOf("blackberry") >= 0);
+		isWebKit     = (ua.indexOf("webkit") >= 0);
+		isMIDP       = (ua.indexOf("midp") >= 0);
+		isTablet     = (ua.indexOf("tablet") >= 0);
 		
-		var msg = "";
-		if (isBlackBerry)
-		{
+		msg = "";
+		if (isBlackBerry) {
 			if (isWebKit) {
 				msg = "<b>BlackBerry (WebKit) detected</b> - display HTML5 content such as audio, GPS and storage.";
 			} 

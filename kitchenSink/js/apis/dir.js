@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,40 +14,37 @@
  * limitations under the License.
  */
 
-function displaySharedFolders()
-{
-	try
-	{
+function displaySharedFolders() {
+	try {
+		var Dir, parent, folders, sb, i;
+		
 		debug.log("displaySharedFolders", "in displaySharedFolders", debug.info);
 		
-		if ((window.blackberry === undefined) || (blackberry.io === undefined) || (blackberry.io.dir === undefined))
-		{
+		if ((window.blackberry === undefined) || (blackberry.io === undefined) || (blackberry.io.dir === undefined)) {
 			debug.log("displaySharedFolders", "blackberry.io.dir object is undefined.", debug.error);
 			return false;
 		}
 
 		debug.log("displaySharedFolders", "displaySharedFolders: retrieving dirs.", debug.info);
 
-		var Dir = blackberry.io.dir;
+		Dir = blackberry.io.dir;
 
-		var parent = "";		
+		parent = "";		
 		if (isBlackBerryPlayBook())
 		{
-			parent = Dir.getParentDirectory(Dir.appDirs.shared.camera.path)
+			parent = Dir.getParentDirectory(Dir.appDirs.shared.camera.path);
 		}
 		else if (isBlackBerrySmartphone())
 		{
 			parent = "file:///store/home/user";
 		}
-		var folders = Dir.listDirectories(parent);
-
-
+		folders = Dir.listDirectories(parent);
 		
-		var sb = new StringBuilder();
+		
+		sb = new StringBuilder();
 		sb.append("<p>The following directories are found within the default shared folder.  Actual path <b>" + parent + "</b></p>");
 		sb.append("<ul>");
-		for (var i = 0; i < folders.length; i++)
-		{
+		for (i = 0; i < folders.length; i = i + 1) {
 			sb.append("<li>" + folders[i] + "</li>");
 		}
 		sb.append("</ul>");
@@ -59,14 +56,11 @@ function displaySharedFolders()
 }
 
 
-function doPageLoad()
-{
-	try 
-	{
+function doPageLoad() {
+	try  {
 		debug.log("doPageLoad", "Start", debug.info);
 		
-		if ((window.blackberry === undefined) || (blackberry.io === undefined) || (blackberry.io.dir === undefined))
-		{
+		if ((window.blackberry === undefined) || (blackberry.io === undefined) || (blackberry.io.dir === undefined)) {
 			debug.log("doPageLoad", "blackberry.io.dir object is undefined.", debug.error);
 			prependContent("folderDetails", "<p><i><b>blackberry.io.dir</b> object not found (likely cause is WebWorks APIs are not supported by this user agent).</i></p>");
 		}

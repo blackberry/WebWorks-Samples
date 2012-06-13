@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,28 +19,25 @@ var theSocket;
 /**
  * Callback method invoked when the socket connection is opened.
  */
-function onSocketOpen()
-{
-	appendContent("messages", "Web socket opened<br/>");
+function onSocketOpen() {
+	appendContent("theMessages", "Web socket opened<br/>");
 	show("btnSend");
 }
 /**
  * Callback method invoked when an incoming message is received
  */
-function onSocketMessage(event)
-{
-	appendContent("messages", "Received: " + event.data + "<br/>");
+function onSocketMessage(event) {
+	appendContent("theMessages", "Received: " + event.data + "<br/>");
 }
 
 /**
  * Callback method invoked when the socket connection is closed.
  */
-function onSocketClose(event)
-{
-	try
-	{
-		appendContent("messages", "Web socket closed<br/>");
+function onSocketClose(event) {
+	try {
+		appendContent("theMessages", "Web socket closed<br/>");
 		hide("btnSend");
+		debug.log("onSocketClose", "Complete: " + event.target, debug.info);
 	} 
 	catch (e) {
 		debug.log("onSocketClose", e, debug.exception);
@@ -51,20 +48,16 @@ function onSocketClose(event)
 /**
  * Called when user clicks on the "Send Message" button.
  */
-function sendMessage()
-{
-	try
-	{
+function sendMessage() {
+	try {
 		var message = document.getElementById("txtMessage").value;
-		if (message === "")
-		{
+		if (message === "") {
 			alert("Enter a message");
 		}
 		else {
-			if (theSocket.readyState === 1) 
-			{
+			if (theSocket.readyState === 1)  {
 				theSocket.send(message);
-				appendContent("messages", "Sent: " + message + "<br/>");
+				appendContent("theMessages", "Sent: " + message + "<br/>");
 			}
 		}
 	} 
@@ -74,29 +67,10 @@ function sendMessage()
 }
 
 
-function doPageLoad()
-{
-	try
-	{
-		hide("btnSend");
-	} 
-	catch (e) {
-		debug.log("doPageLoad", e, debug.exception);
-	}
-}
 
-function doPageUnload()
-{
-	closeSocket();
-}
-
-
-function openSocket()
-{
-	try
-	{
-		if (window.WebSocket)
-		{
+function openSocket() {
+	try {
+		if (window.WebSocket) {
 			theSocket = new WebSocket("ws://node.remysharp.com:8001");
 			theSocket.onopen    = onSocketOpen;
 			theSocket.onmessage = onSocketMessage;
@@ -111,14 +85,10 @@ function openSocket()
 		debug.log("openSocket", e, debug.exception);
 	}
 }
-function closeSocket()
-{
-	try
-	{
-		if (theSocket)
-		{
-			if (theSocket.readyState !== WebSocket.CLOSED)
-			{
+function closeSocket() {
+	try {
+		if (theSocket) {
+			if (theSocket.readyState !== WebSocket.CLOSED) {
 				theSocket.close();
 			}
 			else {
@@ -129,6 +99,20 @@ function closeSocket()
 	catch (e) {
 		debug.log("closeSocket", e, debug.exception);
 	}
+}
+
+
+function doPageLoad() {
+	try {
+		hide("btnSend");
+	} 
+	catch (e) {
+		debug.log("doPageLoad", e, debug.exception);
+	}
+}
+
+function doPageUnload() {
+	closeSocket();
 }
 
 window.addEventListener("load",   doPageLoad,   false);

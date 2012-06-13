@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,46 +15,42 @@
  */
 
 //Global variables
-var lower_range = 2;
-var upper_range = -1;
-var loopSize = 5;
-var workerArray = new Array();
+var lower_range = 2, upper_range = -1, loopSize = 5, workerArray = [], numComplete = 0, dtStart, dtEnd;
+
 
 /**
  * Calculates whether a give number is prime:
  */
-function isPrime(num)
-{
-	var root = Math.floor(Math.sqrt(num));
-	var primeFound = true;
+function isPrime(num) {
+	var root, primeFound, i;
+	
+	root = Math.floor(Math.sqrt(num));
+	primeFound = true;
 
-	for (var i = 2; i <= root; i++)
-	{
-		if ((num % i) === 0)
-		{
+	for (i = 2; i <= root; i = i + 1) {
+		if ((num % i) === 0) {
 			primeFound = false;
 			break;
 		}
 	}
-	return (primeFound == true);
+	return (primeFound === true);
 }
 
 /**
  * This method will perform multiple iterations of calculating the number of prime numbers within a given range.
  * The user will see the UI freeze while this processing is occuring, and will not be able to interact with the page.
  */
-function runMainThread()
-{
-	var ele = document.getElementById("outputNormal");
+function runMainThread() {
+	var ele, dtStart, i, found, j, dtEnd;
+	
+	ele = document.getElementById("outputNormal");
 	ele.innerHTML = "<h3>Using Main Thread:</h3>";
-	var dtStart = new Date();
-	for (var i = 1; i <= loopSize; i++)
-	{
-		var found = 0;
-		for (var j = lower_range; j <= upper_range; j++)
-		{
-			if (j <= 3) 
-			{
+	
+	dtStart = new Date();
+	for (i = 1; i <= loopSize; i = i + 1) {
+		found = 0;
+		for (j = lower_range; j <= upper_range; j = j + 1) {
+			if (j <= 3) {
 				found += 1;
 			}
 			else {		
@@ -66,15 +62,14 @@ function runMainThread()
 		}
 		ele.innerHTML += "<div>#" + i + " found: " + found + "</div>";
 	}
-	var dtEnd = new Date();
+	dtEnd = new Date();
 	ele.innerHTML += "<p>Duration: " + (dtEnd.getTime() - dtStart.getTime()) + " (ms)</p>";
 }
 
 /**
  * object sent to a worker via the postMessage method from the main thread.
  */
-function MainMessage(workerid, lower_range, upper_range) 
-{
+function MainMessage(workerid, lower_range, upper_range)  {
 	this.workerid = workerid;
 	this.lower_range = lower_range;
 	this.upper_range = upper_range;
@@ -85,11 +80,24 @@ function MainMessage(workerid, lower_range, upper_range)
  *  By terminating them once completed, you can ensure there are no conflicts with exceeding the max limit.
  * 
  */
-function cleanupWorkers()
-{
-	for (var i = 1; i <= loopSize; i++)
+function cleanupWorkers() {
+	var i;
+
+	for (i = 1; i <= loopSize; i = i + 1)
 	{
 		workerArray[i].terminate();
+	}
+}
+
+function onWorkerMessage(event) {
+	var ele = document.getElementById("outputWorker");
+
+	ele.innerHTML += "<div>#" + event.data.workerid + " found: " + event.data.found + "</div>";
+	numComplete += 1;
+	if (numComplete === loopSize) {
+		dtEnd = new Date();
+		ele.innerHTML += "<p>Duration: " + (dtEnd.getTime() - dtStart.getTime()) + " (ms)</p>";
+		cleanupWorkers();
 	}
 }
 
@@ -101,36 +109,37 @@ function runWorkers()
 {
 	try
 	{
-		var ele = document.getElementById("outputWorker");
+		var ele, i, message;
+		
+		ele = document.getElementById("outputWorker");
 		ele.innerHTML = "<h3>Using Workers:</h3>";
 
-		var numComplete = 0;
-		var dtStart = new Date();
+		numComplete = 0;
+		dtStart = new Date();
 		
-		for (var i = 1; i <= loopSize; i++)
+		for (i = 1; i <= loopSize; i = i + 1)
 		{
 			/*
-			 * Using workers involves three steps:
-			 * 1) Creating a Worker object
-			 * 2) Defining a callback method invoked when the Worker calls its postMessage() method
-			 * 3) sending data to the worker from the main thread using the postMessage() method.
-			 */
-			 
-			 //The following worker path works for Tablet OS, but not for Smartphone:
-			 //
+			* Using workers involves three steps:
+			* 1) Creating a Worker object
+			* 2) Defining a callback method invoked when the Worker calls its postMessage() method
+			* 3) sending data to the worker from the main thread using the postMessage() method.
+			*/
+			
+			//The following worker path works for Tablet OS, but not for Smartphone:
+			//
 			workerArray[i] = new Worker("../../js/html5/the_worker.js");		//need to use the path from where the code is being executed
-			workerArray[i].onmessage = function(event)
-			{
-				ele.innerHTML += "<div>#" + event.data.workerid + " found: " + event.data.found + "</div>";
-				numComplete += 1;
-				if (numComplete == loopSize)
-				{
-					var dtEnd = new Date();
-					ele.innerHTML += "<p>Duration: " + (dtEnd.getTime() - dtStart.getTime()) + " (ms)</p>";
-					cleanupWorkers();
-				}
-			}
-			var message = new MainMessage(i, lower_range, upper_range);
+			// workerArray[i].onmessage = function(event) {
+				// ele.innerHTML += "<div>#" + event.data.workerid + " found: " + event.data.found + "</div>";
+				// numComplete += 1;
+				// if (numComplete === loopSize) {
+					// dtEnd = new Date();
+					// ele.innerHTML += "<p>Duration: " + (dtEnd.getTime() - dtStart.getTime()) + " (ms)</p>";
+					// cleanupWorkers();
+				// }
+			// };
+			workerArray[i].onmessage = onWorkerMessage;
+			message = new MainMessage(i, lower_range, upper_range);
 			workerArray[i].postMessage(message);
 		}
 	}
@@ -142,13 +151,11 @@ function runWorkers()
 /**
  *  Called when a user clicks on one of the 'Begin' buttons:
  */
-function calculate(useWorkers)
-{
+function calculate(useWorkers) {
 	var value = document.getElementById("txtUpper").value;
-	upper_range = parseInt(value);
+	upper_range = parseInt(value, 10);
 	
-	if (useWorkers)
-	{
+	if (useWorkers) {
 		runWorkers();
 	}
 	else {

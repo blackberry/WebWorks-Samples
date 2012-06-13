@@ -25,68 +25,30 @@ var gesture = {
 	end : null,
 	onhorizontalswipe : null,
 	onverticalswipe : null
-}
-	
-//The user must define a target page 
-gesture.setTargetElement = function( targetElement )
-{
-	this.targetElement = targetElement;
-	
-	// Event handlers for mouse interaction
-	this.targetElement.onmousedown = function(e) {
-		doOnStart(event.clientX, event.clientY, "onmousedown");
-	}
-	this.targetElement.onmousemove = function(event) {
-		doOnMove(event.clientX, event.clientY, "onmousemove");
-	}
-	this.targetElement.onmouseup = function(event) {
-		doOnEnd(event.clientX, event.clientY, "onmouseup");
-	}
-	
-	// Event handlers for touch screen interaction
-	this.targetElement.ontouchstart = function(event) {
-		event.preventDefault();
-		var touchEvent = event.changedTouches[0];
-		doOnStart(touchEvent.pageX, touchEvent.pageY, "ontouchstart");
-	}
-	this.targetElement.ontouchmove = function(event) {
-		event.preventDefault();
-		var touchEvent = event.changedTouches[0];
-		doOnMove(touchEvent.pageX, touchEvent.pageY, "ontouchmove");
-	}
-	this.targetElement.ontouchend = function(event) {
-		event.preventDefault();
-		var touchEvent = event.changedTouches[0];
-		doOnEnd(touchEvent.pageX, touchEvent.pageY, "ontouchend");
-	}
-}
+};
 
-//The user must define a method to be called when a given gesture occurs
-gesture.setHorizontalHandler = function( callback )
-{
-	this.onhorizontalswipe = callback;
-}
-gesture.setVerticalHandler = function( callback )
-{
-	this.onverticalswipe = callback;
-}
-
-
-var gestureData = function(direction, distance, duration)
-{
+var GestureData = function (direction, distance, duration) {
 	this.direction = direction;
 	this.distance = distance;
 	this.duration = duration;
-}
+};
+
+
+//The user must define a method to be called when a given gesture occurs
+gesture.setHorizontalHandler = function (callback) {
+	this.onhorizontalswipe = callback;
+};
+gesture.setVerticalHandler = function (callback) {
+	this.onverticalswipe = callback;
+};
+
 
 /**
 doOnStart - handler for both mousedown and touchstart events. 
 	1) Record the starting position of the swipe.
 */
-function doOnStart(x,y,eventname)
-{
-	if (typeof gesture === "object") 
-	{
+function doOnStart(x,y,eventname) {
+	if (typeof gesture === "object") {
 		debug.log("doOnStart", eventname + ": (x, y) = " + x + ", " + y, debug.info);
 		gesture.eventInProgress = true;
 		gesture.start = new Date();
@@ -100,10 +62,8 @@ function doOnStart(x,y,eventname)
 doOnMove - handler for both mousemove and touchmove events:
 	1) Record the current position of an active swipe.
 */
-function doOnMove(x,y,eventname)
-{
-	if ((typeof gesture === "object")  && (gesture.eventInProgress))
-	{
+function doOnMove(x,y,eventname) {
+	if ((typeof gesture === "object")  && (gesture.eventInProgress)) {
 		debug.log("doOnMove", eventname + ": (x, y) = " + x + ", " + y, debug.info);
 		gesture.lastX = x;
 		gesture.lastY = y;			
@@ -115,47 +75,44 @@ doOnEnd - handler for both mouseup and touchend events:
 	2) Determine if swipe direction is horizontal or vertical.
 	3) Determine if swipe distance exceeds a minimum threshold.
 */
-function doOnEnd(x,y,eventname)
-{
-	//Tune these values to your liking. This represents an appropriate minimum distance a swipe must travel before the event is determined to have occured.
-	var thresholdX = screen.width * 0.03;	//3% of screen height/width is a good start
-	var thresholdY = screen.height * 0.03;
+function doOnEnd(x,y,eventname) {
 
-	if (typeof gesture === "object") 
-	{
+	var thresholdX, thresholdY, duration, dX, dY, e;
+
+	//Tune these values to your liking. This represents an appropriate minimum distance a swipe must travel before the event is determined to have occured.
+	thresholdX = screen.width * 0.03;	//3% of screen height/width is a good start
+	thresholdY = screen.height * 0.03;
+
+	if (typeof gesture === "object") {
 		debug.log("doOnEnd", eventname + ": (x, y) = " + x + ", " + y, debug.info);
 		gesture.eventInProgress = false;
 		gesture.end = new Date();
-		var duration = gesture.end.getTime() - gesture.start.getTime();
+		duration = gesture.end.getTime() - gesture.start.getTime();
 		debug.log("doOnEnd", eventname + ": (duration) = " + duration, debug.info);
-		var dX = gesture.lastX - gesture.firstX;
-		var dY = gesture.lastY - gesture.firstY;
+		dX = gesture.lastX - gesture.firstX;
+		dY = gesture.lastY - gesture.firstY;
 		debug.log("doOnEnd", eventname + ": (dX, dY) = " + dX + ", " + dY, debug.info);
 
-		if (Math.abs(dX) > Math.abs(dY)) 
-		{
+		if (Math.abs(dX) > Math.abs(dY)) {
 			// If the change in the start/end X coordinates is greater than the change in start/end Y coordinates, this is a horizontal swipe
-			if (Math.abs(dX) > thresholdX)
-			{
+			if (Math.abs(dX) > thresholdX) {
 				//An actual horizontal swipe occurs when the change in start/end X coordinates is greater than a minimum threshold
 				debug.log("doOnEnd", eventname + " :" + (dX > 0 ? "Right" : "Left") + " horizontal swipe detected", debug.info);
 				
 				if (gesture.onhorizontalswipe === null) { return false; }
-				var e = new gestureData((dX > 0 ? 1 : -1), dX, duration);
+				e = new GestureData((dX > 0 ? 1 : -1), dX, duration);
 				gesture.onhorizontalswipe(e);
 				
 			}			
 		} 
 		else {
 			// If the change in the start/end Y coordinates is greater than the change in start/end X coordinates, this is a vertical swipe
-			if (Math.abs(dY) > thresholdY)
-			{
+			if (Math.abs(dY) > thresholdY) {
 				//An actual vertical swipe occurs when the change in start/end Y coordinates is greater than a minimum threshold
 				debug.log("doOnEnd", eventname + " :" + (dY > 0 ? "Down" : "Up") + " vertical swipe detected", debug.info);
 				
 				if (gesture.onverticalswipe === null) { return false; }
-				var e = {};
-				var e = new gestureData((dY > 0 ? 1 : -1), dY, duration);
+				e = new GestureData((dY > 0 ? 1 : -1), dY, duration);
 				gesture.onverticalswipe(e);				
 			}
 		}
@@ -163,6 +120,39 @@ function doOnEnd(x,y,eventname)
 }
 
 
+//The user must define a target page 
+gesture.setTargetElement = function( targetElement ) {
+
+	this.targetElement = targetElement;
+
+	// Event handlers for mouse interaction
+	this.targetElement.onmousedown = function(event) {
+		doOnStart(event.clientX, event.clientY, "onmousedown");
+	};
+	this.targetElement.onmousemove = function(event) {
+		doOnMove(event.clientX, event.clientY, "onmousemove");
+	};
+	this.targetElement.onmouseup = function(event) {
+		doOnEnd(event.clientX, event.clientY, "onmouseup");
+	};
+
+	// Event handlers for touch screen interaction
+	this.targetElement.ontouchstart = function(event) {
+		event.preventDefault();
+		var touchEvent = event.changedTouches[0];
+		doOnStart(touchEvent.pageX, touchEvent.pageY, "ontouchstart");
+	};
+	this.targetElement.ontouchmove = function(event) {
+		event.preventDefault();
+		var touchEvent = event.changedTouches[0];
+		doOnMove(touchEvent.pageX, touchEvent.pageY, "ontouchmove");
+	};
+	this.targetElement.ontouchend = function(event) {
+		event.preventDefault();
+		var touchEvent = event.changedTouches[0];
+		doOnEnd(touchEvent.pageX, touchEvent.pageY, "ontouchend");
+	};
+};
 
 
 /* 
@@ -178,19 +168,16 @@ function doOnEnd(x,y,eventname)
  */
 
 
-function horizontalHandler(e)
-{
+function horizontalHandler(e) {
 	var msg = (e.direction > 0 ? "Right" : "Left") + " (" + e.distance + " pixels in " + e.duration + " ms)";
 	document.getElementById("swipearea").innerHTML = msg;
 }
-function verticalHandler(e)
-{
+function verticalHandler(e) {
 	var msg = (e.direction > 0 ? "Down" : "Up") + " (" + e.distance + " pixels in " + e.duration + " ms)";
 	document.getElementById("swipearea").innerHTML = msg;
 }
 
-function doPageLoad()
-{
+function doPageLoad() {
 	//gesture object is created when you include the JS file
 	//will use 'document' by default
 
@@ -198,19 +185,14 @@ function doPageLoad()
 	gesture.setTargetElement(ele);
 
 	gesture.setHorizontalHandler(horizontalHandler);
-	gesture.setVerticalHandler(verticalHandler);
-	
-	
+	gesture.setVerticalHandler(verticalHandler);	
 }
 
-window.addEventListener("load",         doPageLoad,   false);
+window.addEventListener("load", doPageLoad, false);
 
 
-function doTouch(e)
-{
+function doTouch(e) {
 	/* block page scrolling so as not to interfere with the swipe gestures */
 	e.preventDefault();
-}
-//document.addEventListener("touchstart", doTouch,  false);
+} 
 document.addEventListener("touchmove",  doTouch,  false);
-//document.addEventListener("touchend",   doTouch,  false);

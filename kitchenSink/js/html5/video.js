@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,13 +14,10 @@
  * limitations under the License.
  */
 
-function playVideo() 
-{
-	try
-	{
+function playVideo() {
+	try {
 		var video = document.getElementById("newVidM4V");
-		if (video)
-		{
+		if (video) {
 			video.play();
 			console.log("Playing video " + video.src);
 		}
@@ -33,31 +30,24 @@ function playVideo()
 	}
 }
 			
-function onPlaying()
-{
+function onPlaying() {
 	console.log("Video playing");
 }
-function onEnded()
-{
+function onEnded() {
 	console.log("Video ended");
 }
-function onError()
-{
+function onError() {
 	console.log("Video error");
 }
-function onWaiting()
-{
+function onWaiting() {
 	console.log("Video waiting");
 }
-function onStalled()
-{
+function onStalled() {
 	console.log("Video stalled");
 }
 
-function doOnload()
-{
-	try
-	{
+function doOnload() {
+	try {
 		var video = document.createElement('video');
 		video.src = 'http://cdn.kaltura.org/apis/html5lib/kplayer-examples/media/bbb_trailer_iphone.m4v';
 		video.controls = "controls";
@@ -73,7 +63,7 @@ function doOnload()
 
 		//need to set any brief delay in order for the proper video events to occur.
 		//event shoud be: waiting --> playing --> ended
-		setTimeout("playVideo()", 10);
+		setTimeout(playVideo, 10);
 		//If you immediately call playVideo with no delay, 
 		//the events are: waiting --> playing --> stalled
 		//	playVideo();

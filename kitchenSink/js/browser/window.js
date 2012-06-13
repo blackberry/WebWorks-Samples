@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,13 +17,10 @@
 var i = null;
 
 /* Page navigation*/
-function goToLocation()
-{
-	try
-	{
+function goToLocation() {
+	try {
 		var ele = document.getElementById("txtLocation");
-		if (ele)
-		{
+		if (ele) {
 			window.location = ele.value;
 		}
 	} 
@@ -33,24 +30,19 @@ function goToLocation()
 }
 
 /* Timer events */
-function setTime()
-{
+function setTime() {
 	var ele = document.getElementById("txtIntervalDemo");
-	if (ele)
-	{
+	if (ele) {
 		var dt = new Date();
 		ele.innerHTML = dt.toString();
 	}
 }
 
-function startInterval()
-{
-	try
-	{
+function startInterval() {
+	try {
 		var ele = document.getElementById("txtInterval");
 		var intVal = 1000;
-		if (ele)
-		{
+		if (ele) {
 			intVal = ele.value;
 		}
 		i = window.setInterval(setTime, intVal);
@@ -59,10 +51,8 @@ function startInterval()
 		debug.log("startInterval", e, debug.exception);
 	}
 }
-function stopInterval()
-{
-	try
-	{
+function stopInterval() {
+	try {
 		window.clearInterval(i);
 	} 
 	catch(e) {
@@ -71,68 +61,54 @@ function stopInterval()
 }
 
 /* Page scrolling */
-function scrollToTop()
-{
+function scrollToTop() {
 	window.scroll(0, 0);		// parameters are (x, y) screen coordinates.
 }
-function scrollToBottom()
-{
+function scrollToBottom() {
 	window.scroll(0, screen.height);
 }
-function scrollUpBy(amt)
-{
+function scrollUpBy(amt) {
 	window.scroll(0, window.pageYOffset - amt);
 }
-function scrollDownBy(amt)
-{
+function scrollDownBy(amt) {
 	window.scroll(0, window.pageYOffset + amt);
 }
 
 
 /* Dialogs and prompts */
-function postTimeoutMessage()
-{
+function postTimeoutMessage() {
 	var message = document.getElementById("txtMessage").value;
 	alert(message);
 }
-function showMessageAfterDelay()
-{
+function showMessageAfterDelay() {
 	var message = document.getElementById("txtMessage");
 	var messageTimeout = document.getElementById("txtMessageTimeout");
 	
-	if (message)
-	{
+	if (message) {
 		var timeout = 2000;
-		if (messageTimeout)
-		{
+		if (messageTimeout) {
 			timeout = messageTimeout.value;
 		}
 		setTimeout(postTimeoutMessage, timeout);
 	}	
 }
-function alertMessage()
-{
+function alertMessage() {
 	var message = document.getElementById("txtMessage");
-	if (message)
-	{
+	if (message) {
 		alert("You wrote: " + message.value);
 	}
 }
-function promptMessage()
-{
+function promptMessage() {
 	var message = document.getElementById("txtMessage");
-	if (message)
-	{
+	if (message) {
 		var result = prompt("Modify this text:", message.value);
 		alert("Modified value: " + result);
 	}
 }
-function postTimeoutFocus()
-{
+function postTimeoutFocus() {
 	window.focus();
 }
-function delayFocus()
-{
+function delayFocus() {
 	alert("Focus should automatically be restored after 5 seconds");
 	setTimeout(postTimeoutFocus, 5000);		//Return focus to the window after 5 seconds.
 	window.blur();							//Take the focus immediately away from the window.

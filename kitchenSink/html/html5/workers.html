@@ -24,6 +24,11 @@
 	
 	<title> HTML5 Web Workers </title>
 	<script src="../../js/html5/workers.js" type="text/JavaScript"></script>
+	<style type="text/css">
+		td {
+			padding: 5px;
+		}
+	</style>
 	
 </head>
 <body>
@@ -37,16 +42,16 @@
 		</p>
 		
 		<p>
-			<div>Calculate # of prime numbers between 2 and <input type="text" id="txtUpper" value="1000000" size="7" maxlength="7"/> (5 times):</div>
+			Calculate # of prime numbers between 2 and <input type="text" id="txtUpper" value="1000000" size="7" maxlength="7"/> (5 times):
 			<button id="btnRegular" onclick="calculate(false)">Begin (Main Thread)</button> 
 			<button id="btnWorker" onclick="calculate(true)">Begin (Worker Threads)</button>
 		</p>
 		
 		<div id="comments"></div>
-		<table cellspacing="5" cellpadding="5">
+		<table>
 			<tr>
-				<td id="outputNormal" valign="top"></td>
-				<td id="outputWorker" valign="top"></td>
+				<td id="outputNormal" class="tdtop"></td>
+				<td id="outputWorker" class="tdtop"></td>
 			</tr>
 		</table>
 		
@@ -69,22 +74,21 @@
 		<p>Since workers process data asyncronously, there is no way to predict or determine the order in which they will complete their processing.</p>
 
 		<h3>Flow of events:</h3>
-		<p>
-			<table cellpadding="5">
-				<tr>
-					<td rowspan="2" valign="middle"><b>[Main Thread]</b></td>
-					<td>1. postMessage</td>
-					<td>--&gt;</td>
-					<td>2. onmessage(function)</td>
-					<td rowspan="2" valign="middle"><b>[Worker Thread]</b></td>
-				</tr>
-				<tr>
-					<td>4. onmessage(function)</td>
-					<td>&lt;--</td>
-					<td>3. postMessage</td>
-				</tr>
-			</table>
-		</p>
+		
+		<table>
+			<tr>
+				<td rowspan="2" class="tdmid"><b>[Main Thread]</b></td>
+				<td>1. postMessage</td>
+				<td>--&gt;</td>
+				<td>2. onmessage(function)</td>
+				<td rowspan="2" class="tdmid"><b>[Worker Thread]</b></td>
+			</tr>
+			<tr>
+				<td>4. onmessage(function)</td>
+				<td>&lt;--</td>
+				<td>3. postMessage</td>
+			</tr>
+		</table>
 		
 		<h3>Max Workers</h3>
 		<p>Is there a limit to how many workers can be created? I think Chrome caps it at 16.  It is advised to use the .terminate() method to destroy unused Worker objects.</p>

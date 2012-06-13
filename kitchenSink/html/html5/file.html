@@ -24,6 +24,14 @@
 	
 	<title> HTML5 File Reader </title>
 	<script src="../../js/html5/filereader.js" type="text/JavaScript"></script>
+	<style type="text/css">
+		table {
+			width: 100%;
+		}
+		td {
+			padding: 5px;
+		}
+	</style>
 	
 </head>
 <body>
@@ -45,7 +53,7 @@
 			Select File(s) : <input type="file" id="txtFile" name="files[]" multiple/>
 		</p>
 
-		<table id="output" border='0' cellspacing='0' cellpadding='5' width='100%'>
+		<table id="output">
 			<tr><th>Filename</th><th>Type</th><th>Preview</th><th>Size (bytes)</th><th>Last Modified</th></tr>
 		</table>
 		<div id="errors"></div>

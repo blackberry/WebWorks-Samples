@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,11 +14,9 @@
  * limitations under the License.
  */
 
-function applyCSS(id, cssname)
-{
+function applyCSS(id, cssname) {
 	var ele = document.getElementById(id);
-	if (ele)
-	{
+	if (ele) {
 		ele.className = cssname;
 	}
 }

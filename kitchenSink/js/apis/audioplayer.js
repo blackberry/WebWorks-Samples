@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,17 +18,11 @@
 //Global var for audio player object
 var playerInstance = null;
 
-function initPlayer()
-{
-	document.getElementById("audiofile").innerHTML = "<b>../../resources/13_ThatsGood.mp3</b>";
-	playerInstance = new blackberry.audio.Player("../../resources/13_ThatsGood.mp3");
-	playerInstance.addPlayerListener(OnPlayerUpdate);		//Raises data about the current status of the player when events occur (duration is not an event)
-}
+var t = null;
 
-function translateStateId(id)
-{
-	switch(id)
-	{
+
+function translateStateId(id) {
+	switch(id) {
 		case blackberry.audio.Player.TIME_UNKNOWN:
 			//The requested time is unknonw
 			return "TIME_UNKNOWN";
@@ -49,10 +43,8 @@ function translateStateId(id)
 	}
 }
 			
-function translateEventId(id)
-{
-	switch(id)
-	{
+function translateEventId(id) {
+	switch(id) {
 		case blackberry.audio.Player.EVENT_BUFFERING_STARTED:
 			return "EVENT_BUFFERING_STARTED";
 		case blackberry.audio.Player.EVENT_BUFFERING_STOPPED:
@@ -90,39 +82,21 @@ function translateEventId(id)
 	}
 }
 
-// Invoked when there is an update event for the player.
-function OnPlayerUpdate(player, event, eventData) 
-{
-	try 
-	{
-		//TODO - check to see if audio finished.  Close resources.
-	
-		showPlayerStatus(player, event, eventData);
-	}
-	catch (e) 
-	{
-		debug.log("onPlayerUpdate", e, debug.exception);
-	}
-}
 
-var t = null;
 
-function showPlayerStatus(player, event, eventData)
-{
-	try 
-	{
+function showPlayerStatus(player, event, eventData) {
+	try {
 		var state = -1;
 		var duration = -1;
 		var mediaTime = -1;
 		var evt = "";
 		var evtData = "";
+		var sb;
 		
-		if (player)
-		{
+		if (player) {
 			state = player.state;
 			duration = player.duration;
-			if (state !== blackberry.audio.Player.EVENT_CLOSED)
-			{
+			if (state !== blackberry.audio.Player.EVENT_CLOSED) {
 				mediaTime = player.mediaTime;
 			}
 		} 
@@ -145,17 +119,15 @@ function showPlayerStatus(player, event, eventData)
 		*/
 		
 		
-		if (event)
-		{
+		if (event) {
 			evt = translateEventId(event);
 		}
 		
-		if (eventData)
-		{
+		if (eventData) {
 			evtData = eventData;
 		}
 	
-		var sb = new StringBuilder();
+		sb = new StringBuilder();
 		sb.append("<table>");
 		sb.append("<tr><th>State</th><td>" + state + "</td></tr>");
 		sb.append("<tr><th>Duration</th><td>" + duration + "</td></tr>");
@@ -165,92 +137,54 @@ function showPlayerStatus(player, event, eventData)
 		sb.append("</table>");
 		setContent("playerUpdates", sb.toString());
 
-		if (state === blackberry.audio.Player.EVENT_STARTED)
-		{
-			
+		if (state === blackberry.audio.Player.EVENT_STARTED) {
+			debug.log("blackberry.audio.Player.EVENT_STARTED", e, debug.info);
 		}
 		setTimeout(showPlayerStatus, 1000);
 
 	}
-	catch (e) 
-	{
-		debug.log("showPlayerStatus", e, debug.exception);
+	catch (ex) {
+		debug.log("showPlayerStatus", ex, debug.exception);
 	}
 }
 
-function playAudio()
-{
-	if ((window.blackberry === undefined) || (blackberry.audio === undefined))
-	{
-		debug.log("playAudio", "blackberry.audio object is undefined.", debug.error);
-		return false;
-	}
+// Invoked when there is an update event for the player.
+function OnPlayerUpdate(player, event, eventData)  {
+	try  {
+		//TODO - check to see if audio finished.  Close resources.
 	
-	if (playerInstance)
-	{
-		playerInstance.play();
-//				t = setInterval(showPlayerStatus, 1000);	//the player does not raise an event every N duration of time.  Use a timer interval to track the current duration of the player.
-		setTimeout(showPlayerStatus, 1000);	//the player does not raise an event every N duration of time.  Use a timer interval to track the current duration of the player.
-		changeVolume(0);
-	} 
-	else {
-		initPlayer();
+		showPlayerStatus(player, event, eventData);
+	}
+	catch (e) {
+		debug.log("onPlayerUpdate", e, debug.exception);
 	}
 }
 
-function pauseAudio()
-{
+function initPlayer() {
+	document.getElementById("audiofile").innerHTML = "<b>../../resources/13_ThatsGood.mp3</b>";
+	playerInstance = new blackberry.audio.Player("../../resources/13_ThatsGood.mp3");
+	playerInstance.addPlayerListener(OnPlayerUpdate);		//Raises data about the current status of the player when events occur (duration is not an event)
+}
 
-	if ((window.blackberry === undefined) || (blackberry.audio === undefined))
-	{
-		debug.log("pauseAudio", "blackberry.audio object is undefined.", debug.error);
-		return false;
-	}
+
+function changeVolume(amt) {
+	var maxVolume, currentVolume;
 	
-	if (playerInstance)
-	{
-		playerInstance.pause();
-	}
-}
-
-function stopAudio()
-{
-	if ((window.blackberry === undefined) || (blackberry.audio === undefined))
-	{
-		debug.log("stopAudio", "blackberry.audio object is undefined.", debug.error);
-		return false;
-	}
-
-	if (playerInstance)
-	{
-		playerInstance.close();
-		playerInstance = null;
-	}
-}
-
-function changeVolume(amt)
-{
-
-	if ((window.blackberry === undefined) || (blackberry.audio === undefined))
-	{
+	if ((window.blackberry === undefined) || (blackberry.audio === undefined)) {
 		debug.log("changeVolume", "blackberry.audio object is undefined.", debug.error);
 		return false;
 	}
 
-	var maxVolume = 100;
-	if (playerInstance)
-	{
-		var currentVolume = playerInstance.volumeLevel;
-		if (amt < 0)
-		{ 
-			if (currentVolume > 0)
-			{
+	maxVolume = 100;
+	if (playerInstance) {
+		currentVolume = playerInstance.volumeLevel;
+		if (amt < 0) { 
+			if (currentVolume > 0) {
 				currentVolume += amt;
 			}
 		}
 		else {
-			if (currentVolume < maxVolume)
-			{
+			if (currentVolume < maxVolume) {
 				currentVolume += amt;
 			}
 			currentVolume += amt;
@@ -261,10 +195,51 @@ function changeVolume(amt)
 }
 
 
-function doPageLoad()
-{
-	if ((window.blackberry === undefined) || (blackberry.audio === undefined) || (blackberry.audio.Player === undefined))
-	{
+function playAudio() {
+	if ((window.blackberry === undefined) || (blackberry.audio === undefined)) {
+		debug.log("playAudio", "blackberry.audio object is undefined.", debug.error);
+		return false;
+	}
+	
+	if (playerInstance) {
+		playerInstance.play();
+//				t = setInterval(showPlayerStatus, 1000);	//the player does not raise an event every N duration of time.  Use a timer interval to track the current duration of the player.
+		setTimeout(showPlayerStatus, 1000);	//the player does not raise an event every N duration of time.  Use a timer interval to track the current duration of the player.
+		changeVolume(0);
+	} 
+	else {
+		initPlayer();
+	}
+}
+
+function pauseAudio() {
+
+	if ((window.blackberry === undefined) || (blackberry.audio === undefined)) {
+		debug.log("pauseAudio", "blackberry.audio object is undefined.", debug.error);
+		return false;
+	}
+	
+	if (playerInstance) {
+		playerInstance.pause();
+	}
+}
+
+function stopAudio() {
+	if ((window.blackberry === undefined) || (blackberry.audio === undefined)) {
+		debug.log("stopAudio", "blackberry.audio object is undefined.", debug.error);
+		return false;
+	}
+
+	if (playerInstance) {
+		playerInstance.close();
+		playerInstance = null;
+	}
+}
+
+
+
+function doPageLoad() {
+	if ((window.blackberry === undefined) || (blackberry.audio === undefined) || (blackberry.audio.Player === undefined)) {
 		debug.log("doPageLoad", "blackberry.audio.Player object is undefined.", debug.error);
 		prependContent("playerUpdates", "<p><i><b>blackberry.audio.Player</b> object not found (likely cause is WebWorks APIs are not supported by this user agent).</i></p>");
 

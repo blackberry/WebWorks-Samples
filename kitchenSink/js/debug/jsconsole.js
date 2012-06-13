@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,18 +14,15 @@
  * limitations under the License.
  */
 
-var app_name = "wwDemo App";
+var app_name = "kitchenSink";
 
-function doButton()
-{
+function doButton() {
 	debug.log("doButton", app_name + "button clicked", debug.info);
 }
 
-function doPageLoad()
-{
+function doPageLoad() {
 	//If this is a WebWorks app, retrieve the app name and version:
-	if ((window.blackberry !== undefined) && (blackberry.app !== undefined))
-	{
+	if ((window.blackberry !== undefined) && (blackberry.app !== undefined)) {
 		app_name = blackberry.app.name + " (" + blackberry.app.version + "): ";
 	}
 

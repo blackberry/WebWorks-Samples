@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -40,8 +40,7 @@ var vy = 0;
 
 var vMultiplier = 0.01;
 
-function handleDeviceMotion(event)
-{
+function handleDeviceMotion(event) {
 	// Process event.acceleration, event.accelerationIncludingGravity,
 	// and event.rotationRate
 	
@@ -59,8 +58,7 @@ function handleDeviceMotion(event)
 	
 	//Implementation here should not be able to report values either, as they should depend on a gyroscope
 	motionInfo += "Rotation rate - " + event.rotationRate + "<br/>";
-	if (event.rotationRate !== null)
-	{
+	if (event.rotationRate !== null) {
 		motionInfo += "Rotation rate - " + event.rotationRate.alpha + "<br/>";
 		motionInfo += "Rotation rate - " + event.rotationRate.beta + "<br/>";
 		motionInfo += "Rotation rate - " + event.rotationRate.gamma;
@@ -71,8 +69,8 @@ function handleDeviceMotion(event)
 	vy = vy + -(ay);
 	vx = vx + ax;
 
-	y = parseInt(y + vy * vMultiplier);
-	x = parseInt(x + vx * vMultiplier);
+	y = parseInt(y + vy * vMultiplier, 10);
+	x = parseInt(x + vx * vMultiplier, 10);
 	
 	if (x < 0) { x = 0; vx = 0; }
 	if (y < 0) { y = 0; vy = 0; }
@@ -83,11 +81,9 @@ function handleDeviceMotion(event)
 	ball.style.left = x + "px";
 }
 
-function doLoad()
-{
+function doLoad() {
 	ball = document.getElementById("ball");
-	if (ball)
-	{
+	if (ball) {
 		//Center the ball on the screen as its initial starting point:
 		x = (Math.round(window.innerWidth  / 2, 0) - ball.style.width);
 		ball.style.left = x + "px";
@@ -96,14 +92,13 @@ function doLoad()
 		//ball.style.top  = y + "px";
 	}
 	
-	
+
 	
 	//NOTE: DeviceMotion support is not ready yet in Ripple for Tablet OS platform (Oct 5, 2011).
 	
 	
 
-	if (window.DeviceMotionEvent || window.ondevicemotion)
-	{
+	if (window.DeviceMotionEvent || window.ondevicemotion) {
 		//Check to see if the current application supports the devicemotion
 		window.addEventListener("devicemotion", handleDeviceMotion, false);
 	} 

@@ -41,10 +41,10 @@
 		</p>
 
 		<div class="buttonField">
-			<input type="button" id="btnCell" value="Default" onClick="locationUpdated()"/> <br/>
-			<input type="button" id="btnCell" value="CellSite" onClick="getCellSite()"/> <br/>
-			<input type="button" id="btnCell" value="Assisted" onClick="getAssisted()"/> <br/>
-			<input type="button" id="btnCell" value="Autonomous" onClick="getAutonomous()"/> <br/>
+			<input type="button" id="btnDefault"    value="Default" onClick="locationUpdated()"/> <br/>
+			<input type="button" id="btnCell"       value="CellSite" onClick="getCellSite()"/> <br/>
+			<input type="button" id="btnAssisted"   value="Assisted" onClick="getAssisted()"/> <br/>
+			<input type="button" id="btnAutonomous" value="Autonomous" onClick="getAutonomous()"/> <br/>
 		</div>
 		<p id="currentLocation"></p>
 	</div>
@@ -59,10 +59,10 @@
 		
 		<p>
 			<b>Note</b>: The following carriers have disable device-side GPS functionality (location services can be purchased from carrier instead):
-			<ul>
-				<li>Verizon - blocks assisted GPS, leave Autonomous GPS open (need to signup to their developer program in order to get any fixes on their devices)</li>
-			</ul>
 		</p>
+		<ul>
+			<li>Verizon - blocks assisted GPS, leave Autonomous GPS open (need to signup to their developer program in order to get any fixes on their devices)</li>
+		</ul>
 
 	</div>
 

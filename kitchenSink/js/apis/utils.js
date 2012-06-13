@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,21 +14,17 @@
  * limitations under the License.
  */
 
-function parseURL()
-{
-	try
-	{
+function parseURL() {
+	try {
 		debug.log("parseURL", "in parseURL");
 
-		if ((window.blackberry === undefined) || (blackberry.utils === undefined))
-		{
+		if ((window.blackberry === undefined) || (blackberry.utils === undefined)) {
 			debug.log("parseURL", "blackberry.utils object is undefined", debug.error);
 			return false;
 		}
 
 		var ele = document.getElementById("txtURL");
-		if (ele)
-		{
+		if (ele) {
 			var url = blackberry.utils.parseURL(ele.value);
 			
 			var sb = new StringBuilder();
@@ -47,21 +43,17 @@ function parseURL()
 	}
 }
 
-function generateUID()
-{
-	try
-	{
+function generateUID() {
+	try {
 		debug.log("generateUID", "in generateUID", debug.info);
 		
-		if ((window.blackberry === undefined) || (blackberry.utils === undefined))
-		{
+		if ((window.blackberry === undefined) || (blackberry.utils === undefined)) {
 			debug.log("generateUID", "blackberry.utils object is undefined", debug.error);
 			return false;
 		}
 		
 		var ele = document.getElementById("txtUID");
-		if (ele)
-		{
+		if (ele) {
 			var uniqueId = blackberry.utils.generateUniqueId();
 			ele.value = uniqueId;
 		}
@@ -74,8 +66,7 @@ function generateUID()
 
 function doPageLoad()
 {
-	if ((window.blackberry === undefined) || (blackberry.utils === undefined))
-	{
+	if ((window.blackberry === undefined) || (blackberry.utils === undefined)) {
 		debug.log("doPageLoad", "blackberry.utils object is undefined", debug.error);
 		prependContent("details", "<p><i><b>blackberry.utils</b> object not found (likely cause is WebWorks APIs are not supported by this user agent).</i></p>");
 	}

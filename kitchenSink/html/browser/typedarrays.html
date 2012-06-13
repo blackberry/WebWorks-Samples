@@ -22,25 +22,33 @@
 	<link href="../../css/styles.css" rel="stylesheet" type="text/css">
 	<script src="../../js/standard.js" type="text/javascript" ></script>
 
-	<title> Web Engine features: User Agent</title>
-	<script src="../../js/browser/useragent.js" type="text/JavaScript"></script>
-
+	<title> Web Engine features: Typed JavaScript Arrays </title>
+	<script src="../../js/browser/typedarrays.js" type="text/javascript"></script>
+	
 </head>
 <body>
 
-	<h2>User Agent</h2>
-	
-	<div class="demo" id="output">
+	<h1>Typed JavaScript Arrays</h1>
+
+	<h2>Demo</h2>
+	<div class="demo">	
 		<p>
-			The User-Agent HTTP header is transmitted as part of every HTTP request from a client to a server.  It is commonly used to idenfity a browser rendering engine, and many content providers use this header to determine whether to display the normal (desktop) version of the web page content, mobile version (WAP) or mobile optimized (commonly 'WebKit').
+			This page demonstrates how the current browser supports typed JavaScript arrays.  These constructs were introduced to the ECMAScript spect with the support of WebGL.  They exist as a fixed block of binary data, and have much faster access times than regular arrays.
 		</p>
-		<p>
-			Knowledge Base article: <a href="" onclick="openUrl('http://supportforums.blackberry.com/t5/Web-and-WebWorks-Development/How-to-detect-the-BlackBerry-Browser/ta-p/559862')">How to detect the BlackBerry Browser</a>.
-		</p>
-	
-		<h4>User Agent value:</h4>
-		<div id="userAgent"></div>
 		
-	</div>  
+		<h3>Float32Array</h3>
+		<div id="float32array">Processing ...</div>
+
+		<h3>Int8Array</h3>
+		<div id="int8array">Processing ...</div>
+
+		<h3>Uint8Array</h3>
+		<div id="uint8array">Processing ...</div>
+		
+		<h3>Array</h3>
+		<div id="array">Processing ...</div>
+		
+	</div>
 
 </body>
+</html>

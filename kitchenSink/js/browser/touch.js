@@ -28,16 +28,48 @@ var numButtonsInPanel = 11;
 var page_header_height = 0;
 
 	
-const colorArray = [
+var colorArray = [
 	"RED", "PURPLE", "BLUE", "YELLOW", "GREEN", "ORANGE", "BLACK", "WHITE"
 ];
+
+
+
+
+//Display a title at the top of the canvas, indicating the type of event that occurred as well as the current screen coordinates:
+function displayHeader(msg)  {
+    ctx.clearRect(0, 0, canvas.width, canvas_header_height);
+
+    var font = '15pt Arial';
+    var fontpadding = 3;
+    if (window.blackberry !== null) {
+        font = '8pt Arial';
+    }
+    ctx.fillStyle = '#000';
+    ctx.font = font;
+    ctx.textBaseline = 'top';
+    ctx.fillText(msg, fontpadding, fontpadding);
+}
 
 function changeColor(index) {
 	activeColor = colorArray[index];
 	displayHeader("Drawing color is now "+colorArray[index]);
 }
 
+function widerBrush() {
+    if (brushSize < 30) {
+        brushSize = brushSize + 1;
+        displayHeader("Brush widened to " + brushSize);
+    }
+}
+function narrowBrush() {
+    if (brushSize > 1) {
+        brushSize = brushSize - 1;
+        displayHeader("Brush narrowed to " + brushSize);
+    }
+}
 function drawPanel() {
+	var i;
+	
 	//narrower brush button
 	ctx.fillStyle = "black";
 	ctx.beginPath();
@@ -52,7 +84,7 @@ function drawPanel() {
 	ctx.fill();
 	
 	//eight color buttons
-	for (var i=0; i<colorArray.length; i++) {
+	for (i=0; i<colorArray.length; i = i + 1) {
 		ctx.fillStyle = colorArray[i];
 		ctx.fillRect((i+2)*panel_size+3, canvas_header_height, panel_size-6, panel_size-6);
 	}
@@ -63,25 +95,9 @@ function drawPanel() {
 	ctx.closePath();
 	ctx.stroke();
 	
-	for (var i=0; i<numButtonsInPanel; i++) {
+	for (i=0; i<numButtonsInPanel; i = i + 1) {
 		ctx.strokeRect(i*panel_size+3, canvas_header_height, panel_size-6, panel_size-6);
 	}
-}
-
-//Display a title at the top of the canvas, indicating the type of event that occurred as well as the current screen coordinates:
-function displayHeader(msg) 
-{
-    ctx.clearRect(0, 0, canvas.width, canvas_header_height);
-
-    var font = '15pt Arial';
-    var fontpadding = 3;
-    if (window.blackberry != null) {
-        font = '8pt Arial';
-    }
-    ctx.fillStyle = '#000';
-    ctx.font = font;
-    ctx.textBaseline = 'top';
-    ctx.fillText(msg, fontpadding, fontpadding);
 }
 
 //Draw a blue line from the last known (x,y) position to the current (x,y) position
@@ -94,6 +110,11 @@ function drawPen(x, y) {
     ctx.stroke();
 }
 
+
+function withinPanelBound(y) {
+	return ((y > (page_header_height + canvas_header_height)) && (y < (page_header_height + canvas_header_height + panel_size + brushSize)));
+}
+
 function drawWithEvent(x, y, eventName) {
 	if (withinPanelBound(y)) {
 		lastX = -1;
@@ -102,7 +123,7 @@ function drawWithEvent(x, y, eventName) {
 	}
 	if (x || y) {
 		//Initialize cursor position if it hasn't been already:
-		if ((lastX == -1) || lastY == -1) {
+		if ((lastX === -1) || lastY === -1) {
 			lastX = x;
 			lastY = y - canvas_header_height;
 		}
@@ -113,9 +134,6 @@ function drawWithEvent(x, y, eventName) {
 	}
 }
 
-function withinPanelBound(y) {
-	return ((y > (page_header_height + canvas_header_height)) && (y < (page_header_height + canvas_header_height + panel_size + brushSize)));
-}
 
 function clearCanvas() {
 	//clear the drawing section of the canvas, but not its header or tools panel:
@@ -128,7 +146,7 @@ function selectEvent(x, y) {
 		return;
 	}
 	
-	var eventIndex = parseInt(x/panel_size);
+	var eventIndex = parseInt(x/panel_size, 10);
 	
 	switch(eventIndex){
 		case 0:
@@ -157,7 +175,7 @@ function showEventDescription(x, y) {
 		return;
 	}
 	
-	var eventIndex = parseInt(x/panel_size);
+	var eventIndex = parseInt(x/panel_size, 10);
 	var text = "";
 	switch(eventIndex){
 		case 0:
@@ -183,12 +201,10 @@ function showEventDescription(x, y) {
 	displayHeader(text);
 }
 
-function doMouseUp(event) 
-{
+function doMouseUp(event) {
 	var x = event.clientX;
 	var y = event.clientY;
-	if (y >  page_header_height + canvas_header_height)
-	{
+	if (y >  page_header_height + canvas_header_height) {
 		drawWithEvent(x, y, "Pointer");
 	}
 }
@@ -203,20 +219,17 @@ function doMouseMove(event) {
 		drawWithEvent(x, y, "Pointer");
 	}
 }
-function doMouseDown(event) 
-{
+function doMouseDown(event) {
 	var x = event.clientX;
 	var y = event.clientY;
-	if (y >  page_header_height + canvas_header_height)
-	{
+	if (y >  page_header_height + canvas_header_height) {
 		selectEvent(x, y);
 	}
 }
 
 
 //When screen is touched, save the (x,y) coordinates into lastX and lastY variables
-function doTouchStart(event) 
-{
+function doTouchStart(event) {
 //    event.preventDefault();
 
 
@@ -261,19 +274,14 @@ function doTouchEnd(event)
 {
 //    event.preventDefault();
 
-
     var touchEvent = event.changedTouches[0];
 
-	if (withinPanelBound(touchEvent.pageY)) 
-	{
+	if (withinPanelBound(touchEvent.pageY)) {
 		selectEvent(touchEvent.pageX, touchEvent.pageY);
 	} 
-	else 
-	{
-		if (touchEvent.pageX || touchEvent.pageY) 
-		{
-			if (touchEvent.pageY >  page_header_height + canvas_header_height)
-			{
+	else {
+		if (touchEvent.pageX || touchEvent.pageY) {
+			if (touchEvent.pageY >  page_header_height + canvas_header_height) {
 				displayHeader("TouchEnd at " + touchEvent.pageX + ", " + touchEvent.pageY);
 			}
 		}
@@ -287,14 +295,14 @@ function doTouchEnd(event)
 		// Feature removed based on user feedback (people don't like the double-tap-clear)
 		//
 		//	clearCanvas();
+		console.log("double tap");
 		//
 		}
 		startTime = new Date();
 	}
 }
 //Capture the touchcancel event and display header message
-function doTouchCancel(event) 
-{
+function doTouchCancel(event) {
     event.preventDefault();
     var touchEvent = event.changedTouches[0];
     if (touchEvent.pageX || touchEvent.pageY) {
@@ -303,26 +311,10 @@ function doTouchCancel(event)
 }
 
 
-function widerBrush() 
-{
-    if (brushSize < 30) 
-	{
-        brushSize = brushSize + 1;
-        displayHeader("Brush widened to " + brushSize);
-    }
-}
-function narrowBrush() 
-{
-    if (brushSize > 1) 
-	{
-        brushSize = brushSize - 1;
-        displayHeader("Brush narrowed to " + brushSize);
-    }
-}
 
 
-function doPageLoad() 
-{
+
+function doPageLoad() {
 	//
 	// Use 'addEventListener' as a best practice (many-to-one) instead of {ELEMENT}.on{EVENT} (one-to-one)
 	//
@@ -337,16 +329,14 @@ function doPageLoad()
 	document.addEventListener("mousemove",   doMouseMove, false);
 	document.addEventListener("mouseup",     doMouseUp,   false);
 
-    if (window.blackberry != null) 
-	{
+    if (window.blackberry !== null) {
 		//Give BlackBerry browser some extra height to adj
         canvas_header_height = 20;
     }
 
 	
 	var pageHeader = document.getElementById("pageHeader");
-	if (pageHeader)
-	{
+	if (pageHeader) {
 		page_header_height = pageHeader.offsetTop + pageHeader.clientHeight;
 	}
 	
@@ -354,7 +344,7 @@ function doPageLoad()
     canvas = document.createElement('canvas');
     canvas.height = window.innerHeight - page_header_height;
     canvas.width = window.outerWidth;
-	canvas.style.background = "white"
+	canvas.style.background = "white";
     document.getElementById('canvas').appendChild(canvas);
 
     ctx = canvas.getContext("2d");

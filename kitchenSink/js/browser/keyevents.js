@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,13 +15,13 @@
  */
 
 var isGlobalState = true;
-function handleKeypress(e)
-{ 
-	try 
-	{
-		var t = e.currentTarget.tagName;
-		var id = e.currentTarget.id !== "" ? "id='" + e.currentTarget.id + "'" : "";
-		var val = "handleKeypress called from " + t + " " + id + " : '" + String.fromCharCode(e.keyCode) + "'<br/>";
+function handleKeypress(e) { 
+	try {
+		var t, id, val;
+		
+		t = e.currentTarget.tagName;
+		id = e.currentTarget.id !== "" ? "id='" + e.currentTarget.id + "'" : "";
+		val = "handleKeypress called from " + t + " " + id + " : '" + String.fromCharCode(e.keyCode) + "'<br/>";
 		appendContent("logger", val);
 	} 
 	catch (er) {
@@ -29,13 +29,13 @@ function handleKeypress(e)
 	}
 } 
 
-function handleKeyup(e)
-{
-	try 
-	{
-		var t = e.currentTarget.tagName;
-		var id = e.currentTarget.id !== "" ? "id='" + e.currentTarget.id + "'" : "";
-		var val = "handleKeyup called from " + t + " " + id + " : '" + String.fromCharCode(e.keyCode) + "'<br/>";
+function handleKeyup(e) {
+	try {
+		var t, id, val;
+		
+		t = e.currentTarget.tagName;
+		id = e.currentTarget.id !== "" ? "id='" + e.currentTarget.id + "'" : "";
+		val = "handleKeyup called from " + t + " " + id + " : '" + String.fromCharCode(e.keyCode) + "'<br/>";
 		appendContent("logger", val);
 		isGlobalState = true;	//key press event has finished on a specific element
 	} 
@@ -44,14 +44,14 @@ function handleKeyup(e)
 	}
 } 
 
-function handleKeydown(e)
-{ 
-	try 
-	{
+function handleKeydown(e) { 
+	try {
+		var t, id, val;
+		
 		isGlobalState = false;	//key press event has began on a specific element
-		var t = e.currentTarget.tagName;
-		var id = e.currentTarget.id !== "" ? "id='" + e.currentTarget.id + "'" : "";
-		var val = "handleKeydown called from " + t + " " + id + " : '" + String.fromCharCode(e.keyCode) + "'<br/>";
+		t = e.currentTarget.tagName;
+		id = e.currentTarget.id !== "" ? "id='" + e.currentTarget.id + "'" : "";
+		val = "handleKeydown called from " + t + " " + id + " : '" + String.fromCharCode(e.keyCode) + "'<br/>";
 		appendContent("logger", val);
 	} 
 	catch (er) {
@@ -60,22 +60,20 @@ function handleKeydown(e)
 } 
 
 //Global keypress event handler
-function keyEventHandler(e)
-{
-	try 
-	{
-		var t = e.currentTarget.activeElement.tagName;
-		var id = e.currentTarget.activeElement.id !== "" ? "id='" + e.currentTarget.activeElement.id + "'" : "";				
-		var val = "handleKeydown called from " + t + " " + id + " : '" + String.fromCharCode(e.keyCode) + "'<br/>";
+function keyEventHandler(e) {
+	try {
+		var t, id, val, usingCtrlKey, usingAltKey, usingShiftKey;
+		
+		t = e.currentTarget.activeElement.tagName;
+		id = e.currentTarget.activeElement.id !== "" ? "id='" + e.currentTarget.activeElement.id + "'" : "";				
+		val = "handleKeydown called from " + t + " " + id + " : '" + String.fromCharCode(e.keyCode) + "'<br/>";
 
 		//Can also create actions to invoke when users press a specific key combination (e.g. scrolling page up/down when space bar is pressed)
-		var usingCtrlKey = e.ctrlKey;
-		var usingAltKey = e.altKey;
-		var usingShiftKey = e.shiftKey;
-		if (isGlobalState)
-		{
-			if (String.fromCharCode(e.keyCode) === " ")
-			{
+		usingCtrlKey = e.ctrlKey;
+		usingAltKey = e.altKey;
+		usingShiftKey = e.shiftKey;
+		if (isGlobalState) {
+			if (String.fromCharCode(e.keyCode) === " ") {
 				val += " &nbsp; &nbsp; &nbsp; " + (usingShiftKey ? "SHIFT + " : "") + " Space bar pressed --&gt; possible action = scroll page " + (usingShiftKey ? "UP" : "DOWN") + "?<br/>";
 			}
 		}
@@ -87,26 +85,24 @@ function keyEventHandler(e)
 	}
 }
 
-function doPageLoad()
-{
-	var txtTextBox = document.getElementById("txtTextBox"); 
-	if (txtTextBox)
-	{
+function doPageLoad() {
+	var txtTextBox, txtTextArea;
+	
+	txtTextBox = document.getElementById("txtTextBox"); 
+	if (txtTextBox) {
 		txtTextBox.addEventListener("keypress", handleKeypress, false); 
 		txtTextBox.addEventListener("keyup",    handleKeyup,    false); 
 		txtTextBox.addEventListener("keydown",  handleKeydown,  false); 
 	}
 	
-	var txtTextArea = document.getElementById("txtTextArea"); 
-	if (txtTextArea)
-	{
+	txtTextArea = document.getElementById("txtTextArea"); 
+	if (txtTextArea) {
 		txtTextArea.addEventListener("keypress", handleKeypress, true); 
 		txtTextArea.addEventListener("keyup",    handleKeyup,    true); 
 		txtTextArea.addEventListener("keydown",  handleKeydown,  true); 
 	}
 }
-function clearLogInfo()
-{
+function clearLogInfo() {
 	setContent("logger", "");
 }
 

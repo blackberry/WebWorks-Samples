@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2011 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,22 +14,19 @@
  * limitations under the License.
  */
 
-function displayStorage()
-{
-	try
-	{
-		if (window.localStorage)
-		{
-			var num = window.localStorage.length;
-			if (num > 0)
-			{
-				var out = "<table width='50%' cellspacing='0' cellpadding='0' border='0'>";
-				out += "<tr><th>Key</th><th>Value</th></tr>";
-				for (var i = 0; i < num; i++) 
-				{
-					var key = window.localStorage.key(i);
-					var value = window.localStorage.getItem(key);
-					out += "<tr><td>" + key + "</td><td>" + value + "</td></tr>";
+ function displayStorage() {
+	try {
+		var num, out, i, key, value;
+		
+		if (window.localStorage) {
+			num = window.localStorage.length;
+			if (num > 0) {
+				out = "<table width='50%' cellspacing='0' cellpadding='0' border='0'>";
+				out += "<tr><th>Key</th><th>Value</th><th></th></tr>";
+				for (i = 0; i < num; i = i + 1) {
+					key = window.localStorage.key(i);
+					value = window.localStorage.getItem(key);
+					out += "<tr><td>" + key + "</td><td>" + value + "</td><td><button onclick=\"removeLocalItem('" + key + "')\">Delete</button></td></tr>";
 				}
 				out += "</table>";
 				setContent("localStorage", out);
@@ -48,18 +45,15 @@ function displayStorage()
 		}
 		
 		
-		if (window.sessionStorage)
-		{
-			var num = window.sessionStorage.length;
-			if (num > 0)
-			{
-				var out = "<table width='50%' cellspacing='0' cellpadding='0' border='0'>";
-				out += "<tr><th>Key</th><th>Value</th></tr>";
-				for (var i = 0; i < num; i++) 
-				{
-					var key = window.sessionStorage.key(i);
-					var value = window.sessionStorage.getItem(key);
-					out += "<tr><td>" + key + "</td><td>" + value + "</td></tr>";
+		if (window.sessionStorage) {
+			num = window.sessionStorage.length;
+			if (num > 0) {
+				out = "<table width='50%' cellspacing='0' cellpadding='0' border='0'>";
+				out += "<tr><th>Key</th><th>Value</th><th></th></tr>";
+				for (i = 0; i < num; i = i + 1) {
+					key = window.sessionStorage.key(i);
+					value = window.sessionStorage.getItem(key);
+					out += "<tr><td>" + key + "</td><td>" + value + "</td><td><button onclick=\"removeSessionItem('" + key + "')\">Delete</button></td></tr>";
 				}
 				out += "</table>";
 				setContent("sessionStorage", out);
@@ -81,13 +75,29 @@ function displayStorage()
 	}
 }
 
-function removeAllLocal()
-{
-	try
-	{
+function removeLocalItem(key) {
+	try {
+		localStorage.removeItem(key);
+		displayStorage();
+	} 
+	catch (e) {
+		debug.log("removeLocalItem", e, debug.exception);
+	}
+}
+function removeSessionItem(key) {
+	try {
+		sessionStorage.removeItem(key);
+		displayStorage();
+	} 
+	catch (e) {
+		debug.log("removeSessionItem", e, debug.exception);
+	}
+}
+
+function removeAllLocal() {
+	try {
 		prependContent("output", "Clearing local storage<br/>");
-		if (window.localStorage)
-		{
+		if (window.localStorage) {
 			localStorage.clear();
 		}
 		displayStorage();
@@ -96,13 +106,10 @@ function removeAllLocal()
 		debug.log("removeAllLocal", e, debug.exception);
 	}
 }
-function removeAllSession()
-{
-	try
-	{
+function removeAllSession() {
+	try {
 		prependContent("output", "Clearing session storage<br/>");
-		if (window.sessionStorage)
-		{
+		if (window.sessionStorage) {
 			sessionStorage.clear();
 		}
 		displayStorage();				
@@ -114,18 +121,14 @@ function removeAllSession()
 
 
 
-function addItem()
-{
+function addItem() {
 	var key = document.getElementById("txtKey").value;
 	var value = document.getElementById("txtValue").value;
 	var localRadio = document.getElementById("localRadio").checked;
 	
-	if ((key !== "") && (value !== ""))
-	{
-		if (localRadio)
-		{
-			if (window.localStorage)
-			{
+	if ((key !== "") && (value !== "")) {
+		if (localRadio) {
+			if (window.localStorage) {
 				window.localStorage.setItem(key, value);
 				prependContent("output", "adding [" + key + "] to local storage.<br/>");
 			} else {
@@ -135,8 +138,7 @@ function addItem()
 			}
 		} 
 		else {
-			if (window.sessionStorage)
-			{
+			if (window.sessionStorage) {
 				window.sessionStorage.setItem(key, value);
 				prependContent("output", "adding [" + key + "] to session storage.<br/>");
 			}
@@ -154,10 +156,8 @@ function addItem()
 /**
  * The storage event is fired on the same window object whenever stored data changes as a result of calling setItem(), removeItem() or clear().
  */
-function handleStorageEvent(storage) 
-{
-	try 
-	{
+function handleStorageEvent(storage) {
+	try {
 		var key = storage.key;
 		var oldValue = storage.oldValue;
 		var newValue = storage.newValue;
@@ -171,20 +171,16 @@ function handleStorageEvent(storage)
 	}
 }
 
-function doPageLoad()
-{
-	try 
-	{
-		if (!window.localStorage)
-		{
+function doPageLoad() {
+	try  {
+		if (!window.localStorage) {
 			prependContent("output", "window.localStorage API not supported<br/>");
 			document.getElementById("localRadio").setAttribute("disabled", "true");
 			document.getElementById("btnClearLocal").setAttribute("disabled", "true");
 		}
 		hide("btnClearLocal");
 
-		if (!window.sessionStorage)
-		{
+		if (!window.sessionStorage) {
 			prependContent("output", "window.sessionStorage API not supported<br/>");
 			document.getElementById("sessionRadio").setAttribute("disabled", "true");
 			document.getElementById("btnClearSession").setAttribute("disabled", "true");
@@ -194,13 +190,12 @@ function doPageLoad()
 		displayStorage();
 
 		//don't think this is doing anything
-		if (window.addEventListener) 
-		{ 
+		if (window.addEventListener) { 
 			window.addEventListener("storage", handleStorageEvent, false); 
 		} 
 		else { 
 			window.attachEvent("onstorage", handleStorageEvent); 
-		};
+		}
 
 	}
 	catch (e) {
