@@ -14,6 +14,7 @@ This application was created for the [Creating your First application tutorial](
 * [Barb Paduch](https://github.com/bpaduch)
 
 **Dependencies**
+
 1. The images used in this sample application (icon.png and helloWorld.png) were created by the Multimedia team at RIM.  These images are available for use under the Apache2 license.
 
 **To contribute code to this repository you must be [signed up as an official contributor](http://blackberry.github.com/howToContribute.html).**
