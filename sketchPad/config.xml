@@ -17,7 +17,8 @@
 <widget xmlns="http://www.w3.org/ns/widgets" 
         xmlns:rim="http://www.blackberry.com/ns/widgets" 
 		version="1.0.3" 
-		rim:header="RIM-Widget:rim/widget">
+		rim:header="RIM-Widget:rim/widget"
+		id="sketchPad">
 	
 	<name>Sketch Pad</name>
 	<description>Uses HTML5 and Touch events to draw on an HTML5 canvas.  Created using the BlackBerry WebWorks App Platform.  Supported on BlackBerry 6 and PlayBook.</description>
