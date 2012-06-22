@@ -22,17 +22,19 @@ var swipemenu = (function() {
 	var state = { activeClick : false, ignoreClick : false, menuOpen : false };
 
 	function showMenuBar() {
-		var menu;
-		
-		menu = document.getElementById("menuBar");
+		var menu = document.getElementById("menuBar");
+
 		//Show menu only if its already closed:
 		if (menu && !state.menuOpen) {
 			
 			//Reassign onSwipeDown event - if menuBar is open, and swipe down occurs, close the menu.
-			blackberry.app.event.onSwipeDown(hideMenuBar);
+			if ((typeof window.blackberry !== "undefined") && (typeof blackberry.app !== "undefined")) {
+				blackberry.app.event.onSwipeDown(hideMenuBar);
+			}
 		
 			//If you are already using jQuery in your project, use it to perform menu transition:
 			if (typeof jQuery === "undefined") {
+				//TODO: Not as efficient as possible - would prefer to do only 1 page repaint here:
 				menu.style['-webkit-transition'] = 'all 0.5s ease-in-out';
 				menu.style['-webkit-transform'] = 'translate(0, ' + (height + 3) + 'px)';
 				console.log("showMenuBar - using CSS3 to perform menu transition");
@@ -41,20 +43,23 @@ var swipemenu = (function() {
 				console.log("showMenuBar - using jQuery to perform menu transition");
 			}
 			
-			state.menuOpen = true; 
+			state.menuOpen = true;
 		}
 		console.log("showMenuBar complete");
 	}
-	function hideMenuBar() { 
+	function hideMenuBar() {
 		var menu = document.getElementById("menuBar");
 		//Hide menu only if its open:
 		if (menu && state.menuOpen) {
 			
 			//Reassign onSwipeDown event - if menuBar is closed, and swipe down occurs, open the menu.
-			blackberry.app.event.onSwipeDown(showMenuBar);
+			if ((typeof window.blackberry !== "undefined") && (typeof blackberry.app !== "undefined")) {
+				blackberry.app.event.onSwipeDown(showMenuBar);
+			}
 
 			//If you are already using jQuery in your project, use it to perform menu transition:
 			if (typeof jQuery === "undefined") {
+				//TODO: Not as efficient as possible - would prefer to do only 1 page repaint here:
 				menu.style['-webkit-transition'] = 'all 0.5s ease-in-out';
 				menu.style['-webkit-transform'] = 'translate(0, -' + (height + 3) + 'px)';
 				console.log("hideMenuBar - using CSS3 to perform menu transition");
@@ -63,7 +68,7 @@ var swipemenu = (function() {
 				console.log("hideMenuBar - using jQuery to perform menu transition");
 			}
 		
-			state.menuOpen = false; 
+			state.menuOpen = false;
 		}
 		console.log("hideMenuBar complete");
 	}
@@ -85,60 +90,53 @@ var swipemenu = (function() {
 		console.log("globalClickHandler complete");
 	}
 	
-	function createSwipeMenu() {		
+	function createSwipeMenu() {
 		var rightButtons, leftButtons, menuBar, existingMenu, top, style;
 
 		top = parseInt(height / 9, 10);
 		
 		rightButtons = document.createElement("ul");
 		rightButtons.id = "menuBarRightButtons";
-		style = rightButtons.style;  //minimize page repaints
-		style.cssFloat = "right";
-		style.listStyle = "none";
-		style.margin = "0";
-		style.padding = "0 5px";
-		style.border = "0";
-		style.position = "relative";
-		style.top = top + "px";
-		rightButtons.style = style;
+		rightButtons.style.cssFloat = "right";
+		rightButtons.style.listStyle = "none";
+		rightButtons.style.margin = "0";
+		rightButtons.style.padding = "0 5px";
+		rightButtons.style.border = "0";
+		rightButtons.style.position = "relative";
+		rightButtons.style.top = top + "px";
 		
 		leftButtons = document.createElement("ul");
 		leftButtons.id = "menuBarLeftButtons";
-		style = leftButtons.style;  //minimize page repaints
-		style.cssFloat = "left";
-		style.listStyle = "none";
-		style.margin = "0";
-		style.padding = "0 5px";
-		style.border = "0";
-		style.position = "relative";
-		style.top = top + "px";
-		leftButtons.style = style;
+		leftButtons.style.cssFloat = "left";
+		leftButtons.style.listStyle = "none";
+		leftButtons.style.margin = "0";
+		leftButtons.style.padding = "0 5px";
+		leftButtons.style.border = "0";
+		leftButtons.style.position = "relative";
+		leftButtons.style.top = top + "px";
 
 		menuBar = document.createElement("div");
 		menuBar.addEventListener("click", onMenuBarClicked, false);
 		menuBar.id = "menuBar";
-		style = menuBar.style;  //minimize page repaints
 		//menu structure/position - don't change this:
-		style.position = "fixed";
-		style.left = "0px";
-		style.width = "100%";
-		style.clear = "both";
-		style.margin = "0";
-		style.padding = "0";
-		style.lineHeight = "1";
-		style.border = "0";
-		style.fontSize = "100%";
+		menuBar.style.position = "fixed";
+		menuBar.style.left = "0px";
+		menuBar.style.width = "100%";
+		menuBar.style.clear = "both";
+		menuBar.style.margin = "0";
+		menuBar.style.padding = "0";
+		menuBar.style.lineHeight = "1";
+		menuBar.style.border = "0";
+		menuBar.style.fontSize = "100%";
+		//menu theme - you can customize this:
+		menuBar.style.background = "rgb(56,54,56)";
+		menuBar.style.borderBottom = "solid 1px #DDD";
+		menuBar.style.boxShadow = "0px 2px 2px #888";
+		menuBar.style.fontFamily = "Arial";
+		menuBar.style.color = "#CCCCCC";
 
-		//menu theme - customize this:
-		style.background = "rgb(56,54,56)";
-		style.borderBottom = "solid 1px #DDD";
-		style.boxShadow = "0px 2px 2px #888";
-		style.fontFamily = "Arial";
-		style.color = "#CCCCCC";
-		
-		menuBar.style = style;
-
-		//Renders off-screen content (so menu doesn't appear invisible):
+		//Content displayed off screen is invisible.  Need to forcefully apply a style
+		//	to ensure that target off-screen content (the menu) becomes visible:
 		menuBar.style['-webkit-transform'] = 'translate(0, 0)';
 
 		menuBar.appendChild(leftButtons);
@@ -153,16 +151,17 @@ var swipemenu = (function() {
 		console.log("createSwipeMenu complete");
 	}
 
-	//Called after a button is added to the menu
+	//Called after a button is added to the menu. Scales menu bar to proper height of newly-added buttons.
 	function adjustMenuHeight() {
 		var menu, style;
 
 		menu = document.getElementById("menuBar");
 		if (menu) {
-			style = menu.style;	//minimize page repaints
-			style.top = '-' + (height + 3) + 'px';
-			style.height = height + 'px';
-			menu.style = style;
+			//style = menu.style;	//minimize page repaints
+			//TODO: Not as efficient as possible - would prefer to do only 1 page repaint here:
+			menu.style.top = '-' + (height + 3) + 'px';
+			menu.style.height = height + 'px';
+			//menu.style = style;
 		}
 	}
 
@@ -192,56 +191,50 @@ var swipemenu = (function() {
 			fontHeight = parseInt(height / 2.5, 10);
 
 			link = document.createElement("li");
-			
+
 			//Set any ID property that may have been provided
 			if (id) {
 				link.setAttribute('id', id);
 			}
-			
-			style = link.style;	//minimize page repaints.
+
+			//BUG: we are setting the ID property to allow developers to customize this style
+			//	however, we now go and manually overwrite a lot of styles:
+
 			//button structure/position - don't change this:
-			style.margin = "0 2px 0 2px";
-			style.border = "0";
-			style.padding = parseInt(fontHeight / 1.65, 10) + "px 12px";	//scale padding to best fit menu
-			style.lineHeight = "inherit";
-			style.fontSize = fontHeight + "px";
-			style.borderRadius = "10px";
-			style.cssFloat = "left";
+			link.style.margin = "0 2px 0 2px";
+			link.style.border = "0";
+			link.style.padding = parseInt(fontHeight / 1.65, 10) + "px 12px";	//scale padding to best fit menu
+			link.style.lineHeight = "inherit";
+			link.style.fontSize = fontHeight + "px";
+			link.style.borderRadius = "10px";
+			link.style.cssFloat = "left";
+			
 			//button theme - customize this:
-			style.background = "#222";
-			style.color = "inherit";
-			style.cursor = "pointer";
-			style.fontWeight = "inherit";
-			style.fontFamily = "inherit";
-			style.textAlign = "center";
-			link.style = style;
+			link.style.background = "#222";
+			link.style.color = "inherit";
+			link.style.cursor = "pointer";
+			link.style.fontWeight = "inherit";
+			link.style.fontFamily = "inherit";
+			link.style.textAlign = "center";
+
 
 			//Can provide a path to an icon
 			if (iconPath) {
 				//reduce the padding around the image - fits into menu better:
-				style = link.style;
-				style.padding = parseInt(fontHeight / 4, 10) + "px 12px";
-				link.style = style;
+				link.style.padding = parseInt(fontHeight / 4, 10) + "px 12px";
 				
 				img = new Image();
 				img.src = iconPath;
-				style = img.style;
-				style.height = parseInt(height * 0.6, 10) + "px";		//scale the image to the current menubar height
-				img.style = style;
+				img.style.height = parseInt(height * 0.6, 10) + "px";		//scale the image to the current menubar height
 				link.appendChild(img);
 
 				if (title) {
 					br = document.createElement("br");
 					link.appendChild(br);
-					//If title and image are used together, reduce image size to fit in menu
-					style = img.style;
-					style.height = parseInt(height * 0.45, 10) + "px";		//scale the image to the current menubar height
-					img.style = style;
-					
-					//If title and image are used together, reduce font size to fit in menu
-					style = link.style;
-					style.fontSize = parseInt(fontHeight/2,10) + "px";
-					link.style = style;
+					//If title and image are used together, reduce _image_ size to fit in menu
+					img.style.height = parseInt(height * 0.45, 10) + "px";		//scale the image to the current menubar height
+					//If title and image are used together, reduce _font_ size to fit in menu
+					link.style.fontSize = parseInt(fontHeight/2,10) + "px";
 				}
 			}
 			spn = document.createElement("span");
@@ -272,17 +265,14 @@ var swipemenu = (function() {
 		},
 		doPageLoad : function() {
 
-		//TODO: Modify this so that the menu is only loaded if the onSwipeDown function exits
-		//	prevents it from being added when used in Smartphone apps (where there is no
-		//	swipe down event)
-		
 			createSwipeMenu();
 
-			//closes the menu after user clicks anywhere on the page
+			//Closes the menu after user clicks anywhere on the page
 			document.addEventListener("click", globalClickHandler, false);
 
-			if ((typeof window.blackberry !== "undefined") && (typeof blackberry.app !== "undefined")) { 
-				blackberry.app.event.onSwipeDown(showMenuBar); 
+			//Register the swipe down event if the onSwipeDown function exists.
+			if ((typeof window.blackberry !== "undefined") && (typeof blackberry.app !== "undefined")) {
+				blackberry.app.event.onSwipeDown(showMenuBar);
 			}
 
 			console.log("doPageLoad complete");
