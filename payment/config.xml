@@ -5,22 +5,22 @@
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
   You may obtain a copy of the License at
- 
+
   http://www.apache.org/licenses/LICENSE-2.0
- 
+
   Unless required by applicable law or agreed to in writing, software
   distributed under the License is distributed on an "AS IS" BASIS,
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<widget xmlns="http://www.w3.org/ns/widgets" 
-        xmlns:rim="http://www.blackberry.com/ns/widgets" 
+<widget xmlns="http://www.w3.org/ns/widgets"
+        xmlns:rim="http://www.blackberry.com/ns/widgets"
 		version="1.0.0.22">
 
 	<name>Payment API Test App</name>
 	<description>Sample application, created using the BlackBerry WebWorks SDK, that demonstrate how to use the Payment Sevice API to sell digital goods.  This example is to be used as a learning resource.  See license for further details. </description>
-	<author rim:copyright="2011" href="http://www.blackberry.com/developers">Research In Motion Limited</author>
+	<author href="http://twitter.com/n_adam_stanley">Adam Stanley</author>
 
 	<license href="http://www.apache.org/licenses/LICENSE-2.0">
 		Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,14 +37,14 @@
 
 	<content src="index.html" />
 	<access subdomains="true" uri="*"/>
-	
-	<feature id="blackberry.payment" required="true" version="1.0.0.0" /> 
-	
-	<feature id="blackberry.identity" required="true" version="1.0.0.0" /> 
-	<feature id="blackberry.app" required="true" version="1.0.0.0" />   
+
+	<feature id="blackberry.payment" required="true" version="1.0.0.0" />
+
+	<feature id="blackberry.identity" required="true" version="1.0.0.0" />
+	<feature id="blackberry.app" required="true" version="1.0.0.0" />
 	<feature id="blackberry.invoke" required="true" version="1.0.0.0"/>
 	<feature id="blackberry.invoke.BrowserArguments" required="true" version="1.0.0.0"/>
-	
+
 	<icon src="img/icon.png"/>
-  
+
 </widget>
