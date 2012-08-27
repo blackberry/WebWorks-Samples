@@ -5,42 +5,42 @@
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
   You may obtain a copy of the License at
- 
+
   http://www.apache.org/licenses/LICENSE-2.0
- 
+
   Unless required by applicable law or agreed to in writing, software
   distributed under the License is distributed on an "AS IS" BASIS,
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<widget xmlns="http://www.w3.org/ns/widgets" 
-        xmlns:rim="http://www.blackberry.com/ns/widgets" 
+<widget xmlns="http://www.w3.org/ns/widgets"
+        xmlns:rim="http://www.blackberry.com/ns/widgets"
         version="1.0.0.4" id="kitchenSink" xml:lang="en">
-	
+
 	<!--
 		Configuration document developer guides
-		
+
 		config.xml sample:
 			http://docs.blackberry.com/en/developers/deliverables/30182/Creating_a_BB_Widget_configuration_document_834664_11.jsp
-		
+
 		config.xml elements
 			Tablet OS: http://docs.blackberry.com/en/developers/deliverables/30182/Widget_element_834671_11.jsp
 			Smartphone: http://docs.blackberry.com/en/developers/deliverables/32971/Widget_element_1590978_11.jsp
 	-->
-	
+
 	<name>Kitchen Sink WebWorks</name>
 	<description>This application demonstrates how to implement various look, feel and functional features in a BlackBerry WebWorks application.</description>
-	<author rim:copyright="2011" email="astanley@rim.com" href="http://www.blackberry.com/developers">Adam Stanley</author>
+	<author href="http://twitter.com/n_adam_stanley">Adam Stanley</author>
 	<rim:loadingScreen backgroundImage="img/bluebackground.jpg" foregroundImage="img/bluebackground.jpg" onLocalPageLoad="true"/>
 	<icon src="img/Wash.png"/>
-	
+
 	<rim:orientation mode="auto" />
-	
+
 	<content src="index.html"/>
-	
+
 	<rim:category name="Media"/>
-	
+
 	<rim:permissions>
 		<rim:permit>access_shared</rim:permit>
 		<rim:permit>record_audio</rim:permit>
@@ -48,9 +48,9 @@
 		<rim:permit>use_camera</rim:permit>
 		<rim:permit>read_device_identifying_information</rim:permit>
 	</rim:permissions>
-	
-	<!-- 
-		Universal APIs: 
+
+	<!--
+		Universal APIs:
 			The following features are available on both Smartphone and Tablet OS
 	-->
 	<feature id="blackberry.app" required="true" version="1.0.0.0"/>
@@ -66,11 +66,11 @@
 	<feature id="blackberry.invoke" required="true" version="1.0.0.0"/>
 	<feature id="blackberry.io.file" required="true" version="1.0.0.0"/>
 	<feature id="blackberry.io.dir" required="true" version="1.0.0.0"/>
-	
-	<!-- 
-		Smartphone APIs: 
+
+	<!--
+		Smartphone APIs:
 			The following features are available ONLY on Smartphone
-	-->	
+	-->
 	<feature id="blackberry.ui.menu" required="true" version="1.0.0.0"/>
 	<feature id="blackberry.identity.phone" required="true" version="1.0.0.0"/>
 	<feature id="blackberry.invoke.AddressBookArguments" required="true" version="1.0.0.0"/>
@@ -102,21 +102,21 @@
 	<feature id="blackberry.find" required="true" version="1.0.0.0"/>
 	<feature id="blackberry.phone.Phone" required="true" version="1.0.0.0"/>
 	<feature id="blackberry.phone.PhoneLogs" required="true" version="1.0.0.0"/>
-	
+
 	<feature id="blackberry.push" required="true" version="1.0.0.0"/>
 	<feature id="blackberry.find" required="true" version="1.0.0.0"/>
-	
-	<!-- 
-		Tablet OS APIs: 
+
+	<!--
+		Tablet OS APIs:
 			The following features are available ONLY on Tablet OS
 		...
 	-->
 	<!--
 	COMMENT THE FOLLOWING WHEN BUILDING USING THE SMARTPHONE SDK.
-	
+
 	<feature id="blackberry.payment" required="true" version="1.0.0.0"/>
 	-->
-	
+
 	<access subdomains="true" uri="*"/>
 
 	<license href="http://www.apache.org/licenses/LICENSE-2.0">
