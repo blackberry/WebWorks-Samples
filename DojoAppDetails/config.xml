@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets"
+        xmlns:rim="http://www.blackberry.com/ns/widgets"
+        version="1.0.0.0"  id="DojoAppDetails" xml:lang="en">
+  <author href="http://www.blackberry.com/" 
+          rim:copyright="Copyright 2012 RIM">RIM</author>
+  <name>Dojo App Details</name>
+  <description>Sample Dojo app showing app details</description>
+
+  <access uri="http://ajax.googleapis.com" subdomains="true"/>
+  <content src="index.html"/>
+  <feature id="blackberry.app"/>
+
+</widget>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dojo App Details</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <!-- async mode must be included BEFORE the dojo loader (dojo.js) -->
+  <script data-dojo-config="async:true" src="http://ajax.googleapis.com/ajax/libs/dojo/1.8.0/dojo/dojo.js" ></script>
+
+  <!-- Any other scripts needed -->
+  <script src="js/myfunctions.js"></script>
+
+</head>
+<body>
+
+<!-- Main Page -->
+<div id="general" data-dojo-type="dojox.mobile.View">
+  <h1 data-dojo-type="dojox.mobile.Heading">General</h1>
+  <ul data-dojo-type="dojox.mobile.RoundRectList">
+    <li data-dojo-type="dojox.mobile.ListItem" data-dojo-props="moveTo:'aboutView', transition:'fade'">
+      About
+    </li>
+  </ul>
+</div>
+
+<!-- About the app -->
+<div id="aboutView" data-dojo-type="dojox.mobile.View">
+  <h1 data-dojo-type="dojox.mobile.Heading" data-dojo-props="back:'General', moveTo:'general'">About</h1>
+  <h2 data-dojo-type="dojox.mobile.RoundRectCategory">App Details</h2>
+  <div id="appDetailsDiv" data-dojo-type="dojox.mobile.RoundRect">
+  </div>
+</div>
+
+<!-- Loading screen to ensure the page is formatted and all resources have been loaded -->
+<div id="loadingScreen" style="position:absolute;left:0px;top:0px;width:100%;height:100%;background-color:#FFFFFF;z-index:999;display:block;text-align:center;">Loading...</div>
+
+</body>
+</html>
