@@ -2,7 +2,7 @@
 
 This application shows the markup for creating a simple Dojo application to view app details based on the app's WebWorks config.xml file
 
-The sample code for this application is Open Source under the [BSD License](http://opensource.org/licenses/BSD-3-Clause).
+The sample code for this application is Open Source under the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0.html).
 
 
 **Applies To**
@@ -17,7 +17,7 @@ The sample code for this application is Open Source under the [BSD License](http
 
 **Dependencies**
 
-* To access Dojo toolkit resources, the device must have an internet connection
+* When running the application on a device, to access Dojo toolkit resources, the device must have an internet connection
 
 **Known Issues**
 
