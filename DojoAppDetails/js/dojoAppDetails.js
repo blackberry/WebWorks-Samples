@@ -42,7 +42,7 @@ function startDojo(){
       setTimeout(function() {
         var loadingScreen = dom.byId("loadingScreen");
         domStyle.set(loadingScreen, "display", "none");
-      }, 2000);
+      }, 4000);
     });
   });
 
@@ -73,8 +73,7 @@ function getAppDetails() {
 
 function pageLoad(){
   startDojo();
-  document.addEventListener("webworksready", getAppDetails);
-  //getAppDetails();
+  getAppDetails();
 }
 
 window.addEventListener("load", pageLoad, false);
