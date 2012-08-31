@@ -1,4 +1,4 @@
-/* Copyright 2011 Research In Motion Limited.
+/* Copyright 2012 Research In Motion Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,7 +48,7 @@ function startDojo(){
 
 } //end function startDojo()
 
-function getAppDetails() {
+function getAppDetails() {  
 // Create a table with the app details and change the contents of the containing element
 
   if (window.blackberry !== undefined) {
@@ -73,7 +73,8 @@ function getAppDetails() {
 
 function pageLoad(){
   startDojo();
-  getAppDetails();
+  document.addEventListener("webworksready", getAppDetails);
+  //getAppDetails();
 }
 
 window.addEventListener("load", pageLoad, false);
