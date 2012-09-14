@@ -1,0 +1,24 @@
+
+<div data-bb-type="screen" data-bb-title="Screen Display" data-bb-effect="fade" >
+
+	<div data-bb-type="round-panel"> 
+		<div data-bb-type="row">
+			<div data-bb-type="panel-header">Setting iFrame Sources</div>
+			This is very similar to setting the src for an image (actually, it's the exact same except you're setting an iframe source instead of an image source.<br>
+			Because it's the exact same, you can refer to the set img src for information on how it works.
+		</div>
+	</div>
+	
+<center>
+	<div data-bb-type="button" onclick="localStorage.setItem('iframesrc','http://opensourcebb.com');document.getElementById('myFrame').src = localStorage.getItem('iframesrc');">Set the iframe to OpenSourceBB</div>
+	<div data-bb-type="button" onclick="localStorage.setItem('iframesrc','http://opensourcebb.com/osbbx');document.getElementById('myFrame').src = localStorage.getItem('iframesrc');">Set iframe to OSBBx</div>
+	<div data-bb-type="button" onclick="localStorage.setItem('iframesrc','http://scrapps.org/');document.getElementById('myFrame').src = localStorage.getItem('iframesrc');">Set iframe to SCrApps.org</div>
+</center>
+
+	<div> <center>
+		<iframe id="myFrame" src="" width="80%" height="80%" frameborder="1px"></iframe>
+	</center> </div>
+	
+	<br>
+	<div data-bb-type="action-bar" data-bb-back-caption="Back"></div>
+</div>
