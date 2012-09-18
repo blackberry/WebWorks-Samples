@@ -14,7 +14,7 @@ The sample code for this application is Open Source under the [Apache 2.0 Licens
 
 **Author(s)** 
 
-* [G. Shane Cridlebaugh](http://github.com/SCrid2000), [SCrApps](http://SCrApps.org)
+* [G. Shane Cridlebaugh](http://github.com/SCrid2000) / [SCrApps](http://SCrApps.org)
 * [OSBBx](http://x.opensourcebb.com)
 
 **Dependencies**
