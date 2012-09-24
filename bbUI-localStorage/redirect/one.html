@@ -1,0 +1,34 @@
+<div data-bb-type="screen" data-bb-effect="fade">
+
+	<div data-bb-type="round-panel"> 
+		<div data-bb-type="panel-header">You don't have a localStorage value set.</div>
+		You see this because you don't have a localStorage value set (it returned "null").  When you clicked the Redirect option, it ran a javascript function found in the custom.js file called "redirect." Redirect is quite similar to the Welcome javascript, and looks like this:
+	
+	<div data-bb-type="round-panel"> 	
+		<font color="blue"><i>function</i></font> redirect() {<br>
+		<font color="blue"><i>if</i></font> (localStorage.getItem('redirect') === null) {<br>
+		bb.pushScreen('redirect/one.html', 'one'); }<br>
+		<font color="blue"><i>else if</i></font> (localStorage.getItem('redirect') === 'something') {<br>
+		bb.pushScreen('redirect/three.html', 'three'); }<br>
+		<font color="blue"><i>else</i></font><br>
+		bb.pushScreen('redirect/two.html', 'two');<br>
+		}
+	</div>
+	<br>
+		Click one of the buttons below to set the localStorage value to a value that isn't set in the custom.js javascript file. Because none of the below values are attached to a condition, it really doesn't matter which you select (it's an example).<br><br>
+		Next time you launch Redirect, a different page will be loaded.
+	</div>
+	<div data-bb-type="round-panel"> 
+		<div data-bb-type="button" data-bb-style="stretch"  onclick="localStorage.setItem('redirect','helloworld');bb.popScreen();">Set localStorage to "helloworld" and return to the main screen.</div>
+		<div data-bb-type="button" data-bb-style="stretch"  onclick="localStorage.setItem('redirect','goodbyeworld');bb.popScreen();">Set localStorage to "goodbyeworld" and return to the main screen.</div>
+		<div data-bb-type="button" data-bb-style="stretch"  onclick="localStorage.setItem('redirect','okIgetit');bb.popScreen();">Set localStorage to "okIgetit" and return to the main screen.</div>
+	</div>
+
+<br>
+	<div data-bb-type="round-panel"> 
+		If you're asking yourself, <i>why is this useful?</i> the answer is that you can use this to have the same button do different functions, based on user preferences. 
+	</div>
+
+	<div data-bb-type="action-bar" data-bb-back-caption="Back"></div>
+
+</div>

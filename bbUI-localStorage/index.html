@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html> 
+	<head>
+	<title>bbUI localStorage Samples</title>
+		<meta name="x-blackberry-defaultHoverEffect" content="false" />
+		<meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=no,target-densitydpi=device-dpi" />
+		<link  rel="stylesheet" type="text/css" href="cssjs/bbui-0.9.3.css"><link />
+		<link  rel="stylesheet" type="text/css" href="cssjs/custom.css"><link />
+		<script type="text/javascript" src="cssjs/bbui-0.9.3.js"></script>
+		<script type="text/javascript" src="cssjs/custom.js"></script>
+		<script type="text/javascript">
+			bb.init({bb10AccentColor: '#005566',
+					bb10HighlightColor: '#005588',
+					bb10ActionBarDark: true,
+					bb10ControlsDark: true,
+					bb10ListsDark: false,
+					bb10ForPlayBook: true,
+					onscreenready: function(element, id) {
+										if (id == 'dataOnLoad') {
+											dataOnLoad_initialLoad(element);
+										}
+									},
+					ondomready: function(element, id) {
+										if (id == 'dataOnTheFly') {
+											dataOnTheFly_initialLoad(element);
+										}
+										onLoadFunctions();
+									}
+					});
+</script>
+	</head>
+	<body onload="welcome();">	
+	</body>
+</html>

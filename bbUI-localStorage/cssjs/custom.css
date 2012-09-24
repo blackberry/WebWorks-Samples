@@ -1,0 +1,110 @@
+/* ================================================= 
+  Custom Background Image
+=================================================*/   
+
+.bb-bb10-lowres-screen {
+	font-size: 16pt;
+	position:absolute;
+	top:0px;
+	left:0px;
+	bottom:0px;
+	right: 0px;
+	background-image:url('../images/background.jpg');
+}
+
+.bb-bb10-hires-screen {
+	font-size: 30pt;
+	position:absolute;
+	top:0px;
+	left:0px;
+	bottom:0px;
+	right: 0px;
+	background-image:url('../images/background.jpg');
+}
+
+/* ================================================= 
+  BB10 Tab Overflow Menu
+=================================================*/   
+
+.bb-bb10-tab-overflow-menu-item-lowres
+{
+	padding-top: 7px;
+	padding-bottom: 3px;	
+	padding-left: 5px;
+	height: 45px;
+	line-height: 45px;
+	vertical-align: center;
+	font-size:20pt;
+}
+
+.bb-bb10-tab-overflow-menu-item-hires
+{
+	padding-top: 14px;
+	padding-bottom: 3px;	
+	padding-left: 10px;
+	height: 109px;
+	line-height: 85px;
+	vertical-align: center;
+	font-size:39pt;
+}
+
+
+/* ================================================= 
+  BB10 Context Menu
+=================================================*/
+ 
+.bb-bb10-context-menu-item-lowres
+{
+	padding-top: 7px;
+	padding-bottom: 3px;	
+	padding-left: 5px;
+	height: 42px;
+	line-height: 42px;
+	vertical-align: center;
+	font-size:16pt;
+}
+
+.bb-bb10-context-menu-item-hires
+{
+	padding-top: 14px;
+	padding-bottom: 3px;	
+	padding-left: 10px;
+	height: 109px;
+	line-height: 95px;
+	vertical-align: center;
+	font-size:30pt;
+}
+
+/* ================================================= 
+   BB10 Grid
+   =================================================*/
+
+.bb-bb10-grid-item-overlay-lowres
+{
+	position:relative;
+	height: 20px;
+	top:-20px;
+	right:0px;
+	left: 0px;
+	background-color: black;
+	opacity: 0.7;	
+}
+
+.bb-bb10-grid-item-overlay-hires
+{
+	position:relative;
+	height: 70px;
+	top:-70px;
+	right:0px;
+	left: 0px;
+	background-color: black;
+	opacity: 0.7;	
+}
+/* ================================================= 
+   BB10 Round panels
+   =================================================*/
+
+.bb-bb10-round-panel-light {
+	border-color: #C6C6C6;
+	color: Black;
+	background-color: rgba(255,255,255,0.0);

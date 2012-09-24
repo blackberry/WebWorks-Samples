@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+ * Copyright 2011 Research In Motion Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<html>
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,target-densitydpi=device-dpi,user-scalable=no,initial-scale=1.0">
+	<link href="styles.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="standard.js"></script>
+	
+	<title> HTML5 Storage </title>
+	<script src="storage.js" type="text/JavaScript"></script>
+
+</head>
+<body>
+
+	<h1>HTML5 Storage</h1>
+	
+	<h2>Demo</h2>
+	<div class="demo">
+		<p>Local and Session Storage can be used to storing key/value pairs in String format.  Traditionally, cookies have been used for this purpose.  However storage provides larger space for persisting client size data.</p>
+		<table>
+			<tr>
+				<td> Key </td> <td> <input type="text" id="txtKey" value="Foo"/> </td> <td> <input type="radio" id="localRadio" name="storageType" checked/> Local Storage </td>
+			</tr>
+			<tr>
+				<td> Value </td> <td> <input type="text" id="txtValue" value="Bar"/> </td> <td> <input type="radio" id="sessionRadio" name="storageType" /> Session Storage </td>
+			</tr>
+			<tr>
+				<td> </td> <td> <button id="btnSave" onclick="addItem()">Add to Storage</button> </td> <td> </td>
+			</tr>
+		</table>	
+		<h3> Local Storage </h3>
+		<div id="localStorage"></div>
+		<button id="btnClearLocal" onclick="removeAllLocal()">Clear Local Storage</button>
+		
+		<h3> Session Storage </h3>
+		<div id="sessionStorage"></div>
+		<button id="btnClearSession" onclick="removeAllSession()">Clear Session Storage</button>
+	</div>
+
+	<div id="output"></div>
+
+	<h2>Storage</h2>
+	<div class="demo bottom">
+		<p>
+			<a href="storageloadtest.html">Storage Load Test</a>
+		</p>
+	
+		<b>Summary</b>
+		
+		<b>Local Storage</b>
+		<p>Data saved in local storage persists even after the user closes their browser.  This data is stored internally using the file system and SQLite.</p>
+		<p>There is no assigned expiry time for data saved in local storage.</p>
+		
+		<b>Session Storage</b>
+		<p>Data saved in session storage persists only as long as the user keeps their browser open.  When the browser is closed, all data is lost. This data is stored internally using memory.</p>
+		
+		<b>Data Size</b>
+		<p>The BlackBerry browser assigns 5Mb of storage space for local storage per security origin.  A QUOTA_EXCEEDED_ERR exception will be raised if this limit becomes exceeded  .There is no way to increase this limit.</p>
+		<p>The max size if data to be saved for each item/value pair appears to be defined by each user agent (Chrome appears to have a 47715 byte limit for either of the key or value fields).</p>
+		
+		<b>Clearing</b>
+		<p> A web page can call the .clear() method on either the localStorage or sessionStorage object to wipe all items or the .removeItem(key) method to remove an individual item.  End users can clear all storage data by clearing their cache with the "clear cookies" selection enabled.</p>
+	</div>
+
+</body>
+</html>

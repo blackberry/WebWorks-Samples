@@ -1,0 +1,16 @@
+<div data-bb-type="screen" data-bb-effect="fade">
+
+	<div data-bb-type="round-panel"> 
+		<div data-bb-type="panel-header">You set a localStorage value.</div>
+		You see this because you set a value for the localStorage key "redirect", but the value you chose isn't a value defined in the custom.js file. 
+Click the button below to set the localStorage value to "something," which is predefined in javascript. Or you can delete the localStorage key entirely, and you'll see the first page again.</div>
+
+	<div data-bb-type="round-panel"> 
+
+		<div data-bb-type="button" data-bb-style="stretch"  onclick="localStorage.setItem('redirect','something');bb.popScreen();">Set localStorage to "something" and return to the main screen.</div>
+		<div data-bb-type="button" data-bb-style="stretch" onclick="localStorage.removeItem('redirect');bb.popScreen();">Delete the localStorage key and return to the main screen.</div>
+	</div>
+
+	<div data-bb-type="action-bar" data-bb-back-caption="Back"></div>
+
+</div>

@@ -1,0 +1,31 @@
+
+<div data-bb-type="screen" data-bb-effect="slide-left">
+
+
+	<div data-bb-type="row">
+		<div data-bb-type="round-panel"> 
+		<div data-bb-type="label">Set any text as localStorage</div>
+		Pretty straightforward; you choose a value, type something into the box below, and press the button.<br>
+		A localStorage key is created for the value that's selected, and the text in the text box is entered as the key for it.
+		<select data-bb-style="stretch" data-bb-label="Choose a value:" id="customDropDown">
+			<option>Value 1</option>
+			<option>Value 2</option>
+			<option>Value 3</option>
+			<option>Value 4</option>
+			<option>Value 5</option>
+		</select>
+	   </select>
+		
+		<div data-bb-type="row">
+		   <input type="text" onclick="this.value = '';" id="customEntry" value="Enter anything here..." /> 
+		   <div data-bb-type="button" onclick="localStorage.setItem(customDropDown.options[customDropDown.selectedIndex].value,customEntry.value);">Create a localStorage key of the chosen value and assign it the value entered into the text box</div>
+		</div>
+		</div>	
+	</div>	
+	
+<div data-bb-type="button" onclick="alert(customDropDown.options[customDropDown.selectedIndex].value + ' is set to ' + localStorage.getItem(customDropDown.options[customDropDown.selectedIndex].value));">Display localStorage value for the selected Value</div>
+
+
+	<div data-bb-type="action-bar" data-bb-back-caption="Back"></div>
+
+</div>

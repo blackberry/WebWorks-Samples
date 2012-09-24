@@ -1,0 +1,30 @@
+<div data-bb-type="screen" data-bb-effect="slide-down" style="background-image:url('images/background.jpg');">
+	<br>
+		<div style="text-align:center;">Welcome to the bbUI localStorage Sample App!</div>
+	<div data-bb-type="round-panel"> 
+		<div>
+		You're probably wondering where all the samples are; well guess what, you're in one right now. <br>
+		You don't know it yet, but you just learned how to initiate a Welcome Screen using localStorage!
+		</div>
+	</div>
+	
+		<div data-bb-type="round-panel"> 
+			<div>If you've ever looked at the standard bbUI sample created by Tim Niel, N. Adam Stanley, and other RIM bbUI employees and volunteers, you might have noticed the following line:<br>
+			<textarea style="width:99%;text-align:center;font-size:.9em;background-color:rgba(0,0,0,0)" ><body onload="bb.pushScreen('menu.html', 'menu');"></textarea>
+			Well, in order to have the app display a welcome screen, we're not using that onload command. Instead, we're using this:
+			<textarea style="width:99%;text-align:center;font-size:.9em;background-color:rgba(0,0,0,0)"><body onload="welcome();"></textarea>
+			That allows us to call a JavaScript function when the app launched, and letting the JavaScript tell our app what to do. Specifically, the welcome() function does the following:
+				<div data-bb-type="round-panel"> 
+					<font color="blue"><i>function</i></font> welcome() {<br>
+					<font color="blue"><i>if</i></font> (localStorage.getItem('welcome') === null) {<br>
+					bb.pushScreen('welcome.html', 'welcome');}<br>
+					<font color="blue"><i>else</i></font><br>
+					bb.pushScreen('menu.html', 'menu');<br>
+					}
+				</div>	
+			If you already know a  bit about JavaScript, you know that function is basically telling the app "if there's no value set for the localStorage key welcome (that is, it returns null), load welcome.html. If there is a value set for that key, load menu.html" (and if you don't already know some JavaScript, now you know what that function means).
+			</div>	
+		</div>
+<div data-bb-type="button" data-bb-style="stretch" onclick="localStorage.setItem('welcome','set');window.open('index.html','_top')">Set localStorage for Welcome and launch the app.</div>
+<br>
+</div>

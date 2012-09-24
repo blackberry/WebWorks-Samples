@@ -1,0 +1,45 @@
+
+<div data-bb-type="screen" data-bb-title="Screen Display" data-bb-effect="fade" >
+
+	<div data-bb-type="round-panel"> 
+		<div data-bb-type="row">
+			<div data-bb-type="panel-header">Setting Image Sources</div>
+			You can use localStorage to define what an image source will be. in bbUI, the function that sets the image source must be loaded when the dom is ready.<br>
+			In this example, the function to set the image has been made part of "onLoadFunctions()" (which is located in custom.js) and has been inserted into the "ondomready" of the index.html.
+		</div>
+	</div>
+
+	<div> <center>
+		<img id="myPic1" width="200px" src="images/osbb.png" />
+		<img id="myPic2" width="200px" src="images/blank.png" />
+		<img id="myPic3" width="200px" src="images/osbbx.png" />
+	</center> </div>
+
+	
+	<div data-bb-type="round-panel"> 
+		<div data-bb-type="row">
+			There are three pics above; the defaults (which will show for a brief moment on page load before the ondomready function will change them) are an OSBB icon, a blank icon, and an OSBBx icon. You can set whatever src you want for those images using localStorage.<br>
+			The buttons below set a localStorage value for each respective image id, and change the icons to match that localStorage value. That localStorage value is also read when the page first launches, and will change the icons to match the stored value.
+		</div>
+	</div>
+	
+<center>
+	<div data-bb-type="button" onclick="localStorage.setItem('pic1Icon','images/osbb.png');document.getElementById('myPic1').src = localStorage.getItem('pic1Icon');">Set Pic1 to OSBB</div>
+	<div data-bb-type="button" onclick="localStorage.setItem('pic1Icon','images/osbbx.png');document.getElementById('myPic1').src = localStorage.getItem('pic1Icon');">Set Pic1 to OSBBx</div>
+	<div data-bb-type="button" onclick="localStorage.setItem('pic1Icon','images/hippo.png');document.getElementById('myPic1').src = localStorage.getItem('pic1Icon');">Set Pic1 to Hippo</div>
+	<div data-bb-type="button" onclick="localStorage.setItem('pic1Icon','images/blank.png');document.getElementById('myPic1').src = localStorage.getItem('pic1Icon');">Clear Pic1</div><br>
+
+	<div data-bb-type="button" onclick="localStorage.setItem('pic2Icon','images/osbb.png');document.getElementById('myPic2').src = localStorage.getItem('pic2Icon');">Set Pic2 to OSBB</div>
+	<div data-bb-type="button" onclick="localStorage.setItem('pic2Icon','images/osbbx.png');document.getElementById('myPic2').src = localStorage.getItem('pic2Icon');">Set Pic2 to OSBBx</div>
+	<div data-bb-type="button" onclick="localStorage.setItem('pic2Icon','images/hippo.png');document.getElementById('myPic2').src = localStorage.getItem('pic2Icon');">Set Pic2 to Hippo</div>
+	<div data-bb-type="button" onclick="localStorage.setItem('pic2Icon','images/blank.png');document.getElementById('myPic2').src = localStorage.getItem('pic2Icon');">Clear Pic2</div><br>
+
+	<div data-bb-type="button" onclick="localStorage.setItem('pic3Icon','images/osbb.png');document.getElementById('myPic3').src = localStorage.getItem('pic3Icon');">Set Pic3 to OSBB</div>
+	<div data-bb-type="button" onclick="localStorage.setItem('pic3Icon','images/osbbx.png');document.getElementById('myPic3').src = localStorage.getItem('pic3Icon');">Set Pic3 to OSBBx</div>
+	<div data-bb-type="button" onclick="localStorage.setItem('pic3Icon','images/hippo.png');document.getElementById('myPic3').src = localStorage.getItem('pic3Icon');">Set Pic3 to Hippo</div>
+	<div data-bb-type="button" onclick="localStorage.setItem('pic3Icon','images/blank.png');document.getElementById('myPic3').src = localStorage.getItem('pic3Icon');">Clear Pic3</div>
+</center>
+	
+	<br>
+	<div data-bb-type="action-bar" data-bb-back-caption="Back"></div>
+</div>

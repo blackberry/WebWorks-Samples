@@ -1,0 +1,30 @@
+
+<div data-bb-type="screen" data-bb-title="Screen Display" data-bb-effect="fade" >
+
+	<div data-bb-type="round-panel"> 
+		<div data-bb-type="row">
+			<div data-bb-type="panel-header">Clearing a single localStorage key</div>
+			Obviously, in order to clear a localStorage value, first one needs to be set. When delStorage is set, the ... below will change to tell you that delStorage is set.
+			<div data-bb-type="button" data-bb-style="stretch" onclick="localStorage.setItem('delStorage','delStorage is set.');document.getElementById('deldiv').innerHTML = localStorage.getItem('delStorage');">Create delStorage Key</div>
+			Clearing localStorage is fairly straightforward. If you want to delete a localStorage value, just call localStorage.removeItem('key').
+			<div data-bb-type="button" data-bb-style="stretch" onclick="localStorage.removeItem('delStorage');document.getElementById('deldiv').innerHTML = 'delStorage is not set.';">Delete the delStorage Key</div>
+		</div>
+	</div>
+
+	<div data-bb-type="round-panel" > 
+		<div id="deldiv" style="text-align:center;">Checking delStorage...</div>
+	</div>
+		<script type="text/javascript" src="cssjs/custom.js"></script>
+		
+	<div data-bb-type="round-panel"> 
+		<div data-bb-type="row">
+			<div data-bb-type="panel-header">Clearing ALL localStorage</div>
+			You can also clear every localStorage key by using the localStorage.clear() command.
+			<div data-bb-type="button" data-bb-style="stretch" onclick="localStorage.clear();">Clear ALL localStorage</div>
+			If you add blackberry.app.exit(); to the command, it will also close the app.
+			<div data-bb-type="button" data-bb-style="stretch" onclick=" localStorage.clear();blackberry.app.exit();">Clear ALL localStorage and exit the app</div>
+		</div>
+	</div>
+<br>
+	<div data-bb-type="action-bar" data-bb-back-caption="Back"></div>
+</div>
