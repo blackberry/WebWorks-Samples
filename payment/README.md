@@ -54,7 +54,7 @@ Please see the [README](https://github.com/blackberry/WebWorks-Samples) of the W
 
 ## Bug Reporting and Feature Requests
 
-If you find a bug in a Sample, or have an enhancement request, simply file an [Issue](https://github.com/blackberry/WebWorks-Samples/issues) for the Sample and send a message (via github messages) to the Sample Author(s) to let them know that you have filed an [Issue](https://github.com/blackberry/WebWorks-Samples/issues).
+If you find a bug in a Sample, or have an enhancement request, simply file an [Issue](https://github.com/blackberry/WebWorks-Samples/issues) for the Sample.
 
 ## Disclaimer
 
