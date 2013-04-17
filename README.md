@@ -1,6 +1,6 @@
 # WebWorks Samples Repository 
 
-The _**WebWorks-Samples**_ repository is an area where members of the community can post up their WebWorks sample applications to share with the rest of the world.  
+The _**WebWorks-Samples**_ repository is where official WebWorks samples for BlackBerry Smartphone and Tablet OS are hosted. For Community Samples, please refer to the [WebWorks-Community-Samples Repository](repo:WebWorks-Community-Samples).
 
 All APIs shared in this repository are Open Source under the  [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0.html)
 
@@ -49,7 +49,7 @@ The README for the Sample should be updated to indicate the new Author.
 
 ## Bug Reporting and Feature Requests
 
-If you find a bug in a Sample, or have an enhancement request, simply file an [Issue](https://github.com/blackberry/WebWorks-Samples/issues) for the Sample and send a message (via github messages) to the Sample Author(s) to let them know that you have filed an [Issue](https://github.com/blackberry/WebWorks-Samples/issues).
+If you find a bug in a Sample, or have an enhancement request, simply file an [Issue](https://github.com/blackberry/WebWorks-Samples/issues) for the Sample.
 
 ## Disclaimer
 
